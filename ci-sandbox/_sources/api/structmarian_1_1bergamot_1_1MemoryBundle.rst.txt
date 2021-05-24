@@ -1,0 +1,16 @@
+.. _exhale_struct_structmarian_1_1bergamot_1_1MemoryBundle:
+
+Struct MemoryBundle
+===================
+
+- Defined in :ref:`file_src_translator_definitions.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: marian::bergamot::MemoryBundle
+   :members:
+   :protected-members:
+   :undoc-members:

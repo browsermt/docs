@@ -1,0 +1,70 @@
+
+.. _file_src_translator_response_options.h:
+
+File response_options.h
+=======================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/response_options.h``)
+--------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_response_options.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``string``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_translator_response_builder.h`
+
+- :ref:`file_src_translator_response_builder.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1ResponseOptions`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1`
+
+- :ref:`exhale_enum_response__options_8h_1a435be63c72825cbd4bfb8bd0d07b9099`
+

@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1SentenceSplitter:
+
+Class SentenceSplitter
+======================
+
+- Defined in :ref:`file_src_translator_sentence_splitter.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::SentenceSplitter
+   :members:
+   :protected-members:
+   :undoc-members:

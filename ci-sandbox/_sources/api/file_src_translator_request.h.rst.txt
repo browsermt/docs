@@ -1,0 +1,94 @@
+
+.. _file_src_translator_request.h:
+
+File request.h
+==============
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/request.h``)
+-----------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_request.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``annotation.h`` (:ref:`file_src_translator_annotation.h`)
+
+- ``cassert``
+
+- ``common/logging.h``
+
+- ``data/types.h``
+
+- ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
+
+- ``future``
+
+- ``response.h`` (:ref:`file_src_translator_response.h`)
+
+- ``response_builder.h`` (:ref:`file_src_translator_response_builder.h`)
+
+- ``translator/beam_search.h``
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_translator_batch.h`
+
+- :ref:`file_src_translator_batch.cpp`
+
+- :ref:`file_src_translator_batch_translator.h`
+
+- :ref:`file_src_translator_batcher.h`
+
+- :ref:`file_src_translator_request.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1Request`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1RequestSentence`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_request_8h_1afc43a9f148490a4a5be3c8a3348d0a6b`
+

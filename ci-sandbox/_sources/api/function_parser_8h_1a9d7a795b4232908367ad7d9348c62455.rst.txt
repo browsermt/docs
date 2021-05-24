@@ -1,0 +1,13 @@
+.. _exhale_function_parser_8h_1a9d7a795b4232908367ad7d9348c62455:
+
+Function marian::bergamot::createConfigParser
+=============================================
+
+- Defined in :ref:`file_src_translator_parser.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::createConfigParser()

@@ -1,0 +1,54 @@
+
+.. _file_src_translator_sentence_splitter.cpp:
+
+File sentence_splitter.cpp
+==========================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/sentence_splitter.cpp``)
+-----------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_sentence_splitter.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``common/cli_helper.h``
+
+- ``common/logging.h``
+
+- ``common/options.h``
+
+- ``sentence_splitter.h`` (:ref:`file_src_translator_sentence_splitter.h`)
+
+- ``string``
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+

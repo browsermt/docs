@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1Batcher:
+
+Class Batcher
+=============
+
+- Defined in :ref:`file_src_translator_batcher.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::Batcher
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,20 @@
+
+.. _namespace_marian:
+
+Namespace marian
+================
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian__bergamot`

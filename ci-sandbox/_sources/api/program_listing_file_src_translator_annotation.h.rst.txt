@@ -1,0 +1,111 @@
+
+.. _program_listing_file_src_translator_annotation.h:
+
+Program Listing for File annotation.h
+=====================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_translator_annotation.h>` (``src/translator/annotation.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #ifndef BERGAMOT_SENTENCE_RANGES_H_
+   #define BERGAMOT_SENTENCE_RANGES_H_
+   
+   #include <cassert>
+   #include <utility>
+   #include <vector>
+   
+   #include "data/types.h"
+   
+   namespace marian {
+   namespace bergamot {
+   
+   struct ByteRange {
+     size_t begin;
+     size_t end;
+     const size_t size() const { return end - begin; }
+   };
+   
+   class Annotation {
+    public:
+     Annotation() {
+       token_begin_.push_back(0);
+       token_begin_.push_back(0);
+       gap_.push_back(0);
+     }
+   
+     size_t numSentences() const { return gap_.size() - 1; }
+   
+     size_t numWords(size_t sentenceIdx) const {
+       return gap_[sentenceIdx + 1] - gap_[sentenceIdx] - 1 /* minus the gap */;
+     }
+   
+     ByteRange word(size_t sentenceIdx, size_t wordIdx) const {
+       size_t tokenIdx = gap_[sentenceIdx] + 1 + wordIdx;
+       return ByteRange{token_begin_[tokenIdx], token_begin_[tokenIdx + 1]};
+     }
+   
+     ByteRange sentence(size_t sentenceIdx) const {
+       return ByteRange{
+           token_begin_[gap_[sentenceIdx] + 1], /*end of whitespace before */
+           token_begin_[gap_[sentenceIdx + 1]]  /*beginning of whitespace after */
+       };
+     }
+   
+     ByteRange gap(size_t gapIdx) const {
+       size_t tokenIdx = gap_[gapIdx];
+       return ByteRange{token_begin_[tokenIdx], token_begin_[tokenIdx + 1]};
+     }
+   
+    private:
+     friend class AnnotatedText;
+     std::vector<size_t> token_begin_;
+   
+     std::vector<size_t> gap_;
+   };
+   
+   struct AnnotatedText {
+    public:
+     std::string text;       
+     Annotation annotation;  
+   
+     AnnotatedText() {}
+   
+     AnnotatedText(std::string &&text);
+   
+     void appendSentence(string_view prefix, std::vector<string_view>::iterator tokens_begin,
+                         std::vector<string_view>::iterator tokens_end);
+   
+     void appendEndingWhitespace(string_view whitespace);
+   
+     void recordExistingSentence(std::vector<string_view>::iterator tokens_begin,
+                                 std::vector<string_view>::iterator tokens_end, const char *sentence_begin);
+   
+     const size_t numSentences() const { return annotation.numSentences(); }
+   
+     const size_t numWords(size_t sentenceIdx) const { return annotation.numWords(sentenceIdx); }
+   
+     string_view word(size_t sentenceIdx, size_t wordIdx) const {
+       return asStringView(annotation.word(sentenceIdx, wordIdx));
+     }
+   
+     string_view sentence(size_t sentenceIdx) const { return asStringView(annotation.sentence(sentenceIdx)); }
+   
+     string_view gap(size_t sentenceIdx) const { return asStringView(annotation.gap(sentenceIdx)); }
+   
+     ByteRange wordAsByteRange(size_t sentenceIdx, size_t wordIdx) const { return annotation.word(sentenceIdx, wordIdx); }
+   
+     ByteRange sentenceAsByteRange(size_t sentenceIdx) const { return annotation.sentence(sentenceIdx); }
+   
+    private:
+     string_view asStringView(const ByteRange &byteRange) const {
+       return string_view(text.data() + byteRange.begin, byteRange.size());
+     }
+   };
+   
+   }  // namespace bergamot
+   }  // namespace marian
+   
+   #endif  //  BERGAMOT_SENTENCE_RANGES_H_

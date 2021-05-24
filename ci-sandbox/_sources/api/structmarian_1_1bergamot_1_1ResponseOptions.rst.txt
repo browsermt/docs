@@ -1,0 +1,16 @@
+.. _exhale_struct_structmarian_1_1bergamot_1_1ResponseOptions:
+
+Struct ResponseOptions
+======================
+
+- Defined in :ref:`file_src_translator_response_options.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: marian::bergamot::ResponseOptions
+   :members:
+   :protected-members:
+   :undoc-members:

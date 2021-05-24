@@ -1,0 +1,13 @@
+.. _exhale_variable_byte__array__util_8cpp_1a4842c3ae45a5ed6649fa7977904b076b:
+
+Variable dataLength
+===================
+
+- Defined in :ref:`file_src_translator_byte_array_util.cpp`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: dataLength
