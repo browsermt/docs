@@ -188,8 +188,11 @@
   <span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--max-length-break&quot;</span><span class="p">,</span> <span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span>
                     <span class="s">&quot;Maximum input tokens to be processed in a single sentence.&quot;</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
 
+  <span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--bytearray&quot;</span><span class="p">,</span> <span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span>
+                     <span class="s">&quot;Flag holds whether to construct service from bytearrays, only for testing purpose&quot;</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+
   <span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--check-bytearray&quot;</span><span class="p">,</span> <span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span>
-                     <span class="s">&quot;Flag holds whether to check the content of the bytearray (true by default)&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+                     <span class="s">&quot;Flag holds whether to check the content of the bytearrays (true by default)&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
 
   <span class="k">return</span> <span class="n">cp</span><span class="p">;</span>
 <span class="p">}</span>

@@ -188,8 +188,6 @@
 
 <span class="kt">void</span> <span class="n">BatchTranslator</span><span class="o">::</span><span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// Initializes the graph.</span>
-  <span class="kt">bool</span> <span class="n">check</span> <span class="o">=</span>
-      <span class="n">options_</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;check-bytearray&quot;</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>  <span class="c1">// Flag holds whether validate the bytearray (model and shortlist)</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">options_</span><span class="o">-&gt;</span><span class="n">hasAndNotEmpty</span><span class="p">(</span><span class="s">&quot;shortlist&quot;</span><span class="p">))</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">srcIdx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">trgIdx</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="kt">bool</span> <span class="n">shared_vcb</span> <span class="o">=</span>
@@ -198,7 +196,7 @@
     <span class="k">if</span> <span class="p">(</span><span class="n">shortlistMemory_</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">shortlistMemory_</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">()</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
       <span class="n">slgen_</span> <span class="o">=</span> <span class="n">New</span><span class="o">&lt;</span><span class="n">data</span><span class="o">::</span><span class="n">BinaryShortlistGenerator</span><span class="o">&gt;</span><span class="p">(</span><span class="n">shortlistMemory_</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">(),</span> <span class="n">shortlistMemory_</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">(),</span>
                                                    <span class="n">vocabs_</span><span class="p">.</span><span class="n">sources</span><span class="p">().</span><span class="n">front</span><span class="p">(),</span> <span class="n">vocabs_</span><span class="p">.</span><span class="n">target</span><span class="p">(),</span> <span class="n">srcIdx</span><span class="p">,</span> <span class="n">trgIdx</span><span class="p">,</span>
-                                                   <span class="n">shared_vcb</span><span class="p">,</span> <span class="n">check</span><span class="p">);</span>
+                                                   <span class="n">shared_vcb</span><span class="p">,</span> <span class="n">options_</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;check-bytearray&quot;</span><span class="p">));</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
       <span class="c1">// Changed to BinaryShortlistGenerator to enable loading binary shortlist file</span>
       <span class="c1">// This class also supports text shortlist file</span>
@@ -219,7 +217,7 @@
                       <span class="c1">// from there, as opposed to from reading in the config file</span>
     <span class="n">ABORT_IF</span><span class="p">((</span><span class="kt">uintptr_t</span><span class="p">)</span><span class="n">modelMemory_</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">()</span> <span class="o">%</span> <span class="mi">256</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span>
              <span class="s">&quot;The provided memory is not aligned to 256 bytes and will crash when vector instructions are used on it.&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">check</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">options_</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;check-bytearray&quot;</span><span class="p">))</span> <span class="p">{</span>
       <span class="n">ABORT_IF</span><span class="p">(</span><span class="o">!</span><span class="n">validateBinaryModel</span><span class="p">(</span><span class="o">*</span><span class="n">modelMemory_</span><span class="p">,</span> <span class="n">modelMemory_</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()),</span>
                <span class="s">&quot;The binary file is invalid. Incomplete or corrupted download?&quot;</span><span class="p">);</span>
     <span class="p">}</span>
