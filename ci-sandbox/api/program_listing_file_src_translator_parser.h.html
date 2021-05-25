@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File parser.h &mdash; Bergamot Translator ci-sandbox 2021-05-24 documentation</title>
+  <title>Program Listing for File parser.h &mdash; Bergamot Translator ci-sandbox 2021-05-25 documentation</title>
   
 
   
@@ -95,6 +95,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Building marian code for bergamot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
 </ul>
 
@@ -188,8 +189,11 @@
   <span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--max-length-break&quot;</span><span class="p">,</span> <span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span>
                     <span class="s">&quot;Maximum input tokens to be processed in a single sentence.&quot;</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
 
+  <span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--bytearray&quot;</span><span class="p">,</span> <span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span>
+                     <span class="s">&quot;Flag holds whether to construct service from bytearrays, only for testing purpose&quot;</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+
   <span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--check-bytearray&quot;</span><span class="p">,</span> <span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span>
-                     <span class="s">&quot;Flag holds whether to check the content of the bytearray (true by default)&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+                     <span class="s">&quot;Flag holds whether to check the content of the bytearrays (true by default)&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
 
   <span class="k">return</span> <span class="n">cp</span><span class="p">;</span>
 <span class="p">}</span>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File byte_array_util.cpp &mdash; Bergamot Translator ci-sandbox 2021-05-24 documentation</title>
+  <title>Program Listing for File byte_array_util.cpp &mdash; Bergamot Translator ci-sandbox 2021-05-25 documentation</title>
   
 
   
@@ -95,6 +95,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Building marian code for bergamot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
 </ul>
 
@@ -168,10 +169,10 @@
 <p>↰ <a class="reference internal" href="file_src_translator_byte_array_util.cpp.html#file-src-translator-byte-array-util-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/translator/byte_array_util.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;byte_array_util.h&quot;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;data/shortlist.h&quot;</span><span class="cp"></span>
 
 <span class="k">namespace</span> <span class="nn">marian</span> <span class="p">{</span>
 <span class="k">namespace</span> <span class="nn">bergamot</span> <span class="p">{</span>
@@ -270,6 +271,8 @@
 <span class="n">AlignedMemory</span> <span class="n">getShortlistMemoryFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">auto</span> <span class="n">shortlist</span> <span class="o">=</span> <span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="s">&quot;shortlist&quot;</span><span class="p">);</span>
   <span class="n">ABORT_IF</span><span class="p">(</span><span class="n">shortlist</span><span class="p">.</span><span class="n">empty</span><span class="p">(),</span> <span class="s">&quot;No path to shortlist file is given.&quot;</span><span class="p">);</span>
+  <span class="n">ABORT_IF</span><span class="p">(</span><span class="o">!</span><span class="n">marian</span><span class="o">::</span><span class="n">data</span><span class="o">::</span><span class="n">isBinaryShortlist</span><span class="p">(</span><span class="n">shortlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+           <span class="s">&quot;Loading non-binary shortlist file into memory is not supported&quot;</span><span class="p">);</span>
   <span class="k">return</span> <span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">shortlist</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">64</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -280,6 +283,8 @@
   <span class="n">vocabMemories</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">vfiles</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
   <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;&gt;</span> <span class="n">vocabMap</span><span class="p">;</span>
   <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vfiles</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ABORT_IF</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">Path</span><span class="p">(</span><span class="n">vfiles</span><span class="p">[</span><span class="n">i</span><span class="p">]).</span><span class="n">extension</span><span class="p">()</span> <span class="o">!=</span> <span class="n">marian</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">Path</span><span class="p">(</span><span class="s">&quot;.spm&quot;</span><span class="p">),</span>
+             <span class="s">&quot;Loading non-SentencePiece vocab files into memory is not supported&quot;</span><span class="p">);</span>
     <span class="k">auto</span> <span class="n">m</span> <span class="o">=</span> <span class="n">vocabMap</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="n">vfiles</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;</span><span class="p">()));</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">second</span><span class="p">)</span> <span class="p">{</span>
       <span class="n">m</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">second</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;</span><span class="p">(</span><span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">vfiles</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">64</span><span class="p">));</span>
