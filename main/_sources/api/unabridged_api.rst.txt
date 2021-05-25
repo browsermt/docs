@@ -1,0 +1,242 @@
+
+Full API
+--------
+
+Namespaces
+**********
+
+
+.. toctree::
+   :maxdepth: 5
+
+   namespace_marian.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   namespace_marian__bergamot.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   namespace_marian__bergamot__@9.rst
+
+Classes and Structs
+*******************
+
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1AnnotatedText.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1ByteRange.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1MemoryBundle.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1Point.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1Quality.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1Response.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1ResponseOptions.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1AlignedVector.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1Annotation.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1Batch.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1Batcher.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1BatchTranslator.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1Request.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1RequestSentence.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1ResponseBuilder.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1SentenceSplitter.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1Service.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1TextProcessor.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1ThreadsafeBatcher.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1Vocabs.rst
+
+Enums
+*****
+
+
+.. toctree::
+   :maxdepth: 5
+
+   enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   enum_response__options_8h_1a435be63c72825cbd4bfb8bd0d07b9099.rst
+
+Functions
+*********
+
+
+.. toctree::
+   :maxdepth: 5
+
+   function_parser_8h_1a9d7a795b4232908367ad7d9348c62455.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1a6f199b6686a506deb71095f8b5f9868c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1ac17b7705d71079521a1e6db2059ada4f.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1a03d0ea07c0548c3c9d9fa3b45e8eccc6.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1aabe4ff9d24b6052f29cf6e70a2a49da2.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1a765d72b8a59a480e11ebf649af13e9a9.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_parser_8h_1a6c3beb1c6f8449716f2b2f9bc50a0ab2.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632.rst
+
+Variables
+*********
+
+
+.. toctree::
+   :maxdepth: 5
+
+   variable_byte__array__util_8cpp_1a4842c3ae45a5ed6649fa7977904b076b.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   variable_byte__array__util_8cpp_1adf2b9f832a958cd7db80d0ba11ff8e2e.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   variable_byte__array__util_8cpp_1a7b287ccec8d40672f6dcb9eda4a3e7ed.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   variable_byte__array__util_8cpp_1a10954dd978803ff23ff998bf943bac2d.rst
+
+Typedefs
+********
+
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_definitions_8h_1af7b499234642d2926f2e87d894f53f38.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_response_8h_1a814145c7406e05875734e37f5c0c6dcc.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_request_8h_1afc43a9f148490a4a5be3c8a3348d0a6b.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_definitions_8h_1ad0a7527b1fbf64cfc20eaa76134785ef.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb.rst

@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1Service:
+
+Class Service
+=============
+
+- Defined in :ref:`file_src_translator_service.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::Service
+   :members:
+   :protected-members:
+   :undoc-members:

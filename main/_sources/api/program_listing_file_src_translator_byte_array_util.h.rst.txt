@@ -1,0 +1,27 @@
+
+.. _program_listing_file_src_translator_byte_array_util.h:
+
+Program Listing for File byte_array_util.h
+==========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_translator_byte_array_util.h>` (``src/translator/byte_array_util.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #include "definitions.h"
+   #include "marian.h"
+   
+   namespace marian {
+   namespace bergamot {
+   
+   AlignedMemory loadFileToMemory(const std::string& path, size_t alignment);
+   AlignedMemory getModelMemoryFromConfig(marian::Ptr<marian::Options> options);
+   AlignedMemory getShortlistMemoryFromConfig(marian::Ptr<marian::Options> options);
+   void getVocabsMemoryFromConfig(marian::Ptr<marian::Options> options,
+                                  std::vector<std::shared_ptr<AlignedMemory>>& vocabMemories);
+   bool validateBinaryModel(const AlignedMemory& model, uint64_t fileSize);
+   MemoryBundle getMemoryBundleFromConfig(marian::Ptr<marian::Options> options);
+   }  // namespace bergamot
+   }  // namespace marian

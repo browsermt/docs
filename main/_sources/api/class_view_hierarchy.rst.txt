@@ -1,0 +1,18 @@
+
+Class Hierarchy
+---------------
+
+
+.. raw:: html
+
+   <ul class="treeView" id="class-treeView">
+     <li>
+       <ul class="collapsibleList">
+         <li class="lastChild">Namespace <a href="namespace_marian.html#namespace-marian">marian</a><ul><li class="lastChild">Namespace <a href="namespace_marian__bergamot.html#namespace-marian-bergamot">marian::bergamot</a><ul><li>Struct <a href="structmarian_1_1bergamot_1_1AnnotatedText.html#exhale-struct-structmarian-1-1bergamot-1-1AnnotatedText">AnnotatedText</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1ByteRange.html#exhale-struct-structmarian-1-1bergamot-1-1ByteRange">ByteRange</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1MemoryBundle.html#exhale-struct-structmarian-1-1bergamot-1-1MemoryBundle">MemoryBundle</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1Point.html#exhale-struct-structmarian-1-1bergamot-1-1Point">Point</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1Quality.html#exhale-struct-structmarian-1-1bergamot-1-1Quality">Quality</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1Response.html#exhale-struct-structmarian-1-1bergamot-1-1Response">Response</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1ResponseOptions.html#exhale-struct-structmarian-1-1bergamot-1-1ResponseOptions">ResponseOptions</a></li><li>Template Class <a href="classmarian_1_1bergamot_1_1AlignedVector.html#exhale-class-classmarian-1-1bergamot-1-1AlignedVector">AlignedVector</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Annotation.html#exhale-class-classmarian-1-1bergamot-1-1Annotation">Annotation</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Batch.html#exhale-class-classmarian-1-1bergamot-1-1Batch">Batch</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Batcher.html#exhale-class-classmarian-1-1bergamot-1-1Batcher">Batcher</a></li><li>Class <a href="classmarian_1_1bergamot_1_1BatchTranslator.html#exhale-class-classmarian-1-1bergamot-1-1BatchTranslator">BatchTranslator</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Request.html#exhale-class-classmarian-1-1bergamot-1-1Request">Request</a></li><li>Class <a href="classmarian_1_1bergamot_1_1RequestSentence.html#exhale-class-classmarian-1-1bergamot-1-1RequestSentence">RequestSentence</a></li><li>Class <a href="classmarian_1_1bergamot_1_1ResponseBuilder.html#exhale-class-classmarian-1-1bergamot-1-1ResponseBuilder">ResponseBuilder</a></li><li>Class <a href="classmarian_1_1bergamot_1_1SentenceSplitter.html#exhale-class-classmarian-1-1bergamot-1-1SentenceSplitter">SentenceSplitter</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Service.html#exhale-class-classmarian-1-1bergamot-1-1Service">Service</a></li><li>Class <a href="classmarian_1_1bergamot_1_1TextProcessor.html#exhale-class-classmarian-1-1bergamot-1-1TextProcessor">TextProcessor</a></li><li>Class <a href="classmarian_1_1bergamot_1_1ThreadsafeBatcher.html#exhale-class-classmarian-1-1bergamot-1-1ThreadsafeBatcher">ThreadsafeBatcher</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Vocabs.html#exhale-class-classmarian-1-1bergamot-1-1Vocabs">Vocabs</a></li><li>Enum <a href="enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1.html#exhale-enum-response-options-8h-1abcf43c7e41279b59addc6e93421433d1">ConcatStrategy</a></li><li class="lastChild">Enum <a href="enum_response__options_8h_1a435be63c72825cbd4bfb8bd0d07b9099.html#exhale-enum-response-options-8h-1a435be63c72825cbd4bfb8bd0d07b9099">QualityScoreType</a></li></ul></li></ul></li>
+       </ul>
+     </li><!-- only tree view element -->
+   </ul><!-- /treeView class-treeView -->
+
+.. end raw html for treeView
+
+

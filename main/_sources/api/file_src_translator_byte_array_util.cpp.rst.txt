@@ -1,0 +1,82 @@
+
+.. _file_src_translator_byte_array_util.cpp:
+
+File byte_array_util.cpp
+========================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/byte_array_util.cpp``)
+---------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_byte_array_util.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``byte_array_util.h`` (:ref:`file_src_translator_byte_array_util.h`)
+
+- ``iostream``
+
+- ``memory``
+
+- ``stdlib.h``
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a6f199b6686a506deb71095f8b5f9868c`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1ac17b7705d71079521a1e6db2059ada4f`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a03d0ea07c0548c3c9d9fa3b45e8eccc6`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1aabe4ff9d24b6052f29cf6e70a2a49da2`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a765d72b8a59a480e11ebf649af13e9a9`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_byte__array__util_8cpp_1a4842c3ae45a5ed6649fa7977904b076b`
+
+- :ref:`exhale_variable_byte__array__util_8cpp_1adf2b9f832a958cd7db80d0ba11ff8e2e`
+
+- :ref:`exhale_variable_byte__array__util_8cpp_1a7b287ccec8d40672f6dcb9eda4a3e7ed`
+
+- :ref:`exhale_variable_byte__array__util_8cpp_1a10954dd978803ff23ff998bf943bac2d`
+

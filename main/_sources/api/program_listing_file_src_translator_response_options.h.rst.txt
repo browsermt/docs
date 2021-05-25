@@ -1,0 +1,47 @@
+
+.. _program_listing_file_src_translator_response_options.h:
+
+Program Listing for File response_options.h
+===========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_translator_response_options.h>` (``src/translator/response_options.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #ifndef SRC_BERGAMOT_RESPONSE_OPTIONS_H_
+   #define SRC_BERGAMOT_RESPONSE_OPTIONS_H_
+   #include <string>
+   
+   namespace marian {
+   namespace bergamot {
+   
+   enum ConcatStrategy {
+     FAITHFUL,
+   
+     SPACE
+   };
+   
+   enum QualityScoreType {
+     FREE,
+   
+     EXPENSIVE
+   };
+   
+   struct ResponseOptions {
+     bool qualityScores{false};  
+     bool alignment{false};      
+   
+     bool sentenceMappings{false};
+   
+     float alignmentThreshold{0.2f};
+   
+     QualityScoreType qualityScoreType{QualityScoreType::FREE};
+     ConcatStrategy concatStrategy{ConcatStrategy::FAITHFUL};
+   };
+   
+   }  // namespace bergamot
+   }  // namespace marian
+   
+   #endif  //  SRC_BERGAMOT_RESPONSE_OPTIONS_H_

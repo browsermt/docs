@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1ThreadsafeBatcher:
+
+Class ThreadsafeBatcher
+=======================
+
+- Defined in :ref:`file_src_translator_threadsafe_batcher.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::ThreadsafeBatcher
+   :members:
+   :protected-members:
+   :undoc-members:

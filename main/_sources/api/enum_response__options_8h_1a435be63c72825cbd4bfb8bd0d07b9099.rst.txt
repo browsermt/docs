@@ -1,0 +1,13 @@
+.. _exhale_enum_response__options_8h_1a435be63c72825cbd4bfb8bd0d07b9099:
+
+Enum QualityScoreType
+=====================
+
+- Defined in :ref:`file_src_translator_response_options.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: marian::bergamot::QualityScoreType

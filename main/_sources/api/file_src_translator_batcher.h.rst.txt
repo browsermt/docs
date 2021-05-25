@@ -1,0 +1,73 @@
+
+.. _file_src_translator_batcher.h:
+
+File batcher.h
+==============
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/batcher.h``)
+-----------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_batcher.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``batch.h`` (:ref:`file_src_translator_batch.h`)
+
+- ``common/options.h``
+
+- ``data/corpus_base.h``
+
+- ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
+
+- ``request.h`` (:ref:`file_src_translator_request.h`)
+
+- ``set``
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_translator_batcher.cpp`
+
+- :ref:`file_src_translator_threadsafe_batcher.h`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1Batcher`
+

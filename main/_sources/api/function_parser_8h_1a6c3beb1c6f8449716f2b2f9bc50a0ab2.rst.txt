@@ -1,0 +1,13 @@
+.. _exhale_function_parser_8h_1a6c3beb1c6f8449716f2b2f9bc50a0ab2:
+
+Function marian::bergamot::parseOptions
+=======================================
+
+- Defined in :ref:`file_src_translator_parser.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::parseOptions(const std::string&, bool)

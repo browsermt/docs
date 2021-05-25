@@ -1,0 +1,79 @@
+
+.. _file_src_translator_annotation.h:
+
+File annotation.h
+=================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/annotation.h``)
+--------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_annotation.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``cassert``
+
+- ``data/types.h``
+
+- ``utility``
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_translator_annotation.cpp`
+
+- :ref:`file_src_translator_request.h`
+
+- :ref:`file_src_translator_response.h`
+
+- :ref:`file_src_translator_request.cpp`
+
+- :ref:`file_src_translator_text_processor.h`
+
+- :ref:`file_src_translator_text_processor.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1AnnotatedText`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1ByteRange`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1Annotation`
+

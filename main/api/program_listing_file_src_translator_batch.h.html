@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Program Listing for File batch.h &mdash; Bergamot Translator main 2021-05-25 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+    <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/api/program_listing_file_src_translator_batch.h.html" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Bergamot Translator
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                main
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Building marian code for bergamot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bergamot Translator</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Program Listing for File batch.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api/program_listing_file_src_translator_batch.h.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="program-listing-for-file-batch-h">
+<span id="program-listing-file-src-translator-batch-h"></span><h1>Program Listing for File batch.h<a class="headerlink" href="#program-listing-for-file-batch-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_translator_batch.h.html#file-src-translator-batch-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/translator/batch.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SRC_BERGAMOT_BATCH_H</span>
+<span class="cp">#define SRC_BERGAMOT_BATCH_H</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;request.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;translator/beam_search.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="nn">marian</span> <span class="p">{</span>
+<span class="k">namespace</span> <span class="nn">bergamot</span> <span class="p">{</span>
+
+<span class="c1">// An empty batch is poison.</span>
+<span class="k">class</span> <span class="nc">Batch</span> <span class="p">{</span>
+ <span class="k">public</span><span class="o">:</span>
+  <span class="n">Batch</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="kt">void</span> <span class="n">clear</span><span class="p">()</span> <span class="p">{</span> <span class="n">sentences_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span> <span class="p">}</span>
+
+  <span class="kt">size_t</span> <span class="n">size</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">sentences_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="p">}</span>
+
+  <span class="kt">void</span> <span class="n">add</span><span class="p">(</span><span class="k">const</span> <span class="n">RequestSentence</span> <span class="o">&amp;</span><span class="n">sentence</span><span class="p">);</span>
+
+  <span class="c1">// Accessors to read from a Batch. For use in BatchTranslator (consumer on a</span>
+  <span class="c1">// PCQueue holding batches).</span>
+  <span class="c1">//</span>
+  <span class="c1">// sentences() are used to access sentences to construct marian internal</span>
+  <span class="c1">// batch.</span>
+  <span class="k">const</span> <span class="n">RequestSentences</span> <span class="o">&amp;</span><span class="nf">sentences</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">sentences_</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="c1">// On obtaining Histories after translating a batch, completeBatch can be</span>
+  <span class="c1">// called with Histories , which forwards the call to Request through</span>
+  <span class="c1">// RequestSentence and triggers completion, by setting the promised value to</span>
+  <span class="c1">// the future given to client.</span>
+  <span class="kt">void</span> <span class="nf">completeBatch</span><span class="p">(</span><span class="k">const</span> <span class="n">Histories</span> <span class="o">&amp;</span><span class="n">histories</span><span class="p">);</span>
+
+  <span class="c1">// Convenience function to log batch-statistics. numTokens, max-length.</span>
+  <span class="kt">void</span> <span class="nf">log</span><span class="p">();</span>
+
+ <span class="k">private</span><span class="o">:</span>
+  <span class="n">RequestSentences</span> <span class="n">sentences_</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="p">}</span>  <span class="c1">// namespace bergamot</span>
+<span class="p">}</span>  <span class="c1">// namespace marian</span>
+
+<span class="cp">#endif  </span><span class="c1">// SRC_BERGAMOT_BATCH_H_</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Bergamot Translator Team.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

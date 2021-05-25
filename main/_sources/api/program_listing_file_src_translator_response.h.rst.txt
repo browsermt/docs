@@ -1,0 +1,60 @@
+
+.. _program_listing_file_src_translator_response.h:
+
+Program Listing for File response.h
+===================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_translator_response.h>` (``src/translator/response.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #ifndef SRC_BERGAMOT_RESPONSE_H_
+   #define SRC_BERGAMOT_RESPONSE_H_
+   
+   #include <cassert>
+   #include <string>
+   #include <vector>
+   
+   #include "annotation.h"
+   #include "data/alignment.h"
+   #include "data/types.h"
+   #include "definitions.h"
+   #include "translator/beam_search.h"
+   
+   namespace marian {
+   namespace bergamot {
+   
+   struct Point {
+     size_t src;  
+     size_t tgt;  
+     float prob;  
+   };
+   
+   typedef std::vector<Point> Alignment;
+   
+   struct Quality {
+     float sequence;
+     std::vector<float> word;
+   };
+   
+   struct Response {
+     const size_t size() const { return source.numSentences(); }
+   
+     AnnotatedText source;
+   
+     AnnotatedText target;
+   
+     std::vector<Quality> qualityScores;
+   
+     std::vector<Alignment> alignments;
+   
+     const std::string &getOriginalText() const { return source.text; }
+   
+     const std::string &getTranslatedText() const { return target.text; }
+   };
+   }  // namespace bergamot
+   }  // namespace marian
+   
+   #endif  // SRC_BERGAMOT_RESPONSE_H_
