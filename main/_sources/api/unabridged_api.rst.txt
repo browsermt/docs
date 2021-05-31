@@ -21,6 +21,11 @@ Namespaces
 
    namespace_marian__bergamot__@9.rst
 
+.. toctree::
+   :maxdepth: 5
+
+   namespace_marian__bergamot__app.rst
+
 Classes and Structs
 *******************
 
@@ -142,6 +147,26 @@ Enums
 Functions
 *********
 
+
+.. toctree::
+   :maxdepth: 5
+
+   function_bergamot_8cpp_1a0ddf1224851353fc92bfbff6f499fa97.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_cli_8h_1a23079dd5b69fbc8865326c5898ed1964.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_cli_8h_1a204693bf4e80a401035e1481bec38ac4.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_cli_8h_1a8aa7807a1b335063a53cbfed7093d513.rst
 
 .. toctree::
    :maxdepth: 5

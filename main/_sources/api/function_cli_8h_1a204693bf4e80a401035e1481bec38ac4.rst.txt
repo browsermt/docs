@@ -1,0 +1,13 @@
+.. _exhale_function_cli_8h_1a204693bf4e80a401035e1481bec38ac4:
+
+Function marian::bergamot::app::native
+======================================
+
+- Defined in :ref:`file_app_cli.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::app::native(Ptr<Options>)

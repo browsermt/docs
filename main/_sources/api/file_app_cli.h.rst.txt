@@ -1,0 +1,89 @@
+
+.. _file_app_cli.h:
+
+File cli.h
+==========
+
+|exhale_lsh| :ref:`Parent directory <dir_app>` (``app``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``app/cli.h``)
+--------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_app_cli.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``common/definitions.h``
+
+- ``common/timer.h``
+
+- ``common/utils.h``
+
+- ``cstdlib``
+
+- ``future``
+
+- ``iostream``
+
+- ``marian.h``
+
+- ``sstream``
+
+- ``translator/byte_array_util.h`` (:ref:`file_src_translator_byte_array_util.h`)
+
+- ``translator/parser.h`` (:ref:`file_src_translator_parser.h`)
+
+- ``translator/response.h`` (:ref:`file_src_translator_response.h`)
+
+- ``translator/response_options.h`` (:ref:`file_src_translator_response_options.h`)
+
+- ``translator/service.h`` (:ref:`file_src_translator_service.h`)
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_app_bergamot.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+
+- :ref:`namespace_marian__bergamot__app`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_cli_8h_1a23079dd5b69fbc8865326c5898ed1964`
+
+- :ref:`exhale_function_cli_8h_1a204693bf4e80a401035e1481bec38ac4`
+
+- :ref:`exhale_function_cli_8h_1a8aa7807a1b335063a53cbfed7093d513`
+

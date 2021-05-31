@@ -1,0 +1,13 @@
+.. _exhale_function_cli_8h_1a8aa7807a1b335063a53cbfed7093d513:
+
+Function marian::bergamot::app::wasm
+====================================
+
+- Defined in :ref:`file_app_cli.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::app::wasm(Ptr<Options>)

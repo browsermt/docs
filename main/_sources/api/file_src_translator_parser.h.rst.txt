@@ -47,6 +47,8 @@ Included By
 
 - :ref:`file_src_translator_service.h`
 
+- :ref:`file_app_cli.h`
+
 
 
 

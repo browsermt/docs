@@ -11,6 +11,11 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_app.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_src.rst
 
 .. toctree::
@@ -70,12 +75,22 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_app_bergamot.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_src_translator_byte_array_util.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
    file_src_translator_byte_array_util.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_app_cli.h.rst
 
 .. toctree::
    :maxdepth: 5

@@ -1,0 +1,30 @@
+
+.. _program_listing_file_app_bergamot.cpp:
+
+Program Listing for File bergamot.cpp
+=====================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_app_bergamot.cpp>` (``app/bergamot.cpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #include "cli.h"
+   
+   int main(int argc, char *argv[]) {
+     auto cp = marian::bergamot::createConfigParser();
+     auto options = cp.parseOptions(argc, argv, true);
+     const std::string mode = options->get<std::string>("bergamot-mode");
+     using namespace marian::bergamot;
+     if (mode == "wasm") {
+       app::wasm(options);
+     } else if (mode == "native") {
+       app::native(options);
+     } else if (mode == "decoder") {
+       app::decoder(options);
+     } else {
+       ABORT("Unknown --mode {}. Use one of: {wasm,native,decoder}", mode);
+     }
+     return 0;
+   }

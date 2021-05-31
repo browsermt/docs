@@ -1,0 +1,44 @@
+
+.. _file_app_bergamot.cpp:
+
+File bergamot.cpp
+=================
+
+|exhale_lsh| :ref:`Parent directory <dir_app>` (``app``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``app/bergamot.cpp``)
+---------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_app_bergamot.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``cli.h`` (:ref:`file_app_cli.h`)
+
+
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_bergamot_8cpp_1a0ddf1224851353fc92bfbff6f499fa97`
+

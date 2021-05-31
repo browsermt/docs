@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Building marian code for bergamot &mdash; Bergamot Translator main 2021-05-27 documentation</title>
+  <title>Bergamot C++ Library &mdash; Bergamot Translator main 2021-05-31 documentation</title>
   
 
   
@@ -96,9 +96,14 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Building marian code for bergamot</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#build-instructions">Build Instructions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bergamot C++ Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build-instructions">Build Instructions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-bergamot-translator">Building bergamot-translator</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#command-line-apps">Command line apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-command-line-run">Example command line run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#coding-style">Coding Style</a></li>
 </ul>
 </li>
@@ -151,7 +156,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Building marian code for bergamot</li>
+      <li>Bergamot C++ Library</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,13 +175,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="building-marian-code-for-bergamot">
-<h1>Building marian code for bergamot<a class="headerlink" href="#building-marian-code-for-bergamot" title="Permalink to this headline">¶</a></h1>
-<p>This document summarizes the minimal build instructions develop for the
-marian machine translation toolkit powering bergamot-translator.</p>
+  <div class="section" id="bergamot-c-library">
+<h1>Bergamot C++ Library<a class="headerlink" href="#bergamot-c-library" title="Permalink to this headline">¶</a></h1>
+<p>This document contains instructions to develop for modifications on top of the
+marian machine translation toolkit powering bergamot-translator. The library is
+optimized towards fast and efficient translation of a given input.</p>
 <div class="section" id="build-instructions">
 <h2>Build Instructions<a class="headerlink" href="#build-instructions" title="Permalink to this headline">¶</a></h2>
-<p>Marian CPU version requires Intel MKL or OpenBLAS. Both are free, but MKL is not open-sourced. Intel MKL is strongly recommended as it is faster. On Ubuntu 16.04 and newer it can be installed from the APT repositories.</p>
+<p>Note: You are strongly advised to refer to the continuous integration on this
+repository, which builds bergamot-translator and associated applications from
+scratch. Examples to run these command line-applications are available in the
+<a class="reference external" href="https://github.com/browsermt/bergamot-translator-tests">bergamot-translator-tests</a>
+repository. Builds take about 30 mins on a consumer grade machine, so using a
+tool like ccache is highly recommended.</p>
+<div class="section" id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Marian CPU version requires Intel MKL or OpenBLAS. Both are free, but MKL is
+not open-sourced. Intel MKL is strongly recommended as it is faster. On Ubuntu
+16.04 and newer it can be installed from the APT repositories.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget -qO- <span class="s1">&#39;https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB&#39;</span> <span class="p">|</span> sudo apt-key add -
 sudo sh -c <span class="s1">&#39;echo deb https://apt.repos.intel.com/mkl all main &gt; /etc/apt/sources.list.d/intel-mkl.list&#39;</span>
 sudo apt-get update
@@ -184,31 +200,45 @@ sudo apt-get install intel-mkl-64bit-2020.0-088
 </pre></div>
 </div>
 <p>On MacOS, apple accelerate framework will be used instead of MKL/OpenBLAS.</p>
+</div>
+<div class="section" id="building-bergamot-translator">
+<h3>Building bergamot-translator<a class="headerlink" href="#building-bergamot-translator" title="Permalink to this headline">¶</a></h3>
+<p>Web Assembly (WASM) reduces building to only using a subset of functionalities
+of marian, the translation library powering bergamot-translator. When
+developing bergamot-translator it is important that the sources added be
+compatible with marian.  Therefore, it is required to set
+<code class="docutils literal notranslate"><span class="pre">-DUSE_WASM_COMPATIBLE_SOURCE=on</span></code>.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/browsermt/bergamot-translator</span>
 <span class="n">$</span> <span class="n">cd</span> <span class="n">bergamot</span><span class="o">-</span><span class="n">translator</span>
 <span class="n">$</span> <span class="n">mkdir</span> <span class="n">build</span>
 <span class="n">$</span> <span class="n">cd</span> <span class="n">build</span>
 <span class="n">$</span> <span class="n">cmake</span> <span class="p">..</span> <span class="o">-</span><span class="n">DUSE_WASM_COMPATIBLE_SOURCE</span><span class="o">=</span><span class="n">off</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span>
-<span class="n">$</span> <span class="n">make</span> <span class="o">-</span><span class="n">j</span>
+<span class="n">$</span> <span class="n">make</span> <span class="o">-</span><span class="n">j2</span> 
 </pre></div>
 </div>
 <p>The build will generate the library that can be linked to any project. All the
 public header files are specified in <code class="docutils literal notranslate"><span class="pre">src</span></code> folder.</p>
 </div>
+</div>
 <div class="section" id="command-line-apps">
 <h2>Command line apps<a class="headerlink" href="#command-line-apps" title="Permalink to this headline">¶</a></h2>
-<p>The following executables are created by the build:</p>
-<ol class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">app/service-cli</span></code>: Extends marian to capability to work with string_views.
-<code class="docutils literal notranslate"><span class="pre">service-cli</span></code> exists to check if the underlying code, without the
-integration works or not.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">app/bergamot-translator-app</span></code>: App which integreates service-cli’s
-functionality into the translator agnostic API specified as part of the
-project. Integration failures are detected if same arguments work with
-<code class="docutils literal notranslate"><span class="pre">service-cli</span></code> and does not with <code class="docutils literal notranslate"><span class="pre">bergamot-translator-app</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">app/marian-decoder-new</span></code>: Helper executable to conveniently benchmark new
-implementation with the optimized upstream marian-decoder.</p></li>
-</ol>
+<p>Bergamot-translator is intended to be used as a library. However, we provide a
+command-line application which is capable of translating text provided on
+standard-input. During development this application is used to perform
+regression-tests.</p>
+<p>There are effectively multiple CLIs subclassed from a unified interface all
+provided in <code class="docutils literal notranslate"><span class="pre">app/cli.h</span></code>. These are packed into a single executable named
+<code class="docutils literal notranslate"><span class="pre">bergamot</span></code> by means of a <code class="docutils literal notranslate"><span class="pre">--bergamot-mode</span> <span class="pre">BERGAMOT_MODE</span></code> switch.</p>
+<p>The following modes are available:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--bergamot-mode</span> <span class="pre">native</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--bergamot-mode</span> <span class="pre">wasm</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--bergamot-mode</span> <span class="pre">decoder</span></code></p></li>
+</ul>
+<p>Find documentation on these modes with the API documentation for apps <a class="reference external" href="./api/namespace_marian__bergamot__app.html#functions">here</a>.</p>
+</div>
+<div class="section" id="example-command-line-run">
+<h2>Example command line run<a class="headerlink" href="#example-command-line-run" title="Permalink to this headline">¶</a></h2>
 <p>The models required to run the command-line are available at
 <a class="reference external" href="http://data.statmt.org/bergamot/models/">data.statmt.org/bergamot/models/</a>.
 The following example uses an English to German tiny11 student model, available
@@ -216,10 +246,10 @@ at:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://data.statmt.org/bergamot/models/deen/ende.student.tiny11.tar.gz">data.statmt.org/bergamot/models/deen/ende.student.tiny11.tar.gz</a></p></li>
 </ul>
-<details>
-<summary> Example run of commandline: Click to expand </summary>
-<p><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MODEL_DIR</span><span class="o">=</span>... <span class="c1"># path to where the model-files are.</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MODEL_DIR</span><span class="o">=</span>... <span class="c1"># path to where the model-files are.</span>
+<span class="nv">BERGAMOT_MODE</span><span class="o">=</span><span class="s1">&#39;native&#39;</span>
 <span class="nv">ARGS</span><span class="o">=(</span>
+    --bergamot-mode <span class="nv">$BERGAMOT_MODE</span>
     -m <span class="nv">$MODEL_DIR</span>/model.intgemm.alphas.bin <span class="c1"># Path to model file.</span>
     --vocabs 
         <span class="nv">$MODEL_DIR</span>/vocab.deen.spm <span class="c1"># source-vocabulary</span>
@@ -248,12 +278,10 @@ at:</p>
     --ssplit-mode paragraph 
 <span class="o">)</span>
 
-./app/service-cli <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ARGS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span> &lt; path-to-input-file
-./app/bergamot-translator-app <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ARGS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span> &lt; path-to-input-file
+./app/bergamot <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ARGS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span> &lt; path-to-input-file
 </pre></div>
 </div>
-</p></summary>
-</details></div>
+</div>
 <div class="section" id="coding-style">
 <h2>Coding Style<a class="headerlink" href="#coding-style" title="Permalink to this headline">¶</a></h2>
 <p>This repository contains C++ and JS source-files, of which C++ should adhere to

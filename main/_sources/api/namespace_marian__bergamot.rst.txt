@@ -19,6 +19,8 @@ Namespaces
 
 - :ref:`namespace_marian__bergamot__@9`
 
+- :ref:`namespace_marian__bergamot__app`
+
 
 Classes
 -------

@@ -43,6 +43,8 @@ Included By
 
 - :ref:`file_src_translator_byte_array_util.cpp`
 
+- :ref:`file_app_cli.h`
+
 
 
 
