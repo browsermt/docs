@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2021-06-01 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+    <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/wasm-example.html" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Library API" href="api/library_index.html" />
+    <link rel="prev" title="Bergamot C++ Library" href="marian-integration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Bergamot Translator
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                main
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Bergamot Translator in JavaScript</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-js-apis">Using JS APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demo">Demo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/library_index.html">Library API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bergamot Translator</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Using Bergamot Translator in JavaScript</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/wasm-example.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-bergamot-translator-in-javascript">
+<h1>Using Bergamot Translator in JavaScript<a class="headerlink" href="#using-bergamot-translator-in-javascript" title="Permalink to this headline">¶</a></h1>
+<p>Instructions in this document assume current-directory to be
+<a class="reference external" href="https://github.com/browsermt/bergamot-translator/tree/main/wasm">wasm</a> within
+bergamot-translator source.</p>
+<p>The example file <code class="docutils literal notranslate"><span class="pre">bergamot.html</span></code> in the folder <code class="docutils literal notranslate"><span class="pre">test_page</span></code> demonstrates how to
+use the bergamot translator in JavaScript via a <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tag.</p>
+<div class="section" id="pre-requisites">
+<h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
+<p><strong>Download files required for translation</strong></p>
+<p>Please note that <a class="reference external" href="#using-js-apis">Using JS APIs</a> and <a class="reference external" href="#demo">Demo</a> section below assumes that the <a class="reference external" href="https://github.com/mozilla-applied-ml/bergamot-models">bergamot project specific model files</a> are already downloaded and present in the <code class="docutils literal notranslate"><span class="pre">test_page</span></code> folder. If this is not done then use following instructions to do so:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test_page
+git clone --depth <span class="m">1</span> --branch main --single-branch https://github.com/mozilla-applied-ml/bergamot-models
+mkdir models
+cp -rf bergamot-models/prod/* models
+gunzip models/*/*
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-js-apis">
+<h2>Using JS APIs<a class="headerlink" href="#using-js-apis" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// The model configuration as YAML formatted string. For available configuration options, please check: https://marian-nmt.github.io/docs/cmd/marian-decoder/</span>
+<span class="c1">// This example captures some of the most relevant options</span>
+<span class="kd">const</span> <span class="nx">modelConfig</span> <span class="o">=</span> <span class="sb">`beam-size: 1</span>
+<span class="sb">normalize: 1.0</span>
+<span class="sb">word-penalty: 0</span>
+<span class="sb">max-length-break: 128</span>
+<span class="sb">mini-batch-words: 1024</span>
+<span class="sb">workspace: 128</span>
+<span class="sb">max-length-factor: 2.0</span>
+<span class="sb">skip-cost: true</span>
+<span class="sb">cpu-threads: 0</span>
+<span class="sb">quiet: true</span>
+<span class="sb">quiet-translation: true</span>
+<span class="sb">gemm-precision: int8shift</span>
+<span class="sb">`</span><span class="p">;</span>
+
+<span class="c1">// Download model, shortlist and vocabulary files and read them into buffers</span>
+<span class="kd">const</span> <span class="nx">modelFile</span> <span class="o">=</span> <span class="sb">`models/esen/model.esen.intgemm.alphas.bin`</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">shortlistFile</span> <span class="o">=</span> <span class="sb">`models/esen/lex.50.50.esen.s2t.bin`</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">vocabFiles</span> <span class="o">=</span> <span class="p">[</span><span class="sb">`models/</span><span class="si">${</span><span class="nx">languagePair</span><span class="si">}</span><span class="sb">/vocab.</span><span class="si">${</span><span class="nx">vocabLanguagePair</span><span class="si">}</span><span class="sb">.spm`</span><span class="p">,</span>
+                    <span class="sb">`models/</span><span class="si">${</span><span class="nx">languagePair</span><span class="si">}</span><span class="sb">/vocab.</span><span class="si">${</span><span class="nx">vocabLanguagePair</span><span class="si">}</span><span class="sb">.spm`</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">uniqueVocabFiles</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Set</span><span class="p">(</span><span class="nx">vocabFiles</span><span class="p">);</span>
+
+<span class="c1">// Please refer to bergamot.html in test_page folder for downloadAsArrayBuffer function</span>
+<span class="kd">const</span> <span class="nx">downloadedBuffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">downloadAsArrayBuffer</span><span class="p">(</span><span class="nx">modelFile</span><span class="p">),</span> <span class="nx">downloadAsArrayBuffer</span><span class="p">(</span><span class="nx">shortlistFile</span><span class="p">)]);</span>
+<span class="kd">const</span> <span class="nx">downloadedVocabBuffers</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">uniqueVocabFiles</span><span class="p">.</span><span class="nx">values</span><span class="p">())</span> <span class="p">{</span>
+  <span class="nx">downloadedVocabBuffers</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">await</span> <span class="nx">downloadAsArrayBuffer</span><span class="p">(</span><span class="nx">item</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">modelBuffer</span> <span class="o">=</span> <span class="nx">downloadedBuffers</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">shortListBuffer</span> <span class="o">=</span> <span class="nx">downloadedBuffers</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
+
+<span class="c1">// Construct AlignedMemory instances from the buffers</span>
+<span class="kd">var</span> <span class="nx">alignedModelMemory</span> <span class="o">=</span> <span class="nx">constructAlignedMemoryFromBuffer</span><span class="p">(</span><span class="nx">modelBuffer</span><span class="p">,</span> <span class="mf">256</span><span class="p">);</span> <span class="c1">// Please refer to bergamot.html in test_page folder for this function</span>
+<span class="kd">var</span> <span class="nx">alignedShortlistMemory</span> <span class="o">=</span> <span class="nx">constructAlignedMemoryFromBuffer</span><span class="p">(</span><span class="nx">shortListBuffer</span><span class="p">,</span> <span class="mf">64</span><span class="p">);</span> <span class="c1">// Please refer to bergamot.html in test_page folder for this function</span>
+<span class="kd">var</span> <span class="nx">alignedVocabsMemoryList</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">AlignedMemoryList</span><span class="p">;</span>
+<span class="nx">downloadedVocabBuffers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="nx">alignedVocabsMemoryList</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="nx">constructAlignedMemoryFromBuffer</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="mf">64</span><span class="p">)));</span>
+
+<span class="c1">// Instantiate the TranslationModel</span>
+<span class="kd">const</span> <span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">TranslationModel</span><span class="p">(</span><span class="nx">modelConfig</span><span class="p">,</span> <span class="nx">alignedModelMemory</span><span class="p">,</span> <span class="nx">alignedShortlistMemory</span><span class="p">,</span> <span class="nx">alignedVocabsMemoryList</span><span class="p">);</span>
+
+<span class="c1">// Instantiate the arguments of translate() API i.e. TranslationRequest and input (vector&lt;string&gt;)</span>
+<span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">TranslationRequest</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">VectorString</span><span class="p">;</span>
+
+<span class="c1">// Initialize the input</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">);</span> <span class="nx">input</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="s2">&quot;Mundo&quot;</span><span class="p">);</span>
+
+<span class="c1">// translate the input; the result is a vector&lt;TranslationResult&gt;</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+
+<span class="c1">// Print original and translated text from each entry of vector&lt;TranslationResult&gt;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">size</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39; original=&#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">getOriginalText</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;, translation=&#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">getTranslatedText</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// Don&#39;t forget to clean up the instances</span>
+<span class="nx">model</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
+<span class="nx">request</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
+<span class="nx">input</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="demo">
+<h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Make sure that you followed <a class="reference external" href="#pre-requisites">Pre-requisites</a> instructions before moving forward.</p></li>
+<li><p>Start the test webserver (ensure you have the latest nodejs installed)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test_page
+bash start_server.sh ../../build-wasm
+</pre></div>
+</div>
+<p>Provide the folder containing the wasm artifacts as the first argument of <code class="docutils literal notranslate"><span class="pre">start_server.sh</span></code> script (<code class="docutils literal notranslate"><span class="pre">../../build-wasm</span></code> in this case).</p>
+</li>
+<li><p>Open any of the browsers below</p>
+<ul>
+<li><p>Firefox Nightly +87: make sure the following prefs are on (about:config)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">dom</span><span class="p">.</span><span class="n">postMessage</span><span class="p">.</span><span class="n">sharedArrayBuffer</span><span class="p">.</span><span class="n">bypassCOOP_COEP</span><span class="p">.</span><span class="n">insecure</span><span class="p">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd_wormhole</span> <span class="o">=</span> <span class="nb">true</span>
+</pre></div>
+</div>
+</li>
+<li><p>Chrome Canary +90: start with the following argument</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">js</span><span class="o">-</span><span class="n">flags</span><span class="o">=</span><span class="s">&quot;--experimental-wasm-simd&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Browse to the following page:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">http</span><span class="p">:</span><span class="c1">//localhost:8000/bergamot.html</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run some translations:</p>
+<ul class="simple">
+<li><p>Choose a model and press <code class="docutils literal notranslate"><span class="pre">Load</span> <span class="pre">Model</span></code></p></li>
+<li><p>Type a sentence to be translated in the <code class="docutils literal notranslate"><span class="pre">From</span></code> textbox and press <code class="docutils literal notranslate"><span class="pre">Translate</span></code></p></li>
+<li><p>See the results in the <code class="docutils literal notranslate"><span class="pre">To</span></code> and <code class="docutils literal notranslate"><span class="pre">Log</span></code> textboxes</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="api/library_index.html" class="btn btn-neutral float-right" title="Library API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="marian-integration.html" class="btn btn-neutral float-left" title="Bergamot C++ Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Bergamot Translator Team.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
