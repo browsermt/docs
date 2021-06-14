@@ -29,6 +29,8 @@ Includes
 --------
 
 
+- ``algorithm``
+
 - ``common/definitions.h``
 
 - ``common/timer.h``

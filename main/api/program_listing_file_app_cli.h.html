@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File cli.h &mdash; Bergamot Translator main 2021-06-09 documentation</title>
+  <title>Program Listing for File cli.h &mdash; Bergamot Translator main 2021-06-14 documentation</title>
   
 
   
@@ -169,6 +169,7 @@
 <p>↰ <a class="reference internal" href="file_app_cli.h.html#file-app-cli-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">app/cli.h</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef BERGAMOT_APP_CLI_H</span>
 <span class="cp">#define BERGAMOT_APP_CLI_H</span>
+<span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;future&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
@@ -254,58 +255,13 @@
   <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">input</span> <span class="o">=</span> <span class="n">std_input</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
 
   <span class="n">ResponseOptions</span> <span class="n">responseOptions</span><span class="p">;</span>
-  <span class="n">responseOptions</span><span class="p">.</span><span class="n">qualityScores</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-  <span class="n">responseOptions</span><span class="p">.</span><span class="n">alignment</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-  <span class="n">responseOptions</span><span class="p">.</span><span class="n">alignmentThreshold</span> <span class="o">=</span> <span class="mf">0.2f</span><span class="p">;</span>
 
   <span class="c1">// Wait on future until Response is complete</span>
   <span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span> <span class="n">responseFuture</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">),</span> <span class="n">responseOptions</span><span class="p">);</span>
   <span class="n">responseFuture</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span>
   <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">responseFuture</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;[original]: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">response</span><span class="p">.</span><span class="n">source</span><span class="p">.</span><span class="n">text</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;[translated]: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">response</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">text</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">sentenceIdx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">sentenceIdx</span> <span class="o">&lt;</span> <span class="n">response</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">sentenceIdx</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; [src Sentence]: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">response</span><span class="p">.</span><span class="n">source</span><span class="p">.</span><span class="n">sentence</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; [tgt Sentence]: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">response</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">sentence</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Alignments&quot;</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span> <span class="n">Point</span><span class="p">;</span>
-
-    <span class="c1">// Initialize a point vector.</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;&gt;</span> <span class="n">aggregate</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">source</span><span class="p">.</span><span class="n">numWords</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">));</span>
-
-    <span class="c1">// Handle alignments</span>
-    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">alignments</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">alignments</span><span class="p">[</span><span class="n">sentenceIdx</span><span class="p">];</span>
-    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">p</span> <span class="p">:</span> <span class="n">alignments</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">aggregate</span><span class="p">[</span><span class="n">p</span><span class="p">.</span><span class="n">src</span><span class="p">].</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">tgt</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">prob</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">src</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">src</span> <span class="o">&lt;</span> <span class="n">aggregate</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">src</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">response</span><span class="p">.</span><span class="n">source</span><span class="p">.</span><span class="n">word</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;: &quot;</span><span class="p">;</span>
-      <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">p</span> <span class="p">:</span> <span class="n">aggregate</span><span class="p">[</span><span class="n">src</span><span class="p">])</span> <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">response</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">word</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;(&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;) &quot;</span><span class="p">;</span>
-      <span class="p">}</span>
-      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Handle quality.</span>
-    <span class="k">auto</span> <span class="o">&amp;</span><span class="n">quality</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">qualityScores</span><span class="p">[</span><span class="n">sentenceIdx</span><span class="p">];</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Quality: whole(&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">quality</span><span class="p">.</span><span class="n">sequence</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;), tokens below:&quot;</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-    <span class="kt">size_t</span> <span class="n">wordIdx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">first</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">p</span> <span class="p">:</span> <span class="n">quality</span><span class="p">.</span><span class="n">word</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">first</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">first</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span><span class="p">;</span>
-      <span class="p">}</span>
-      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">response</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">word</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">,</span> <span class="n">wordIdx</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;(&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;)&quot;</span><span class="p">;</span>
-      <span class="n">wordIdx</span><span class="o">++</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;--------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">response</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">text</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="p">}</span>  <span class="c1">// namespace app</span>
