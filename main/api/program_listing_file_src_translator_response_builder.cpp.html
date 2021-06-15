@@ -188,7 +188,6 @@
     <span class="c1">// logprobs.</span>
     <span class="k">auto</span> <span class="n">normalizedPathScore</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
     <span class="k">auto</span> <span class="n">wordQualities</span> <span class="o">=</span> <span class="n">hyp</span><span class="o">-&gt;</span><span class="n">tracebackWordScores</span><span class="p">();</span>
-    <span class="n">wordQualities</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
     <span class="n">response</span><span class="p">.</span><span class="n">qualityScores</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Quality</span><span class="p">{</span><span class="n">normalizedPathScore</span><span class="p">,</span> <span class="n">wordQualities</span><span class="p">});</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -233,7 +232,7 @@
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">decoded</span><span class="p">;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string_view</span><span class="o">&gt;</span> <span class="n">targetSentenceMappings</span><span class="p">;</span>
-    <span class="n">vocabs_</span><span class="p">.</span><span class="n">target</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">decodeWithByteRanges</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">decoded</span><span class="p">,</span> <span class="n">targetSentenceMappings</span><span class="p">);</span>
+    <span class="n">vocabs_</span><span class="p">.</span><span class="n">target</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">decodeWithByteRanges</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">decoded</span><span class="p">,</span> <span class="n">targetSentenceMappings</span><span class="p">,</span> <span class="cm">/*ignoreEOS=*/</span><span class="nb">false</span><span class="p">);</span>
 
     <span class="k">switch</span> <span class="p">(</span><span class="n">responseOptions_</span><span class="p">.</span><span class="n">concatStrategy</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">case</span> <span class="n">ConcatStrategy</span><span class="o">::</span><span class="nl">FAITHFUL</span><span class="p">:</span> <span class="p">{</span>
