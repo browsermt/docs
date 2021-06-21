@@ -29,6 +29,8 @@ Includes
 --------
 
 
+- ``aligned.h`` (:ref:`file_src_translator_aligned.h`)
+
 - ``annotation.h`` (:ref:`file_src_translator_annotation.h`)
 
 - ``data/types.h``
@@ -37,7 +39,7 @@ Includes
 
 - ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
 
-- ``sentence_splitter.h`` (:ref:`file_src_translator_sentence_splitter.h`)
+- ``ssplit.h``
 
 - ``vector``
 

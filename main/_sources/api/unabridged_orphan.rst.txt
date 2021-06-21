@@ -135,16 +135,6 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_src_translator_sentence_splitter.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_src_translator_sentence_splitter.h.rst
-
-.. toctree::
-   :maxdepth: 5
-
    file_src_translator_service.cpp.rst
 
 .. toctree::

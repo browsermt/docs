@@ -61,6 +61,8 @@ Functions
 
 - :ref:`exhale_function_byte__array__util_8cpp_1a03d0ea07c0548c3c9d9fa3b45e8eccc6`
 
+- :ref:`exhale_function_byte__array__util_8cpp_1a68022e0bdf301426d59e4dc3d89e0412`
+
 - :ref:`exhale_function_byte__array__util_8cpp_1aabe4ff9d24b6052f29cf6e70a2a49da2`
 
 - :ref:`exhale_function_byte__array__util_8cpp_1a765d72b8a59a480e11ebf649af13e9a9`

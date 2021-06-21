@@ -19,6 +19,11 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
+   namespace_marian__bergamot__@21.rst
+
+.. toctree::
+   :maxdepth: 5
+
    namespace_marian__bergamot__@9.rst
 
 .. toctree::
@@ -108,11 +113,6 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
-   classmarian_1_1bergamot_1_1SentenceSplitter.rst
-
-.. toctree::
-   :maxdepth: 5
-
    classmarian_1_1bergamot_1_1Service.rst
 
 .. toctree::
@@ -187,6 +187,11 @@ Functions
    :maxdepth: 5
 
    function_byte__array__util_8cpp_1a03d0ea07c0548c3c9d9fa3b45e8eccc6.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1a68022e0bdf301426d59e4dc3d89e0412.rst
 
 .. toctree::
    :maxdepth: 5

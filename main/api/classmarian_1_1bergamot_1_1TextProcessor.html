@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Class TextProcessor &mdash; Bergamot Translator main 2021-06-15 documentation</title>
+  <title>Class TextProcessor &mdash; Bergamot Translator main 2021-06-21 documentation</title>
   
 
   
@@ -181,14 +181,48 @@
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="function">
-<dt id="_CPPv4N6marian8bergamot13TextProcessor13TextProcessorER6Vocabs3PtrI7OptionsE">
-<span id="_CPPv3N6marian8bergamot13TextProcessor13TextProcessorER6Vocabs3PtrI7OptionsE"></span><span id="_CPPv2N6marian8bergamot13TextProcessor13TextProcessorER6Vocabs3PtrI7OptionsE"></span><span id="marian::bergamot::TextProcessor::TextProcessor__VocabsR.Ptr:Options:"></span><span class="target" id="classmarian_1_1bergamot_1_1TextProcessor_1a83f11baab5e920cbf8d0f585f5f04ffd"></span><code class="sig-name descname">TextProcessor</code><span class="sig-paren">(</span><a class="reference internal" href="classmarian_1_1bergamot_1_1Vocabs.html#_CPPv4N6marian8bergamot6VocabsE" title="marian::bergamot::Vocabs">Vocabs</a> &amp;<em>vocabs</em>, Ptr&lt;Options&gt; <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot13TextProcessor13TextProcessorER6Vocabs3PtrI7OptionsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dt id="_CPPv4N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRKNSt6stringE">
+<span id="_CPPv3N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRKNSt6stringE"></span><span id="_CPPv2N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRKNSt6stringE"></span><span id="marian::bergamot::TextProcessor::TextProcessor__Ptr:Options:.VocabsCR.ssCR"></span><span class="target" id="classmarian_1_1bergamot_1_1TextProcessor_1a0119393a64ba8d99ffaa41b8845c5215"></span><code class="sig-name descname">TextProcessor</code><span class="sig-paren">(</span>Ptr&lt;Options&gt; <em>options</em>, <em class="property">const</em> <a class="reference internal" href="classmarian_1_1bergamot_1_1Vocabs.html#_CPPv4N6marian8bergamot6VocabsE" title="marian::bergamot::Vocabs">Vocabs</a> &amp;<em>vocabs</em>, <em class="property">const</em> std::string &amp;<em>ssplit_prefix_file</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classmarian_1_1bergamot_1_1TextProcessor"><span class="std std-ref">TextProcessor</span></a> handles loading the sentencepiece vocabulary and also contains an instance of sentence-splitter based on ssplit. </p>
+<p>Used in <a class="reference internal" href="classmarian_1_1bergamot_1_1Service.html#classmarian_1_1bergamot_1_1Service"><span class="std std-ref">Service</span></a> to convert an incoming blob of text to a vector of sentences (vector of words). In addition, the ByteRanges of the source-tokens in unnormalized text are provided as string_views. Construct <a class="reference internal" href="#classmarian_1_1bergamot_1_1TextProcessor"><span class="std std-ref">TextProcessor</span></a> from options, vocabs and prefix-file. <dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">options</span></code>: expected to contain <code class="docutils literal notranslate"><span class="pre">max-length-break</span></code>, <code class="docutils literal notranslate"><span class="pre">ssplit-mode</span></code>. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">vocabs</span></code>: Vocabularies used to process text into sentences to marian::Words and corresponding <a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#structmarian_1_1bergamot_1_1ByteRange"><span class="std std-ref">ByteRange</span></a> information in <a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref">AnnotatedText</span></a>. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">ssplit_prefix_file</span></code>: Path to ssplit-prefix file compatible with moses-tokenizer. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 <dl class="function">
-<dt id="_CPPv4N6marian8bergamot13TextProcessor7processER13AnnotatedTextR8Segments">
-<span id="_CPPv3N6marian8bergamot13TextProcessor7processER13AnnotatedTextR8Segments"></span><span id="_CPPv2N6marian8bergamot13TextProcessor7processER13AnnotatedTextR8Segments"></span><span id="marian::bergamot::TextProcessor::process__AnnotatedTextR.SegmentsR"></span><span class="target" id="classmarian_1_1bergamot_1_1TextProcessor_1a24aa3ebb4bf0336a179ac4dea3c8b891"></span>void <code class="sig-name descname">process</code><span class="sig-paren">(</span><a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#_CPPv4N6marian8bergamot13AnnotatedTextE" title="marian::bergamot::AnnotatedText">AnnotatedText</a> &amp;<em>source</em>, <a class="reference internal" href="typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb.html#_CPPv4N6marian8bergamot8SegmentsE" title="marian::bergamot::Segments">Segments</a> &amp;<em>segments</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot13TextProcessor7processER13AnnotatedTextR8Segments" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
+<dt id="_CPPv4N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRK13AlignedMemory">
+<span id="_CPPv3N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRK13AlignedMemory"></span><span id="_CPPv2N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRK13AlignedMemory"></span><span id="marian::bergamot::TextProcessor::TextProcessor__Ptr:Options:.VocabsCR.AlignedMemoryCR"></span><span class="target" id="classmarian_1_1bergamot_1_1TextProcessor_1a27f0ea63a119a2e391cacef05c00f080"></span><code class="sig-name descname">TextProcessor</code><span class="sig-paren">(</span>Ptr&lt;Options&gt; <em>options</em>, <em class="property">const</em> <a class="reference internal" href="classmarian_1_1bergamot_1_1Vocabs.html#_CPPv4N6marian8bergamot6VocabsE" title="marian::bergamot::Vocabs">Vocabs</a> &amp;<em>vocabs</em>, <em class="property">const</em> <a class="reference internal" href="typedef_definitions_8h_1af7b499234642d2926f2e87d894f53f38.html#_CPPv4N6marian8bergamot13AlignedMemoryE" title="marian::bergamot::AlignedMemory">AlignedMemory</a> &amp;<em>memory</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRK13AlignedMemory" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Construct <a class="reference internal" href="#classmarian_1_1bergamot_1_1TextProcessor"><span class="std std-ref">TextProcessor</span></a> from options, vocabs and prefix-file supplied as a bytearray. </p>
+<p>For other parameters, see the path based constructor. Note: This falls back to string based loads if memory is null, this behaviour will be deprecated in the future.</p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">memory</span></code>: ssplit-prefix-file contents in memory, passed as a bytearray. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments">
+<span id="_CPPv3N6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments"></span><span id="_CPPv2N6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments"></span><span id="marian::bergamot::TextProcessor::process__ssRR.AnnotatedTextR.SegmentsR"></span><span class="target" id="classmarian_1_1bergamot_1_1TextProcessor_1a534ae58137636be65013380c7446a516"></span>void <code class="sig-name descname">process</code><span class="sig-paren">(</span>std::string &amp;&amp;<em>blob</em>, <a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#_CPPv4N6marian8bergamot13AnnotatedTextE" title="marian::bergamot::AnnotatedText">AnnotatedText</a> &amp;<em>source</em>, <a class="reference internal" href="typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb.html#_CPPv4N6marian8bergamot8SegmentsE" title="marian::bergamot::Segments">Segments</a> &amp;<em>segments</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wrap into sentences of at most maxLengthBreak_ tokens and add to source. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">blob</span></code>: Input blob, will be bound to source and annotations on it stored. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">source</span></code>: <a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref">AnnotatedText</span></a> instance holding input and annotations of sentences and pieces </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[out]</span> <span class="pre">segments</span></code>: marian::Word equivalents of the sentences processed and stored in <a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref">AnnotatedText</span></a> for consumption of marian translation pipeline. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
 
 </div>
 </dd></dl>

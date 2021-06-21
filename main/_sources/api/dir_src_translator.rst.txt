@@ -34,8 +34,6 @@ Files
 - :ref:`file_src_translator_response_builder.cpp`
 - :ref:`file_src_translator_response_builder.h`
 - :ref:`file_src_translator_response_options.h`
-- :ref:`file_src_translator_sentence_splitter.cpp`
-- :ref:`file_src_translator_sentence_splitter.h`
 - :ref:`file_src_translator_service.cpp`
 - :ref:`file_src_translator_service.h`
 - :ref:`file_src_translator_text_processor.cpp`

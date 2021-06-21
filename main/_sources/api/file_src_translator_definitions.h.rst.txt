@@ -57,8 +57,6 @@ Included By
 
 - :ref:`file_src_translator_request.cpp`
 
-- :ref:`file_src_translator_sentence_splitter.h`
-
 - :ref:`file_src_translator_text_processor.h`
 
 - :ref:`file_src_translator_threadsafe_batcher.h`

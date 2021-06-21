@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File byte_array_util.cpp &mdash; Bergamot Translator main 2021-06-15 documentation</title>
+  <title>Program Listing for File byte_array_util.cpp &mdash; Bergamot Translator main 2021-06-21 documentation</title>
   
 
   
@@ -298,7 +298,17 @@
   <span class="n">memoryBundle</span><span class="p">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">getModelMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
   <span class="n">memoryBundle</span><span class="p">.</span><span class="n">shortlist</span> <span class="o">=</span> <span class="n">getShortlistMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
   <span class="n">getVocabsMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">memoryBundle</span><span class="p">.</span><span class="n">vocabs</span><span class="p">);</span>
+  <span class="n">memoryBundle</span><span class="p">.</span><span class="n">ssplitPrefixFile</span> <span class="o">=</span> <span class="n">getSsplitPrefixFileMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
   <span class="k">return</span> <span class="n">memoryBundle</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">AlignedMemory</span> <span class="n">getSsplitPrefixFileMemoryFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">fpath</span> <span class="o">=</span> <span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ssplit-prefix-file&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fpath</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="mi">64</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// Return empty AlignedMemory</span>
+  <span class="k">return</span> <span class="n">AlignedMemory</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="p">}</span>  <span class="c1">// namespace bergamot</span>
