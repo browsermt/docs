@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File text_processor.cpp &mdash; Bergamot Translator main 2021-06-21 documentation</title>
+  <title>Program Listing for File text_processor.cpp &mdash; Bergamot Translator main 2021-06-28 documentation</title>
   
 
   
@@ -289,7 +289,7 @@
 
     <span class="c1">// Restrict the range within bounds.</span>
     <span class="kt">size_t</span> <span class="n">left</span> <span class="o">=</span> <span class="n">segment</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="n">offset</span><span class="p">;</span>
-    <span class="kt">size_t</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">maxLengthBreak_</span><span class="p">,</span> <span class="n">left</span><span class="p">);</span>
+    <span class="kt">size_t</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">wrapStep</span><span class="p">,</span> <span class="n">left</span><span class="p">);</span>
 
     <span class="n">segments</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="n">diff</span><span class="p">);</span>
     <span class="n">segments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">push_back</span><span class="p">(</span><span class="n">sourceEosId</span><span class="p">);</span>
