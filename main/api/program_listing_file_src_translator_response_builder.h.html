@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File response_builder.h &mdash; Bergamot Translator main 2021-06-28 documentation</title>
+  <title>Program Listing for File response_builder.h &mdash; Bergamot Translator main 2021-07-05 documentation</title>
   
 
   
@@ -185,8 +185,11 @@
 <span class="k">class</span> <span class="nc">ResponseBuilder</span> <span class="p">{</span>
  <span class="k">public</span><span class="o">:</span>
   <span class="n">ResponseBuilder</span><span class="p">(</span><span class="n">ResponseOptions</span> <span class="n">responseOptions</span><span class="p">,</span> <span class="n">AnnotatedText</span> <span class="o">&amp;&amp;</span><span class="n">source</span><span class="p">,</span> <span class="n">Vocabs</span> <span class="o">&amp;</span><span class="n">vocabs</span><span class="p">,</span>
-                  <span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span> <span class="o">&amp;&amp;</span><span class="n">promise</span><span class="p">)</span>
-      <span class="o">:</span> <span class="n">responseOptions_</span><span class="p">(</span><span class="n">responseOptions</span><span class="p">),</span> <span class="n">source_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source</span><span class="p">)),</span> <span class="n">vocabs_</span><span class="p">(</span><span class="n">vocabs</span><span class="p">),</span> <span class="n">promise_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">promise</span><span class="p">))</span> <span class="p">{}</span>
+                  <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Response</span> <span class="o">&amp;&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">callback</span><span class="p">)</span>
+      <span class="o">:</span> <span class="n">responseOptions_</span><span class="p">(</span><span class="n">responseOptions</span><span class="p">),</span>
+        <span class="n">source_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source</span><span class="p">)),</span>
+        <span class="n">vocabs_</span><span class="p">(</span><span class="n">vocabs</span><span class="p">),</span>
+        <span class="n">callback_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">callback</span><span class="p">))</span> <span class="p">{}</span>
 
   <span class="kt">void</span> <span class="k">operator</span><span class="p">()(</span><span class="n">Histories</span> <span class="o">&amp;&amp;</span><span class="n">histories</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// TODO(jerinphilip) load ResponseOptions into options and turn build</span>
@@ -210,8 +213,7 @@
       <span class="n">buildAlignments</span><span class="p">(</span><span class="n">histories</span><span class="p">,</span> <span class="n">response</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="c1">// Once complete, set promise.</span>
-    <span class="n">promise_</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">response</span><span class="p">));</span>
+    <span class="n">callback_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">response</span><span class="p">));</span>
   <span class="p">}</span>
 
  <span class="k">private</span><span class="o">:</span>
@@ -224,10 +226,10 @@
   <span class="c1">// Data members are context/curried args for the functor.</span>
 
   <span class="n">ResponseOptions</span> <span class="n">responseOptions_</span><span class="p">;</span>
-  <span class="k">const</span> <span class="n">Vocabs</span> <span class="o">&amp;</span><span class="n">vocabs_</span><span class="p">;</span>            <span class="c1">// vocabs are required for decoding</span>
-                                    <span class="c1">// and any source validation checks.</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span> <span class="n">promise_</span><span class="p">;</span>  <span class="c1">//  To be set when callback triggered and</span>
-                                    <span class="c1">//  after Response constructed.</span>
+  <span class="k">const</span> <span class="n">Vocabs</span> <span class="o">&amp;</span><span class="n">vocabs_</span><span class="p">;</span>                       <span class="c1">// vocabs are required for decoding</span>
+                                               <span class="c1">// and any source validation checks.</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Response</span> <span class="o">&amp;&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">callback_</span><span class="p">;</span>  <span class="c1">//  To be set when callback triggered and</span>
+                                               <span class="c1">//  after Response constructed.</span>
   <span class="n">AnnotatedText</span> <span class="n">source_</span><span class="p">;</span>
 <span class="p">};</span>
 <span class="p">}</span>  <span class="c1">// namespace bergamot</span>

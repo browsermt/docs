@@ -41,18 +41,18 @@ Program Listing for File service.h
    
      ~Service();
    
-     std::future<Response> translate(std::string &&source, ResponseOptions options = ResponseOptions());
+     void translate(std::string &&source, std::function<void(Response &&)> &&callback,
+                    ResponseOptions options = ResponseOptions());
    
+   #ifdef WASM_COMPATIBLE_SOURCE
      std::vector<Response> translateMultiple(std::vector<std::string> &&source, ResponseOptions responseOptions);
+   #endif
    
      bool isAlignmentSupported() const { return options_->hasAndNotEmpty("alignment"); }
    
     private:
-     std::future<Response> queueRequest(std::string &&input, ResponseOptions responseOptions);
+     void queueRequest(std::string &&input, std::function<void(Response &&)> &&callback, ResponseOptions responseOptions);
    
-     void dispatchTranslate();
-   
-     void blockIfWASM();
    
      size_t numWorkers_;
    

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File cli.h &mdash; Bergamot Translator main 2021-06-28 documentation</title>
+  <title>Program Listing for File cli.h &mdash; Bergamot Translator main 2021-07-05 documentation</title>
   
 
   
@@ -208,6 +208,8 @@
   <span class="n">ResponseOptions</span> <span class="n">responseOptions</span><span class="p">;</span>
   <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">texts</span><span class="p">;</span>
 
+<span class="cp">#ifdef WASM_COMPATIBLE_SOURCE</span>
+  <span class="c1">// Hide the translateMultiple operation</span>
   <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">line</span><span class="p">;</span> <span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="p">,</span> <span class="n">line</span><span class="p">);)</span> <span class="p">{</span>
     <span class="n">texts</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
   <span class="p">}</span>
@@ -217,6 +219,7 @@
   <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="nl">result</span> <span class="p">:</span> <span class="n">results</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">result</span><span class="p">.</span><span class="n">getTranslatedText</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
   <span class="p">}</span>
+<span class="cp">#endif</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="nf">decoder</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Options</span><span class="o">&gt;</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
@@ -228,7 +231,11 @@
   <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">input</span> <span class="o">=</span> <span class="n">std_input</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
 
   <span class="c1">// Wait on future until Response is complete</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span> <span class="n">responseFuture</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">));</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span> <span class="n">responsePromise</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span> <span class="n">responseFuture</span> <span class="o">=</span> <span class="n">responsePromise</span><span class="p">.</span><span class="n">get_future</span><span class="p">();</span>
+  <span class="k">auto</span> <span class="n">callback</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="n">responsePromise</span><span class="p">](</span><span class="n">Response</span> <span class="o">&amp;&amp;</span><span class="n">response</span><span class="p">)</span> <span class="p">{</span> <span class="n">responsePromise</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">response</span><span class="p">));</span> <span class="p">};</span>
+
+  <span class="n">service</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">callback</span><span class="p">));</span>
   <span class="n">responseFuture</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span>
   <span class="k">const</span> <span class="n">Response</span> <span class="o">&amp;</span><span class="n">response</span> <span class="o">=</span> <span class="n">responseFuture</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
 
@@ -257,7 +264,11 @@
   <span class="n">ResponseOptions</span> <span class="n">responseOptions</span><span class="p">;</span>
 
   <span class="c1">// Wait on future until Response is complete</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span> <span class="n">responseFuture</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">),</span> <span class="n">responseOptions</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span> <span class="n">responsePromise</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span> <span class="n">responseFuture</span> <span class="o">=</span> <span class="n">responsePromise</span><span class="p">.</span><span class="n">get_future</span><span class="p">();</span>
+  <span class="k">auto</span> <span class="n">callback</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="n">responsePromise</span><span class="p">](</span><span class="n">Response</span> <span class="o">&amp;&amp;</span><span class="n">response</span><span class="p">)</span> <span class="p">{</span> <span class="n">responsePromise</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">response</span><span class="p">));</span> <span class="p">};</span>
+
+  <span class="n">service</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">callback</span><span class="p">),</span> <span class="n">responseOptions</span><span class="p">);</span>
   <span class="n">responseFuture</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span>
   <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">responseFuture</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
 
