@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Struct Response &mdash; Bergamot Translator main 2021-07-05 documentation</title>
+  <title>Struct Response &mdash; Bergamot Translator main 2021-07-19 documentation</title>
   
 
   
@@ -187,6 +187,32 @@
 <span id="_CPPv3NK6marian8bergamot8Response4sizeEv"></span><span id="_CPPv2NK6marian8bergamot8Response4sizeEv"></span><span id="marian::bergamot::Response::sizeC"></span><span class="target" id="structmarian_1_1bergamot_1_1Response_1a6c1964163791faa847a82f6a9c61b01c"></span><em class="property">const</em> size_t <code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot8Response4sizeEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Convenience function to obtain number of units translated. </p>
 <p>Same as <code class="docutils literal notranslate"><span class="pre">.source.numSentences()</span></code> and <code class="docutils literal notranslate"><span class="pre">.target.numSentences().</span></code> The processing of a text of into sentences are handled internally, and this information can be used to iterate through meaningful units of translation for which alignment and quality information are available. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot8Response28getSourceSentenceAsByteRangeE6size_t">
+<span id="_CPPv3NK6marian8bergamot8Response28getSourceSentenceAsByteRangeE6size_t"></span><span id="_CPPv2NK6marian8bergamot8Response28getSourceSentenceAsByteRangeE6size_t"></span><span id="marian::bergamot::Response::getSourceSentenceAsByteRange__sC"></span><span class="target" id="structmarian_1_1bergamot_1_1Response_1a1090253f2a0d5b50adf76e1817801f46"></span><a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#_CPPv4N6marian8bergamot9ByteRangeE" title="marian::bergamot::ByteRange">ByteRange</a> <code class="sig-name descname">getSourceSentenceAsByteRange</code><span class="sig-paren">(</span>size_t <em>sentenceIdx</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot8Response28getSourceSentenceAsByteRangeE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the source sentence (in terms of byte range) corresponding to sentenceIdx. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">sentenceIdx</span></code>: The index representing the sentence where 0 &lt;= sentenceIdx &lt; <a class="reference internal" href="#structmarian_1_1bergamot_1_1Response_1a6c1964163791faa847a82f6a9c61b01c"><span class="std std-ref">Response::size()</span></a> </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot8Response28getTargetSentenceAsByteRangeE6size_t">
+<span id="_CPPv3NK6marian8bergamot8Response28getTargetSentenceAsByteRangeE6size_t"></span><span id="_CPPv2NK6marian8bergamot8Response28getTargetSentenceAsByteRangeE6size_t"></span><span id="marian::bergamot::Response::getTargetSentenceAsByteRange__sC"></span><span class="target" id="structmarian_1_1bergamot_1_1Response_1ac80c46a67e73cad436a7809d00dccaea"></span><a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#_CPPv4N6marian8bergamot9ByteRangeE" title="marian::bergamot::ByteRange">ByteRange</a> <code class="sig-name descname">getTargetSentenceAsByteRange</code><span class="sig-paren">(</span>size_t <em>sentenceIdx</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot8Response28getTargetSentenceAsByteRangeE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the translated sentence (in terms of byte range) corresponding to sentenceIdx. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">sentenceIdx</span></code>: The index representing the sentence where 0 &lt;= sentenceIdx &lt; <a class="reference internal" href="#structmarian_1_1bergamot_1_1Response_1a6c1964163791faa847a82f6a9c61b01c"><span class="std std-ref">Response::size()</span></a> </p></li>
+</ul>
+</dd>
+</dl>
+</p>
 </dd></dl>
 
 <dl class="function">

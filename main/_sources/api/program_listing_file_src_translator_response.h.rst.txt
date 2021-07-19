@@ -50,6 +50,10 @@ Program Listing for File response.h
    
      std::vector<Alignment> alignments;
    
+     ByteRange getSourceSentenceAsByteRange(size_t sentenceIdx) const { return source.sentenceAsByteRange(sentenceIdx); }
+   
+     ByteRange getTargetSentenceAsByteRange(size_t sentenceIdx) const { return target.sentenceAsByteRange(sentenceIdx); }
+   
      const std::string &getOriginalText() const { return source.text; }
    
      const std::string &getTranslatedText() const { return target.text; }

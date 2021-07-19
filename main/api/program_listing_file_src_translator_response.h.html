@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File response.h &mdash; Bergamot Translator main 2021-07-05 documentation</title>
+  <title>Program Listing for File response.h &mdash; Bergamot Translator main 2021-07-19 documentation</title>
   
 
   
@@ -206,6 +206,10 @@
   <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Quality</span><span class="o">&gt;</span> <span class="n">qualityScores</span><span class="p">;</span>
 
   <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Alignment</span><span class="o">&gt;</span> <span class="n">alignments</span><span class="p">;</span>
+
+  <span class="n">ByteRange</span> <span class="nf">getSourceSentenceAsByteRange</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">sentenceIdx</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">source</span><span class="p">.</span><span class="n">sentenceAsByteRange</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">);</span> <span class="p">}</span>
+
+  <span class="n">ByteRange</span> <span class="nf">getTargetSentenceAsByteRange</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">sentenceIdx</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">target</span><span class="p">.</span><span class="n">sentenceAsByteRange</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">);</span> <span class="p">}</span>
 
   <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="nf">getOriginalText</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">source</span><span class="p">.</span><span class="n">text</span><span class="p">;</span> <span class="p">}</span>
 

@@ -3,7 +3,7 @@
 Struct ByteRange
 ================
 
-- Defined in :ref:`file_src_translator_annotation.h`
+- Defined in :ref:`file_src_translator_definitions.h`
 
 
 Struct Documentation

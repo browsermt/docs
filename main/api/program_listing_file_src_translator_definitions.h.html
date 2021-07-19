@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File definitions.h &mdash; Bergamot Translator main 2021-07-05 documentation</title>
+  <title>Program Listing for File definitions.h &mdash; Bergamot Translator main 2021-07-19 documentation</title>
   
 
   
@@ -191,6 +191,12 @@
   <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;&gt;</span> <span class="n">vocabs</span><span class="p">{};</span>
 
   <span class="n">AlignedMemory</span> <span class="n">ssplitPrefixFile</span><span class="p">{};</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">ByteRange</span> <span class="p">{</span>
+  <span class="kt">size_t</span> <span class="n">begin</span><span class="p">;</span>
+  <span class="kt">size_t</span> <span class="n">end</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">size_t</span> <span class="nf">size</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">begin</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">};</span>
 
 <span class="p">}</span>  <span class="c1">// namespace bergamot</span>
