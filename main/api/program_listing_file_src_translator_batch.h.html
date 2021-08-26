@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File batch.h &mdash; Bergamot Translator main 2021-08-13 documentation</title>
+  <title>Program Listing for File batch.h &mdash; Bergamot Translator main 2021-08-26 documentation</title>
   
 
   
@@ -170,44 +170,44 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SRC_BERGAMOT_BATCH_H</span>
 <span class="cp">#define SRC_BERGAMOT_BATCH_H</span>
 
-<span class="cp">#include</span> <span class="cpf">&quot;request.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;translator/beam_search.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;request.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/beam_search.h&quot;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">marian</span> <span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">bergamot</span> <span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
 <span class="c1">// An empty batch is poison.</span>
-<span class="k">class</span> <span class="nc">Batch</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="n">Batch</span><span class="p">()</span> <span class="p">{}</span>
-  <span class="kt">void</span> <span class="n">clear</span><span class="p">()</span> <span class="p">{</span> <span class="n">sentences_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span> <span class="p">}</span>
+<span class="k">class</span> <span class="nc">Batch</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">Batch</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">clear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">sentences_</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-  <span class="kt">size_t</span> <span class="n">size</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">sentences_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="p">}</span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">sentences_</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-  <span class="kt">void</span> <span class="n">add</span><span class="p">(</span><span class="k">const</span> <span class="n">RequestSentence</span> <span class="o">&amp;</span><span class="n">sentence</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">RequestSentence</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sentence</span><span class="p">);</span><span class="w"></span>
 
-  <span class="c1">// Accessors to read from a Batch. For use in BatchTranslator (consumer on a</span>
-  <span class="c1">// PCQueue holding batches).</span>
-  <span class="c1">//</span>
-  <span class="c1">// sentences() are used to access sentences to construct marian internal</span>
-  <span class="c1">// batch.</span>
-  <span class="k">const</span> <span class="n">RequestSentences</span> <span class="o">&amp;</span><span class="nf">sentences</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">sentences_</span><span class="p">;</span> <span class="p">}</span>
+<span class="w">  </span><span class="c1">// Accessors to read from a Batch. For use in BatchTranslator (consumer on a</span>
+<span class="w">  </span><span class="c1">// PCQueue holding batches).</span>
+<span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="c1">// sentences() are used to access sentences to construct marian internal</span>
+<span class="w">  </span><span class="c1">// batch.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">RequestSentences</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">sentences</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">sentences_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-  <span class="c1">// On obtaining Histories after translating a batch, completeBatch can be</span>
-  <span class="c1">// called with Histories , which forwards the call to Request through</span>
-  <span class="c1">// RequestSentence and triggers completion, by setting the promised value to</span>
-  <span class="c1">// the future given to client.</span>
-  <span class="kt">void</span> <span class="nf">completeBatch</span><span class="p">(</span><span class="k">const</span> <span class="n">Histories</span> <span class="o">&amp;</span><span class="n">histories</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// On obtaining Histories after translating a batch, completeBatch can be</span>
+<span class="w">  </span><span class="c1">// called with Histories , which forwards the call to Request through</span>
+<span class="w">  </span><span class="c1">// RequestSentence and triggers completion, by setting the promised value to</span>
+<span class="w">  </span><span class="c1">// the future given to client.</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">completeBatch</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Histories</span><span class="w"> </span><span class="o">&amp;</span><span class="n">histories</span><span class="p">);</span><span class="w"></span>
 
-  <span class="c1">// Convenience function to log batch-statistics. numTokens, max-length.</span>
-  <span class="kt">void</span> <span class="nf">log</span><span class="p">();</span>
+<span class="w">  </span><span class="c1">// Convenience function to log batch-statistics. numTokens, max-length.</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">log</span><span class="p">();</span><span class="w"></span>
 
- <span class="k">private</span><span class="o">:</span>
-  <span class="n">RequestSentences</span> <span class="n">sentences_</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">RequestSentences</span><span class="w"> </span><span class="n">sentences_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="p">}</span>  <span class="c1">// namespace bergamot</span>
-<span class="p">}</span>  <span class="c1">// namespace marian</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>
 
 <span class="cp">#endif  </span><span class="c1">// SRC_BERGAMOT_BATCH_H_</span>
 </pre></div>

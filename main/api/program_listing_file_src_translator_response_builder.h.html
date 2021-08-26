@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File response_builder.h &mdash; Bergamot Translator main 2021-08-13 documentation</title>
+  <title>Program Listing for File response_builder.h &mdash; Bergamot Translator main 2021-08-26 documentation</title>
   
 
   
@@ -170,70 +170,70 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SRC_BERGAMOT_RESPONSE_BUILDER_H_</span>
 <span class="cp">#define SRC_BERGAMOT_RESPONSE_BUILDER_H_</span>
 
-<span class="cp">#include</span> <span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;response.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;response_options.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;vocabs.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;response.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;response_options.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;vocabs.h&quot;</span><span class="cp"></span>
 
 <span class="c1">// For now we will work with this, to avoid complaints another structure is hard</span>
 <span class="c1">// to operate with.</span>
 
-<span class="k">namespace</span> <span class="nn">marian</span> <span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">bergamot</span> <span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
 
-<span class="k">class</span> <span class="nc">ResponseBuilder</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="n">ResponseBuilder</span><span class="p">(</span><span class="n">ResponseOptions</span> <span class="n">responseOptions</span><span class="p">,</span> <span class="n">AnnotatedText</span> <span class="o">&amp;&amp;</span><span class="n">source</span><span class="p">,</span> <span class="n">Vocabs</span> <span class="o">&amp;</span><span class="n">vocabs</span><span class="p">,</span>
-                  <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Response</span> <span class="o">&amp;&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">callback</span><span class="p">)</span>
-      <span class="o">:</span> <span class="n">responseOptions_</span><span class="p">(</span><span class="n">responseOptions</span><span class="p">),</span>
-        <span class="n">source_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source</span><span class="p">)),</span>
-        <span class="n">vocabs_</span><span class="p">(</span><span class="n">vocabs</span><span class="p">),</span>
-        <span class="n">callback_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">callback</span><span class="p">))</span> <span class="p">{}</span>
+<span class="k">class</span> <span class="nc">ResponseBuilder</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">ResponseBuilder</span><span class="p">(</span><span class="n">ResponseOptions</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">,</span><span class="w"> </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">Vocabs</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vocabs</span><span class="p">,</span><span class="w"></span>
+<span class="w">                  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">callback</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">responseOptions_</span><span class="p">(</span><span class="n">responseOptions</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">source_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source</span><span class="p">)),</span><span class="w"></span>
+<span class="w">        </span><span class="n">vocabs_</span><span class="p">(</span><span class="n">vocabs</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">callback_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">callback</span><span class="p">))</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 
-  <span class="kt">void</span> <span class="k">operator</span><span class="p">()(</span><span class="n">Histories</span> <span class="o">&amp;&amp;</span><span class="n">histories</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// TODO(jerinphilip) load ResponseOptions into options and turn build</span>
-    <span class="c1">// functions on or off.</span>
-    <span class="c1">// responseOptions_ is unused, but we can try something here.</span>
-    <span class="n">ABORT_IF</span><span class="p">(</span><span class="n">source_</span><span class="p">.</span><span class="n">numSentences</span><span class="p">()</span> <span class="o">!=</span> <span class="n">histories</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span> <span class="s">&quot;Mismatch in source and translated sentences&quot;</span><span class="p">);</span>
-    <span class="n">Response</span> <span class="n">response</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="n">Histories</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">histories</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// TODO(jerinphilip) load ResponseOptions into options and turn build</span>
+<span class="w">    </span><span class="c1">// functions on or off.</span>
+<span class="w">    </span><span class="c1">// responseOptions_ is unused, but we can try something here.</span>
+<span class="w">    </span><span class="n">ABORT_IF</span><span class="p">(</span><span class="n">source_</span><span class="p">.</span><span class="n">numSentences</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">histories</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Mismatch in source and translated sentences&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Response</span><span class="w"> </span><span class="n">response</span><span class="p">;</span><span class="w"></span>
 
-    <span class="c1">// Move source_ into response.</span>
-    <span class="n">response</span><span class="p">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source_</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Move source_ into response.</span>
+<span class="w">    </span><span class="n">response</span><span class="p">.</span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source_</span><span class="p">);</span><span class="w"></span>
 
-    <span class="c1">// Should be after source is set</span>
-    <span class="n">buildTranslatedText</span><span class="p">(</span><span class="n">histories</span><span class="p">,</span> <span class="n">response</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Should be after source is set</span>
+<span class="w">    </span><span class="n">buildTranslatedText</span><span class="p">(</span><span class="n">histories</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">);</span><span class="w"></span>
 
-    <span class="c1">// Should always be after buildTranslatedText</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">responseOptions_</span><span class="p">.</span><span class="n">qualityScores</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">buildQualityScores</span><span class="p">(</span><span class="n">histories</span><span class="p">,</span> <span class="n">response</span><span class="p">);</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="c1">// Should always be after buildTranslatedText</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">responseOptions_</span><span class="p">.</span><span class="n">qualityScores</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">buildQualityScores</span><span class="p">(</span><span class="n">histories</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">responseOptions_</span><span class="p">.</span><span class="n">alignment</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">buildAlignments</span><span class="p">(</span><span class="n">histories</span><span class="p">,</span> <span class="n">response</span><span class="p">);</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">responseOptions_</span><span class="p">.</span><span class="n">alignment</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">buildAlignments</span><span class="p">(</span><span class="n">histories</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="n">callback_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">response</span><span class="p">));</span>
-  <span class="p">}</span>
+<span class="w">    </span><span class="n">callback_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">response</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
- <span class="k">private</span><span class="o">:</span>
-  <span class="kt">void</span> <span class="n">buildQualityScores</span><span class="p">(</span><span class="n">Histories</span> <span class="o">&amp;</span><span class="n">histories</span><span class="p">,</span> <span class="n">Response</span> <span class="o">&amp;</span><span class="n">response</span><span class="p">);</span>
+<span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">buildQualityScores</span><span class="p">(</span><span class="n">Histories</span><span class="w"> </span><span class="o">&amp;</span><span class="n">histories</span><span class="p">,</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">response</span><span class="p">);</span><span class="w"></span>
 
-  <span class="kt">void</span> <span class="nf">buildAlignments</span><span class="p">(</span><span class="n">Histories</span> <span class="o">&amp;</span><span class="n">histories</span><span class="p">,</span> <span class="n">Response</span> <span class="o">&amp;</span><span class="n">response</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">buildAlignments</span><span class="p">(</span><span class="n">Histories</span><span class="w"> </span><span class="o">&amp;</span><span class="n">histories</span><span class="p">,</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">response</span><span class="p">);</span><span class="w"></span>
 
-  <span class="kt">void</span> <span class="nf">buildTranslatedText</span><span class="p">(</span><span class="n">Histories</span> <span class="o">&amp;</span><span class="n">histories</span><span class="p">,</span> <span class="n">Response</span> <span class="o">&amp;</span><span class="n">response</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">buildTranslatedText</span><span class="p">(</span><span class="n">Histories</span><span class="w"> </span><span class="o">&amp;</span><span class="n">histories</span><span class="p">,</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">response</span><span class="p">);</span><span class="w"></span>
 
-  <span class="c1">// Data members are context/curried args for the functor.</span>
+<span class="w">  </span><span class="c1">// Data members are context/curried args for the functor.</span>
 
-  <span class="n">ResponseOptions</span> <span class="n">responseOptions_</span><span class="p">;</span>
-  <span class="k">const</span> <span class="n">Vocabs</span> <span class="o">&amp;</span><span class="n">vocabs_</span><span class="p">;</span>                       <span class="c1">// vocabs are required for decoding</span>
-                                               <span class="c1">// and any source validation checks.</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Response</span> <span class="o">&amp;&amp;</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">callback_</span><span class="p">;</span>  <span class="c1">//  To be set when callback triggered and</span>
-                                               <span class="c1">//  after Response constructed.</span>
-  <span class="n">AnnotatedText</span> <span class="n">source_</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="p">}</span>  <span class="c1">// namespace bergamot</span>
-<span class="p">}</span>  <span class="c1">// namespace marian</span>
+<span class="w">  </span><span class="n">ResponseOptions</span><span class="w"> </span><span class="n">responseOptions_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Vocabs</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vocabs_</span><span class="p">;</span><span class="w">                       </span><span class="c1">// vocabs are required for decoding</span>
+<span class="w">                                               </span><span class="c1">// and any source validation checks.</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">callback_</span><span class="p">;</span><span class="w">  </span><span class="c1">//  To be set when callback triggered and</span>
+<span class="w">                                               </span><span class="c1">//  after Response constructed.</span>
+<span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="n">source_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>
 
 <span class="cp">#endif  </span><span class="c1">//  SRC_BERGAMOT_RESPONSE_BUILDER_H_</span>
 </pre></div>

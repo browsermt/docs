@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Class Request &mdash; Bergamot Translator main 2021-08-13 documentation</title>
+  <title>Class Request &mdash; Bergamot Translator main 2021-08-26 documentation</title>
   
 
   
@@ -180,9 +180,9 @@
 <span id="_CPPv3N6marian8bergamot7RequestE"></span><span id="_CPPv2N6marian8bergamot7RequestE"></span><span id="marian::bergamot::Request"></span><span class="target" id="classmarian_1_1bergamot_1_1Request"></span><em class="property">class </em><code class="sig-name descname">Request</code><a class="headerlink" href="#_CPPv4N6marian8bergamot7RequestE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#classmarian_1_1bergamot_1_1Request"><span class="std std-ref">Request</span></a> is an internal representation used to represent a request after processed by <a class="reference internal" href="classmarian_1_1bergamot_1_1TextProcessor.html#classmarian_1_1bergamot_1_1TextProcessor"><span class="std std-ref">TextProcessor</span></a> into sentences constituted by marian::Words. </p>
 <p>The batching mechanism (<a class="reference internal" href="classmarian_1_1bergamot_1_1Batcher.html#classmarian_1_1bergamot_1_1Batcher"><span class="std std-ref">Batcher</span></a>) draws from multiple Requests and compiles sentences into a batch. When a batch completes translation (at <a class="reference internal" href="classmarian_1_1bergamot_1_1BatchTranslator.html#classmarian_1_1bergamot_1_1BatchTranslator"><span class="std std-ref">BatchTranslator</span></a>, intended in a different thread), backward propogation happens through:</p>
-<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Batch</span><span class="o">::</span><span class="n">completeBatch</span><span class="p">(...)</span>
-    <span class="o">-&gt;</span> <span class="n">RequestSentence</span><span class="o">::</span><span class="n">completeSentence</span><span class="p">(..)</span>
-       <span class="o">-&gt;</span> <span class="n">Request</span><span class="o">::</span><span class="n">processHistory</span><span class="p">(...)</span>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Batch</span><span class="o">::</span><span class="n">completeBatch</span><span class="p">(...)</span><span class="w"></span>
+<span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">RequestSentence</span><span class="o">::</span><span class="n">completeSentence</span><span class="p">(..)</span><span class="w"></span>
+<span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Request</span><span class="o">::</span><span class="n">processHistory</span><span class="p">(...)</span><span class="w"></span>
 </pre></div>
 </div>
 </p>

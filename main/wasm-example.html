@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2021-08-13 documentation</title>
+  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2021-08-26 documentation</title>
   
 
   
@@ -213,7 +213,7 @@ gunzip models/*/*
 <span class="kd">const</span> <span class="nx">shortlistFile</span> <span class="o">=</span> <span class="sb">`models/esen/lex.50.50.esen.s2t.bin`</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">vocabFiles</span> <span class="o">=</span> <span class="p">[</span><span class="sb">`models/</span><span class="si">${</span><span class="nx">languagePair</span><span class="si">}</span><span class="sb">/vocab.</span><span class="si">${</span><span class="nx">vocabLanguagePair</span><span class="si">}</span><span class="sb">.spm`</span><span class="p">,</span>
                     <span class="sb">`models/</span><span class="si">${</span><span class="nx">languagePair</span><span class="si">}</span><span class="sb">/vocab.</span><span class="si">${</span><span class="nx">vocabLanguagePair</span><span class="si">}</span><span class="sb">.spm`</span><span class="p">];</span>
-<span class="kd">const</span> <span class="nx">uniqueVocabFiles</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Set</span><span class="p">(</span><span class="nx">vocabFiles</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">uniqueVocabFiles</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Set</span><span class="p">(</span><span class="nx">vocabFiles</span><span class="p">);</span>
 
 <span class="c1">// Please refer to bergamot.html in test_page folder for downloadAsArrayBuffer function</span>
 <span class="kd">const</span> <span class="nx">downloadedBuffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">downloadAsArrayBuffer</span><span class="p">(</span><span class="nx">modelFile</span><span class="p">),</span> <span class="nx">downloadAsArrayBuffer</span><span class="p">(</span><span class="nx">shortlistFile</span><span class="p">)]);</span>
@@ -228,15 +228,15 @@ gunzip models/*/*
 <span class="c1">// Construct AlignedMemory instances from the buffers</span>
 <span class="kd">var</span> <span class="nx">alignedModelMemory</span> <span class="o">=</span> <span class="nx">constructAlignedMemoryFromBuffer</span><span class="p">(</span><span class="nx">modelBuffer</span><span class="p">,</span> <span class="mf">256</span><span class="p">);</span> <span class="c1">// Please refer to bergamot.html in test_page folder for this function</span>
 <span class="kd">var</span> <span class="nx">alignedShortlistMemory</span> <span class="o">=</span> <span class="nx">constructAlignedMemoryFromBuffer</span><span class="p">(</span><span class="nx">shortListBuffer</span><span class="p">,</span> <span class="mf">64</span><span class="p">);</span> <span class="c1">// Please refer to bergamot.html in test_page folder for this function</span>
-<span class="kd">var</span> <span class="nx">alignedVocabsMemoryList</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">AlignedMemoryList</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">alignedVocabsMemoryList</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">AlignedMemoryList</span><span class="p">;</span>
 <span class="nx">downloadedVocabBuffers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="nx">alignedVocabsMemoryList</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="nx">constructAlignedMemoryFromBuffer</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="mf">64</span><span class="p">)));</span>
 
 <span class="c1">// Instantiate the Translation Service</span>
-<span class="kd">const</span> <span class="nx">translationService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">Service</span><span class="p">(</span><span class="nx">modelConfig</span><span class="p">,</span> <span class="nx">alignedModelMemory</span><span class="p">,</span> <span class="nx">alignedShortlistMemory</span><span class="p">,</span> <span class="nx">alignedVocabsMemoryList</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">translationService</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">Service</span><span class="p">(</span><span class="nx">modelConfig</span><span class="p">,</span> <span class="nx">alignedModelMemory</span><span class="p">,</span> <span class="nx">alignedShortlistMemory</span><span class="p">,</span> <span class="nx">alignedVocabsMemoryList</span><span class="p">);</span>
 
 <span class="c1">// Instantiate the arguments of translate() API i.e. ResponseOptions and input (vector&lt;string&gt;)</span>
-<span class="kd">const</span> <span class="nx">responseOptions</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">ResponseOptions</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">input</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">VectorString</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">responseOptions</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">ResponseOptions</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">input</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">VectorString</span><span class="p">;</span>
 
 <span class="c1">// Initialize the input</span>
 <span class="nx">input</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">);</span> <span class="nx">input</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="s2">&quot;Mundo&quot;</span><span class="p">);</span>
@@ -250,9 +250,9 @@ gunzip models/*/*
 <span class="p">}</span>
 
 <span class="c1">// Don&#39;t forget to clean up the instances</span>
-<span class="nx">translationService</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
-<span class="nx">responseOptions</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
-<span class="nx">input</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
+<span class="nx">translationService</span><span class="p">.</span><span class="ow">delete</span><span class="p">();</span>
+<span class="nx">responseOptions</span><span class="p">.</span><span class="ow">delete</span><span class="p">();</span>
+<span class="nx">input</span><span class="p">.</span><span class="ow">delete</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -270,14 +270,14 @@ bash start_server.sh ../../build-wasm
 <li><p>Open any of the browsers below</p>
 <ul>
 <li><p>Firefox Nightly +87: make sure the following prefs are on (about:config)</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">dom</span><span class="p">.</span><span class="n">postMessage</span><span class="p">.</span><span class="n">sharedArrayBuffer</span><span class="p">.</span><span class="n">bypassCOOP_COEP</span><span class="p">.</span><span class="n">insecure</span><span class="p">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="nb">true</span>
-<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd</span> <span class="o">=</span> <span class="nb">true</span>
-<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd_wormhole</span> <span class="o">=</span> <span class="nb">true</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">dom</span><span class="p">.</span><span class="n">postMessage</span><span class="p">.</span><span class="n">sharedArrayBuffer</span><span class="p">.</span><span class="n">bypassCOOP_COEP</span><span class="p">.</span><span class="n">insecure</span><span class="p">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd_wormhole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 <li><p>Chrome Canary +90: start with the following argument</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">js</span><span class="o">-</span><span class="n">flags</span><span class="o">=</span><span class="s">&quot;--experimental-wasm-simd&quot;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">js</span><span class="o">-</span><span class="n">flags</span><span class="o">=</span><span class="s">&quot;--experimental-wasm-simd&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 </li>

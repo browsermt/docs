@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File definitions.h &mdash; Bergamot Translator main 2021-08-13 documentation</title>
+  <title>Program Listing for File definitions.h &mdash; Bergamot Translator main 2021-08-26 documentation</title>
   
 
   
@@ -170,37 +170,37 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SRC_BERGAMOT_DEFINITIONS_H_</span>
 <span class="cp">#define SRC_BERGAMOT_DEFINITIONS_H_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&quot;aligned.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;data/vocab_base.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;aligned.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/vocab_base.h&quot;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">marian</span> <span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">bergamot</span> <span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-<span class="k">typedef</span> <span class="n">marian</span><span class="o">::</span><span class="n">Words</span> <span class="n">Segment</span><span class="p">;</span>
-<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Segment</span><span class="o">&gt;</span> <span class="n">Segments</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">Words</span><span class="w"> </span><span class="n">Segment</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Segment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Segments</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">typedef</span> <span class="n">AlignedVector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">AlignedMemory</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">AlignedVector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AlignedMemory</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">struct</span> <span class="nc">MemoryBundle</span> <span class="p">{</span>
-  <span class="n">AlignedMemory</span> <span class="n">model</span><span class="p">{};</span>
-  <span class="n">AlignedMemory</span> <span class="n">shortlist</span><span class="p">{};</span>
+<span class="k">struct</span> <span class="nc">MemoryBundle</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlignedMemory</span><span class="w"> </span><span class="n">model</span><span class="p">{};</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlignedMemory</span><span class="w"> </span><span class="n">shortlist</span><span class="p">{};</span><span class="w"></span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;&gt;</span> <span class="n">vocabs</span><span class="p">{};</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">vocabs</span><span class="p">{};</span><span class="w"></span>
 
-  <span class="n">AlignedMemory</span> <span class="n">ssplitPrefixFile</span><span class="p">{};</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="n">AlignedMemory</span><span class="w"> </span><span class="n">ssplitPrefixFile</span><span class="p">{};</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="k">struct</span> <span class="nc">ByteRange</span> <span class="p">{</span>
-  <span class="kt">size_t</span> <span class="n">begin</span><span class="p">;</span>
-  <span class="kt">size_t</span> <span class="n">end</span><span class="p">;</span>
-  <span class="k">const</span> <span class="kt">size_t</span> <span class="nf">size</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">begin</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">};</span>
+<span class="k">struct</span> <span class="nc">ByteRange</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">end</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="p">}</span>  <span class="c1">// namespace bergamot</span>
-<span class="p">}</span>  <span class="c1">// namespace marian</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>
 
 <span class="c1">// @TODO at the moment the usage of string_view in this repository is a hot mess and a disaster waiting to happen.</span>
 <span class="c1">// ssplit uses std::string_view if the compiler supports c++17, else falls back to c++11 and absl::string_view</span>
@@ -211,12 +211,12 @@
 <span class="c1">// on older compilers.</span>
 
 <span class="cp">#if defined(__GNUC__) &amp;&amp; __GNUC__ &lt; 6 &amp;&amp; !defined(__clang__)</span>
-<span class="cp">#include</span> <span class="cpf">&lt;experimental/string_view&gt;</span><span class="cp"></span>
-<span class="k">namespace</span> <span class="nn">std</span> <span class="p">{</span>
-<span class="k">using</span> <span class="n">string_view</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">experimental</span><span class="o">::</span><span class="n">string_view</span><span class="p">;</span>
-<span class="p">}</span>  <span class="c1">// namespace std</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;experimental/string_view&gt;</span><span class="cp"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">string_view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">experimental</span><span class="o">::</span><span class="n">string_view</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace std</span>
 <span class="cp">#else</span>
-<span class="cp">#include</span> <span class="cpf">&lt;string_view&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string_view&gt;</span><span class="cp"></span>
 <span class="cp">#endif</span>
 
 <span class="cp">#endif  </span><span class="c1">// SRC_BERGAMOT_DEFINITIONS_H_</span>

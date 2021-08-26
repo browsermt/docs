@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File request.h &mdash; Bergamot Translator main 2021-08-13 documentation</title>
+  <title>Program Listing for File request.h &mdash; Bergamot Translator main 2021-08-26 documentation</title>
   
 
   
@@ -170,68 +170,68 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SRC_BERGAMOT_REQUEST_H_</span>
 <span class="cp">#define SRC_BERGAMOT_REQUEST_H_</span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;cassert&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;future&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cassert&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&quot;annotation.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;common/logging.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;definitions.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;response.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;response_builder.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;translator/beam_search.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;annotation.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/logging.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;definitions.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;response.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;response_builder.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/beam_search.h&quot;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">marian</span> <span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">bergamot</span> <span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-<span class="k">class</span> <span class="nc">Request</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="n">Request</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">Id</span><span class="p">,</span> <span class="n">Segments</span> <span class="o">&amp;&amp;</span><span class="n">segments</span><span class="p">,</span> <span class="n">ResponseBuilder</span> <span class="o">&amp;&amp;</span><span class="n">responseBuilder</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">Request</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">Request</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">Id</span><span class="p">,</span><span class="w"> </span><span class="n">Segments</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">segments</span><span class="p">,</span><span class="w"> </span><span class="n">ResponseBuilder</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">responseBuilder</span><span class="p">);</span><span class="w"></span>
 
-  <span class="kt">size_t</span> <span class="nf">segmentTokens</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">segmentTokens</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">size_t</span> <span class="nf">numSegments</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">numSegments</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">Segment</span> <span class="nf">getSegment</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Segment</span><span class="w"> </span><span class="nf">getSegment</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">Request</span> <span class="o">&amp;</span><span class="n">request</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="o">&amp;</span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">void</span> <span class="nf">processHistory</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">index</span><span class="p">,</span> <span class="n">Ptr</span><span class="o">&lt;</span><span class="n">History</span><span class="o">&gt;</span> <span class="n">history</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">processHistory</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">History</span><span class="o">&gt;</span><span class="w"> </span><span class="n">history</span><span class="p">);</span><span class="w"></span>
 
- <span class="k">private</span><span class="o">:</span>
-  <span class="kt">size_t</span> <span class="n">Id_</span><span class="p">;</span>
+<span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">Id_</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">counter_</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">counter_</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">Segments</span> <span class="n">segments_</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Segments</span><span class="w"> </span><span class="n">segments_</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">History</span><span class="o">&gt;&gt;</span> <span class="n">histories_</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">History</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">histories_</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">ResponseBuilder</span> <span class="n">responseBuilder_</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="n">ResponseBuilder</span><span class="w"> </span><span class="n">responseBuilder_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="k">class</span> <span class="nc">RequestSentence</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="n">RequestSentence</span><span class="p">(</span><span class="kt">size_t</span><span class="p">,</span> <span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">RequestSentence</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">RequestSentence</span><span class="p">(</span><span class="kt">size_t</span><span class="p">,</span><span class="w"> </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="p">);</span><span class="w"></span>
 
-  <span class="kt">size_t</span> <span class="nf">numTokens</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">numTokens</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
-  <span class="n">Segment</span> <span class="nf">getUnderlyingSegment</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Segment</span><span class="w"> </span><span class="nf">getUnderlyingSegment</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
-  <span class="kt">void</span> <span class="nf">completeSentence</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">History</span><span class="o">&gt;</span> <span class="n">history</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">completeSentence</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">History</span><span class="o">&gt;</span><span class="w"> </span><span class="n">history</span><span class="p">);</span><span class="w"></span>
 
-  <span class="k">friend</span> <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">RequestSentence</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">RequestSentence</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+<span class="w">  </span><span class="k">friend</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">RequestSentence</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">RequestSentence</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span><span class="w"></span>
 
- <span class="k">private</span><span class="o">:</span>
-  <span class="kt">size_t</span> <span class="n">index_</span><span class="p">;</span>
-  <span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span> <span class="n">request_</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">index_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">RequestSentence</span><span class="o">&gt;</span> <span class="n">RequestSentences</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">RequestSentence</span><span class="o">&gt;</span><span class="w"> </span><span class="n">RequestSentences</span><span class="p">;</span><span class="w"></span>
 
-<span class="p">}</span>  <span class="c1">// namespace bergamot</span>
-<span class="p">}</span>  <span class="c1">// namespace marian</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>
 
 <span class="cp">#endif  </span><span class="c1">// SRC_BERGAMOT_REQUEST_H_</span>
 </pre></div>

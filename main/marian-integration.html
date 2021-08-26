@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Bergamot C++ Library &mdash; Bergamot Translator main 2021-08-13 documentation</title>
+  <title>Bergamot C++ Library &mdash; Bergamot Translator main 2021-08-26 documentation</title>
   
 
   
@@ -209,12 +209,12 @@ of marian, the translation library powering bergamot-translator. When
 developing bergamot-translator it is important that the sources added be
 compatible with marian.  Therefore, it is required to set
 <code class="docutils literal notranslate"><span class="pre">-DUSE_WASM_COMPATIBLE_SOURCE=on</span></code>.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/browsermt/bergamot-translator</span>
-<span class="n">$</span> <span class="n">cd</span> <span class="n">bergamot</span><span class="o">-</span><span class="n">translator</span>
-<span class="n">$</span> <span class="n">mkdir</span> <span class="n">build</span>
-<span class="n">$</span> <span class="n">cd</span> <span class="n">build</span>
-<span class="n">$</span> <span class="n">cmake</span> <span class="p">..</span> <span class="o">-</span><span class="n">DUSE_WASM_COMPATIBLE_SOURCE</span><span class="o">=</span><span class="n">off</span> <span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span>
-<span class="n">$</span> <span class="n">make</span> <span class="o">-</span><span class="n">j2</span> 
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/browsermt/bergamot-translator</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">bergamot</span><span class="o">-</span><span class="n">translator</span><span class="w"></span>
+<span class="n">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">build</span><span class="w"></span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">build</span><span class="w"></span>
+<span class="n">$</span><span class="w"> </span><span class="n">cmake</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="o">-</span><span class="n">DUSE_WASM_COMPATIBLE_SOURCE</span><span class="o">=</span><span class="n">off</span><span class="w"> </span><span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span><span class="w"></span>
+<span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j2</span><span class="w"> </span>
 </pre></div>
 </div>
 <p>The build will generate the library that can be linked to any project. All the

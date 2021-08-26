@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program Listing for File threadsafe_batcher.h &mdash; Bergamot Translator main 2021-08-13 documentation</title>
+  <title>Program Listing for File threadsafe_batcher.h &mdash; Bergamot Translator main 2021-08-26 documentation</title>
   
 
   
@@ -167,61 +167,61 @@
   <div class="section" id="program-listing-for-file-threadsafe-batcher-h">
 <span id="program-listing-file-src-translator-threadsafe-batcher-h"></span><h1>Program Listing for File threadsafe_batcher.h<a class="headerlink" href="#program-listing-for-file-threadsafe-batcher-h" title="Permalink to this headline">¶</a></h1>
 <p>↰ <a class="reference internal" href="file_src_translator_threadsafe_batcher.h.html#file-src-translator-threadsafe-batcher-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/translator/threadsafe_batcher.h</span></code>)</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Thread-safe wrapper around batcher. */</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Thread-safe wrapper around batcher. */</span><span class="w"></span>
 <span class="cp">#ifndef SRC_BERGAMOT_THREADSAFE_BATCHER_H_</span>
 <span class="cp">#define SRC_BERGAMOT_THREADSAFE_BATCHER_H_</span>
 
-<span class="cp">#include</span> <span class="cpf">&quot;batcher.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;common/options.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&quot;definitions.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;batcher.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/options.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;definitions.h&quot;</span><span class="cp"></span>
 
 <span class="cp">#ifndef WASM_COMPATIBLE_SOURCE</span>
-<span class="cp">#include</span> <span class="cpf">&lt;condition_variable&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;condition_variable&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
 <span class="cp">#endif</span>
 
-<span class="k">namespace</span> <span class="nn">marian</span> <span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">bergamot</span> <span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
 <span class="cp">#ifdef WASM_COMPATIBLE_SOURCE</span>
 <span class="c1">// No threads, no locks.</span>
-<span class="k">typedef</span> <span class="n">Batcher</span> <span class="n">ThreadsafeBatcher</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">Batcher</span><span class="w"> </span><span class="n">ThreadsafeBatcher</span><span class="p">;</span><span class="w"></span>
 <span class="cp">#else</span>
 
-<span class="k">class</span> <span class="nc">ThreadsafeBatcher</span> <span class="p">{</span>
- <span class="k">public</span><span class="o">:</span>
-  <span class="k">explicit</span> <span class="n">ThreadsafeBatcher</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Options</span><span class="o">&gt;</span> <span class="n">options</span><span class="p">);</span>
+<span class="k">class</span> <span class="nc">ThreadsafeBatcher</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">ThreadsafeBatcher</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="p">);</span><span class="w"></span>
 
-  <span class="o">~</span><span class="n">ThreadsafeBatcher</span><span class="p">();</span>
+<span class="w">  </span><span class="o">~</span><span class="n">ThreadsafeBatcher</span><span class="p">();</span><span class="w"></span>
 
-  <span class="c1">// Add sentences to be translated by calling these (see Batcher).  When</span>
-  <span class="c1">// done, call shutdown.</span>
-  <span class="kt">void</span> <span class="nf">addWholeRequest</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span> <span class="n">request</span><span class="p">);</span>
-  <span class="kt">void</span> <span class="nf">shutdown</span><span class="p">();</span>
+<span class="w">  </span><span class="c1">// Add sentences to be translated by calling these (see Batcher).  When</span>
+<span class="w">  </span><span class="c1">// done, call shutdown.</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">addWholeRequest</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">shutdown</span><span class="p">();</span><span class="w"></span>
 
-  <span class="c1">// Get a batch out of the batcher.  Return false to shutdown worker.</span>
-  <span class="kt">bool</span> <span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">Batch</span> <span class="o">&amp;</span><span class="n">batch</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Get a batch out of the batcher.  Return false to shutdown worker.</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">Batch</span><span class="w"> </span><span class="o">&amp;</span><span class="n">batch</span><span class="p">);</span><span class="w"></span>
 
- <span class="k">private</span><span class="o">:</span>
-  <span class="n">Batcher</span> <span class="n">backend_</span><span class="p">;</span>
+<span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">Batcher</span><span class="w"> </span><span class="n">backend_</span><span class="p">;</span><span class="w"></span>
 
-  <span class="c1">// Number of sentences in backend_;</span>
-  <span class="kt">size_t</span> <span class="n">enqueued_</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// Number of sentences in backend_;</span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">enqueued_</span><span class="p">;</span><span class="w"></span>
 
-  <span class="c1">// Are we shutting down?</span>
-  <span class="kt">bool</span> <span class="n">shutdown_</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// Are we shutting down?</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">shutdown_</span><span class="p">;</span><span class="w"></span>
 
-  <span class="c1">// Lock on this object.</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">mutex_</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// Lock on this object.</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">mutex_</span><span class="p">;</span><span class="w"></span>
 
-  <span class="c1">// Signaled when there are sentences to translate.</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">condition_variable</span> <span class="n">work_</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="w">  </span><span class="c1">// Signaled when there are sentences to translate.</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">condition_variable</span><span class="w"> </span><span class="n">work_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
 <span class="cp">#endif</span>
 
-<span class="p">}</span>  <span class="c1">// namespace bergamot</span>
-<span class="p">}</span>  <span class="c1">// namespace marian</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>
 
 <span class="cp">#endif  </span><span class="c1">// SRC_BERGAMOT_THREADSAFE_BATCHER_H_</span>
 </pre></div>
