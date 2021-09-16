@@ -31,6 +31,10 @@ Includes
 
 - ``data/types.h``
 
+- ``optional``
+
+- ``quality_estimator.h`` (:ref:`file_src_translator_quality_estimator.h`)
+
 - ``response.h`` (:ref:`file_src_translator_response.h`)
 
 - ``response_options.h`` (:ref:`file_src_translator_response_options.h`)

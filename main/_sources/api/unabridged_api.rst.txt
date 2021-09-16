@@ -19,7 +19,7 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
-   namespace_marian__bergamot__@21.rst
+   namespace_marian__bergamot__@23.rst
 
 .. toctree::
    :maxdepth: 5
@@ -48,6 +48,16 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Scale.rst
+
+.. toctree::
+   :maxdepth: 5
+
    structmarian_1_1bergamot_1_1MemoryBundle.rst
 
 .. toctree::
@@ -58,12 +68,12 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
-   structmarian_1_1bergamot_1_1Quality.rst
+   structmarian_1_1bergamot_1_1Response.rst
 
 .. toctree::
    :maxdepth: 5
 
-   structmarian_1_1bergamot_1_1Response.rst
+   structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.rst
 
 .. toctree::
    :maxdepth: 5
@@ -98,6 +108,21 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Matrix.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1QualityEstimator.rst
+
+.. toctree::
+   :maxdepth: 5
+
    classmarian_1_1bergamot_1_1Request.rst
 
 .. toctree::
@@ -128,6 +153,11 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator.rst
+
+.. toctree::
+   :maxdepth: 5
+
    classmarian_1_1bergamot_1_1Vocabs.rst
 
 Enums
@@ -138,11 +168,6 @@ Enums
    :maxdepth: 5
 
    enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   enum_response__options_8h_1a435be63c72825cbd4bfb8bd0d07b9099.rst
 
 Functions
 *********
@@ -176,12 +201,27 @@ Functions
 .. toctree::
    :maxdepth: 5
 
+   function_quality__estimator_8h_1a2e349a94dba9714699b93a9e59f0569b.rst
+
+.. toctree::
+   :maxdepth: 5
+
    function_byte__array__util_8cpp_1a6f199b6686a506deb71095f8b5f9868c.rst
 
 .. toctree::
    :maxdepth: 5
 
    function_byte__array__util_8cpp_1ac17b7705d71079521a1e6db2059ada4f.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1a42b492f8a1927d17d3a72774b53eebc2.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1a276da62846e557d498b92ee9abc90aa0.rst
 
 .. toctree::
    :maxdepth: 5
@@ -206,12 +246,22 @@ Functions
 .. toctree::
    :maxdepth: 5
 
+   function_quality__estimator_8cpp_1ae0fe7141602ec9ff239dbc66b3cb6157.rst
+
+.. toctree::
+   :maxdepth: 5
+
    function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9.rst
 
 .. toctree::
    :maxdepth: 5
 
    function_parser_8h_1a6c3beb1c6f8449716f2b2f9bc50a0ab2.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.rst
 
 .. toctree::
    :maxdepth: 5
@@ -226,6 +276,11 @@ Variables
    :maxdepth: 5
 
    variable_byte__array__util_8cpp_1a4842c3ae45a5ed6649fa7977904b076b.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   variable_quality__estimator_8h_1af49a9a6babd182877c52e034c69a2d27.rst
 
 .. toctree::
    :maxdepth: 5
@@ -270,3 +325,8 @@ Typedefs
    :maxdepth: 5
 
    typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_quality__estimator_8h_1a7d45e4000e2777f44cdf160b0e2c642b.rst

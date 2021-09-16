@@ -34,6 +34,8 @@ Program Listing for File definitions.h
      std::vector<std::shared_ptr<AlignedMemory>> vocabs{};
    
      AlignedMemory ssplitPrefixFile{};
+   
+     AlignedMemory qualityEstimatorMemory;  
    };
    
    struct ByteRange {

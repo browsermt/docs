@@ -34,19 +34,20 @@ Program Listing for File response.h
    
    typedef std::vector<Point> Alignment;
    
-   struct Quality {
-     float sequence;
-     std::vector<float> word;
-   };
-   
    struct Response {
+     struct SentenceQualityScore {
+       std::vector<float> wordScores;
+       std::vector<ByteRange> wordByteRanges;
+       float sentenceScore = 0.0;
+     };
+   
      const size_t size() const { return source.numSentences(); }
    
      AnnotatedText source;
    
      AnnotatedText target;
    
-     std::vector<Quality> qualityScores;
+     std::vector<SentenceQualityScore> qualityScores;
    
      std::vector<Alignment> alignments;
    

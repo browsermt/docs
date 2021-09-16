@@ -1,78 +1,40 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Full API &mdash; Bergamot Translator main 2021-09-07 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
+  <title>Full API &mdash; Bergamot Translator main 2021-09-16 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
     <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/api/unabridged_api.html" />
-
-  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
         <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
         <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> Bergamot Translator
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 main
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -80,93 +42,41 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Bergamot Translator</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Full API</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/api/unabridged_api.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="full-api">
+             
+  <section id="full-api">
 <h1>Full API<a class="headerlink" href="#full-api" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="namespaces">
+<section id="namespaces">
 <h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -184,13 +94,14 @@
 <li class="toctree-l2"><a class="reference internal" href="namespace_marian__bergamot.html#enums">Enums</a></li>
 <li class="toctree-l2"><a class="reference internal" href="namespace_marian__bergamot.html#functions">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="namespace_marian__bergamot.html#typedefs">Typedefs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_marian__bergamot.html#variables">Variables</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="namespace_marian__bergamot__&#64;21.html">Namespace marian::bergamot::&#64;21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace_marian__bergamot__&#64;23.html">Namespace marian::bergamot::&#64;23</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -206,8 +117,8 @@
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="classes-and-structs">
+</section>
+<section id="classes-and-structs">
 <h2>Classes and Structs<a class="headerlink" href="#classes-and-structs" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -221,6 +132,24 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html">Struct ByteRange</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header.html">Struct LogisticRegressorQualityEstimator::Header</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Scale.html">Struct LogisticRegressorQualityEstimator::Scale</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Scale.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Scale.html#struct-documentation">Struct Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -243,16 +172,21 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="structmarian_1_1bergamot_1_1Quality.html">Struct Quality</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1Quality.html#struct-documentation">Struct Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html">Struct Response</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#nested-relationships">Nested Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#nested-types">Nested Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#struct-documentation">Struct Documentation</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html">Struct Response</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#struct-documentation">Struct Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.html">Struct Response::SentenceQualityScore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.html#struct-documentation">Struct Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -307,6 +241,43 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.html">Class LogisticRegressorQualityEstimator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.html#nested-relationships">Nested Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.html#nested-types">Nested Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Matrix.html">Class LogisticRegressorQualityEstimator::Matrix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Matrix.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Matrix.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classmarian_1_1bergamot_1_1QualityEstimator.html">Class QualityEstimator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1QualityEstimator.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classmarian_1_1bergamot_1_1QualityEstimator.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1QualityEstimator.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="classmarian_1_1bergamot_1_1Request.html">Class Request</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1Request.html#class-documentation">Class Documentation</a></li>
 </ul>
@@ -355,14 +326,26 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator.html">Class UnsupervisedQualityEstimator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="classmarian_1_1bergamot_1_1Vocabs.html">Class Vocabs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1Vocabs.html#class-documentation">Class Documentation</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="enums">
+</section>
+<section id="enums">
 <h2>Enums<a class="headerlink" href="#enums" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -372,16 +355,8 @@
 </li>
 </ul>
 </div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="enum_response__options_8h_1a435be63c72825cbd4bfb8bd0d07b9099.html">Enum QualityScoreType</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="enum_response__options_8h_1a435be63c72825cbd4bfb8bd0d07b9099.html#enum-documentation">Enum Documentation</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="functions">
+</section>
+<section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -425,6 +400,14 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="function_quality__estimator_8h_1a2e349a94dba9714699b93a9e59f0569b.html">Function marian::bergamot::createQualityEstimator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_quality__estimator_8h_1a2e349a94dba9714699b93a9e59f0569b.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="function_byte__array__util_8cpp_1a6f199b6686a506deb71095f8b5f9868c.html">Function marian::bergamot::getMemoryBundleFromConfig</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function_byte__array__util_8cpp_1a6f199b6686a506deb71095f8b5f9868c.html#function-documentation">Function Documentation</a></li>
 </ul>
@@ -435,6 +418,22 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="function_byte__array__util_8cpp_1ac17b7705d71079521a1e6db2059ada4f.html">Function marian::bergamot::getModelMemoryFromConfig</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function_byte__array__util_8cpp_1ac17b7705d71079521a1e6db2059ada4f.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_byte__array__util_8cpp_1a42b492f8a1927d17d3a72774b53eebc2.html">Function marian::bergamot::getQualityEstimatorModel(const marian::Ptr&lt;marian::Options&gt;&amp;)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_byte__array__util_8cpp_1a42b492f8a1927d17d3a72774b53eebc2.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_byte__array__util_8cpp_1a276da62846e557d498b92ee9abc90aa0.html">Function marian::bergamot::getQualityEstimatorModel(MemoryBundle&amp;, const marian::Ptr&lt;marian::Options&gt;&amp;)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_byte__array__util_8cpp_1a276da62846e557d498b92ee9abc90aa0.html#function-documentation">Function Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -473,6 +472,14 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="function_quality__estimator_8cpp_1ae0fe7141602ec9ff239dbc66b3cb6157.html">Function marian::bergamot::mapWords</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_quality__estimator_8cpp_1ae0fe7141602ec9ff239dbc66b3cb6157.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9.html">Function marian::bergamot::operator&lt;</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9.html#function-documentation">Function Documentation</a></li>
 </ul>
@@ -489,19 +496,35 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.html">Function marian::bergamot::subwordToWords</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632.html">Function marian::bergamot::validateBinaryModel</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632.html#function-documentation">Function Documentation</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="variables">
+</section>
+<section id="variables">
 <h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="variable_byte__array__util_8cpp_1a4842c3ae45a5ed6649fa7977904b076b.html">Variable dataLength</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="variable_byte__array__util_8cpp_1a4842c3ae45a5ed6649fa7977904b076b.html#variable-documentation">Variable Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="variable_quality__estimator_8h_1af49a9a6babd182877c52e034c69a2d27.html">Variable marian::bergamot::BINARY_QE_MODEL_MAGIC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="variable_quality__estimator_8h_1af49a9a6babd182877c52e034c69a2d27.html#variable-documentation">Variable Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -530,8 +553,8 @@
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="typedefs">
+</section>
+<section id="typedefs">
 <h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -573,51 +596,43 @@
 </li>
 </ul>
 </div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_quality__estimator_8h_1a7d45e4000e2777f44cdf160b0e2c642b.html">Typedef marian::bergamot::SubwordRange</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="typedef_quality__estimator_8h_1a7d45e4000e2777f44cdf160b0e2c642b.html#typedef-documentation">Typedef Documentation</a></li>
+</ul>
+</li>
+</ul>
 </div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Bergamot Translator Team.
-
-    </p>
+    <p>&#169; Copyright 2021, Bergamot Translator Team.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

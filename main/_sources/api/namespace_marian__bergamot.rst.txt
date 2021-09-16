@@ -17,7 +17,7 @@ Namespaces
 ----------
 
 
-- :ref:`namespace_marian__bergamot__@21`
+- :ref:`namespace_marian__bergamot__@23`
 
 - :ref:`namespace_marian__bergamot__@9`
 
@@ -32,13 +32,17 @@ Classes
 
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1ByteRange`
 
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Scale`
+
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1MemoryBundle`
 
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1Point`
 
-- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Quality`
-
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1Response`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore`
 
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1ResponseOptions`
 
@@ -52,6 +56,12 @@ Classes
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1BatchTranslator`
 
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Matrix`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1QualityEstimator`
+
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1Request`
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1RequestSentence`
@@ -64,6 +74,8 @@ Classes
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1ThreadsafeBatcher`
 
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator`
+
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1Vocabs`
 
 
@@ -73,8 +85,6 @@ Enums
 
 - :ref:`exhale_enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1`
 
-- :ref:`exhale_enum_response__options_8h_1a435be63c72825cbd4bfb8bd0d07b9099`
-
 
 Functions
 ---------
@@ -82,9 +92,15 @@ Functions
 
 - :ref:`exhale_function_parser_8h_1a9d7a795b4232908367ad7d9348c62455`
 
+- :ref:`exhale_function_quality__estimator_8h_1a2e349a94dba9714699b93a9e59f0569b`
+
 - :ref:`exhale_function_byte__array__util_8cpp_1a6f199b6686a506deb71095f8b5f9868c`
 
 - :ref:`exhale_function_byte__array__util_8cpp_1ac17b7705d71079521a1e6db2059ada4f`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a42b492f8a1927d17d3a72774b53eebc2`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a276da62846e557d498b92ee9abc90aa0`
 
 - :ref:`exhale_function_byte__array__util_8cpp_1a03d0ea07c0548c3c9d9fa3b45e8eccc6`
 
@@ -94,9 +110,13 @@ Functions
 
 - :ref:`exhale_function_byte__array__util_8cpp_1a765d72b8a59a480e11ebf649af13e9a9`
 
+- :ref:`exhale_function_quality__estimator_8cpp_1ae0fe7141602ec9ff239dbc66b3cb6157`
+
 - :ref:`exhale_function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9`
 
 - :ref:`exhale_function_parser_8h_1a6c3beb1c6f8449716f2b2f9bc50a0ab2`
+
+- :ref:`exhale_function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee`
 
 - :ref:`exhale_function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632`
 
@@ -114,3 +134,12 @@ Typedefs
 - :ref:`exhale_typedef_definitions_8h_1ad0a7527b1fbf64cfc20eaa76134785ef`
 
 - :ref:`exhale_typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb`
+
+- :ref:`exhale_typedef_quality__estimator_8h_1a7d45e4000e2777f44cdf160b0e2c642b`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_quality__estimator_8h_1af49a9a6babd182877c52e034c69a2d27`

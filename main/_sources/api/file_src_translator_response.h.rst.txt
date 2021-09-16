@@ -53,6 +53,8 @@ Included By
 
 - :ref:`file_src_translator_request.h`
 
+- :ref:`file_src_translator_quality_estimator.h`
+
 - :ref:`file_src_translator_response_builder.h`
 
 - :ref:`file_src_translator_request.cpp`
@@ -79,9 +81,9 @@ Classes
 
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1Point`
 
-- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Quality`
-
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1Response`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore`
 
 
 Typedefs

@@ -1,0 +1,13 @@
+
+.. _namespace_marian__bergamot__@23:
+
+Namespace marian::bergamot::@23
+===============================
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+
+

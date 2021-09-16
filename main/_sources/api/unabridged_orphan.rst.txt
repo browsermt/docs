@@ -105,6 +105,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_src_translator_quality_estimator.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_quality_estimator.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_src_translator_request.cpp.rst
 
 .. toctree::

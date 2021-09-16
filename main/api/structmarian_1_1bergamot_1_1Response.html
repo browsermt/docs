@@ -1,80 +1,42 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Struct Response &mdash; Bergamot Translator main 2021-09-07 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
+  <title>Struct Response &mdash; Bergamot Translator main 2021-09-16 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
     <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/api/structmarian_1_1bergamot_1_1Response.html" />
-
-  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
         <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
         <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Struct ResponseOptions" href="structmarian_1_1bergamot_1_1ResponseOptions.html" />
-    <link rel="prev" title="Struct Quality" href="structmarian_1_1bergamot_1_1Quality.html" /> 
+    <link rel="next" title="Struct Response::SentenceQualityScore" href="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.html" />
+    <link rel="prev" title="Struct Point" href="structmarian_1_1bergamot_1_1Point.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> Bergamot Translator
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 main
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -82,104 +44,60 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Bergamot Translator</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="library_index.html">Library API</a> &raquo;</li>
-        
       <li>Struct Response</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/api/structmarian_1_1bergamot_1_1Response.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="struct-response">
+             
+  <section id="struct-response">
 <span id="exhale-struct-structmarian-1-1bergamot-1-1response"></span><h1>Struct Response<a class="headerlink" href="#struct-response" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Defined in <a class="reference internal" href="file_src_translator_response.h.html#file-src-translator-response-h"><span class="std std-ref">File response.h</span></a></p></li>
 </ul>
-<div class="section" id="struct-documentation">
+<section id="nested-relationships">
+<h2>Nested Relationships<a class="headerlink" href="#nested-relationships" title="Permalink to this headline">¶</a></h2>
+<section id="nested-types">
+<h3>Nested Types<a class="headerlink" href="#nested-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.html#exhale-struct-structmarian-1-1bergamot-1-1response-1-1sentencequalityscore"><span class="std std-ref">Struct Response::SentenceQualityScore</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="struct-documentation">
 <h2>Struct Documentation<a class="headerlink" href="#struct-documentation" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="_CPPv4N6marian8bergamot8ResponseE">
 <span id="_CPPv3N6marian8bergamot8ResponseE"></span><span id="_CPPv2N6marian8bergamot8ResponseE"></span><span id="marian::bergamot::Response"></span><span class="target" id="structmarian_1_1bergamot_1_1Response"></span><em class="property">struct </em><code class="sig-name descname">Response</code><a class="headerlink" href="#_CPPv4N6marian8bergamot8ResponseE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#structmarian_1_1bergamot_1_1Response"><span class="std std-ref">Response</span></a> holds AnnotatedText(s) of source-text and translated text, alignment information between source and target sub-words and sentences. </p>
-<p><a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref">AnnotatedText</span></a> provides an API to access markings of (sub)-word and sentences boundaries, which are required to interpret <a class="reference internal" href="structmarian_1_1bergamot_1_1Quality.html#structmarian_1_1bergamot_1_1Quality"><span class="std std-ref">Quality</span></a> and Alignment (s) at the moment. </p>
+<p><a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref">AnnotatedText</span></a> provides an API to access markings of (sub)-word and sentences boundaries, which are required to interpret Quality and Alignment (s) at the moment. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="function">
@@ -242,8 +160,8 @@
 
 <dl class="member">
 <dt id="_CPPv4N6marian8bergamot8Response13qualityScoresE">
-<span id="_CPPv3N6marian8bergamot8Response13qualityScoresE"></span><span id="_CPPv2N6marian8bergamot8Response13qualityScoresE"></span><span id="marian::bergamot::Response::qualityScores__std::vector:Quality:"></span><span class="target" id="structmarian_1_1bergamot_1_1Response_1a12bb2cec81c1ba21903442126abeb7da"></span>std::vector&lt;<a class="reference internal" href="structmarian_1_1bergamot_1_1Quality.html#_CPPv4N6marian8bergamot7QualityE" title="marian::bergamot::Quality">Quality</a>&gt; <code class="sig-name descname">qualityScores</code><a class="headerlink" href="#_CPPv4N6marian8bergamot8Response13qualityScoresE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>-logprob of each word and negative log likelihood of sequence (sentence) normalized by length, for each sentence processed by the translator. </p>
+<span id="_CPPv3N6marian8bergamot8Response13qualityScoresE"></span><span id="_CPPv2N6marian8bergamot8Response13qualityScoresE"></span><span id="marian::bergamot::Response::qualityScores__std::vector:SentenceQualityScore:"></span><span class="target" id="structmarian_1_1bergamot_1_1Response_1a5fd910f8cd9668e4ff7bca66f75a9f1e"></span>std::vector&lt;<a class="reference internal" href="#_CPPv4N6marian8bergamot8Response20SentenceQualityScoreE" title="marian::bergamot::Response::SentenceQualityScore">SentenceQualityScore</a>&gt; <code class="sig-name descname">qualityScores</code><a class="headerlink" href="#_CPPv4N6marian8bergamot8Response13qualityScoresE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>logprob of each word and the total sequence (sentence) normalized by length, for each sentence processed by the translator. </p>
 <p>Indices correspond to ranges accessible through respective <a class="reference internal" href="classmarian_1_1bergamot_1_1Annotation.html#classmarian_1_1bergamot_1_1Annotation"><span class="std std-ref">Annotation</span></a> on source or target. </p>
 </dd></dl>
 
@@ -255,57 +173,68 @@
 </dd></dl>
 
 </div>
+<dl class="class">
+<dt id="_CPPv4N6marian8bergamot8Response20SentenceQualityScoreE">
+<span id="_CPPv3N6marian8bergamot8Response20SentenceQualityScoreE"></span><span id="_CPPv2N6marian8bergamot8Response20SentenceQualityScoreE"></span><span id="marian::bergamot::Response::SentenceQualityScore"></span><span class="target" id="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore"></span><em class="property">struct </em><code class="sig-name descname">SentenceQualityScore</code><a class="headerlink" href="#_CPPv4N6marian8bergamot8Response20SentenceQualityScoreE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.html#structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore"><span class="std std-ref">SentenceQualityScore</span></a> contains the quality data of a given translated sentence. </p>
+<p>It includes the confidence (proxied by log probabilities) of each decoded word (higher logprobs imply better-translated words), the ByteRanges of each term, and logprobs of the whole sentence, represented as the mean word scores. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N6marian8bergamot8Response20SentenceQualityScore10wordScoresE">
+<span id="_CPPv3N6marian8bergamot8Response20SentenceQualityScore10wordScoresE"></span><span id="_CPPv2N6marian8bergamot8Response20SentenceQualityScore10wordScoresE"></span><span id="marian::bergamot::Response::SentenceQualityScore::wordScores__std::vector:float:"></span><span class="target" id="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore_1a3efa733c253b2bd4957d938b91a87989"></span>std::vector&lt;float&gt; <code class="sig-name descname">wordScores</code><a class="headerlink" href="#_CPPv4N6marian8bergamot8Response20SentenceQualityScore10wordScoresE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Quality score of each translated word. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N6marian8bergamot8Response20SentenceQualityScore14wordByteRangesE">
+<span id="_CPPv3N6marian8bergamot8Response20SentenceQualityScore14wordByteRangesE"></span><span id="_CPPv2N6marian8bergamot8Response20SentenceQualityScore14wordByteRangesE"></span><span id="marian::bergamot::Response::SentenceQualityScore::wordByteRanges__std::vector:ByteRange:"></span><span class="target" id="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore_1a82ab162d04c327e687c2417c93d982bf"></span>std::vector&lt;<a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#_CPPv4N6marian8bergamot9ByteRangeE" title="marian::bergamot::ByteRange">ByteRange</a>&gt; <code class="sig-name descname">wordByteRanges</code><a class="headerlink" href="#_CPPv4N6marian8bergamot8Response20SentenceQualityScore14wordByteRangesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Each word position in the translated text. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N6marian8bergamot8Response20SentenceQualityScore13sentenceScoreE">
+<span id="_CPPv3N6marian8bergamot8Response20SentenceQualityScore13sentenceScoreE"></span><span id="_CPPv2N6marian8bergamot8Response20SentenceQualityScore13sentenceScoreE"></span><span id="marian::bergamot::Response::SentenceQualityScore::sentenceScore__float"></span><span class="target" id="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore_1a55edd369d39266941e38cd7e9d8e52b4"></span>float <code class="sig-name descname">sentenceScore</code> = 0.0<a class="headerlink" href="#_CPPv4N6marian8bergamot8Response20SentenceQualityScore13sentenceScoreE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Whole sentence quality score (it is composed by the mean of its words) </p>
 </dd></dl>
 
 </div>
-</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="structmarian_1_1bergamot_1_1ResponseOptions.html" class="btn btn-neutral float-right" title="Struct ResponseOptions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="structmarian_1_1bergamot_1_1Quality.html" class="btn btn-neutral float-left" title="Struct Quality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="structmarian_1_1bergamot_1_1Point.html" class="btn btn-neutral float-left" title="Struct Point" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.html" class="btn btn-neutral float-right" title="Struct Response::SentenceQualityScore" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Bergamot Translator Team.
-
-    </p>
+    <p>&#169; Copyright 2021, Bergamot Translator Team.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

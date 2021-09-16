@@ -1,0 +1,22 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Matrix:
+
+Class LogisticRegressorQualityEstimator::Matrix
+===============================================
+
+- Defined in :ref:`file_src_translator_quality_estimator.h`
+
+
+Nested Relationships
+--------------------
+
+This class is a nested type of :ref:`exhale_class_classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator`.
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::LogisticRegressorQualityEstimator::Matrix
+   :members:
+   :protected-members:
+   :undoc-members:

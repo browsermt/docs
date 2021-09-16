@@ -15,6 +15,7 @@ Program Listing for File service.h
    
    #include "batch_translator.h"
    #include "data/types.h"
+   #include "quality_estimator.h"
    #include "response.h"
    #include "response_builder.h"
    #include "text_processor.h"
@@ -60,6 +61,8 @@ Program Listing for File service.h
    
      AlignedMemory modelMemory_;  // ORDER DEPENDENCY (translators_)
      AlignedMemory shortlistMemory_;  // ORDER DEPENDENCY (translators_)
+   
+     std::shared_ptr<QualityEstimator> qualityEstimator_;
    
    
      size_t requestId_;

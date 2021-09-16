@@ -28,6 +28,8 @@ Files
 - :ref:`file_src_translator_byte_array_util.h`
 - :ref:`file_src_translator_definitions.h`
 - :ref:`file_src_translator_parser.h`
+- :ref:`file_src_translator_quality_estimator.cpp`
+- :ref:`file_src_translator_quality_estimator.h`
 - :ref:`file_src_translator_request.cpp`
 - :ref:`file_src_translator_request.h`
 - :ref:`file_src_translator_response.h`
