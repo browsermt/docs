@@ -13,72 +13,71 @@ Program Listing for File service.h
    #ifndef SRC_BERGAMOT_SERVICE_H_
    #define SRC_BERGAMOT_SERVICE_H_
    
-   #include "batch_translator.h"
+   #include <queue>
+   #include <thread>
+   #include <vector>
+   
    #include "data/types.h"
    #include "quality_estimator.h"
    #include "response.h"
    #include "response_builder.h"
    #include "text_processor.h"
-   #include "threadsafe_batcher.h"
+   #include "threadsafe_batching_pool.h"
+   #include "translation_model.h"
    #include "translator/parser.h"
    #include "vocabs.h"
-   
-   #ifndef WASM_COMPATIBLE_SOURCE
-   #include <thread>
-   #endif
-   
-   #include <queue>
-   #include <vector>
    
    namespace marian {
    namespace bergamot {
    
-   class Service {
+   class BlockingService;
+   class AsyncService;
+   
+   class BlockingService {
     public:
-     explicit Service(Ptr<Options> options, MemoryBundle memoryBundle = {});
+     struct Config {};
+     BlockingService(const BlockingService::Config &config);
    
-     explicit Service(const std::string &config, MemoryBundle memoryBundle = {})
-         : Service(parseOptions(config, /*validate=*/false), std::move(memoryBundle)) {}
    
-     ~Service();
    
-     void translate(std::string &&source, std::function<void(Response &&)> &&callback,
-                    ResponseOptions options = ResponseOptions());
-   
-   #ifdef WASM_COMPATIBLE_SOURCE
-     std::vector<Response> translateMultiple(std::vector<std::string> &&source, ResponseOptions responseOptions);
-   #endif
-   
-     bool isAlignmentSupported() const { return options_->hasAndNotEmpty("alignment"); }
+     std::vector<Response> translateMultiple(std::shared_ptr<TranslationModel> translationModel,
+                                             std::vector<std::string> &&source, const ResponseOptions &responseOptions);
    
     private:
-     void queueRequest(std::string &&input, std::function<void(Response &&)> &&callback, ResponseOptions responseOptions);
+     size_t requestId_;
    
+     AggregateBatchingPool batchingPool_;
    
-     size_t numWorkers_;
+     Config config_;
+   };
    
-     Ptr<Options> options_;
+   class AsyncService {
+    public:
+     struct Config {
+       size_t numWorkers;
+     };
+     AsyncService(const AsyncService::Config &config);
    
-     AlignedMemory modelMemory_;  // ORDER DEPENDENCY (translators_)
-     AlignedMemory shortlistMemory_;  // ORDER DEPENDENCY (translators_)
+     template <class ConfigType>
+     Ptr<TranslationModel> createCompatibleModel(const ConfigType &config, MemoryBundle &&memory = MemoryBundle{}) {
+       // @TODO: Remove this remove this dependency/coupling.
+       return New<TranslationModel>(config, std::move(memory), /*replicas=*/config_.numWorkers);
+     }
    
-     std::shared_ptr<QualityEstimator> qualityEstimator_;
+     void translate(std::shared_ptr<TranslationModel> translationModel, std::string &&source, CallbackType callback,
+                    const ResponseOptions &options = ResponseOptions());
+   
+     ~AsyncService();
+   
+    private:
+     AsyncService::Config config_;
+   
+     std::vector<std::thread> workers_;
    
    
      size_t requestId_;
-     Vocabs vocabs_;  // ORDER DEPENDENCY (text_processor_)
    
-     TextProcessor text_processor_;  // ORDER DEPENDENCY (vocabs_)
-   
-     ThreadsafeBatcher batcher_;
-   
-     // The following constructs are available providing full capabilities on a non
-     // WASM platform, where one does not have to hide threads.
-   #ifdef WASM_COMPATIBLE_SOURCE
-     BatchTranslator blocking_translator_;  // ORDER DEPENDENCY (modelMemory_, shortlistMemory_)
-   #else
-     std::vector<std::thread> workers_;
-   #endif  // WASM_COMPATIBLE_SOURCE
+     ThreadsafeBatchingPool<AggregateBatchingPool> safeBatchingPool_;
    };
    
    }  // namespace bergamot

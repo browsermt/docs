@@ -30,7 +30,7 @@ Program Listing for File response_builder.h
    
    class ResponseBuilder {
     public:
-     ResponseBuilder(ResponseOptions responseOptions, AnnotatedText &&source, Vocabs &vocabs,
+     ResponseBuilder(ResponseOptions responseOptions, AnnotatedText &&source, const Vocabs &vocabs,
                      std::function<void(Response &&)> callback, const QualityEstimator &qualityEstimator)
          : responseOptions_(responseOptions),
            source_(std::move(source)),

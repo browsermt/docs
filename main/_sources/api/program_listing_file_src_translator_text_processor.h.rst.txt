@@ -38,14 +38,14 @@ Program Listing for File text_processor.h
      TextProcessor(Ptr<Options>, const Vocabs &vocabs, const AlignedMemory &memory);
    
    
-     void process(std::string &&blob, AnnotatedText &source, Segments &segments);
+     void process(std::string &&blob, AnnotatedText &source, Segments &segments) const;
    
     private:
      void parseCommonOptions(Ptr<Options> options);
    
-     Segment tokenize(const string_view &input, std::vector<string_view> &tokenRanges);
+     Segment tokenize(const string_view &input, std::vector<string_view> &tokenRanges) const;
    
-     void wrap(Segment &sentence, std::vector<string_view> &tokenRanges, Segments &segments, AnnotatedText &source);
+     void wrap(Segment &sentence, std::vector<string_view> &tokenRanges, Segments &segments, AnnotatedText &source) const;
    
      const Vocabs &vocabs_;   
      size_t maxLengthBreak_;  

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class TextProcessor &mdash; Bergamot Translator main 2021-09-16 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Class TextProcessor &mdash; Bergamot Translator main 2021-09-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class ThreadsafeBatcher" href="classmarian_1_1bergamot_1_1ThreadsafeBatcher.html" />
-    <link rel="prev" title="Class Service" href="classmarian_1_1bergamot_1_1Service.html" /> 
+    <link rel="next" title="Template Class ThreadsafeBatchingPool" href="classmarian_1_1bergamot_1_1ThreadsafeBatchingPool.html" />
+    <link rel="prev" title="Class ResponseBuilder" href="classmarian_1_1bergamot_1_1ResponseBuilder.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -93,7 +93,7 @@
 <dt id="_CPPv4N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRKNSt6stringE">
 <span id="_CPPv3N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRKNSt6stringE"></span><span id="_CPPv2N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRKNSt6stringE"></span><span id="marian::bergamot::TextProcessor::TextProcessor__Ptr:Options:.VocabsCR.ssCR"></span><span class="target" id="classmarian_1_1bergamot_1_1TextProcessor_1a0119393a64ba8d99ffaa41b8845c5215"></span><code class="sig-name descname">TextProcessor</code><span class="sig-paren">(</span>Ptr&lt;Options&gt; <em>options</em>, <em class="property">const</em> <a class="reference internal" href="classmarian_1_1bergamot_1_1Vocabs.html#_CPPv4N6marian8bergamot6VocabsE" title="marian::bergamot::Vocabs">Vocabs</a> &amp;<em>vocabs</em>, <em class="property">const</em> std::string &amp;<em>ssplit_prefix_file</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot13TextProcessor13TextProcessorE3PtrI7OptionsERK6VocabsRKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#classmarian_1_1bergamot_1_1TextProcessor"><span class="std std-ref">TextProcessor</span></a> handles loading the sentencepiece vocabulary and also contains an instance of sentence-splitter based on ssplit. </p>
-<p>Used in <a class="reference internal" href="classmarian_1_1bergamot_1_1Service.html#classmarian_1_1bergamot_1_1Service"><span class="std std-ref">Service</span></a> to convert an incoming blob of text to a vector of sentences (vector of words). In addition, the ByteRanges of the source-tokens in unnormalized text are provided as string_views. Construct <a class="reference internal" href="#classmarian_1_1bergamot_1_1TextProcessor"><span class="std std-ref">TextProcessor</span></a> from options, vocabs and prefix-file. <dl class="simple">
+<p>Used in Service to convert an incoming blob of text to a vector of sentences (vector of words). In addition, the ByteRanges of the source-tokens in unnormalized text are provided as string_views. Construct <a class="reference internal" href="#classmarian_1_1bergamot_1_1TextProcessor"><span class="std std-ref">TextProcessor</span></a> from options, vocabs and prefix-file. <dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">options</span></code>: expected to contain <code class="docutils literal notranslate"><span class="pre">max-length-break</span></code>, <code class="docutils literal notranslate"><span class="pre">ssplit-mode</span></code>. </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">vocabs</span></code>: Vocabularies used to process text into sentences to marian::Words and corresponding <a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#structmarian_1_1bergamot_1_1ByteRange"><span class="std std-ref">ByteRange</span></a> information in <a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref">AnnotatedText</span></a>. </p></li>
@@ -119,8 +119,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="_CPPv4N6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments">
-<span id="_CPPv3N6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments"></span><span id="_CPPv2N6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments"></span><span id="marian::bergamot::TextProcessor::process__ssRR.AnnotatedTextR.SegmentsR"></span><span class="target" id="classmarian_1_1bergamot_1_1TextProcessor_1a534ae58137636be65013380c7446a516"></span>void <code class="sig-name descname">process</code><span class="sig-paren">(</span>std::string &amp;&amp;<em>blob</em>, <a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#_CPPv4N6marian8bergamot13AnnotatedTextE" title="marian::bergamot::AnnotatedText">AnnotatedText</a> &amp;<em>source</em>, <a class="reference internal" href="typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb.html#_CPPv4N6marian8bergamot8SegmentsE" title="marian::bergamot::Segments">Segments</a> &amp;<em>segments</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments" title="Permalink to this definition">¶</a><br /></dt>
+<dt id="_CPPv4NK6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments">
+<span id="_CPPv3NK6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments"></span><span id="_CPPv2NK6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments"></span><span id="marian::bergamot::TextProcessor::process__ssRR.AnnotatedTextR.SegmentsRC"></span><span class="target" id="classmarian_1_1bergamot_1_1TextProcessor_1a4128a58382ec8f6edcc19b57bb293d55"></span>void <code class="sig-name descname">process</code><span class="sig-paren">(</span>std::string &amp;&amp;<em>blob</em>, <a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#_CPPv4N6marian8bergamot13AnnotatedTextE" title="marian::bergamot::AnnotatedText">AnnotatedText</a> &amp;<em>source</em>, <a class="reference internal" href="typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb.html#_CPPv4N6marian8bergamot8SegmentsE" title="marian::bergamot::Segments">Segments</a> &amp;<em>segments</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot13TextProcessor7processERRNSt6stringER13AnnotatedTextR8Segments" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Wrap into sentences of at most maxLengthBreak_ tokens and add to source. </p>
 <p><dl class="simple">
 <dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
@@ -143,8 +143,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="classmarian_1_1bergamot_1_1Service.html" class="btn btn-neutral float-left" title="Class Service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="classmarian_1_1bergamot_1_1ThreadsafeBatcher.html" class="btn btn-neutral float-right" title="Class ThreadsafeBatcher" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="classmarian_1_1bergamot_1_1ResponseBuilder.html" class="btn btn-neutral float-left" title="Class ResponseBuilder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="classmarian_1_1bergamot_1_1ThreadsafeBatchingPool.html" class="btn btn-neutral float-right" title="Template Class ThreadsafeBatchingPool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

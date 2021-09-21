@@ -1,0 +1,13 @@
+.. _exhale_typedef_definitions_8h_1a8bf4b6b0af6b724959d0d724bdc38c52:
+
+Typedef marian::bergamot::CallbackType
+======================================
+
+- Defined in :ref:`file_src_translator_definitions.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: marian::bergamot::CallbackType

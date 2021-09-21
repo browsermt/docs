@@ -15,18 +15,19 @@ Directory translator
 Files
 -----
 
+- :ref:`file_src_translator_aggregate_batching_pool.cpp`
+- :ref:`file_src_translator_aggregate_batching_pool.h`
 - :ref:`file_src_translator_aligned.h`
 - :ref:`file_src_translator_annotation.cpp`
 - :ref:`file_src_translator_annotation.h`
 - :ref:`file_src_translator_batch.cpp`
 - :ref:`file_src_translator_batch.h`
-- :ref:`file_src_translator_batch_translator.cpp`
-- :ref:`file_src_translator_batch_translator.h`
-- :ref:`file_src_translator_batcher.cpp`
-- :ref:`file_src_translator_batcher.h`
+- :ref:`file_src_translator_batching_pool.cpp`
+- :ref:`file_src_translator_batching_pool.h`
 - :ref:`file_src_translator_byte_array_util.cpp`
 - :ref:`file_src_translator_byte_array_util.h`
 - :ref:`file_src_translator_definitions.h`
+- :ref:`file_src_translator_parser.cpp`
 - :ref:`file_src_translator_parser.h`
 - :ref:`file_src_translator_quality_estimator.cpp`
 - :ref:`file_src_translator_quality_estimator.h`
@@ -40,8 +41,10 @@ Files
 - :ref:`file_src_translator_service.h`
 - :ref:`file_src_translator_text_processor.cpp`
 - :ref:`file_src_translator_text_processor.h`
-- :ref:`file_src_translator_threadsafe_batcher.cpp`
-- :ref:`file_src_translator_threadsafe_batcher.h`
+- :ref:`file_src_translator_threadsafe_batching_pool.cpp`
+- :ref:`file_src_translator_threadsafe_batching_pool.h`
+- :ref:`file_src_translator_translation_model.cpp`
+- :ref:`file_src_translator_translation_model.h`
 - :ref:`file_src_translator_vocabs.h`
 
 

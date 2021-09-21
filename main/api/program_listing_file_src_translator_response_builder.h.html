@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File response_builder.h &mdash; Bergamot Translator main 2021-09-16 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File response_builder.h &mdash; Bergamot Translator main 2021-09-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -97,7 +97,7 @@
 
 <span class="k">class</span> <span class="nc">ResponseBuilder</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">ResponseBuilder</span><span class="p">(</span><span class="n">ResponseOptions</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">,</span><span class="w"> </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">Vocabs</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vocabs</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">ResponseBuilder</span><span class="p">(</span><span class="n">ResponseOptions</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">,</span><span class="w"> </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vocabs</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vocabs</span><span class="p">,</span><span class="w"></span>
 <span class="w">                  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QualityEstimator</span><span class="w"> </span><span class="o">&amp;</span><span class="n">qualityEstimator</span><span class="p">)</span><span class="w"></span>
 <span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">responseOptions_</span><span class="p">(</span><span class="n">responseOptions</span><span class="p">),</span><span class="w"></span>
 <span class="w">        </span><span class="n">source_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source</span><span class="p">)),</span><span class="w"></span>

@@ -51,6 +51,8 @@ Included By
 -----------
 
 
+- :ref:`file_src_translator_translation_model.h`
+
 - :ref:`file_src_translator_service.h`
 
 - :ref:`file_src_translator_text_processor.cpp`

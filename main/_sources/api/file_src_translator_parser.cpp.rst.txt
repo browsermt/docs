@@ -1,0 +1,67 @@
+
+.. _file_src_translator_parser.cpp:
+
+File parser.cpp
+===============
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/parser.cpp``)
+------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_parser.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``common/build_info.h``
+
+- ``common/config.h``
+
+- ``common/regex.h``
+
+- ``common/version.h``
+
+- ``parser.h`` (:ref:`file_src_translator_parser.h`)
+
+- ``unordered_map``
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_parser_8cpp_1a1b68209c8843f7c0420a0dea8884e77f`
+
+- :ref:`exhale_function_parser_8cpp_1a738c33453a147aebfc5308faad463651`
+
+- :ref:`exhale_function_parser_8cpp_1a5d169766c7451792220a52433b66d1f1`
+

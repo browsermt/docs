@@ -1,0 +1,13 @@
+.. _exhale_enum_parser_8h_1ab481b06779dc3e1ec98b3e59e3f727ff:
+
+Enum OpMode
+===========
+
+- Defined in :ref:`file_src_translator_parser.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: marian::bergamot::OpMode

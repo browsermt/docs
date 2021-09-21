@@ -57,11 +57,11 @@ Included By
 
 - :ref:`file_src_translator_batch.h`
 
+- :ref:`file_src_translator_batching_pool.h`
+
+- :ref:`file_src_translator_translation_model.h`
+
 - :ref:`file_src_translator_batch.cpp`
-
-- :ref:`file_src_translator_batch_translator.h`
-
-- :ref:`file_src_translator_batcher.h`
 
 - :ref:`file_src_translator_request.cpp`
 

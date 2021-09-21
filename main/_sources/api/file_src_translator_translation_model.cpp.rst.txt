@@ -1,0 +1,60 @@
+
+.. _file_src_translator_translation_model.cpp:
+
+File translation_model.cpp
+==========================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/translation_model.cpp``)
+-----------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_translation_model.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``batch.h`` (:ref:`file_src_translator_batch.h`)
+
+- ``byte_array_util.h`` (:ref:`file_src_translator_byte_array_util.h`)
+
+- ``common/logging.h``
+
+- ``data/corpus.h``
+
+- ``data/text_input.h``
+
+- ``parser.h`` (:ref:`file_src_translator_parser.h`)
+
+- ``translation_model.h`` (:ref:`file_src_translator_translation_model.h`)
+
+- ``translator/beam_search.h``
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+

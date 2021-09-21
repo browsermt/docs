@@ -45,17 +45,17 @@ Included By
 -----------
 
 
-- :ref:`file_src_translator_annotation.cpp`
-
 - :ref:`file_src_translator_request.h`
 
 - :ref:`file_src_translator_response.h`
 
 - :ref:`file_src_translator_quality_estimator.h`
 
-- :ref:`file_src_translator_request.cpp`
-
 - :ref:`file_src_translator_text_processor.h`
+
+- :ref:`file_src_translator_annotation.cpp`
+
+- :ref:`file_src_translator_request.cpp`
 
 - :ref:`file_src_translator_text_processor.cpp`
 

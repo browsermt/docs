@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File parser.h &mdash; Bergamot Translator main 2021-09-16 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File parser.h &mdash; Bergamot Translator main 2021-09-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -80,6 +80,10 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SRC_BERGAMOT_PARSER_H</span>
 <span class="cp">#define SRC_BERGAMOT_PARSER_H</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;3rd_party/marian-dev/src/3rd_party/CLI/CLI.hpp&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;3rd_party/yaml-cpp/yaml.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/config_parser.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/config_validator.h&quot;</span><span class="cp"></span>
@@ -89,65 +93,54 @@
 <span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-<span class="kr">inline</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">ConfigParser</span><span class="w"> </span><span class="nf">createConfigParser</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">marian</span><span class="o">::</span><span class="n">ConfigParser</span><span class="w"> </span><span class="n">cp</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">cli</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">translation</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--ssplit-prefix-file&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s">&quot;File with nonbreaking prefixes for sentence splitting.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">enum</span> <span class="nc">OpMode</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">APP_WASM</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">APP_NATIVE</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">APP_DECODER</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TEST_SOURCE_SENTENCES</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TEST_TARGET_SENTENCES</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TEST_SOURCE_WORDS</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TEST_TARGET_WORDS</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TEST_QUALITY_ESTIMATOR_WORDS</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TEST_QUALITY_ESTIMATOR_SCORES</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TEST_FORWARD_BACKWARD_FOR_OUTBOUND</span><span class="p">,</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--ssplit-mode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Server Options&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[paragraph, sentence, wrapped_text]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;paragraph&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">istringstream</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istringstream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="n">OpMode</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mode</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--max-length-break&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="s">&quot;Maximum input tokens to be processed in a single sentence.&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">CLIConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">ModelConfigPaths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ModelConfigPaths</span><span class="w"> </span><span class="n">modelConfigPaths</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">byteArray</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">validateByteArray</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">numWorkers</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">OpMode</span><span class="w"> </span><span class="n">opMode</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--bytearray&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                     </span><span class="s">&quot;Flag holds whether to construct service from bytearrays, only for testing purpose&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">ConfigParser</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="n">ConfigParser</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">parseArgs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]);</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">CLIConfig</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">getConfig</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">config_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--check-bytearray&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                     </span><span class="s">&quot;Flag holds whether to check the content of the bytearrays (true by default)&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Special Options: build-info and version. These are not taken down further, the respective logic executed and</span>
+<span class="w">  </span><span class="c1">// program exits after.</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">addSpecialOptions</span><span class="p">(</span><span class="n">CLI</span><span class="o">::</span><span class="n">App</span><span class="w"> </span><span class="o">&amp;</span><span class="n">app</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">handleSpecialOptions</span><span class="p">();</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--bergamot-mode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="s">&quot;Operating mode for bergamot: [wasm, native, decoder]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;native&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">addOptionsBoundToConfig</span><span class="p">(</span><span class="n">CLI</span><span class="o">::</span><span class="n">App</span><span class="w"> </span><span class="o">&amp;</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">CLIConfig</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">cp</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--quality&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;File considering Quality Estimation model&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">CLIConfig</span><span class="w"> </span><span class="n">config_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">CLI</span><span class="o">::</span><span class="n">App</span><span class="w"> </span><span class="n">app_</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">cp</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">build_info_</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">version_</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseOptions</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">validate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="w"> </span><span class="n">options</span><span class="p">;</span><span class="w"></span>
-
-<span class="w">  </span><span class="c1">// @TODO(jerinphilip) There&#39;s something off here, @XapaJIaMnu suggests</span>
-<span class="w">  </span><span class="c1">// that should not be using the defaultConfig. This function only has access</span>
-<span class="w">  </span><span class="c1">// to std::string config and needs to be able to construct Options from the</span>
-<span class="w">  </span><span class="c1">// same.</span>
-
-<span class="w">  </span><span class="c1">// Absent the following code-segment, there is a parsing exception thrown on</span>
-<span class="w">  </span><span class="c1">// rebuilding YAML.</span>
-<span class="w">  </span><span class="c1">//</span>
-<span class="w">  </span><span class="c1">// Error: Unhandled exception of type &#39;N4YAML11InvalidNodeE&#39;: invalid node;</span>
-<span class="w">  </span><span class="c1">// this may result from using a map iterator as a sequence iterator, or</span>
-<span class="w">  </span><span class="c1">// vice-versa</span>
-<span class="w">  </span><span class="c1">//</span>
-<span class="w">  </span><span class="c1">// Error: Aborted from void unhandledException() in</span>
-<span class="w">  </span><span class="c1">// 3rd_party/marian-dev/src/common/logging.cpp:113</span>
-
-<span class="w">  </span><span class="n">marian</span><span class="o">::</span><span class="n">ConfigParser</span><span class="w"> </span><span class="n">configParser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createConfigParser</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">YAML</span><span class="o">::</span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="n">defaultConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configParser</span><span class="p">.</span><span class="n">getConfig</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">  </span><span class="n">options</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">defaultConfig</span><span class="p">);</span><span class="w"></span>
-
-<span class="w">  </span><span class="c1">// Parse configs onto defaultConfig.</span>
-<span class="w">  </span><span class="n">options</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">config</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">YAML</span><span class="o">::</span><span class="n">Node</span><span class="w"> </span><span class="n">configCopy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options</span><span class="p">.</span><span class="n">cloneToYamlNode</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">validate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Perform validation on parsed options only when requested</span>
-<span class="w">    </span><span class="n">marian</span><span class="o">::</span><span class="n">ConfigValidator</span><span class="w"> </span><span class="nf">validator</span><span class="p">(</span><span class="n">configCopy</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">validator</span><span class="p">.</span><span class="n">validateOptions</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">cli</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">translation</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseOptionsFromString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">validate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                                        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">pathsInSameDirAs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseOptionsFromFilePath</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">validate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
 
 <span class="p">}</span><span class="w">  </span><span class="c1">//  namespace bergamot</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">//  namespace marian</span>

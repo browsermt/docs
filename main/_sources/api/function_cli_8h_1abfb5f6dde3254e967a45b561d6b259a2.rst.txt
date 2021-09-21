@@ -1,0 +1,13 @@
+.. _exhale_function_cli_8h_1abfb5f6dde3254e967a45b561d6b259a2:
+
+Function marian::bergamot::app::wasm
+====================================
+
+- Defined in :ref:`file_app_cli.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::app::wasm(const CLIConfig&)

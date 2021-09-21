@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>File service.h &mdash; Bergamot Translator main 2021-09-16 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>File service.h &mdash; Bergamot Translator main 2021-09-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -98,15 +98,15 @@
 <section id="includes">
 <h2>Includes<a class="headerlink" href="#includes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">batch_translator.h</span></code> (<a class="reference internal" href="file_src_translator_batch_translator.h.html#file-src-translator-batch-translator-h"><span class="std std-ref">File batch_translator.h</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">data/types.h</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">quality_estimator.h</span></code> (<a class="reference internal" href="file_src_translator_quality_estimator.h.html#file-src-translator-quality-estimator-h"><span class="std std-ref">File quality_estimator.h</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">queue</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">response.h</span></code> (<a class="reference internal" href="file_src_translator_response.h.html#file-src-translator-response-h"><span class="std std-ref">File response.h</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">response_builder.h</span></code> (<a class="reference internal" href="file_src_translator_response_builder.h.html#file-src-translator-response-builder-h"><span class="std std-ref">File response_builder.h</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">text_processor.h</span></code> (<a class="reference internal" href="file_src_translator_text_processor.h.html#file-src-translator-text-processor-h"><span class="std std-ref">File text_processor.h</span></a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">thread</span></code> (<a class="reference internal" href="file_src_translator_threadsafe_batcher.cpp.html#file-src-translator-threadsafe-batcher-cpp"><span class="std std-ref">File threadsafe_batcher.cpp</span></a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">threadsafe_batcher.h</span></code> (<a class="reference internal" href="file_src_translator_threadsafe_batcher.h.html#file-src-translator-threadsafe-batcher-h"><span class="std std-ref">File threadsafe_batcher.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thread</span></code> (<a class="reference internal" href="file_src_translator_threadsafe_batching_pool.cpp.html#file-src-translator-threadsafe-batching-pool-cpp"><span class="std std-ref">File threadsafe_batching_pool.cpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">threadsafe_batching_pool.h</span></code> (<a class="reference internal" href="file_src_translator_threadsafe_batching_pool.h.html#file-src-translator-threadsafe-batching-pool-h"><span class="std std-ref">File threadsafe_batching_pool.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">translation_model.h</span></code> (<a class="reference internal" href="file_src_translator_translation_model.h.html#file-src-translator-translation-model-h"><span class="std std-ref">File translation_model.h</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">translator/parser.h</span></code> (<a class="reference internal" href="file_src_translator_parser.h.html#file-src-translator-parser-h"><span class="std std-ref">File parser.h</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vector</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vocabs.h</span></code> (<a class="reference internal" href="file_src_translator_vocabs.h.html#file-src-translator-vocabs-h"><span class="std std-ref">File vocabs.h</span></a>)</p></li>
@@ -129,7 +129,10 @@
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="classmarian_1_1bergamot_1_1Service.html#exhale-class-classmarian-1-1bergamot-1-1service"><span class="std std-ref">Class Service</span></a></p></li>
+<li><p><a class="reference internal" href="structmarian_1_1bergamot_1_1AsyncService_1_1Config.html#exhale-struct-structmarian-1-1bergamot-1-1asyncservice-1-1config"><span class="std std-ref">Struct AsyncService::Config</span></a></p></li>
+<li><p><a class="reference internal" href="structmarian_1_1bergamot_1_1BlockingService_1_1Config.html#exhale-struct-structmarian-1-1bergamot-1-1blockingservice-1-1config"><span class="std std-ref">Struct BlockingService::Config</span></a></p></li>
+<li><p><a class="reference internal" href="classmarian_1_1bergamot_1_1AsyncService.html#exhale-class-classmarian-1-1bergamot-1-1asyncservice"><span class="std std-ref">Class AsyncService</span></a></p></li>
+<li><p><a class="reference internal" href="classmarian_1_1bergamot_1_1BlockingService.html#exhale-class-classmarian-1-1bergamot-1-1blockingservice"><span class="std std-ref">Class BlockingService</span></a></p></li>
 </ul>
 </section>
 </section>

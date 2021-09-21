@@ -17,8 +17,8 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_cli_8h_1a23079dd5b69fbc8865326c5898ed1964`
+- :ref:`exhale_function_cli_8h_1ac5b271b6d4b0a3c7bfe36c61e1aa182b`
 
-- :ref:`exhale_function_cli_8h_1a204693bf4e80a401035e1481bec38ac4`
+- :ref:`exhale_function_cli_8h_1a0ad9e75d01e6f489c4cbd81b25f71494`
 
-- :ref:`exhale_function_cli_8h_1a8aa7807a1b335063a53cbfed7093d513`
+- :ref:`exhale_function_cli_8h_1abfb5f6dde3254e967a45b561d6b259a2`

@@ -33,9 +33,9 @@ Included By
 
 - :ref:`file_src_translator_response_builder.h`
 
-- :ref:`file_src_translator_batch_translator.h`
-
 - :ref:`file_src_translator_text_processor.h`
+
+- :ref:`file_src_translator_translation_model.h`
 
 - :ref:`file_src_translator_service.h`
 

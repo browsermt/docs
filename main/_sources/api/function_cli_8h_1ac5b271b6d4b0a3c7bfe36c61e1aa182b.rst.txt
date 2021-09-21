@@ -1,0 +1,13 @@
+.. _exhale_function_cli_8h_1ac5b271b6d4b0a3c7bfe36c61e1aa182b:
+
+Function marian::bergamot::app::decoder
+=======================================
+
+- Defined in :ref:`file_app_cli.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::app::decoder(const CLIConfig&)
