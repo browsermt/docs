@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2021-09-28 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2021-10-19 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -49,7 +49,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="marian-integration.html">Bergamot C++ Library</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Using Bergamot Translator in JavaScript</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-js-apis">Using JS APIs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#demo">Demo</a></li>
 </ul>
@@ -83,93 +82,25 @@
              
   <section id="using-bergamot-translator-in-javascript">
 <h1>Using Bergamot Translator in JavaScript<a class="headerlink" href="#using-bergamot-translator-in-javascript" title="Permalink to this headline">¶</a></h1>
-<p>Instructions in this document assume current-directory to be
-<a class="reference external" href="https://github.com/browsermt/bergamot-translator/tree/main/wasm">wasm</a> within
-bergamot-translator source.</p>
-<p>The example file <code class="docutils literal notranslate"><span class="pre">bergamot.html</span></code> in the folder <code class="docutils literal notranslate"><span class="pre">test_page</span></code> demonstrates how to
-use the bergamot translator in JavaScript via a <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tag.</p>
-<section id="pre-requisites">
-<h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
-<p><strong>Download files required for translation</strong></p>
-<p>Please note that <a class="reference external" href="#using-js-apis">Using JS APIs</a> and <a class="reference external" href="#demo">Demo</a> section below assumes that the <a class="reference external" href="https://github.com/mozilla-applied-ml/bergamot-models">bergamot project specific model files</a> are already downloaded and present in the <code class="docutils literal notranslate"><span class="pre">test_page</span></code> folder. If this is not done then use following instructions to do so:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test_page
-git clone --depth <span class="m">1</span> --branch main --single-branch https://github.com/mozilla-applied-ml/bergamot-models
-mkdir models
-cp -rf bergamot-models/prod/* models
-gunzip models/*/*
-</pre></div>
-</div>
-</section>
+<p>All the instructions below are meant to run from the current directory.</p>
 <section id="using-js-apis">
 <h2>Using JS APIs<a class="headerlink" href="#using-js-apis" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// The model configuration as YAML formatted string. For available configuration options, please check: https://marian-nmt.github.io/docs/cmd/marian-decoder/</span>
-<span class="c1">// This example captures some of the most relevant options</span>
-<span class="kd">const</span> <span class="nx">modelConfig</span> <span class="o">=</span> <span class="sb">`beam-size: 1</span>
-<span class="sb">normalize: 1.0</span>
-<span class="sb">word-penalty: 0</span>
-<span class="sb">max-length-break: 128</span>
-<span class="sb">mini-batch-words: 1024</span>
-<span class="sb">workspace: 128</span>
-<span class="sb">max-length-factor: 2.0</span>
-<span class="sb">skip-cost: true</span>
-<span class="sb">cpu-threads: 0</span>
-<span class="sb">quiet: true</span>
-<span class="sb">quiet-translation: true</span>
-<span class="sb">gemm-precision: int8shift</span>
-<span class="sb">`</span><span class="p">;</span>
-
-<span class="c1">// Download model, shortlist and vocabulary files and read them into buffers</span>
-<span class="kd">const</span> <span class="nx">modelFile</span> <span class="o">=</span> <span class="sb">`models/esen/model.esen.intgemm.alphas.bin`</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">shortlistFile</span> <span class="o">=</span> <span class="sb">`models/esen/lex.50.50.esen.s2t.bin`</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">vocabFiles</span> <span class="o">=</span> <span class="p">[</span><span class="sb">`models/</span><span class="si">${</span><span class="nx">languagePair</span><span class="si">}</span><span class="sb">/vocab.</span><span class="si">${</span><span class="nx">vocabLanguagePair</span><span class="si">}</span><span class="sb">.spm`</span><span class="p">,</span>
-                    <span class="sb">`models/</span><span class="si">${</span><span class="nx">languagePair</span><span class="si">}</span><span class="sb">/vocab.</span><span class="si">${</span><span class="nx">vocabLanguagePair</span><span class="si">}</span><span class="sb">.spm`</span><span class="p">];</span>
-<span class="kd">const</span> <span class="nx">uniqueVocabFiles</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Set</span><span class="p">(</span><span class="nx">vocabFiles</span><span class="p">);</span>
-
-<span class="c1">// Please refer to bergamot.html in test_page folder for downloadAsArrayBuffer function</span>
-<span class="kd">const</span> <span class="nx">downloadedBuffers</span> <span class="o">=</span> <span class="k">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">downloadAsArrayBuffer</span><span class="p">(</span><span class="nx">modelFile</span><span class="p">),</span> <span class="nx">downloadAsArrayBuffer</span><span class="p">(</span><span class="nx">shortlistFile</span><span class="p">)]);</span>
-<span class="kd">const</span> <span class="nx">downloadedVocabBuffers</span> <span class="o">=</span> <span class="p">[];</span>
-<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">uniqueVocabFiles</span><span class="p">.</span><span class="nx">values</span><span class="p">())</span> <span class="p">{</span>
-  <span class="nx">downloadedVocabBuffers</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">await</span> <span class="nx">downloadAsArrayBuffer</span><span class="p">(</span><span class="nx">item</span><span class="p">));</span>
-<span class="p">}</span>
-
-<span class="kd">const</span> <span class="nx">modelBuffer</span> <span class="o">=</span> <span class="nx">downloadedBuffers</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
-<span class="kd">const</span> <span class="nx">shortListBuffer</span> <span class="o">=</span> <span class="nx">downloadedBuffers</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
-
-<span class="c1">// Construct AlignedMemory instances from the buffers</span>
-<span class="kd">var</span> <span class="nx">alignedModelMemory</span> <span class="o">=</span> <span class="nx">constructAlignedMemoryFromBuffer</span><span class="p">(</span><span class="nx">modelBuffer</span><span class="p">,</span> <span class="mf">256</span><span class="p">);</span> <span class="c1">// Please refer to bergamot.html in test_page folder for this function</span>
-<span class="kd">var</span> <span class="nx">alignedShortlistMemory</span> <span class="o">=</span> <span class="nx">constructAlignedMemoryFromBuffer</span><span class="p">(</span><span class="nx">shortListBuffer</span><span class="p">,</span> <span class="mf">64</span><span class="p">);</span> <span class="c1">// Please refer to bergamot.html in test_page folder for this function</span>
-<span class="kd">var</span> <span class="nx">alignedVocabsMemoryList</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">AlignedMemoryList</span><span class="p">;</span>
-<span class="nx">downloadedVocabBuffers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="nx">alignedVocabsMemoryList</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="nx">constructAlignedMemoryFromBuffer</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="mf">64</span><span class="p">)));</span>
-
-<span class="c1">// Instantiate the Translation Service</span>
-<span class="kd">const</span> <span class="nx">translationService</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">Service</span><span class="p">(</span><span class="nx">modelConfig</span><span class="p">,</span> <span class="nx">alignedModelMemory</span><span class="p">,</span> <span class="nx">alignedShortlistMemory</span><span class="p">,</span> <span class="nx">alignedVocabsMemoryList</span><span class="p">);</span>
-
-<span class="c1">// Instantiate the arguments of translate() API i.e. ResponseOptions and input (vector&lt;string&gt;)</span>
-<span class="kd">const</span> <span class="nx">responseOptions</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">ResponseOptions</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">input</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">VectorString</span><span class="p">;</span>
-
-<span class="c1">// Initialize the input</span>
-<span class="nx">input</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">);</span> <span class="nx">input</span><span class="p">.</span><span class="nx">push_back</span><span class="p">(</span><span class="s2">&quot;Mundo&quot;</span><span class="p">);</span>
-
-<span class="c1">// translate the input; the result is a vector&lt;Response&gt;</span>
-<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">translationService</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span> <span class="nx">responseOptions</span><span class="p">);</span>
-
-<span class="c1">// Print original and translated text from each entry of vector&lt;Response&gt;</span>
-<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">size</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39; original=&#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">getOriginalText</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;, translation=&#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">getTranslatedText</span><span class="p">());</span>
-<span class="p">}</span>
-
-<span class="c1">// Don&#39;t forget to clean up the instances</span>
-<span class="nx">translationService</span><span class="p">.</span><span class="ow">delete</span><span class="p">();</span>
-<span class="nx">responseOptions</span><span class="p">.</span><span class="ow">delete</span><span class="p">();</span>
-<span class="nx">input</span><span class="p">.</span><span class="ow">delete</span><span class="p">();</span>
-</pre></div>
-</div>
+<p>Please refer to the file <code class="docutils literal notranslate"><span class="pre">test_page/js/worker.js</span></code> that demonstrates how to use the bergamot translator in JavaScript via a <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tag.</p>
 </section>
 <section id="demo">
 <h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>Make sure that you followed <a class="reference external" href="#pre-requisites">Pre-requisites</a> instructions before moving forward.</p></li>
+<li><p>Download bergamot model files required for translation</p>
+<p>Use following instructions to download <a class="reference external" href="https://github.com/mozilla/firefox-translations-models/">model files</a> (make sure that <code class="docutils literal notranslate"><span class="pre">git-lfs</span></code> is installed and initialized before running these instructions):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test_page
+git clone --depth <span class="m">1</span> --branch main --single-branch https://github.com/mozilla/firefox-translations-models/
+mkdir models
+cp -rf firefox-translations-models/models/prod/* models
+cp -rf firefox-translations-models/models/dev/* models
+gunzip models/*/*
+</pre></div>
+</div>
+</li>
 <li><p>Start the test webserver (ensure you have the latest nodejs installed)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test_page
 bash start_server.sh ../../build-wasm
@@ -194,15 +125,15 @@ bash start_server.sh ../../build-wasm
 </ul>
 </li>
 <li><p>Browse to the following page:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">http</span><span class="p">:</span><span class="c1">//localhost:8000/bergamot.html</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">http</span><span class="p">:</span><span class="c1">//localhost:80</span>
 </pre></div>
 </div>
 </li>
-<li><p>Run some translations:</p>
+<li><p>Perform translations:</p>
 <ul class="simple">
-<li><p>Choose a model and press <code class="docutils literal notranslate"><span class="pre">Load</span> <span class="pre">Model</span></code></p></li>
-<li><p>Type a sentence to be translated in the <code class="docutils literal notranslate"><span class="pre">From</span></code> textbox and press <code class="docutils literal notranslate"><span class="pre">Translate</span></code></p></li>
-<li><p>See the results in the <code class="docutils literal notranslate"><span class="pre">To</span></code> and <code class="docutils literal notranslate"><span class="pre">Log</span></code> textboxes</p></li>
+<li><p>Choose the source and target languages using <code class="docutils literal notranslate"><span class="pre">From</span></code> and <code class="docutils literal notranslate"><span class="pre">To</span></code> dropdowns.</p></li>
+<li><p>Type a sentence to be translated in the <code class="docutils literal notranslate"><span class="pre">From</span></code> textbox.</p></li>
+<li><p>See the result in the <code class="docutils literal notranslate"><span class="pre">To</span></code> textbox.</p></li>
 </ul>
 </li>
 </ul>
