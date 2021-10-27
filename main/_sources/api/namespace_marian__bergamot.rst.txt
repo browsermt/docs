@@ -114,9 +114,9 @@ Functions
 
 - :ref:`exhale_function_byte__array__util_8cpp_1ac17b7705d71079521a1e6db2059ada4f`
 
-- :ref:`exhale_function_byte__array__util_8cpp_1a276da62846e557d498b92ee9abc90aa0`
-
 - :ref:`exhale_function_byte__array__util_8cpp_1a42b492f8a1927d17d3a72774b53eebc2`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a276da62846e557d498b92ee9abc90aa0`
 
 - :ref:`exhale_function_byte__array__util_8cpp_1a03d0ea07c0548c3c9d9fa3b45e8eccc6`
 
