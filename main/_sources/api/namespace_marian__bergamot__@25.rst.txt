@@ -1,7 +1,7 @@
 
-.. _namespace_marian__bergamot__@24:
+.. _namespace_marian__bergamot__@25:
 
-Namespace marian::bergamot::@24
+Namespace marian::bergamot::@25
 ===============================
 
 

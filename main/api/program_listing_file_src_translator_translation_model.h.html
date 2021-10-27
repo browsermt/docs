@@ -85,6 +85,7 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;batch.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;batching_pool.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cache.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/utils.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/shortlist.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;definitions.h&quot;</span><span class="cp"></span>
@@ -111,15 +112,18 @@
 
 <span class="w">  </span><span class="c1">//  @returns Request created from the query parameters wrapped within a shared-pointer.</span>
 <span class="w">  </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">makeRequest</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">requestId</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">CallbackType</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"></span>
-<span class="w">                           </span><span class="k">const</span><span class="w"> </span><span class="n">ResponseOptions</span><span class="o">&amp;</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">);</span><span class="w"></span>
+<span class="w">                           </span><span class="k">const</span><span class="w"> </span><span class="n">ResponseOptions</span><span class="o">&amp;</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">,</span><span class="w"> </span><span class="n">TranslationCache</span><span class="o">*</span><span class="w"> </span><span class="n">cache</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">enqueueRequest</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">batchingPool_</span><span class="p">.</span><span class="n">enqueueRequest</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">enqueueRequest</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">batchingPool_</span><span class="p">.</span><span class="n">enqueueRequest</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 
 <span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">generateBatch</span><span class="p">(</span><span class="n">Batch</span><span class="o">&amp;</span><span class="w"> </span><span class="n">batch</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">batchingPool_</span><span class="p">.</span><span class="n">generateBatch</span><span class="p">(</span><span class="n">batch</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">translateBatch</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">deviceId</span><span class="p">,</span><span class="w"> </span><span class="n">Batch</span><span class="o">&amp;</span><span class="w"> </span><span class="n">batch</span><span class="p">);</span><span class="w"></span>
 
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">modelId</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">modelId_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
 <span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">modelId_</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">Config</span><span class="w"> </span><span class="n">options_</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">MemoryBundle</span><span class="w"> </span><span class="n">memory_</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">Vocabs</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">;</span><span class="w"></span>
@@ -143,6 +147,8 @@
 
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">loadBackend</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">idx</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">data</span><span class="o">::</span><span class="n">CorpusBatch</span><span class="o">&gt;</span><span class="w"> </span><span class="n">convertToMarianBatch</span><span class="p">(</span><span class="n">Batch</span><span class="o">&amp;</span><span class="w"> </span><span class="n">batch</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">modelCounter_</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>

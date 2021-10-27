@@ -18,6 +18,7 @@ Program Listing for File translation_model.h
    
    #include "batch.h"
    #include "batching_pool.h"
+   #include "cache.h"
    #include "common/utils.h"
    #include "data/shortlist.h"
    #include "definitions.h"
@@ -44,15 +45,18 @@ Program Listing for File translation_model.h
    
      //  @returns Request created from the query parameters wrapped within a shared-pointer.
      Ptr<Request> makeRequest(size_t requestId, std::string&& source, CallbackType callback,
-                              const ResponseOptions& responseOptions);
+                              const ResponseOptions& responseOptions, TranslationCache* cache);
    
-     void enqueueRequest(Ptr<Request> request) { batchingPool_.enqueueRequest(request); };
+     size_t enqueueRequest(Ptr<Request> request) { return batchingPool_.enqueueRequest(request); };
    
      size_t generateBatch(Batch& batch) { return batchingPool_.generateBatch(batch); }
    
      void translateBatch(size_t deviceId, Batch& batch);
    
+     size_t modelId() const { return modelId_; }
+   
     private:
+     size_t modelId_;
      Config options_;
      MemoryBundle memory_;
      Vocabs vocabs_;
@@ -76,6 +80,8 @@ Program Listing for File translation_model.h
    
      void loadBackend(size_t idx);
      Ptr<marian::data::CorpusBatch> convertToMarianBatch(Batch& batch);
+   
+     static std::atomic<size_t> modelCounter_;
    };
    
    }  // namespace bergamot

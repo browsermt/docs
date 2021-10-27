@@ -47,6 +47,8 @@ Included By
 
 - :ref:`file_src_translator_annotation.h`
 
+- :ref:`file_src_translator_cache.h`
+
 - :ref:`file_src_translator_request.h`
 
 - :ref:`file_src_translator_response.h`

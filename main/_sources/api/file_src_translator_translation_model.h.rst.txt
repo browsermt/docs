@@ -33,6 +33,8 @@ Includes
 
 - ``batching_pool.h`` (:ref:`file_src_translator_aggregate_batching_pool.h`)
 
+- ``cache.h`` (:ref:`file_src_translator_cache.h`)
+
 - ``common/utils.h``
 
 - ``data/shortlist.h``
@@ -62,6 +64,8 @@ Included By
 
 
 - :ref:`file_src_translator_aggregate_batching_pool.h`
+
+- :ref:`file_src_translator_request.cpp`
 
 - :ref:`file_src_translator_threadsafe_batching_pool.h`
 

@@ -19,7 +19,7 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
-   namespace_marian__bergamot__@24.rst
+   namespace_marian__bergamot__@25.rst
 
 .. toctree::
    :maxdepth: 5
@@ -44,6 +44,11 @@ Classes and Structs
    :maxdepth: 5
 
    structmarian_1_1bergamot_1_1AsyncService_1_1Config.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1AtomicCache_1_1Stats.rst
 
 .. toctree::
    :maxdepth: 5
@@ -124,6 +129,11 @@ Classes and Structs
    :maxdepth: 5
 
    classmarian_1_1bergamot_1_1AsyncService.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1AtomicCache.rst
 
 .. toctree::
    :maxdepth: 5
@@ -281,6 +291,11 @@ Functions
 .. toctree::
    :maxdepth: 5
 
+   function_request_8cpp_1aa21fdc42d329c96f15044743e44ef578.rst
+
+.. toctree::
+   :maxdepth: 5
+
    function_byte__array__util_8cpp_1a765d72b8a59a480e11ebf649af13e9a9.rst
 
 .. toctree::
@@ -394,3 +409,8 @@ Typedefs
    :maxdepth: 5
 
    typedef_quality__estimator_8h_1a7d45e4000e2777f44cdf160b0e2c642b.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_cache_8h_1af0d71292fc13be4ee7e56a040ef51c6d.rst

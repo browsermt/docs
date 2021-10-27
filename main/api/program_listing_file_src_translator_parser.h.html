@@ -104,6 +104,7 @@
 <span class="w">  </span><span class="n">TEST_QUALITY_ESTIMATOR_WORDS</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="n">TEST_QUALITY_ESTIMATOR_SCORES</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="n">TEST_FORWARD_BACKWARD_FOR_OUTBOUND</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TEST_TRANSLATION_CACHE</span><span class="p">,</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">istringstream</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">istringstream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="n">OpMode</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mode</span><span class="p">);</span><span class="w"></span>
@@ -115,6 +116,11 @@
 <span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">validateByteArray</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">numWorkers</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">OpMode</span><span class="w"> </span><span class="n">opMode</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Cache parameters</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">cacheEnabled</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">cacheSize</span><span class="p">{</span><span class="mi">20</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">cacheMutexBuckets</span><span class="p">{</span><span class="mi">4</span><span class="p">};</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
 <span class="k">class</span> <span class="nc">ConfigParser</span><span class="w"> </span><span class="p">{</span><span class="w"></span>

@@ -90,6 +90,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_src_translator_cache.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_app_cli.h.rst
 
 .. toctree::
