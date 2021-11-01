@@ -105,6 +105,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_src_translator_logging.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_src_translator_parser.cpp.rst
 
 .. toctree::

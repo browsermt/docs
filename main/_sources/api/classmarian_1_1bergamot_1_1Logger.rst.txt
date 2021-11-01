@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1Logger:
+
+Class Logger
+============
+
+- Defined in :ref:`file_src_translator_logging.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::Logger
+   :members:
+   :protected-members:
+   :undoc-members:

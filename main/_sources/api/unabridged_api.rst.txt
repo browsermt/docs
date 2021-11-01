@@ -19,7 +19,7 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
-   namespace_marian__bergamot__@25.rst
+   namespace_marian__bergamot__@26.rst
 
 .. toctree::
    :maxdepth: 5
@@ -154,6 +154,11 @@ Classes and Structs
    :maxdepth: 5
 
    classmarian_1_1bergamot_1_1ConfigParser.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1Logger.rst
 
 .. toctree::
    :maxdepth: 5

@@ -28,6 +28,7 @@ Files
 - :ref:`file_src_translator_byte_array_util.h`
 - :ref:`file_src_translator_cache.h`
 - :ref:`file_src_translator_definitions.h`
+- :ref:`file_src_translator_logging.h`
 - :ref:`file_src_translator_parser.cpp`
 - :ref:`file_src_translator_parser.h`
 - :ref:`file_src_translator_quality_estimator.cpp`

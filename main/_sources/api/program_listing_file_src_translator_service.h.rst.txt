@@ -19,6 +19,7 @@ Program Listing for File service.h
    
    #include "cache.h"
    #include "data/types.h"
+   #include "logging.h"
    #include "quality_estimator.h"
    #include "response.h"
    #include "response_builder.h"
@@ -56,6 +57,8 @@ Program Listing for File service.h
    
      Config config_;
    
+     // Logger which shuts down cleanly with service.
+     Logger logger_;
      TranslationCache cache_;
    };
    
@@ -92,6 +95,8 @@ Program Listing for File service.h
    
      ThreadsafeBatchingPool<AggregateBatchingPool> safeBatchingPool_;
    
+     // Logger which shuts down cleanly with service.
+     Logger logger_;
      TranslationCache cache_;
    };
    

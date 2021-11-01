@@ -33,6 +33,8 @@ Includes
 
 - ``data/types.h``
 
+- ``logging.h`` (:ref:`file_src_translator_logging.h`)
+
 - ``quality_estimator.h`` (:ref:`file_src_translator_quality_estimator.h`)
 
 - ``queue``

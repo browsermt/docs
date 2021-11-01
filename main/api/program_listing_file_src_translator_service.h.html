@@ -86,6 +86,7 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cache.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;logging.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;quality_estimator.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;response.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;response_builder.h&quot;</span><span class="cp"></span>
@@ -123,6 +124,8 @@
 
 <span class="w">  </span><span class="n">Config</span><span class="w"> </span><span class="n">config_</span><span class="p">;</span><span class="w"></span>
 
+<span class="w">  </span><span class="c1">// Logger which shuts down cleanly with service.</span>
+<span class="w">  </span><span class="n">Logger</span><span class="w"> </span><span class="n">logger_</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">TranslationCache</span><span class="w"> </span><span class="n">cache_</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
@@ -159,6 +162,8 @@
 
 <span class="w">  </span><span class="n">ThreadsafeBatchingPool</span><span class="o">&lt;</span><span class="n">AggregateBatchingPool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">safeBatchingPool_</span><span class="p">;</span><span class="w"></span>
 
+<span class="w">  </span><span class="c1">// Logger which shuts down cleanly with service.</span>
+<span class="w">  </span><span class="n">Logger</span><span class="w"> </span><span class="n">logger_</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">TranslationCache</span><span class="w"> </span><span class="n">cache_</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
