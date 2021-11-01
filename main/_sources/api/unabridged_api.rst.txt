@@ -88,11 +88,6 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
-   structmarian_1_1bergamot_1_1Point.rst
-
-.. toctree::
-   :maxdepth: 5
-
    structmarian_1_1bergamot_1_1Response.rst
 
 .. toctree::
@@ -384,11 +379,6 @@ Typedefs
    :maxdepth: 5
 
    typedef_definitions_8h_1af7b499234642d2926f2e87d894f53f38.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   typedef_response_8h_1a814145c7406e05875734e37f5c0c6dcc.rst
 
 .. toctree::
    :maxdepth: 5

@@ -29,8 +29,6 @@ Program Listing for File response_options.h
    
      bool sentenceMappings{false};
    
-     float alignmentThreshold{0.2f};
-   
      ConcatStrategy concatStrategy{ConcatStrategy::FAITHFUL};
    };
    

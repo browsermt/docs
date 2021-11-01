@@ -26,14 +26,6 @@ Program Listing for File response.h
    namespace marian {
    namespace bergamot {
    
-   struct Point {
-     size_t src;  
-     size_t tgt;  
-     float prob;  
-   };
-   
-   typedef std::vector<Point> Alignment;
-   
    struct Response {
      struct SentenceQualityScore {
        std::vector<float> wordScores;
@@ -49,7 +41,7 @@ Program Listing for File response.h
    
      std::vector<SentenceQualityScore> qualityScores;
    
-     std::vector<Alignment> alignments;
+     std::vector<std::vector<std::vector<float>>> alignments;
    
      ByteRange getSourceSentenceAsByteRange(size_t sentenceIdx) const { return source.sentenceAsByteRange(sentenceIdx); }
    
