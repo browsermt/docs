@@ -27,6 +27,8 @@ Program Listing for File response_options.h
      bool qualityScores{false};  
      bool alignment{false};      
    
+     bool HTML{false};  
+   
      bool sentenceMappings{false};
    
      ConcatStrategy concatStrategy{ConcatStrategy::FAITHFUL};

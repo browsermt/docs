@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File response_builder.h &mdash; Bergamot Translator main 2021-11-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File response_builder.h &mdash; Bergamot Translator main 2021-11-25 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -83,6 +83,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span><span class="cp"></span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;html.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;quality_estimator.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;response.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;response_options.h&quot;</span><span class="cp"></span>
@@ -98,12 +99,13 @@
 <span class="k">class</span> <span class="nc">ResponseBuilder</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="n">ResponseBuilder</span><span class="p">(</span><span class="n">ResponseOptions</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">,</span><span class="w"> </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vocabs</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vocabs</span><span class="p">,</span><span class="w"></span>
-<span class="w">                  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QualityEstimator</span><span class="w"> </span><span class="o">&amp;</span><span class="n">qualityEstimator</span><span class="p">)</span><span class="w"></span>
+<span class="w">                  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">QualityEstimator</span><span class="w"> </span><span class="o">&amp;</span><span class="n">qualityEstimator</span><span class="p">,</span><span class="w"> </span><span class="n">HTML</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">html</span><span class="p">)</span><span class="w"></span>
 <span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">responseOptions_</span><span class="p">(</span><span class="n">responseOptions</span><span class="p">),</span><span class="w"></span>
 <span class="w">        </span><span class="n">source_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source</span><span class="p">)),</span><span class="w"></span>
 <span class="w">        </span><span class="n">vocabs_</span><span class="p">(</span><span class="n">vocabs</span><span class="p">),</span><span class="w"></span>
 <span class="w">        </span><span class="n">callback_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">callback</span><span class="p">)),</span><span class="w"></span>
-<span class="w">        </span><span class="n">qualityEstimator_</span><span class="p">(</span><span class="n">qualityEstimator</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">        </span><span class="n">qualityEstimator_</span><span class="p">(</span><span class="n">qualityEstimator</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">html_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">html</span><span class="p">))</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 
 <span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="n">Histories</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">histories</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// TODO(jerinphilip) load ResponseOptions into options and turn build</span>
@@ -126,6 +128,7 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">responseOptions_</span><span class="p">.</span><span class="n">alignment</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">buildAlignments</span><span class="p">(</span><span class="n">histories</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">html_</span><span class="p">.</span><span class="n">Restore</span><span class="p">(</span><span class="n">response</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">callback_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">response</span><span class="p">));</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
@@ -147,6 +150,8 @@
 <span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="n">source_</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">QualityEstimator</span><span class="w"> </span><span class="o">&amp;</span><span class="n">qualityEstimator_</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">HTML</span><span class="w"> </span><span class="n">html_</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>

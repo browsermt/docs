@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File translation_model.cpp &mdash; Bergamot Translator main 2021-11-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File translation_model.cpp &mdash; Bergamot Translator main 2021-11-25 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -85,6 +85,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/logging.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/corpus.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/text_input.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;html.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;parser.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/beam_search.h&quot;</span><span class="cp"></span>
 
@@ -173,8 +174,10 @@
 <span class="w">  </span><span class="n">Segments</span><span class="w"> </span><span class="n">segments</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="n">annotatedSource</span><span class="p">;</span><span class="w"></span>
 
+<span class="w">  </span><span class="n">HTML</span><span class="w"> </span><span class="nf">html</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source</span><span class="p">),</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">.</span><span class="n">HTML</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">textProcessor_</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source</span><span class="p">),</span><span class="w"> </span><span class="n">annotatedSource</span><span class="p">,</span><span class="w"> </span><span class="n">segments</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">ResponseBuilder</span><span class="w"> </span><span class="nf">responseBuilder</span><span class="p">(</span><span class="n">responseOptions</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">annotatedSource</span><span class="p">),</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">,</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">qualityEstimator_</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ResponseBuilder</span><span class="w"> </span><span class="nf">responseBuilder</span><span class="p">(</span><span class="n">responseOptions</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">annotatedSource</span><span class="p">),</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">,</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">qualityEstimator_</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                  </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">html</span><span class="p">));</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="w">      </span><span class="n">New</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="p">(</span><span class="n">requestId</span><span class="p">,</span><span class="w"> </span><span class="cm">/*model=*/</span><span class="o">*</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">segments</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">responseBuilder</span><span class="p">),</span><span class="w"> </span><span class="n">cache</span><span class="p">);</span><span class="w"></span>

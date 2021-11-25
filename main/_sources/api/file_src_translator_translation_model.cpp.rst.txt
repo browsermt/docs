@@ -41,6 +41,8 @@ Includes
 
 - ``data/text_input.h``
 
+- ``html.h`` (:ref:`file_src_translator_html.h`)
+
 - ``parser.h`` (:ref:`file_src_translator_parser.h`)
 
 - ``translation_model.h`` (:ref:`file_src_translator_translation_model.h`)

@@ -9,6 +9,11 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
+   namespace_@13.rst
+
+.. toctree::
+   :maxdepth: 5
+
    namespace_marian.rst
 
 .. toctree::
@@ -19,7 +24,7 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
-   namespace_marian__bergamot__@26.rst
+   namespace_marian__bergamot__@28.rst
 
 .. toctree::
    :maxdepth: 5
@@ -30,6 +35,11 @@ Namespaces
    :maxdepth: 5
 
    namespace_marian__bergamot__app.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   namespace_markup.rst
 
 Classes and Structs
 *******************
@@ -73,6 +83,16 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   structmarian_1_1bergamot_1_1HTML_1_1Span.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1HTML_1_1Tag.rst
+
+.. toctree::
+   :maxdepth: 5
+
    structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header.rst
 
 .. toctree::
@@ -108,6 +128,11 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   structmarkup_1_1instream.rst
+
+.. toctree::
+   :maxdepth: 5
+
    classmarian_1_1bergamot_1_1AggregateBatchingPool.rst
 
 .. toctree::
@@ -133,6 +158,11 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   classmarian_1_1bergamot_1_1BadHTML.rst
+
+.. toctree::
+   :maxdepth: 5
+
    classmarian_1_1bergamot_1_1Batch.rst
 
 .. toctree::
@@ -149,6 +179,11 @@ Classes and Structs
    :maxdepth: 5
 
    classmarian_1_1bergamot_1_1ConfigParser.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1HTML.rst
 
 .. toctree::
    :maxdepth: 5
@@ -209,6 +244,11 @@ Classes and Structs
    :maxdepth: 5
 
    classmarian_1_1bergamot_1_1Vocabs.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarkup_1_1scanner.rst
 
 Enums
 *****
@@ -332,6 +372,11 @@ Functions
    :maxdepth: 5
 
    function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_xh__scanner_8cpp_1a3df39aaa0418aadf2ccd8030cd17e206.rst
 
 Variables
 *********

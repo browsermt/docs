@@ -105,6 +105,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_src_translator_html.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_html.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_src_translator_logging.h.rst
 
 .. toctree::
@@ -201,3 +211,13 @@ Files
    :maxdepth: 5
 
    file_src_translator_vocabs.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_xh_scanner.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_xh_scanner.h.rst

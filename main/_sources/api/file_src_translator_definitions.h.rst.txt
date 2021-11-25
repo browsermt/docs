@@ -53,6 +53,8 @@ Included By
 
 - :ref:`file_src_translator_response.h`
 
+- :ref:`file_src_translator_html.h`
+
 - :ref:`file_src_translator_batching_pool.h`
 
 - :ref:`file_src_translator_translation_model.h`

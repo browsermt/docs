@@ -16,6 +16,7 @@ Program Listing for File response_builder.h
    #include <optional>
    
    #include "data/types.h"
+   #include "html.h"
    #include "quality_estimator.h"
    #include "response.h"
    #include "response_options.h"
@@ -31,12 +32,13 @@ Program Listing for File response_builder.h
    class ResponseBuilder {
     public:
      ResponseBuilder(ResponseOptions responseOptions, AnnotatedText &&source, const Vocabs &vocabs,
-                     std::function<void(Response &&)> callback, const QualityEstimator &qualityEstimator)
+                     std::function<void(Response &&)> callback, const QualityEstimator &qualityEstimator, HTML &&html)
          : responseOptions_(responseOptions),
            source_(std::move(source)),
            vocabs_(vocabs),
            callback_(std::move(callback)),
-           qualityEstimator_(qualityEstimator) {}
+           qualityEstimator_(qualityEstimator),
+           html_(std::move(html)) {}
    
      void operator()(Histories &&histories) {
        // TODO(jerinphilip) load ResponseOptions into options and turn build
@@ -59,6 +61,7 @@ Program Listing for File response_builder.h
        if (responseOptions_.alignment) {
          buildAlignments(histories, response);
        }
+       html_.Restore(response);
    
        callback_(std::move(response));
      }
@@ -80,6 +83,8 @@ Program Listing for File response_builder.h
      AnnotatedText source_;
    
      const QualityEstimator &qualityEstimator_;
+   
+     HTML html_;
    };
    }  // namespace bergamot
    }  // namespace marian

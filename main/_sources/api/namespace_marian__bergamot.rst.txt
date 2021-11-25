@@ -17,7 +17,7 @@ Namespaces
 ----------
 
 
-- :ref:`namespace_marian__bergamot__@26`
+- :ref:`namespace_marian__bergamot__@28`
 
 - :ref:`namespace_marian__bergamot__@9`
 
@@ -41,6 +41,10 @@ Classes
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1CLIConfig`
 
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1HashPtr`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1HTML_1_1Span`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1HTML_1_1Tag`
 
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header`
 
@@ -66,6 +70,8 @@ Classes
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1AtomicCache`
 
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1BadHTML`
+
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1Batch`
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1BatchingPool`
@@ -73,6 +79,8 @@ Classes
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1BlockingService`
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1ConfigParser`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1HTML`
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1Logger`
 
