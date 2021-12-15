@@ -14,6 +14,11 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
+   namespace_@35.rst
+
+.. toctree::
+   :maxdepth: 5
+
    namespace_marian.rst
 
 .. toctree::
@@ -129,6 +134,11 @@ Classes and Structs
    :maxdepth: 5
 
    structmarkup_1_1instream.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarkup_1_1string__ref.rst
 
 .. toctree::
    :maxdepth: 5
@@ -372,11 +382,6 @@ Functions
    :maxdepth: 5
 
    function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   function_xh__scanner_8cpp_1a3df39aaa0418aadf2ccd8030cd17e206.rst
 
 Variables
 *********

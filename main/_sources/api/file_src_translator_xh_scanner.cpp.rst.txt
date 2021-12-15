@@ -29,6 +29,8 @@ Includes
 --------
 
 
+- ``cassert``
+
 - ``cctype``
 
 - ``cstring``
@@ -45,11 +47,4 @@ Namespaces
 
 
 - :ref:`namespace_markup`
-
-
-Functions
----------
-
-
-- :ref:`exhale_function_xh__scanner_8cpp_1a3df39aaa0418aadf2ccd8030cd17e206`
 

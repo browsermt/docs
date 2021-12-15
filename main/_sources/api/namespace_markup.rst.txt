@@ -19,11 +19,6 @@ Classes
 
 - :ref:`exhale_struct_structmarkup_1_1instream`
 
+- :ref:`exhale_struct_structmarkup_1_1string__ref`
+
 - :ref:`exhale_class_classmarkup_1_1scanner`
-
-
-Functions
----------
-
-
-- :ref:`exhale_function_xh__scanner_8cpp_1a3df39aaa0418aadf2ccd8030cd17e206`

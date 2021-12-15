@@ -47,6 +47,7 @@ Program Listing for File parser.h
      ModelConfigPaths modelConfigPaths;
      bool byteArray;
      bool validateByteArray;
+     bool html;
      size_t numWorkers;
      OpMode opMode;
    
