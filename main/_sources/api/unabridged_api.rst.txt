@@ -258,7 +258,7 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
-   classmarkup_1_1scanner.rst
+   classmarkup_1_1Scanner.rst
 
 Enums
 *****

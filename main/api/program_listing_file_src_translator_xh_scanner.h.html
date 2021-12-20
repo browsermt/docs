@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File xh_scanner.h &mdash; Bergamot Translator main 2021-12-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File xh_scanner.h &mdash; Bergamot Translator main 2021-12-20 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -107,81 +107,116 @@
 <span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
-<span class="k">class</span> <span class="nc">scanner</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">Scanner</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="k">enum</span> <span class="nc">token_type</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">enum</span> <span class="nc">TokenType</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">TT_ERROR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">TT_EOF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
 
-<span class="w">    </span><span class="n">TT_TAG_START</span><span class="p">,</span><span class="w">  </span><span class="c1">// &lt;tag ...</span>
-<span class="w">    </span><span class="c1">//     ^-- happens here</span>
-<span class="w">    </span><span class="n">TT_TAG_END</span><span class="p">,</span><span class="w">  </span><span class="c1">// &lt;/tag&gt;</span>
-<span class="w">    </span><span class="c1">//       ^-- happens here</span>
-<span class="w">    </span><span class="c1">// &lt;tag ... /&gt;</span>
-<span class="w">    </span><span class="c1">//            ^-- or here</span>
-<span class="w">    </span><span class="n">TT_ATTR</span><span class="p">,</span><span class="w">  </span><span class="c1">// &lt;tag attr=&quot;value&quot; &gt;</span>
-<span class="w">    </span><span class="c1">//                  ^-- happens here</span>
-<span class="w">    </span><span class="n">TT_TEXT</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">TT_DATA</span><span class="p">,</span><span class="w">  </span><span class="c1">// content of followings:</span>
-<span class="w">    </span><span class="c1">// (also content of TT_TAG_START and TT_TAG_END, if the tag is &#39;script&#39; or &#39;style&#39;)</span>
-
-<span class="w">    </span><span class="n">TT_COMMENT_START</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">TT_COMMENT_END</span><span class="p">,</span><span class="w">  </span><span class="c1">// after &quot;&lt;!--&quot; and &quot;--&gt;&quot;</span>
+<span class="w">    </span><span class="n">TT_TAG_START</span><span class="p">,</span><span class="w">                     </span><span class="c1">// &lt;tag ...</span>
+<span class="w">                                      </span><span class="c1">//     ^-- happens here</span>
+<span class="w">                                      </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TT_TAG_END</span><span class="p">,</span><span class="w">                       </span><span class="c1">// &lt;/tag&gt;</span>
+<span class="w">                                      </span><span class="c1">//       ^-- happens here</span>
+<span class="w">                                      </span><span class="c1">// &lt;tag ... /&gt;</span>
+<span class="w">                                      </span><span class="c1">//            ^-- or here</span>
+<span class="w">                                      </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TT_ATTRIBUTE</span><span class="p">,</span><span class="w">                     </span><span class="c1">// &lt;tag attr=&quot;value&quot; &gt;</span>
+<span class="w">                                      </span><span class="c1">//                 ^-- happens here, attr_name() and value()</span>
+<span class="w">                                      </span><span class="c1">//                     will be filled with &#39;attr&#39; and &#39;value&#39;.</span>
+<span class="w">                                      </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TT_TEXT</span><span class="p">,</span><span class="w">                          </span><span class="c1">// &lt;tag&gt;xxx&lt;/tag&gt;</span>
+<span class="w">                                      </span><span class="c1">//         ^-- happens here</span>
+<span class="w">                                      </span><span class="c1">// &lt;tag&gt;foo &amp;amp;&amp;amp; bar&lt;/tag&gt;</span>
+<span class="w">                                      </span><span class="c1">//          ^---^----^----^-- and all of here as well</span>
+<span class="w">                                      </span><span class="c1">// Comes after TT_TAG_START or as the first token if the input</span>
+<span class="w">                                      </span><span class="c1">// begins with text instead of a root element.</span>
+<span class="w">                                      </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TT_DATA</span><span class="p">,</span><span class="w">                          </span><span class="c1">// &lt;!-- foo --&gt;</span>
+<span class="w">                                      </span><span class="c1">//         ^-- here</span>
+<span class="w">                                      </span><span class="c1">// &lt;? ... ?&gt;</span>
+<span class="w">                                      </span><span class="c1">//       ^-- as well as here</span>
+<span class="w">                                      </span><span class="c1">// &lt;script&gt;...&lt;/script&gt;</span>
+<span class="w">                                      </span><span class="c1">//            ^-- or here</span>
+<span class="w">                                      </span><span class="c1">// &lt;style&gt;...&lt;/style&gt;</span>
+<span class="w">                                      </span><span class="c1">//           ^-- or here</span>
+<span class="w">                                      </span><span class="c1">// comes after TT_COMMENT_START, TT_PI_START, or TT_TAG_START</span>
+<span class="w">                                      </span><span class="c1">// if the tag was &lt;script&gt; or &lt;style&gt;.</span>
+<span class="w">                                      </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TT_COMMENT_START</span><span class="p">,</span><span class="w">                 </span><span class="c1">// &lt;!-- foo --&gt;</span>
+<span class="w">                                      </span><span class="c1">//     ^-- happens here</span>
+<span class="w">                                      </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TT_COMMENT_END</span><span class="p">,</span><span class="w">                   </span><span class="c1">// &lt;!-- foo --&gt;</span>
+<span class="w">                                      </span><span class="c1">//             ^-- happens here</span>
+<span class="w">                                      </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TT_PROCESSING_INSTRUCTION_START</span><span class="p">,</span><span class="w">  </span><span class="c1">// &lt;?xml version=&quot;1.0?&gt;</span>
+<span class="w">                                      </span><span class="c1">//   ^-- happens here</span>
+<span class="w">                                      </span><span class="c1">//</span>
+<span class="w">    </span><span class="n">TT_PROCESSING_INSTRUCTION_END</span><span class="p">,</span><span class="w">    </span><span class="c1">// &lt;?xml version=&quot;1.0?&gt;</span>
+<span class="w">                                      </span><span class="c1">//                     ^-- would you believe this happens here</span>
 <span class="w">  </span><span class="p">};</span><span class="w"></span>
 
 <span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">scanner</span><span class="p">(</span><span class="n">instream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">is</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">input_</span><span class="p">(</span><span class="n">is</span><span class="p">),</span><span class="w"> </span><span class="n">got_tail</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">c_scan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">scanner</span><span class="o">::</span><span class="n">scan_body</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">instream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">is</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">value_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="n">tagName_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="n">attributeName_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="n">input_</span><span class="p">(</span><span class="n">is</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">scanFun_</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanBody</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">gotTail_</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// get next token</span>
-<span class="w">  </span><span class="n">token_type</span><span class="w"> </span><span class="n">next_token</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;*</span><span class="n">c_scan</span><span class="p">)();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">TokenType</span><span class="w"> </span><span class="n">next</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;*</span><span class="n">scanFun_</span><span class="p">)();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// get value of TT_TEXT, TT_ATTR and TT_DATA</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// get attribute name</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="nf">attr_name</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="nf">attribute</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// get tag name</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="nf">tag_name</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="nf">tag</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
 <span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"> </span><span class="cm">/* methods */</span><span class="w"></span>
-<span class="w">  </span><span class="k">typedef</span><span class="w"> </span><span class="n">token_type</span><span class="w"> </span><span class="p">(</span><span class="n">scanner</span><span class="o">::*</span><span class="n">scan</span><span class="p">)();</span><span class="w"></span>
-
-<span class="w">  </span><span class="n">scan</span><span class="w"> </span><span class="n">c_scan</span><span class="p">;</span><span class="w">  </span><span class="c1">// current &#39;reader&#39;</span>
+<span class="w">  </span><span class="k">typedef</span><span class="w"> </span><span class="n">TokenType</span><span class="w"> </span><span class="p">(</span><span class="n">Scanner</span><span class="o">::*</span><span class="n">ScanPtr</span><span class="p">)();</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// Consumes the text around and between tags</span>
-<span class="w">  </span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan_body</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">TokenType</span><span class="w"> </span><span class="nf">scanBody</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// Consumes name=&quot;attr&quot;</span>
-<span class="w">  </span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan_attr</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">TokenType</span><span class="w"> </span><span class="nf">scanAttribute</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// Consumes &lt;!-- ... --&gt;</span>
-<span class="w">  </span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan_comment</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">TokenType</span><span class="w"> </span><span class="nf">scanComment</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Consumes &lt;?name [attrs]?&gt;</span>
+<span class="w">  </span><span class="n">TokenType</span><span class="w"> </span><span class="nf">scanProcessingInstruction</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// Consumes ...&lt;/style&gt; and ...&lt;/script&gt;</span>
-<span class="w">  </span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan_special</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">TokenType</span><span class="w"> </span><span class="nf">scanSpecial</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// Consumes &lt;tagname and &lt;/tagname&gt;</span>
-<span class="w">  </span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan_tag</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">TokenType</span><span class="w"> </span><span class="nf">scanTag</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">  </span><span class="c1">// Consumes &#39;&amp;amp;&#39; etc, emits parent_token_type</span>
-<span class="w">  </span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan_entity</span><span class="p">(</span><span class="n">token_type</span><span class="w"> </span><span class="n">parent_token_type</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">TokenType</span><span class="w"> </span><span class="nf">scanEntity</span><span class="p">(</span><span class="n">TokenType</span><span class="w"> </span><span class="n">parentTokenType</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">skip_whitespace</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">skipWhitespace</span><span class="p">();</span><span class="w"></span>
 
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="nf">resolve_entity</span><span class="p">(</span><span class="n">string_ref</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">string_ref</span><span class="w"> </span><span class="o">&amp;</span><span class="n">decoded</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="nf">resolveEntity</span><span class="p">(</span><span class="n">string_ref</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">string_ref</span><span class="w"> </span><span class="o">&amp;</span><span class="n">decoded</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">is_whitespace</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isWhitespace</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w"></span>
 
 <span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"> </span><span class="cm">/* data */</span><span class="w"></span>
 <span class="w">  </span><span class="n">string_ref</span><span class="w"> </span><span class="n">value_</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">string_ref</span><span class="w"> </span><span class="n">tag_name_</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">string_ref</span><span class="w"> </span><span class="n">attr_name_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">string_ref</span><span class="w"> </span><span class="n">tagName_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">string_ref</span><span class="w"> </span><span class="n">attributeName_</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">ScanPtr</span><span class="w"> </span><span class="n">scanFun_</span><span class="p">;</span><span class="w">  </span><span class="c1">// current &#39;reader&#39;</span>
 
 <span class="w">  </span><span class="n">instream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">input_</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">got_tail</span><span class="p">;</span><span class="w">  </span><span class="c1">// aux flag used in scan_comment</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">gotTail_</span><span class="p">;</span><span class="w">  </span><span class="c1">// aux flag used in scanComment, scanSpecial, scanProcessingInstruction</span>
 <span class="p">};</span><span class="w"></span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace markup</span>
 </pre></div>
