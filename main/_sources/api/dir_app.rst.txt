@@ -12,6 +12,5 @@ Files
 -----
 
 - :ref:`file_app_bergamot.cpp`
-- :ref:`file_app_cli.h`
 
 

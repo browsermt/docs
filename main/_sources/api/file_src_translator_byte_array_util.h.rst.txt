@@ -45,7 +45,7 @@ Included By
 
 - :ref:`file_src_translator_translation_model.cpp`
 
-- :ref:`file_app_cli.h`
+- :ref:`file_app_bergamot.cpp`
 
 
 

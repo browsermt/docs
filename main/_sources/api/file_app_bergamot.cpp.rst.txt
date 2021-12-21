@@ -29,7 +29,17 @@ Includes
 --------
 
 
-- ``cli.h`` (:ref:`file_app_cli.h`)
+- ``translator/byte_array_util.h`` (:ref:`file_src_translator_byte_array_util.h`)
+
+- ``translator/parser.h`` (:ref:`file_src_translator_parser.h`)
+
+- ``translator/response.h`` (:ref:`file_src_translator_response.h`)
+
+- ``translator/response_options.h`` (:ref:`file_src_translator_response_options.h`)
+
+- ``translator/service.h`` (:ref:`file_src_translator_service.h`)
+
+- ``translator/utils.h`` (:ref:`file_src_translator_utils.h`)
 
 
 

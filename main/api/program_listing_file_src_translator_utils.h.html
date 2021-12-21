@@ -4,11 +4,11 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Function marian::bergamot::operator&gt;&gt; &mdash; Bergamot Translator main 2021-12-20 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File utils.h &mdash; Bergamot Translator main 2021-12-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
-    <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/api/function_parser_8cpp_1a1b68209c8843f7c0420a0dea8884e77f.html" />
+    <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/api/program_listing_file_src_translator_utils.h.html" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -22,9 +22,7 @@
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Function marian::bergamot::parseOptionsFromFilePath" href="function_parser_8cpp_1a738c33453a147aebfc5308faad463651.html" />
-    <link rel="prev" title="Function marian::bergamot::operator&lt;" href="function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,10 +64,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library_index.html">Library API</a> &raquo;</li>
-      <li>Function marian::bergamot::operator&gt;&gt;</li>
+      <li>Program Listing for File utils.h</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/api/function_parser_8cpp_1a1b68209c8843f7c0420a0dea8884e77f.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/program_listing_file_src_translator_utils.h.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,29 +74,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="function-marian-bergamot-operator">
-<span id="exhale-function-parser-8cpp-1a1b68209c8843f7c0420a0dea8884e77f"></span><h1>Function marian::bergamot::operator&gt;&gt;<a class="headerlink" href="#function-marian-bergamot-operator" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p>Defined in <a class="reference internal" href="file_src_translator_parser.cpp.html#file-src-translator-parser-cpp"><span class="std std-ref">File parser.cpp</span></a></p></li>
-</ul>
-<section id="function-documentation">
-<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="_CPPv4N6marian8bergamotrsERNSt13istringstreamER6OpMode">
-<span id="_CPPv3N6marian8bergamotrsERNSt13istringstreamER6OpMode"></span><span id="_CPPv2N6marian8bergamotrsERNSt13istringstreamER6OpMode"></span><span id="marian::bergamot::rshift-operator__std::istringstreamR.OpModeR"></span><span class="target" id="parser_8cpp_1a1b68209c8843f7c0420a0dea8884e77f"></span>std::istringstream &amp;<code class="sig-prename descclassname">marian::bergamot<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">operator&gt;&gt;</code><span class="sig-paren">(</span>std::istringstream &amp;<em>in</em>, <a class="reference internal" href="enum_parser_8h_1ab481b06779dc3e1ec98b3e59e3f727ff.html#_CPPv4N6marian8bergamot6OpModeE" title="marian::bergamot::OpMode">OpMode</a> &amp;<em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamotrsERNSt13istringstreamER6OpMode" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Overload for CL11, convert a read from a stringstream into opmode. </p>
-</dd></dl>
+  <section id="program-listing-for-file-utils-h">
+<span id="program-listing-file-src-translator-utils-h"></span><h1>Program Listing for File utils.h<a class="headerlink" href="#program-listing-for-file-utils-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_translator_utils.h.html#file-src-translator-utils-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/translator/utils.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
-</section>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="o">::</span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">readFromStdin</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Read a large input text blob from stdin</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span><span class="w"> </span><span class="n">inputStream</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">inputStream</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="p">.</span><span class="n">rdbuf</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputStream</span><span class="p">.</span><span class="n">str</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">input</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian::bergamot</span>
+</pre></div>
+</div>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9.html" class="btn btn-neutral float-left" title="Function marian::bergamot::operator&lt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="function_parser_8cpp_1a738c33453a147aebfc5308faad463651.html" class="btn btn-neutral float-right" title="Function marian::bergamot::parseOptionsFromFilePath" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

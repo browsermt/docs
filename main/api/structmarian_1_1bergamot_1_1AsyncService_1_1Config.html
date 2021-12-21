@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Struct AsyncService::Config &mdash; Bergamot Translator main 2021-12-20 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Struct AsyncService::Config &mdash; Bergamot Translator main 2021-12-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -95,7 +95,7 @@
 <p class="breathe-sectiondef-title rubric">Public Members</p>
 <dl class="member">
 <dt id="_CPPv4N6marian8bergamot12AsyncService6Config10numWorkersE">
-<span id="_CPPv3N6marian8bergamot12AsyncService6Config10numWorkersE"></span><span id="_CPPv2N6marian8bergamot12AsyncService6Config10numWorkersE"></span><span id="marian::bergamot::AsyncService::Config::numWorkers__s"></span><span class="target" id="structmarian_1_1bergamot_1_1AsyncService_1_1Config_1a3bc976ad9ae35a753c13363295b03673"></span>size_t <code class="sig-name descname">numWorkers</code><br /></dt>
+<span id="_CPPv3N6marian8bergamot12AsyncService6Config10numWorkersE"></span><span id="_CPPv2N6marian8bergamot12AsyncService6Config10numWorkersE"></span><span id="marian::bergamot::AsyncService::Config::numWorkers__s"></span><span class="target" id="structmarian_1_1bergamot_1_1AsyncService_1_1Config_1a3bc976ad9ae35a753c13363295b03673"></span>size_t <code class="sig-name descname">numWorkers</code> = {1}<br /></dt>
 <dd><p>How many worker translation threads to spawn. </p>
 </dd></dl>
 
@@ -114,10 +114,18 @@
 
 <dl class="member">
 <dt id="_CPPv4N6marian8bergamot12AsyncService6Config17cacheMutexBucketsE">
-<span id="_CPPv3N6marian8bergamot12AsyncService6Config17cacheMutexBucketsE"></span><span id="_CPPv2N6marian8bergamot12AsyncService6Config17cacheMutexBucketsE"></span><span id="marian::bergamot::AsyncService::Config::cacheMutexBuckets__s"></span><span class="target" id="structmarian_1_1bergamot_1_1AsyncService_1_1Config_1ac282bef308800ef175797ee850f8da9a"></span>size_t <code class="sig-name descname">cacheMutexBuckets</code><br /></dt>
+<span id="_CPPv3N6marian8bergamot12AsyncService6Config17cacheMutexBucketsE"></span><span id="_CPPv2N6marian8bergamot12AsyncService6Config17cacheMutexBucketsE"></span><span id="marian::bergamot::AsyncService::Config::cacheMutexBuckets__s"></span><span class="target" id="structmarian_1_1bergamot_1_1AsyncService_1_1Config_1ac282bef308800ef175797ee850f8da9a"></span>size_t <code class="sig-name descname">cacheMutexBuckets</code> = {1}<br /></dt>
 <dd><p>Controls the granularity of locking to reduce contention by bucketing mutexes guarding cache entry read write. </p>
 <p>Optimal at min(core, numWorkers) assuming a reasonably large cache-size. </p>
 </dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Static Functions</p>
+<dl class="function">
+<dt id="_CPPv4I0EN6marian8bergamot12AsyncService6Config10addOptionsEvR3AppR6Config">
+<span id="_CPPv3I0EN6marian8bergamot12AsyncService6Config10addOptionsER3AppR6Config"></span><span id="_CPPv2I0EN6marian8bergamot12AsyncService6Config10addOptionsER3AppR6Config"></span><span class="target" id="structmarian_1_1bergamot_1_1AsyncService_1_1Config_1a958211f4a97d9720cd6c2dec0a0fac35"></span>template&lt;class <code class="sig-name descname">App</code>&gt;<br /><em class="property">static</em> void <code class="sig-name descname">addOptions</code><span class="sig-paren">(</span><a class="reference internal" href="classmarian_1_1bergamot_1_1AsyncService.html#_CPPv4I0EN6marian8bergamot12AsyncService6Config10addOptionsEvR3AppR6Config" title="marian::bergamot::AsyncService::Config::addOptions::App">App</a> &amp;<em>app</em>, <a class="reference internal" href="classmarian_1_1bergamot_1_1AsyncService.html#_CPPv4N6marian8bergamot12AsyncService6ConfigE" title="marian::bergamot::AsyncService::Config">Config</a> &amp;<em>config</em><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
 
 </div>
 </dd></dl>

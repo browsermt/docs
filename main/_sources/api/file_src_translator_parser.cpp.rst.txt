@@ -59,8 +59,6 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_parser_8cpp_1a1b68209c8843f7c0420a0dea8884e77f`
-
 - :ref:`exhale_function_parser_8cpp_1a738c33453a147aebfc5308faad463651`
 
 - :ref:`exhale_function_parser_8cpp_1a5d169766c7451792220a52433b66d1f1`

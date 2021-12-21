@@ -14,7 +14,7 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
-   namespace_@35.rst
+   namespace_@36.rst
 
 .. toctree::
    :maxdepth: 5
@@ -35,11 +35,6 @@ Namespaces
    :maxdepth: 5
 
    namespace_marian__bergamot__@9.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   namespace_marian__bergamot__app.rst
 
 .. toctree::
    :maxdepth: 5
@@ -269,11 +264,6 @@ Enums
 
    enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1.rst
 
-.. toctree::
-   :maxdepth: 5
-
-   enum_parser_8h_1ab481b06779dc3e1ec98b3e59e3f727ff.rst
-
 Functions
 *********
 
@@ -282,21 +272,6 @@ Functions
    :maxdepth: 5
 
    function_bergamot_8cpp_1a0ddf1224851353fc92bfbff6f499fa97.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   function_cli_8h_1ac5b271b6d4b0a3c7bfe36c61e1aa182b.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   function_cli_8h_1a0ad9e75d01e6f489c4cbd81b25f71494.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   function_cli_8h_1abfb5f6dde3254e967a45b561d6b259a2.rst
 
 .. toctree::
    :maxdepth: 5
@@ -361,17 +336,17 @@ Functions
 .. toctree::
    :maxdepth: 5
 
-   function_parser_8cpp_1a1b68209c8843f7c0420a0dea8884e77f.rst
-
-.. toctree::
-   :maxdepth: 5
-
    function_parser_8cpp_1a738c33453a147aebfc5308faad463651.rst
 
 .. toctree::
    :maxdepth: 5
 
    function_parser_8cpp_1a5d169766c7451792220a52433b66d1f1.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80.rst
 
 .. toctree::
    :maxdepth: 5

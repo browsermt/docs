@@ -49,6 +49,7 @@ Files
 - :ref:`file_src_translator_threadsafe_batching_pool.h`
 - :ref:`file_src_translator_translation_model.cpp`
 - :ref:`file_src_translator_translation_model.h`
+- :ref:`file_src_translator_utils.h`
 - :ref:`file_src_translator_vocabs.h`
 - :ref:`file_src_translator_xh_scanner.cpp`
 - :ref:`file_src_translator_xh_scanner.h`

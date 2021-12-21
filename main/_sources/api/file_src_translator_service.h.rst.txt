@@ -65,7 +65,7 @@ Included By
 
 - :ref:`file_src_translator_service.cpp`
 
-- :ref:`file_app_cli.h`
+- :ref:`file_app_bergamot.cpp`
 
 
 

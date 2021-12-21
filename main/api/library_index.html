@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Library API &mdash; Bergamot Translator main 2021-12-20 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Library API &mdash; Bergamot Translator main 2021-12-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -56,12 +56,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#full-api">Full API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#namespaces">Namespaces</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="namespace_&#64;13.html">Namespace &#64;13</a></li>
-<li class="toctree-l4"><a class="reference internal" href="namespace_&#64;35.html">Namespace &#64;35</a></li>
+<li class="toctree-l4"><a class="reference internal" href="namespace_&#64;36.html">Namespace &#64;36</a></li>
 <li class="toctree-l4"><a class="reference internal" href="namespace_marian.html">Namespace marian</a></li>
 <li class="toctree-l4"><a class="reference internal" href="namespace_marian__bergamot.html">Namespace marian::bergamot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="namespace_marian__bergamot__&#64;28.html">Namespace marian::bergamot::&#64;28</a></li>
 <li class="toctree-l4"><a class="reference internal" href="namespace_marian__bergamot__&#64;9.html">Namespace marian::bergamot::&#64;9</a></li>
-<li class="toctree-l4"><a class="reference internal" href="namespace_marian__bergamot__app.html">Namespace marian::bergamot::app</a></li>
 <li class="toctree-l4"><a class="reference internal" href="namespace_markup.html">Namespace markup</a></li>
 </ul>
 </li>
@@ -71,7 +70,7 @@
 <li class="toctree-l4"><a class="reference internal" href="structmarian_1_1bergamot_1_1AtomicCache_1_1Stats.html">Struct AtomicCache::Stats</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structmarian_1_1bergamot_1_1BlockingService_1_1Config.html">Struct BlockingService::Config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html">Struct ByteRange</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structmarian_1_1bergamot_1_1CLIConfig.html">Struct CLIConfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structmarian_1_1bergamot_1_1CLIConfig.html">Template Struct CLIConfig</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structmarian_1_1bergamot_1_1HashPtr.html">Template Struct HashPtr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structmarian_1_1bergamot_1_1HTML_1_1Span.html">Struct HTML::Span</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structmarian_1_1bergamot_1_1HTML_1_1Tag.html">Struct HTML::Tag</a></li>
@@ -93,7 +92,7 @@
 <li class="toctree-l4"><a class="reference internal" href="classmarian_1_1bergamot_1_1Batch.html">Class Batch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classmarian_1_1bergamot_1_1BatchingPool.html">Class BatchingPool</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classmarian_1_1bergamot_1_1BlockingService.html">Class BlockingService</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classmarian_1_1bergamot_1_1ConfigParser.html">Class ConfigParser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classmarian_1_1bergamot_1_1ConfigParser.html">Template Class ConfigParser</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classmarian_1_1bergamot_1_1HTML.html">Class HTML</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classmarian_1_1bergamot_1_1Logger.html">Class Logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.html">Class LogisticRegressorQualityEstimator</a></li>
@@ -112,14 +111,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#enums">Enums</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1.html">Enum ConcatStrategy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="enum_parser_8h_1ab481b06779dc3e1ec98b3e59e3f727ff.html">Enum OpMode</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="function_bergamot_8cpp_1a0ddf1224851353fc92bfbff6f499fa97.html">Function main</a></li>
-<li class="toctree-l4"><a class="reference internal" href="function_cli_8h_1ac5b271b6d4b0a3c7bfe36c61e1aa182b.html">Function marian::bergamot::app::decoder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="function_cli_8h_1a0ad9e75d01e6f489c4cbd81b25f71494.html">Function marian::bergamot::app::native</a></li>
-<li class="toctree-l4"><a class="reference internal" href="function_cli_8h_1abfb5f6dde3254e967a45b561d6b259a2.html">Function marian::bergamot::app::wasm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_quality__estimator_8h_1a2e349a94dba9714699b93a9e59f0569b.html">Function marian::bergamot::createQualityEstimator</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_byte__array__util_8cpp_1a6f199b6686a506deb71095f8b5f9868c.html">Function marian::bergamot::getMemoryBundleFromConfig</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_byte__array__util_8cpp_1ac17b7705d71079521a1e6db2059ada4f.html">Function marian::bergamot::getModelMemoryFromConfig</a></li>
@@ -132,9 +127,9 @@
 <li class="toctree-l4"><a class="reference internal" href="function_byte__array__util_8cpp_1a765d72b8a59a480e11ebf649af13e9a9.html">Function marian::bergamot::loadFileToMemory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_quality__estimator_8cpp_1ae0fe7141602ec9ff239dbc66b3cb6157.html">Function marian::bergamot::mapWords</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9.html">Function marian::bergamot::operator&lt;</a></li>
-<li class="toctree-l4"><a class="reference internal" href="function_parser_8cpp_1a1b68209c8843f7c0420a0dea8884e77f.html">Function marian::bergamot::operator&gt;&gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_parser_8cpp_1a738c33453a147aebfc5308faad463651.html">Function marian::bergamot::parseOptionsFromFilePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_parser_8cpp_1a5d169766c7451792220a52433b66d1f1.html">Function marian::bergamot::parseOptionsFromString</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80.html">Function marian::bergamot::readFromStdin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.html">Function marian::bergamot::subwordToWords</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632.html">Function marian::bergamot::validateBinaryModel</a></li>
 </ul>
@@ -207,7 +202,7 @@
 <ul class="treeView" id="class-treeView">
   <li>
     <ul class="collapsibleList">
-      <li>Namespace <a href="namespace_marian.html#namespace-marian">marian</a><ul><li class="lastChild">Namespace <a href="namespace_marian__bergamot.html#namespace-marian-bergamot">marian::bergamot</a><ul><li>Struct <a href="structmarian_1_1bergamot_1_1AnnotatedText.html#exhale-struct-structmarian-1-1bergamot-1-1AnnotatedText">AnnotatedText</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1ByteRange.html#exhale-struct-structmarian-1-1bergamot-1-1ByteRange">ByteRange</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1CLIConfig.html#exhale-struct-structmarian-1-1bergamot-1-1CLIConfig">CLIConfig</a></li><li>Template Struct <a href="structmarian_1_1bergamot_1_1HashPtr.html#exhale-struct-structmarian-1-1bergamot-1-1HashPtr">HashPtr</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1MemoryBundle.html#exhale-struct-structmarian-1-1bergamot-1-1MemoryBundle">MemoryBundle</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1Response.html#exhale-struct-structmarian-1-1bergamot-1-1Response">Response</a><ul><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.html#exhale-struct-structmarian-1-1bergamot-1-1Response-1-1SentenceQualityScore">Response::SentenceQualityScore</a></li></ul></li><li>Struct <a href="structmarian_1_1bergamot_1_1ResponseOptions.html#exhale-struct-structmarian-1-1bergamot-1-1ResponseOptions">ResponseOptions</a></li><li>Class <a href="classmarian_1_1bergamot_1_1AggregateBatchingPool.html#exhale-class-classmarian-1-1bergamot-1-1AggregateBatchingPool">AggregateBatchingPool</a></li><li>Template Class <a href="classmarian_1_1bergamot_1_1AlignedVector.html#exhale-class-classmarian-1-1bergamot-1-1AlignedVector">AlignedVector</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Annotation.html#exhale-class-classmarian-1-1bergamot-1-1Annotation">Annotation</a></li><li>Class <a href="classmarian_1_1bergamot_1_1AsyncService.html#exhale-class-classmarian-1-1bergamot-1-1AsyncService">AsyncService</a><ul><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1AsyncService_1_1Config.html#exhale-struct-structmarian-1-1bergamot-1-1AsyncService-1-1Config">AsyncService::Config</a></li></ul></li><li>Template Class <a href="classmarian_1_1bergamot_1_1AtomicCache.html#exhale-class-classmarian-1-1bergamot-1-1AtomicCache">AtomicCache</a><ul><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1AtomicCache_1_1Stats.html#exhale-struct-structmarian-1-1bergamot-1-1AtomicCache-1-1Stats">AtomicCache::Stats</a></li></ul></li><li>Class <a href="classmarian_1_1bergamot_1_1BadHTML.html#exhale-class-classmarian-1-1bergamot-1-1BadHTML">BadHTML</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Batch.html#exhale-class-classmarian-1-1bergamot-1-1Batch">Batch</a></li><li>Class <a href="classmarian_1_1bergamot_1_1BatchingPool.html#exhale-class-classmarian-1-1bergamot-1-1BatchingPool">BatchingPool</a></li><li>Class <a href="classmarian_1_1bergamot_1_1BlockingService.html#exhale-class-classmarian-1-1bergamot-1-1BlockingService">BlockingService</a><ul><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1BlockingService_1_1Config.html#exhale-struct-structmarian-1-1bergamot-1-1BlockingService-1-1Config">BlockingService::Config</a></li></ul></li><li>Class <a href="classmarian_1_1bergamot_1_1ConfigParser.html#exhale-class-classmarian-1-1bergamot-1-1ConfigParser">ConfigParser</a></li><li>Class <a href="classmarian_1_1bergamot_1_1HTML.html#exhale-class-classmarian-1-1bergamot-1-1HTML">HTML</a><ul><li>Struct <a href="structmarian_1_1bergamot_1_1HTML_1_1Span.html#exhale-struct-structmarian-1-1bergamot-1-1HTML-1-1Span">HTML::Span</a></li><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1HTML_1_1Tag.html#exhale-struct-structmarian-1-1bergamot-1-1HTML-1-1Tag">HTML::Tag</a></li></ul></li><li>Class <a href="classmarian_1_1bergamot_1_1Logger.html#exhale-class-classmarian-1-1bergamot-1-1Logger">Logger</a></li><li>Class <a href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.html#exhale-class-classmarian-1-1bergamot-1-1LogisticRegressorQualityEstimator">LogisticRegressorQualityEstimator</a><ul><li>Struct <a href="structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header.html#exhale-struct-structmarian-1-1bergamot-1-1LogisticRegressorQualityEstimator-1-1Header">LogisticRegressorQualityEstimator::Header</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Scale.html#exhale-struct-structmarian-1-1bergamot-1-1LogisticRegressorQualityEstimator-1-1Scale">LogisticRegressorQualityEstimator::Scale</a></li><li class="lastChild">Class <a href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Matrix.html#exhale-class-classmarian-1-1bergamot-1-1LogisticRegressorQualityEstimator-1-1Matrix">LogisticRegressorQualityEstimator::Matrix</a></li></ul></li><li>Class <a href="classmarian_1_1bergamot_1_1QualityEstimator.html#exhale-class-classmarian-1-1bergamot-1-1QualityEstimator">QualityEstimator</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Request.html#exhale-class-classmarian-1-1bergamot-1-1Request">Request</a></li><li>Class <a href="classmarian_1_1bergamot_1_1RequestSentence.html#exhale-class-classmarian-1-1bergamot-1-1RequestSentence">RequestSentence</a></li><li>Class <a href="classmarian_1_1bergamot_1_1ResponseBuilder.html#exhale-class-classmarian-1-1bergamot-1-1ResponseBuilder">ResponseBuilder</a></li><li>Class <a href="classmarian_1_1bergamot_1_1TextProcessor.html#exhale-class-classmarian-1-1bergamot-1-1TextProcessor">TextProcessor</a></li><li>Template Class <a href="classmarian_1_1bergamot_1_1ThreadsafeBatchingPool.html#exhale-class-classmarian-1-1bergamot-1-1ThreadsafeBatchingPool">ThreadsafeBatchingPool</a></li><li>Class <a href="classmarian_1_1bergamot_1_1TranslationModel.html#exhale-class-classmarian-1-1bergamot-1-1TranslationModel">TranslationModel</a><ul><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1TranslationModel_1_1MarianBackend.html#exhale-struct-structmarian-1-1bergamot-1-1TranslationModel-1-1MarianBackend">TranslationModel::MarianBackend</a></li></ul></li><li>Class <a href="classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator.html#exhale-class-classmarian-1-1bergamot-1-1UnsupervisedQualityEstimator">UnsupervisedQualityEstimator</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Vocabs.html#exhale-class-classmarian-1-1bergamot-1-1Vocabs">Vocabs</a></li><li>Enum <a href="enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1.html#exhale-enum-response-options-8h-1abcf43c7e41279b59addc6e93421433d1">ConcatStrategy</a></li><li class="lastChild">Enum <a href="enum_parser_8h_1ab481b06779dc3e1ec98b3e59e3f727ff.html#exhale-enum-parser-8h-1ab481b06779dc3e1ec98b3e59e3f727ff">OpMode</a></li></ul></li></ul></li><li class="lastChild">Namespace <a href="namespace_markup.html#namespace-markup">markup</a><ul><li>Struct <a href="structmarkup_1_1instream.html#exhale-struct-structmarkup-1-1instream">instream</a></li><li>Struct <a href="structmarkup_1_1string__ref.html#exhale-struct-structmarkup-1-1string-ref">string_ref</a></li><li class="lastChild">Class <a href="classmarkup_1_1Scanner.html#exhale-class-classmarkup-1-1Scanner">Scanner</a></li></ul></li>
+      <li>Namespace <a href="namespace_marian.html#namespace-marian">marian</a><ul><li class="lastChild">Namespace <a href="namespace_marian__bergamot.html#namespace-marian-bergamot">marian::bergamot</a><ul><li>Struct <a href="structmarian_1_1bergamot_1_1AnnotatedText.html#exhale-struct-structmarian-1-1bergamot-1-1AnnotatedText">AnnotatedText</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1ByteRange.html#exhale-struct-structmarian-1-1bergamot-1-1ByteRange">ByteRange</a></li><li>Template Struct <a href="structmarian_1_1bergamot_1_1CLIConfig.html#exhale-struct-structmarian-1-1bergamot-1-1CLIConfig">CLIConfig</a></li><li>Template Struct <a href="structmarian_1_1bergamot_1_1HashPtr.html#exhale-struct-structmarian-1-1bergamot-1-1HashPtr">HashPtr</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1MemoryBundle.html#exhale-struct-structmarian-1-1bergamot-1-1MemoryBundle">MemoryBundle</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1Response.html#exhale-struct-structmarian-1-1bergamot-1-1Response">Response</a><ul><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.html#exhale-struct-structmarian-1-1bergamot-1-1Response-1-1SentenceQualityScore">Response::SentenceQualityScore</a></li></ul></li><li>Struct <a href="structmarian_1_1bergamot_1_1ResponseOptions.html#exhale-struct-structmarian-1-1bergamot-1-1ResponseOptions">ResponseOptions</a></li><li>Class <a href="classmarian_1_1bergamot_1_1AggregateBatchingPool.html#exhale-class-classmarian-1-1bergamot-1-1AggregateBatchingPool">AggregateBatchingPool</a></li><li>Template Class <a href="classmarian_1_1bergamot_1_1AlignedVector.html#exhale-class-classmarian-1-1bergamot-1-1AlignedVector">AlignedVector</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Annotation.html#exhale-class-classmarian-1-1bergamot-1-1Annotation">Annotation</a></li><li>Class <a href="classmarian_1_1bergamot_1_1AsyncService.html#exhale-class-classmarian-1-1bergamot-1-1AsyncService">AsyncService</a><ul><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1AsyncService_1_1Config.html#exhale-struct-structmarian-1-1bergamot-1-1AsyncService-1-1Config">AsyncService::Config</a></li></ul></li><li>Template Class <a href="classmarian_1_1bergamot_1_1AtomicCache.html#exhale-class-classmarian-1-1bergamot-1-1AtomicCache">AtomicCache</a><ul><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1AtomicCache_1_1Stats.html#exhale-struct-structmarian-1-1bergamot-1-1AtomicCache-1-1Stats">AtomicCache::Stats</a></li></ul></li><li>Class <a href="classmarian_1_1bergamot_1_1BadHTML.html#exhale-class-classmarian-1-1bergamot-1-1BadHTML">BadHTML</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Batch.html#exhale-class-classmarian-1-1bergamot-1-1Batch">Batch</a></li><li>Class <a href="classmarian_1_1bergamot_1_1BatchingPool.html#exhale-class-classmarian-1-1bergamot-1-1BatchingPool">BatchingPool</a></li><li>Class <a href="classmarian_1_1bergamot_1_1BlockingService.html#exhale-class-classmarian-1-1bergamot-1-1BlockingService">BlockingService</a><ul><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1BlockingService_1_1Config.html#exhale-struct-structmarian-1-1bergamot-1-1BlockingService-1-1Config">BlockingService::Config</a></li></ul></li><li>Template Class <a href="classmarian_1_1bergamot_1_1ConfigParser.html#exhale-class-classmarian-1-1bergamot-1-1ConfigParser">ConfigParser</a></li><li>Class <a href="classmarian_1_1bergamot_1_1HTML.html#exhale-class-classmarian-1-1bergamot-1-1HTML">HTML</a><ul><li>Struct <a href="structmarian_1_1bergamot_1_1HTML_1_1Span.html#exhale-struct-structmarian-1-1bergamot-1-1HTML-1-1Span">HTML::Span</a></li><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1HTML_1_1Tag.html#exhale-struct-structmarian-1-1bergamot-1-1HTML-1-1Tag">HTML::Tag</a></li></ul></li><li>Class <a href="classmarian_1_1bergamot_1_1Logger.html#exhale-class-classmarian-1-1bergamot-1-1Logger">Logger</a></li><li>Class <a href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.html#exhale-class-classmarian-1-1bergamot-1-1LogisticRegressorQualityEstimator">LogisticRegressorQualityEstimator</a><ul><li>Struct <a href="structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header.html#exhale-struct-structmarian-1-1bergamot-1-1LogisticRegressorQualityEstimator-1-1Header">LogisticRegressorQualityEstimator::Header</a></li><li>Struct <a href="structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Scale.html#exhale-struct-structmarian-1-1bergamot-1-1LogisticRegressorQualityEstimator-1-1Scale">LogisticRegressorQualityEstimator::Scale</a></li><li class="lastChild">Class <a href="classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Matrix.html#exhale-class-classmarian-1-1bergamot-1-1LogisticRegressorQualityEstimator-1-1Matrix">LogisticRegressorQualityEstimator::Matrix</a></li></ul></li><li>Class <a href="classmarian_1_1bergamot_1_1QualityEstimator.html#exhale-class-classmarian-1-1bergamot-1-1QualityEstimator">QualityEstimator</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Request.html#exhale-class-classmarian-1-1bergamot-1-1Request">Request</a></li><li>Class <a href="classmarian_1_1bergamot_1_1RequestSentence.html#exhale-class-classmarian-1-1bergamot-1-1RequestSentence">RequestSentence</a></li><li>Class <a href="classmarian_1_1bergamot_1_1ResponseBuilder.html#exhale-class-classmarian-1-1bergamot-1-1ResponseBuilder">ResponseBuilder</a></li><li>Class <a href="classmarian_1_1bergamot_1_1TextProcessor.html#exhale-class-classmarian-1-1bergamot-1-1TextProcessor">TextProcessor</a></li><li>Template Class <a href="classmarian_1_1bergamot_1_1ThreadsafeBatchingPool.html#exhale-class-classmarian-1-1bergamot-1-1ThreadsafeBatchingPool">ThreadsafeBatchingPool</a></li><li>Class <a href="classmarian_1_1bergamot_1_1TranslationModel.html#exhale-class-classmarian-1-1bergamot-1-1TranslationModel">TranslationModel</a><ul><li class="lastChild">Struct <a href="structmarian_1_1bergamot_1_1TranslationModel_1_1MarianBackend.html#exhale-struct-structmarian-1-1bergamot-1-1TranslationModel-1-1MarianBackend">TranslationModel::MarianBackend</a></li></ul></li><li>Class <a href="classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator.html#exhale-class-classmarian-1-1bergamot-1-1UnsupervisedQualityEstimator">UnsupervisedQualityEstimator</a></li><li>Class <a href="classmarian_1_1bergamot_1_1Vocabs.html#exhale-class-classmarian-1-1bergamot-1-1Vocabs">Vocabs</a></li><li class="lastChild">Enum <a href="enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1.html#exhale-enum-response-options-8h-1abcf43c7e41279b59addc6e93421433d1">ConcatStrategy</a></li></ul></li></ul></li><li class="lastChild">Namespace <a href="namespace_markup.html#namespace-markup">markup</a><ul><li>Struct <a href="structmarkup_1_1instream.html#exhale-struct-structmarkup-1-1instream">instream</a></li><li>Struct <a href="structmarkup_1_1string__ref.html#exhale-struct-structmarkup-1-1string-ref">string_ref</a></li><li class="lastChild">Class <a href="classmarkup_1_1Scanner.html#exhale-class-classmarkup-1-1Scanner">Scanner</a></li></ul></li>
     </ul>
   </li><!-- only tree view element -->
 </ul><!-- /treeView class-treeView --></section>
@@ -216,7 +211,7 @@
 <ul class="treeView" id="file-treeView">
   <li>
     <ul class="collapsibleList">
-      <li>Directory <a href="dir_app.html#dir-app">app</a><ul><li>File <a href="file_app_bergamot.cpp.html#file-app-bergamot.cpp">bergamot.cpp</a></li><li class="lastChild">File <a href="file_app_cli.h.html#file-app-cli.h">cli.h</a></li></ul></li><li class="lastChild">Directory <a href="dir_src.html#dir-src">src</a><ul><li class="lastChild">Directory <a href="dir_src_translator.html#dir-src-translator">translator</a><ul><li>File <a href="file_src_translator_aggregate_batching_pool.cpp.html#file-src-translator-aggregate-batching-pool.cpp">aggregate_batching_pool.cpp</a></li><li>File <a href="file_src_translator_aggregate_batching_pool.h.html#file-src-translator-aggregate-batching-pool.h">aggregate_batching_pool.h</a></li><li>File <a href="file_src_translator_aligned.h.html#file-src-translator-aligned.h">aligned.h</a></li><li>File <a href="file_src_translator_annotation.cpp.html#file-src-translator-annotation.cpp">annotation.cpp</a></li><li>File <a href="file_src_translator_annotation.h.html#file-src-translator-annotation.h">annotation.h</a></li><li>File <a href="file_src_translator_batch.cpp.html#file-src-translator-batch.cpp">batch.cpp</a></li><li>File <a href="file_src_translator_batch.h.html#file-src-translator-batch.h">batch.h</a></li><li>File <a href="file_src_translator_batching_pool.cpp.html#file-src-translator-batching-pool.cpp">batching_pool.cpp</a></li><li>File <a href="file_src_translator_batching_pool.h.html#file-src-translator-batching-pool.h">batching_pool.h</a></li><li>File <a href="file_src_translator_byte_array_util.cpp.html#file-src-translator-byte-array-util.cpp">byte_array_util.cpp</a></li><li>File <a href="file_src_translator_byte_array_util.h.html#file-src-translator-byte-array-util.h">byte_array_util.h</a></li><li>File <a href="file_src_translator_cache.h.html#file-src-translator-cache.h">cache.h</a></li><li>File <a href="file_src_translator_definitions.h.html#file-src-translator-definitions.h">definitions.h</a></li><li>File <a href="file_src_translator_html.cpp.html#file-src-translator-html.cpp">html.cpp</a></li><li>File <a href="file_src_translator_html.h.html#file-src-translator-html.h">html.h</a></li><li>File <a href="file_src_translator_logging.h.html#file-src-translator-logging.h">logging.h</a></li><li>File <a href="file_src_translator_parser.cpp.html#file-src-translator-parser.cpp">parser.cpp</a></li><li>File <a href="file_src_translator_parser.h.html#file-src-translator-parser.h">parser.h</a></li><li>File <a href="file_src_translator_quality_estimator.cpp.html#file-src-translator-quality-estimator.cpp">quality_estimator.cpp</a></li><li>File <a href="file_src_translator_quality_estimator.h.html#file-src-translator-quality-estimator.h">quality_estimator.h</a></li><li>File <a href="file_src_translator_request.cpp.html#file-src-translator-request.cpp">request.cpp</a></li><li>File <a href="file_src_translator_request.h.html#file-src-translator-request.h">request.h</a></li><li>File <a href="file_src_translator_response.h.html#file-src-translator-response.h">response.h</a></li><li>File <a href="file_src_translator_response_builder.cpp.html#file-src-translator-response-builder.cpp">response_builder.cpp</a></li><li>File <a href="file_src_translator_response_builder.h.html#file-src-translator-response-builder.h">response_builder.h</a></li><li>File <a href="file_src_translator_response_options.h.html#file-src-translator-response-options.h">response_options.h</a></li><li>File <a href="file_src_translator_service.cpp.html#file-src-translator-service.cpp">service.cpp</a></li><li>File <a href="file_src_translator_service.h.html#file-src-translator-service.h">service.h</a></li><li>File <a href="file_src_translator_text_processor.cpp.html#file-src-translator-text-processor.cpp">text_processor.cpp</a></li><li>File <a href="file_src_translator_text_processor.h.html#file-src-translator-text-processor.h">text_processor.h</a></li><li>File <a href="file_src_translator_threadsafe_batching_pool.cpp.html#file-src-translator-threadsafe-batching-pool.cpp">threadsafe_batching_pool.cpp</a></li><li>File <a href="file_src_translator_threadsafe_batching_pool.h.html#file-src-translator-threadsafe-batching-pool.h">threadsafe_batching_pool.h</a></li><li>File <a href="file_src_translator_translation_model.cpp.html#file-src-translator-translation-model.cpp">translation_model.cpp</a></li><li>File <a href="file_src_translator_translation_model.h.html#file-src-translator-translation-model.h">translation_model.h</a></li><li>File <a href="file_src_translator_vocabs.h.html#file-src-translator-vocabs.h">vocabs.h</a></li><li>File <a href="file_src_translator_xh_scanner.cpp.html#file-src-translator-xh-scanner.cpp">xh_scanner.cpp</a></li><li class="lastChild">File <a href="file_src_translator_xh_scanner.h.html#file-src-translator-xh-scanner.h">xh_scanner.h</a></li></ul></li></ul></li>
+      <li>Directory <a href="dir_app.html#dir-app">app</a><ul><li class="lastChild">File <a href="file_app_bergamot.cpp.html#file-app-bergamot.cpp">bergamot.cpp</a></li></ul></li><li class="lastChild">Directory <a href="dir_src.html#dir-src">src</a><ul><li class="lastChild">Directory <a href="dir_src_translator.html#dir-src-translator">translator</a><ul><li>File <a href="file_src_translator_aggregate_batching_pool.cpp.html#file-src-translator-aggregate-batching-pool.cpp">aggregate_batching_pool.cpp</a></li><li>File <a href="file_src_translator_aggregate_batching_pool.h.html#file-src-translator-aggregate-batching-pool.h">aggregate_batching_pool.h</a></li><li>File <a href="file_src_translator_aligned.h.html#file-src-translator-aligned.h">aligned.h</a></li><li>File <a href="file_src_translator_annotation.cpp.html#file-src-translator-annotation.cpp">annotation.cpp</a></li><li>File <a href="file_src_translator_annotation.h.html#file-src-translator-annotation.h">annotation.h</a></li><li>File <a href="file_src_translator_batch.cpp.html#file-src-translator-batch.cpp">batch.cpp</a></li><li>File <a href="file_src_translator_batch.h.html#file-src-translator-batch.h">batch.h</a></li><li>File <a href="file_src_translator_batching_pool.cpp.html#file-src-translator-batching-pool.cpp">batching_pool.cpp</a></li><li>File <a href="file_src_translator_batching_pool.h.html#file-src-translator-batching-pool.h">batching_pool.h</a></li><li>File <a href="file_src_translator_byte_array_util.cpp.html#file-src-translator-byte-array-util.cpp">byte_array_util.cpp</a></li><li>File <a href="file_src_translator_byte_array_util.h.html#file-src-translator-byte-array-util.h">byte_array_util.h</a></li><li>File <a href="file_src_translator_cache.h.html#file-src-translator-cache.h">cache.h</a></li><li>File <a href="file_src_translator_definitions.h.html#file-src-translator-definitions.h">definitions.h</a></li><li>File <a href="file_src_translator_html.cpp.html#file-src-translator-html.cpp">html.cpp</a></li><li>File <a href="file_src_translator_html.h.html#file-src-translator-html.h">html.h</a></li><li>File <a href="file_src_translator_logging.h.html#file-src-translator-logging.h">logging.h</a></li><li>File <a href="file_src_translator_parser.cpp.html#file-src-translator-parser.cpp">parser.cpp</a></li><li>File <a href="file_src_translator_parser.h.html#file-src-translator-parser.h">parser.h</a></li><li>File <a href="file_src_translator_quality_estimator.cpp.html#file-src-translator-quality-estimator.cpp">quality_estimator.cpp</a></li><li>File <a href="file_src_translator_quality_estimator.h.html#file-src-translator-quality-estimator.h">quality_estimator.h</a></li><li>File <a href="file_src_translator_request.cpp.html#file-src-translator-request.cpp">request.cpp</a></li><li>File <a href="file_src_translator_request.h.html#file-src-translator-request.h">request.h</a></li><li>File <a href="file_src_translator_response.h.html#file-src-translator-response.h">response.h</a></li><li>File <a href="file_src_translator_response_builder.cpp.html#file-src-translator-response-builder.cpp">response_builder.cpp</a></li><li>File <a href="file_src_translator_response_builder.h.html#file-src-translator-response-builder.h">response_builder.h</a></li><li>File <a href="file_src_translator_response_options.h.html#file-src-translator-response-options.h">response_options.h</a></li><li>File <a href="file_src_translator_service.cpp.html#file-src-translator-service.cpp">service.cpp</a></li><li>File <a href="file_src_translator_service.h.html#file-src-translator-service.h">service.h</a></li><li>File <a href="file_src_translator_text_processor.cpp.html#file-src-translator-text-processor.cpp">text_processor.cpp</a></li><li>File <a href="file_src_translator_text_processor.h.html#file-src-translator-text-processor.h">text_processor.h</a></li><li>File <a href="file_src_translator_threadsafe_batching_pool.cpp.html#file-src-translator-threadsafe-batching-pool.cpp">threadsafe_batching_pool.cpp</a></li><li>File <a href="file_src_translator_threadsafe_batching_pool.h.html#file-src-translator-threadsafe-batching-pool.h">threadsafe_batching_pool.h</a></li><li>File <a href="file_src_translator_translation_model.cpp.html#file-src-translator-translation-model.cpp">translation_model.cpp</a></li><li>File <a href="file_src_translator_translation_model.h.html#file-src-translator-translation-model.h">translation_model.h</a></li><li>File <a href="file_src_translator_utils.h.html#file-src-translator-utils.h">utils.h</a></li><li>File <a href="file_src_translator_vocabs.h.html#file-src-translator-vocabs.h">vocabs.h</a></li><li>File <a href="file_src_translator_xh_scanner.cpp.html#file-src-translator-xh-scanner.cpp">xh_scanner.cpp</a></li><li class="lastChild">File <a href="file_src_translator_xh_scanner.h.html#file-src-translator-xh-scanner.h">xh_scanner.h</a></li></ul></li></ul></li>
     </ul>
   </li><!-- only tree view element -->
 </ul><!-- /treeView file-treeView --></section>
@@ -231,7 +226,7 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="namespace_&#64;35.html">Namespace &#64;35</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace_&#64;36.html">Namespace &#64;36</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -263,14 +258,6 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="namespace_marian__bergamot__&#64;9.html">Namespace marian::bergamot::&#64;9</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="namespace_marian__bergamot__app.html">Namespace marian::bergamot::app</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="namespace_marian__bergamot__app.html#functions">Functions</a></li>
-</ul>
-</li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -329,7 +316,7 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="structmarian_1_1bergamot_1_1CLIConfig.html">Struct CLIConfig</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="structmarian_1_1bergamot_1_1CLIConfig.html">Template Struct CLIConfig</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="structmarian_1_1bergamot_1_1CLIConfig.html#struct-documentation">Struct Documentation</a></li>
 </ul>
 </li>
@@ -531,7 +518,7 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="classmarian_1_1bergamot_1_1ConfigParser.html">Class ConfigParser</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="classmarian_1_1bergamot_1_1ConfigParser.html">Template Class ConfigParser</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="classmarian_1_1bergamot_1_1ConfigParser.html#class-documentation">Class Documentation</a></li>
 </ul>
 </li>
@@ -685,14 +672,6 @@
 </li>
 </ul>
 </div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="enum_parser_8h_1ab481b06779dc3e1ec98b3e59e3f727ff.html">Enum OpMode</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="enum_parser_8h_1ab481b06779dc3e1ec98b3e59e3f727ff.html#enum-documentation">Enum Documentation</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </section>
 <section id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
@@ -700,30 +679,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="function_bergamot_8cpp_1a0ddf1224851353fc92bfbff6f499fa97.html">Function main</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function_bergamot_8cpp_1a0ddf1224851353fc92bfbff6f499fa97.html#function-documentation">Function Documentation</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="function_cli_8h_1ac5b271b6d4b0a3c7bfe36c61e1aa182b.html">Function marian::bergamot::app::decoder</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="function_cli_8h_1ac5b271b6d4b0a3c7bfe36c61e1aa182b.html#function-documentation">Function Documentation</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="function_cli_8h_1a0ad9e75d01e6f489c4cbd81b25f71494.html">Function marian::bergamot::app::native</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="function_cli_8h_1a0ad9e75d01e6f489c4cbd81b25f71494.html#function-documentation">Function Documentation</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="function_cli_8h_1abfb5f6dde3254e967a45b561d6b259a2.html">Function marian::bergamot::app::wasm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="function_cli_8h_1abfb5f6dde3254e967a45b561d6b259a2.html#function-documentation">Function Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -826,14 +781,6 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="function_parser_8cpp_1a1b68209c8843f7c0420a0dea8884e77f.html">Function marian::bergamot::operator&gt;&gt;</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="function_parser_8cpp_1a1b68209c8843f7c0420a0dea8884e77f.html#function-documentation">Function Documentation</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
 <li class="toctree-l1"><a class="reference internal" href="function_parser_8cpp_1a738c33453a147aebfc5308faad463651.html">Function marian::bergamot::parseOptionsFromFilePath</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function_parser_8cpp_1a738c33453a147aebfc5308faad463651.html#function-documentation">Function Documentation</a></li>
 </ul>
@@ -844,6 +791,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="function_parser_8cpp_1a5d169766c7451792220a52433b66d1f1.html">Function marian::bergamot::parseOptionsFromString</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function_parser_8cpp_1a5d169766c7451792220a52433b66d1f1.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80.html">Function marian::bergamot::readFromStdin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80.html#function-documentation">Function Documentation</a></li>
 </ul>
 </li>
 </ul>

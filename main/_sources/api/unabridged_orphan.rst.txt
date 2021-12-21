@@ -95,11 +95,6 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_app_cli.h.rst
-
-.. toctree::
-   :maxdepth: 5
-
    file_src_translator_definitions.h.rst
 
 .. toctree::
@@ -206,6 +201,11 @@ Files
    :maxdepth: 5
 
    file_src_translator_translation_model.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_utils.h.rst
 
 .. toctree::
    :maxdepth: 5
