@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File service.h &mdash; Bergamot Translator main 2021-12-29 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File service.h &mdash; Bergamot Translator main 2021-12-30 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -99,15 +99,15 @@
 <span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-<span class="k">class</span> <span class="nc">BlockingService</span><span class="p">;</span><span class="w"></span>
-<span class="k">class</span> <span class="nc">AsyncService</span><span class="p">;</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BlockingService</span><span class="p">;</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AsyncService</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">class</span> <span class="nc">BlockingService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BlockingService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="k">struct</span> <span class="nc">Config</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Config</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">cacheEnabled</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">cacheSize</span><span class="p">{</span><span class="mi">2000</span><span class="p">};</span><span class="w"></span>
-<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">App</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">App</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">addOptions</span><span class="p">(</span><span class="n">App</span><span class="w"> </span><span class="o">&amp;</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">Config</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="c1">// Options will come here.</span>
 <span class="w">      </span><span class="n">app</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--cache-translations&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">cacheEnabled</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Whether to cache translations or not.&quot;</span><span class="p">);</span><span class="w"></span>
@@ -135,14 +135,14 @@
 <span class="w">  </span><span class="n">TranslationCache</span><span class="w"> </span><span class="n">cache_</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
-<span class="k">class</span> <span class="nc">AsyncService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AsyncService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="k">struct</span> <span class="nc">Config</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Config</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">numWorkers</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">cacheEnabled</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">cacheSize</span><span class="p">{</span><span class="mi">2000</span><span class="p">};</span><span class="w"></span>
 <span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">cacheMutexBuckets</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
-<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">App</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">App</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">addOptions</span><span class="p">(</span><span class="n">App</span><span class="w"> </span><span class="o">&amp;</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">Config</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">app</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--cpu-threads&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">numWorkers</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Workers to form translation backend&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">      </span><span class="n">app</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--cache-translations&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">cacheEnabled</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Whether to cache translations or not.&quot;</span><span class="p">);</span><span class="w"></span>
@@ -153,7 +153,7 @@
 <span class="w">  </span><span class="p">};</span><span class="w"></span>
 <span class="w">  </span><span class="n">AsyncService</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">AsyncService</span><span class="o">::</span><span class="n">Config</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">ConfigType</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">ConfigType</span><span class="o">&gt;</span><span class="w"></span>
 <span class="w">  </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">createCompatibleModel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ConfigType</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">MemoryBundle</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">memory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MemoryBundle</span><span class="p">{})</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// @TODO: Remove this remove this dependency/coupling.</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">New</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">memory</span><span class="p">),</span><span class="w"> </span><span class="cm">/*replicas=*/</span><span class="n">config_</span><span class="p">.</span><span class="n">numWorkers</span><span class="p">);</span><span class="w"></span>
