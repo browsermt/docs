@@ -40,11 +40,14 @@ Program Listing for File service.h
      struct Config {
        bool cacheEnabled{false};  
        size_t cacheSize{2000};    
+       Logger::Config logger;     // Configurations for logging
+   
        template <class App>
        static void addOptions(App &app, Config &config) {
          // Options will come here.
          app.add_option("--cache-translations", config.cacheEnabled, "Whether to cache translations or not.");
          app.add_option("--cache-size", config.cacheSize, "Number of entries to store in cache.");
+         Logger::Config::addOptions(app, config.logger);
        }
      };
      BlockingService(const BlockingService::Config &config);
@@ -75,6 +78,8 @@ Program Listing for File service.h
        bool cacheEnabled{false};  
        size_t cacheSize{2000};    
        size_t cacheMutexBuckets{1};  
+       Logger::Config logger;        // Configurations for logging
+   
        template <class App>
        static void addOptions(App &app, Config &config) {
          app.add_option("--cpu-threads", config.numWorkers, "Workers to form translation backend");
@@ -82,6 +87,7 @@ Program Listing for File service.h
          app.add_option("--cache-size", config.cacheSize, "Number of entries to store in cache.");
          app.add_option("--cache-mutex-buckets", config.cacheMutexBuckets,
                         "Number of mutex buckets to control locking granularity");
+         Logger::Config::addOptions(app, config.logger);
        }
      };
      AsyncService(const AsyncService::Config &config);

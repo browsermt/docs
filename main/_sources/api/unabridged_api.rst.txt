@@ -93,6 +93,11 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   structmarian_1_1bergamot_1_1Logger_1_1Config.rst
+
+.. toctree::
+   :maxdepth: 5
+
    structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header.rst
 
 .. toctree::

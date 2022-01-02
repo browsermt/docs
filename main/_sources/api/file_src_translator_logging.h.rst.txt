@@ -57,5 +57,7 @@ Classes
 -------
 
 
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Logger_1_1Config`
+
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1Logger`
 
