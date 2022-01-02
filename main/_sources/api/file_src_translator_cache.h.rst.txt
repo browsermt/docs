@@ -29,6 +29,8 @@ Includes
 --------
 
 
+- ``atomic``
+
 - ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
 
 - ``memory``
