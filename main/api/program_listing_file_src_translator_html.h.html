@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File html.h &mdash; Bergamot Translator main 2022-01-03 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File html.h &mdash; Bergamot Translator main 2022-01-05 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -98,9 +98,19 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">HTML</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="nc">NodeType</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">ELEMENT</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">VOID_ELEMENT</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">COMMENT</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="n">PROCESSING_INSTRUCTION</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">NodeType</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w">  </span><span class="c1">// Type of the node</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">attributes</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">empty</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w">  </span><span class="c1">// Raw data of an element that just needs to be</span>
+<span class="w">                       </span><span class="c1">// copied as is, e.g. &lt;script&gt; or &lt;style&gt;</span>
+<span class="w">                       </span><span class="c1">// TODO: replace with string_view if input lives that long</span>
 <span class="w">  </span><span class="p">};</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Tag</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">Taint</span><span class="p">;</span><span class="w"></span>
