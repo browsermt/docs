@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bergamot C++ Library &mdash; Bergamot Translator main 2022-01-05 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Bergamot C++ Library &mdash; Bergamot Translator main 2022-01-06 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -78,7 +78,7 @@
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
       <li>Bergamot C++ Library</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/marian-integration.md.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/marian-integration.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -88,121 +88,100 @@
              
   <section id="bergamot-c-library">
 <h1>Bergamot C++ Library<a class="headerlink" href="#bergamot-c-library" title="Permalink to this headline">¶</a></h1>
-<p>This document contains instructions to develop for modifications on top of the
-marian machine translation toolkit powering bergamot-translator. The library is
-optimized towards fast and efficient translation of a given input.</p>
+<p>This document contains instructions to develop for modifications on top
+of the marian machine translation toolkit powering bergamot-translator.
+The library is optimized towards fast and efficient translation of a
+given input.</p>
 <section id="build-instructions">
 <h2>Build Instructions<a class="headerlink" href="#build-instructions" title="Permalink to this headline">¶</a></h2>
-<p>Note: You are strongly advised to refer to the continuous integration on this
-repository, which builds bergamot-translator and associated applications from
-scratch. Examples to run these command line-applications are available in the
+<p>Note: You are strongly advised to refer to the continuous integration on
+this repository, which builds bergamot-translator and associated
+applications from scratch. Examples to run these command
+line-applications are available in the
 <a class="reference external" href="https://github.com/browsermt/bergamot-translator-tests">bergamot-translator-tests</a>
-repository. Builds take about 30 mins on a consumer grade machine, so using a
-tool like ccache is highly recommended.</p>
+repository. Builds take about 30 mins on a consumer grade machine, so
+using a tool like ccache is highly recommended.</p>
 <section id="dependencies">
 <h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
-<p>Marian CPU version requires Intel MKL or OpenBLAS. Both are free, but MKL is
-not open-sourced. Intel MKL is strongly recommended as it is faster. On Ubuntu
-16.04 and newer it can be installed from the APT repositories.</p>
+<p>Marian CPU version requires Intel MKL or OpenBLAS. Both are free, but
+MKL is not open-sourced. Intel MKL is strongly recommended as it is
+faster. On Ubuntu 16.04 and newer it can be installed from the APT
+repositories.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget -qO- <span class="s1">&#39;https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB&#39;</span> <span class="p">|</span> sudo apt-key add -
 sudo sh -c <span class="s1">&#39;echo deb https://apt.repos.intel.com/mkl all main &gt; /etc/apt/sources.list.d/intel-mkl.list&#39;</span>
 sudo apt-get update
 sudo apt-get install intel-mkl-64bit-2020.0-088
 </pre></div>
 </div>
-<p>On MacOS, apple accelerate framework will be used instead of MKL/OpenBLAS.</p>
+<p>On MacOS, apple accelerate framework will be used instead of
+MKL/OpenBLAS.</p>
 </section>
 <section id="building-bergamot-translator">
 <h3>Building bergamot-translator<a class="headerlink" href="#building-bergamot-translator" title="Permalink to this headline">¶</a></h3>
-<p>Web Assembly (WASM) reduces building to only using a subset of functionalities
-of marian, the translation library powering bergamot-translator. When
-developing bergamot-translator it is important that the sources added be
-compatible with marian.  Therefore, it is required to set
-<code class="docutils literal notranslate"><span class="pre">-DUSE_WASM_COMPATIBLE_SOURCE=on</span></code>.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/browsermt/bergamot-translator</span>
+<p>Web Assembly (WASM) reduces building to only using a subset of
+functionalities of marian, the translation library powering
+bergamot-translator. When developing bergamot-translator it is important
+that the sources added be compatible with marian. Therefore, it is
+required to set <code class="docutils literal notranslate"><span class="pre">-DUSE_WASM_COMPATIBLE_SOURCE=on</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/browsermt/bergamot-translator</span>
 <span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">bergamot</span><span class="o">-</span><span class="n">translator</span><span class="w"></span>
 <span class="n">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">build</span><span class="w"></span>
 <span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">build</span><span class="w"></span>
 <span class="n">$</span><span class="w"> </span><span class="n">cmake</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="o">-</span><span class="n">DUSE_WASM_COMPATIBLE_SOURCE</span><span class="o">=</span><span class="n">off</span><span class="w"> </span><span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span><span class="w"></span>
-<span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j2</span><span class="w"> </span>
+<span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j2</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The build will generate the library that can be linked to any project. All the
-public header files are specified in <code class="docutils literal notranslate"><span class="pre">src</span></code> folder.</p>
+<p>The build will generate the library that can be linked to any project.
+All the public header files are specified in <code class="docutils literal notranslate"><span class="pre">src</span></code> folder.</p>
 </section>
 </section>
 <section id="command-line-apps">
 <h2>Command line apps<a class="headerlink" href="#command-line-apps" title="Permalink to this headline">¶</a></h2>
-<p>Bergamot-translator is intended to be used as a library. However, we provide a
-command-line application which is capable of translating text provided on
-standard-input. During development this application is used to perform
-regression-tests.</p>
-<p>There are effectively multiple CLIs subclassed from a unified interface all
-provided in <code class="docutils literal notranslate"><span class="pre">app/cli.h</span></code>. These are packed into a single executable named
-<code class="docutils literal notranslate"><span class="pre">bergamot</span></code> by means of a <code class="docutils literal notranslate"><span class="pre">--bergamot-mode</span> <span class="pre">BERGAMOT_MODE</span></code> switch.</p>
-<p>The following modes are available:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--bergamot-mode</span> <span class="pre">native</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--bergamot-mode</span> <span class="pre">wasm</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--bergamot-mode</span> <span class="pre">decoder</span></code></p></li>
-</ul>
-<p>Find documentation on these modes with the API documentation for apps <a class="reference external" href="./api/namespace_marian__bergamot__app.html#functions">here</a>.</p>
+<p>bergamot-translator is intended to be used as a library. However, we
+provide a command-line application which is capable of translating text
+provided on standard-input. During development this application is used
+to perform regression-tests.</p>
 </section>
 <section id="example-command-line-run">
 <h2>Example command line run<a class="headerlink" href="#example-command-line-run" title="Permalink to this headline">¶</a></h2>
 <p>The models required to run the command-line are available at
-<a class="reference external" href="http://data.statmt.org/bergamot/models/">data.statmt.org/bergamot/models/</a>.
-The following example uses an English to German tiny11 student model, available
-at:</p>
+<a class="reference external" href="http://data.statmt.org/bergamot/models/">data.statmt.org/bergamot/models/</a>.</p>
+<p>The following example uses an English to German tiny11 student model,
+available at:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://data.statmt.org/bergamot/models/deen/ende.student.tiny11.tar.gz">data.statmt.org/bergamot/models/deen/ende.student.tiny11.tar.gz</a></p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MODEL_DIR</span><span class="o">=</span>... <span class="c1"># path to where the model-files are.</span>
-<span class="nv">BERGAMOT_MODE</span><span class="o">=</span><span class="s1">&#39;native&#39;</span>
-<span class="nv">ARGS</span><span class="o">=(</span>
-    --bergamot-mode <span class="nv">$BERGAMOT_MODE</span>
-    -m <span class="nv">$MODEL_DIR</span>/model.intgemm.alphas.bin <span class="c1"># Path to model file.</span>
-    --vocabs 
-        <span class="nv">$MODEL_DIR</span>/vocab.deen.spm <span class="c1"># source-vocabulary</span>
-        <span class="nv">$MODEL_DIR</span>/vocab.deen.spm <span class="c1"># target-vocabulary</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In source-root folder</span>
 
-    <span class="c1"># The following increases speed through one-best-decoding, shortlist and quantization.</span>
-    --beam-size <span class="m">1</span> --skip-cost --shortlist <span class="nv">$MODEL_DIR</span>/lex.s2t.bin <span class="nb">false</span> --int8shiftAlphaAll 
+<span class="c1"># Obtain an example model from the web.</span>
+mkdir -p models
+wget --quiet --continue --directory models/ <span class="se">\</span>
+    http://data.statmt.org/bergamot/models/deen/ende.student.tiny11.tar.gz 
+<span class="o">(</span><span class="nb">cd</span> models <span class="o">&amp;&amp;</span> tar -xzf ende.student.tiny11.tar.gz<span class="o">)</span>
 
-    <span class="c1"># Number of CPU threads (workers to launch). Parallelizes over cores and improves speed.</span>
-    <span class="c1"># A value of 0 allows a path with no worker thread-launches and a single-thread.</span>
-    --cpu-threads <span class="m">4</span>
+<span class="c1"># Patch the config-files generated from marian for use in bergamot.</span>
+python3 bergamot-translator-tests/tools/patch-marian-for-bergamot.py <span class="se">\</span>
+    --config-path models/ende.student.tiny11/config.intgemm8bitalpha.yml <span class="se">\</span>
+    --ssplit-prefix-file 3rd-party/ssplit-cpp/split-cpp/nonbreaking_prefixes/nonbreaking_prefix.en
 
-    <span class="c1"># Maximum size of a sentence allowed. If a sentence is above this length,</span>
-    <span class="c1"># it&#39;s broken into pieces of less than or equal to this size.</span>
-    --max-length-break <span class="m">1024</span>  
+<span class="c1"># Patched config file will be available with .bergamot.yml suffix.</span>
+<span class="nv">CONFIG</span><span class="o">=</span>models/ende.student.tiny11/config.intgemm8bitalpha.yml.bergamot.yml
 
-    <span class="c1"># Maximum number of tokens that can be fit in a batch. The optimal value </span>
-    <span class="c1"># for the parameter is dependant on hardware and can be obtained by running</span>
-    <span class="c1"># with variations and benchmarking.</span>
-    --mini-batch-words <span class="m">1024</span> 
-
-    <span class="c1"># Three modes are supported</span>
-    <span class="c1">#   - sentence: One sentence per line</span>
-    <span class="c1">#   - paragraph: One paragraph per line.</span>
-    <span class="c1">#   - wrapped_text: Paragraphs are separated by empty line.</span>
-    --ssplit-mode paragraph 
-<span class="o">)</span>
-
-./app/bergamot <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ARGS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span> &lt; path-to-input-file
+build/app/bergamot --model-config-paths <span class="nv">$CONFIG</span> --cpu-threads <span class="m">4</span> <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;Hello World!&quot;</span>
+<span class="c1"># Hallo Welt!</span>
 </pre></div>
 </div>
 </section>
 <section id="coding-style">
 <h2>Coding Style<a class="headerlink" href="#coding-style" title="Permalink to this headline">¶</a></h2>
-<p>This repository contains C++ and JS source-files, of which C++ should adhere to
-the clang-format based style guidelines. You may configure your development
-environment to use the <code class="docutils literal notranslate"><span class="pre">.clang-format</span></code> and <code class="docutils literal notranslate"><span class="pre">.clang-format-ignore</span></code> files
-provided in the root folder of this repository with your preferred choice of
-editor/tooling.</p>
-<p>One simple and recommended method to get your code to adhere to this style is
-to issue the following command in the source-root of this repository, which is
-used to also check for the coding style in the CI.</p>
+<p>This repository contains C++ and JS source-files, of which C++ should
+adhere to the clang-format based style guidelines. You may configure
+your development environment to use the <code class="docutils literal notranslate"><span class="pre">.clang-format</span></code> and
+<code class="docutils literal notranslate"><span class="pre">.clang-format-ignore</span></code> files provided in the root folder of this
+repository with your preferred choice of editor/tooling.</p>
+<p>One simple and recommended method to get your code to adhere to this
+style is to issue the following command in the source-root of this
+repository, which is used to also check for the coding style in the CI.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 run-clang-format.py -i --style file -r src wasm
 </pre></div>
 </div>

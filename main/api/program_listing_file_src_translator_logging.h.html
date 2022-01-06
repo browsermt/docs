@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File logging.h &mdash; Bergamot Translator main 2022-01-05 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File logging.h &mdash; Bergamot Translator main 2022-01-06 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -98,7 +98,7 @@
 <span class="w">  </span><span class="n">Logger</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Config</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">marianLoggers_</span><span class="p">(</span><span class="n">createLoggers</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// We are manually creating loggers, because this is usually created in marian as a side-effect of</span>
 <span class="w">    </span><span class="c1">// config-parsing.</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="nl">logger</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">marianLoggers_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">logger</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">marianLoggers_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="n">setLoggingLevel</span><span class="p">(</span><span class="o">*</span><span class="n">logger</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">level</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
@@ -131,7 +131,7 @@
 <span class="w">    </span><span class="c1">// We need to manually destroy the loggers, as marian doesn&#39;t do</span>
 <span class="w">    </span><span class="c1">// that but will complain when a new marian::Config tries to</span>
 <span class="w">    </span><span class="c1">// initialise loggers with the same name.</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="nl">logger</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">marianLoggers_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">logger</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">marianLoggers_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">logger</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">spdlog</span><span class="o">::</span><span class="n">drop</span><span class="p">(</span><span class="n">logger</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">());</span><span class="w"></span>
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
