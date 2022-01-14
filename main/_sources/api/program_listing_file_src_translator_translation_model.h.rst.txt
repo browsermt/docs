@@ -70,6 +70,7 @@ Program Listing for File translation_model.h
    
        Graph graph;
        ScorerEnsemble scorerEnsemble;
+       bool initialized{false};
      };
    
      // ShortlistGenerator is purely const, we don't need one per thread.
