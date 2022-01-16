@@ -83,6 +83,11 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   structmarian_1_1bergamot_1_1HTML_1_1Options.rst
+
+.. toctree::
+   :maxdepth: 5
+
    structmarian_1_1bergamot_1_1HTML_1_1Span.rst
 
 .. toctree::

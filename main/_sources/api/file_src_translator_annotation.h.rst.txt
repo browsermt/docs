@@ -49,6 +49,8 @@ Included By
 
 - :ref:`file_src_translator_response.h`
 
+- :ref:`file_src_translator_html.h`
+
 - :ref:`file_src_translator_quality_estimator.h`
 
 - :ref:`file_src_translator_text_processor.h`

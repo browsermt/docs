@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class HTML &mdash; Bergamot Translator main 2022-01-14 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Class HTML &mdash; Bergamot Translator main 2022-01-16 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -87,6 +87,7 @@
 <section id="nested-types">
 <h3>Nested Types<a class="headerlink" href="#nested-types" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
+<li><p><a class="reference internal" href="structmarian_1_1bergamot_1_1HTML_1_1Options.html#exhale-struct-structmarian-1-1bergamot-1-1html-1-1options"><span class="std std-ref">Struct HTML::Options</span></a></p></li>
 <li><p><a class="reference internal" href="structmarian_1_1bergamot_1_1HTML_1_1Span.html#exhale-struct-structmarian-1-1bergamot-1-1html-1-1span"><span class="std std-ref">Struct HTML::Span</span></a></p></li>
 <li><p><a class="reference internal" href="structmarian_1_1bergamot_1_1HTML_1_1Tag.html#exhale-struct-structmarian-1-1bergamot-1-1html-1-1tag"><span class="std std-ref">Struct HTML::Tag</span></a></p></li>
 </ul>
@@ -101,7 +102,7 @@
 <p class="breathe-sectiondef-title rubric">Public Types</p>
 <dl class="type">
 <dt id="_CPPv4N6marian8bergamot4HTML5TaintE">
-<span id="_CPPv3N6marian8bergamot4HTML5TaintE"></span><span id="_CPPv2N6marian8bergamot4HTML5TaintE"></span><span id="marian::bergamot::HTML::Taint"></span><span class="target" id="classmarian_1_1bergamot_1_1HTML_1ae74126ab96ef6293ebf542346df9e61d"></span><em class="property">typedef </em>std::vector&lt;<a class="reference internal" href="#_CPPv4N6marian8bergamot4HTML3TagE" title="marian::bergamot::HTML::Tag">Tag</a> *&gt; <code class="sig-name descname">Taint</code><a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML5TaintE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N6marian8bergamot4HTML5TaintE"></span><span id="_CPPv2N6marian8bergamot4HTML5TaintE"></span><span class="target" id="classmarian_1_1bergamot_1_1HTML_1accc78da25e21d70cfd01078ae4bbdaf1"></span><em class="property">using </em><code class="sig-name descname">Taint</code> = std::vector&lt;<a class="reference internal" href="#_CPPv4N6marian8bergamot4HTML3TagE" title="marian::bergamot::HTML::Tag">Tag</a> *&gt;<a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML5TaintE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -113,11 +114,44 @@
 <dd></dd></dl>
 
 <dl class="function">
+<dt id="_CPPv4N6marian8bergamot4HTML4HTMLERRNSt6stringEbRR7Options">
+<span id="_CPPv3N6marian8bergamot4HTML4HTMLERRNSt6stringEbRR7Options"></span><span id="_CPPv2N6marian8bergamot4HTML4HTMLERRNSt6stringEbRR7Options"></span><span id="marian::bergamot::HTML::HTML__ssRR.b.OptionsRR"></span><span class="target" id="classmarian_1_1bergamot_1_1HTML_1a84dc570865db8595408dce4a4eb174dc"></span><code class="sig-name descname">HTML</code><span class="sig-paren">(</span>std::string &amp;&amp;<em>source</em>, bool <em>process_markup</em>, <a class="reference internal" href="#_CPPv4N6marian8bergamot4HTML7OptionsE" title="marian::bergamot::HTML::Options">Options</a> &amp;&amp;<em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML4HTMLERRNSt6stringEbRR7Options" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="_CPPv4N6marian8bergamot4HTML7restoreER8Response">
 <span id="_CPPv3N6marian8bergamot4HTML7restoreER8Response"></span><span id="_CPPv2N6marian8bergamot4HTML7restoreER8Response"></span><span id="marian::bergamot::HTML::restore__ResponseR"></span><span class="target" id="classmarian_1_1bergamot_1_1HTML_1a1a4f6b3186fea186ded8f95fd0c41224"></span>void <code class="sig-name descname">restore</code><span class="sig-paren">(</span><a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#_CPPv4N6marian8bergamot8ResponseE" title="marian::bergamot::Response">Response</a> &amp;<em>response</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML7restoreER8Response" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
+<dl class="class">
+<dt id="_CPPv4N6marian8bergamot4HTML7OptionsE">
+<span id="_CPPv3N6marian8bergamot4HTML7OptionsE"></span><span id="_CPPv2N6marian8bergamot4HTML7OptionsE"></span><span id="marian::bergamot::HTML::Options"></span><span class="target" id="structmarian_1_1bergamot_1_1HTML_1_1Options"></span><em class="property">struct </em><code class="sig-name descname">Options</code><a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML7OptionsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv4N6marian8bergamot4HTML7Options8voidTagsE">
+<span id="_CPPv3N6marian8bergamot4HTML7Options8voidTagsE"></span><span id="_CPPv2N6marian8bergamot4HTML7Options8voidTagsE"></span><span id="marian::bergamot::HTML::Options::voidTags__std::unordered_set:ss:"></span><span class="target" id="structmarian_1_1bergamot_1_1HTML_1_1Options_1a000aec3ae078ecbbe91c362a2e070a30"></span>std::unordered_set&lt;std::string&gt; <code class="sig-name descname">voidTags</code>{&quot;area&quot;, &quot;base&quot;, &quot;basefont&quot;, &quot;bgsound&quot;, &quot;br&quot;, &quot;col&quot;, &quot;embed&quot;, &quot;frame&quot;, &quot;hr&quot;, &quot;img&quot;, &quot;input&quot;, &quot;keygen&quot;, &quot;link&quot;, &quot;meta&quot;, &quot;param&quot;, &quot;source&quot;, &quot;track&quot;, &quot;wbr&quot;}<a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML7Options8voidTagsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N6marian8bergamot4HTML7Options10inlineTagsE">
+<span id="_CPPv3N6marian8bergamot4HTML7Options10inlineTagsE"></span><span id="_CPPv2N6marian8bergamot4HTML7Options10inlineTagsE"></span><span id="marian::bergamot::HTML::Options::inlineTags__std::unordered_set:ss:"></span><span class="target" id="structmarian_1_1bergamot_1_1HTML_1_1Options_1a4f623711e9a5e7db3f7a17a55fcd4ccc"></span>std::unordered_set&lt;std::string&gt; <code class="sig-name descname">inlineTags</code>{&quot;abbr&quot;, &quot;a&quot;, &quot;b&quot;, &quot;em&quot;, &quot;i&quot;, &quot;kbd&quot;, &quot;mark&quot;, &quot;math&quot;, &quot;output&quot;, &quot;q&quot;, &quot;ruby&quot;, &quot;small&quot;, &quot;span&quot;, &quot;strong&quot;, &quot;sub&quot;, &quot;sup&quot;, &quot;time&quot;, &quot;u&quot;, &quot;var&quot;, &quot;wbr&quot;, &quot;ins&quot;, &quot;del&quot;, &quot;img&quot;}<a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML7Options10inlineTagsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N6marian8bergamot4HTML7Options22continuationDelimitersE">
+<span id="_CPPv3N6marian8bergamot4HTML7Options22continuationDelimitersE"></span><span id="_CPPv2N6marian8bergamot4HTML7Options22continuationDelimitersE"></span><span id="marian::bergamot::HTML::Options::continuationDelimiters__ss"></span><span class="target" id="structmarian_1_1bergamot_1_1HTML_1_1Options_1a1ec700ba53db56e0ac429abc4e81c9cd"></span>std::string <code class="sig-name descname">continuationDelimiters</code><a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML7Options22continuationDelimitersE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv4N6marian8bergamot4HTML7Options30substituteInlineTagsWithSpacesE">
+<span id="_CPPv3N6marian8bergamot4HTML7Options30substituteInlineTagsWithSpacesE"></span><span id="_CPPv2N6marian8bergamot4HTML7Options30substituteInlineTagsWithSpacesE"></span><span id="marian::bergamot::HTML::Options::substituteInlineTagsWithSpaces__b"></span><span class="target" id="structmarian_1_1bergamot_1_1HTML_1_1Options_1ac65eebb64b4148bf106ee8b3f72aa104"></span>bool <code class="sig-name descname">substituteInlineTagsWithSpaces</code> = true<a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML7Options30substituteInlineTagsWithSpacesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
 <dl class="class">
 <dt id="_CPPv4N6marian8bergamot4HTML4SpanE">
 <span id="_CPPv3N6marian8bergamot4HTML4SpanE"></span><span id="_CPPv2N6marian8bergamot4HTML4SpanE"></span><span id="marian::bergamot::HTML::Span"></span><span class="target" id="structmarian_1_1bergamot_1_1HTML_1_1Span"></span><em class="property">struct </em><code class="sig-name descname">Span</code><a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML4SpanE" title="Permalink to this definition">¶</a><br /></dt>
@@ -176,6 +210,11 @@
 <dl class="enumerator">
 <dt id="_CPPv4N6marian8bergamot4HTML22PROCESSING_INSTRUCTIONE">
 <span id="_CPPv3N6marian8bergamot4HTML22PROCESSING_INSTRUCTIONE"></span><span id="_CPPv2N6marian8bergamot4HTML22PROCESSING_INSTRUCTIONE"></span><span class="target" id="structmarian_1_1bergamot_1_1HTML_1_1Tag_1a56ba9d02edfae673cdb02d7141348cd3a6a00e91442382d70b3b82a56bfd1b254"></span><code class="sig-name descname">PROCESSING_INSTRUCTION</code><a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML22PROCESSING_INSTRUCTIONE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="enumerator">
+<dt id="_CPPv4N6marian8bergamot4HTML10WHITESPACEE">
+<span id="_CPPv3N6marian8bergamot4HTML10WHITESPACEE"></span><span id="_CPPv2N6marian8bergamot4HTML10WHITESPACEE"></span><span class="target" id="structmarian_1_1bergamot_1_1HTML_1_1Tag_1a56ba9d02edfae673cdb02d7141348cd3a270ae3aa7e522dc92c086dbc88da9886"></span><code class="sig-name descname">WHITESPACE</code><a class="headerlink" href="#_CPPv4N6marian8bergamot4HTML10WHITESPACEE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
