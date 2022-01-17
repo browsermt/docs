@@ -65,6 +65,8 @@ Included By
 
 - :ref:`file_src_translator_request.cpp`
 
+- :ref:`file_src_translator_response.cpp`
+
 - :ref:`file_src_translator_threadsafe_batching_pool.h`
 
 - :ref:`file_src_translator_service.cpp`
@@ -98,7 +100,7 @@ Typedefs
 
 - :ref:`exhale_typedef_definitions_8h_1af7b499234642d2926f2e87d894f53f38`
 
-- :ref:`exhale_typedef_definitions_8h_1a8bf4b6b0af6b724959d0d724bdc38c52`
+- :ref:`exhale_typedef_definitions_8h_1a20c7296c90578f5fc7284c337f6604cb`
 
 - :ref:`exhale_typedef_definitions_8h_1ad0a7527b1fbf64cfc20eaa76134785ef`
 

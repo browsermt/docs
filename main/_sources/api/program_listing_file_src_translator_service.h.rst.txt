@@ -57,6 +57,10 @@ Program Listing for File service.h
      std::vector<Response> translateMultiple(std::shared_ptr<TranslationModel> translationModel,
                                              std::vector<std::string> &&source, const ResponseOptions &responseOptions);
    
+     std::vector<Response> translateMultipleRaw(std::shared_ptr<TranslationModel> translationModel,
+                                                std::vector<std::string> &&source, const ResponseOptions &responseOptions);
+     std::vector<Response> pivotMultiple(std::shared_ptr<TranslationModel> first, std::shared_ptr<TranslationModel> second,
+                                         std::vector<std::string> &&sources, const ResponseOptions &responseOptions);
      TranslationCache::Stats cacheStats() { return cache_.stats(); }
    
     private:
@@ -101,11 +105,16 @@ Program Listing for File service.h
      void translate(std::shared_ptr<TranslationModel> translationModel, std::string &&source, CallbackType callback,
                     const ResponseOptions &options = ResponseOptions());
    
+     void pivot(std::shared_ptr<TranslationModel> first, std::shared_ptr<TranslationModel> second, std::string &&source,
+                CallbackType clientCallback, const ResponseOptions &options = ResponseOptions());
+   
      ~AsyncService();
    
      TranslationCache::Stats cacheStats() { return cache_.stats(); }
    
     private:
+     void translateRaw(std::shared_ptr<TranslationModel> translationModel, std::string &&source, CallbackType callback,
+                       const ResponseOptions &options = ResponseOptions());
      AsyncService::Config config_;
    
      std::vector<std::thread> workers_;

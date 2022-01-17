@@ -26,6 +26,8 @@ Program Listing for File response.h
    namespace marian {
    namespace bergamot {
    
+   typedef std::vector<std::vector<float>> Alignment;
+   
    struct Response {
      struct SentenceQualityScore {
        std::vector<float> wordScores;
@@ -51,6 +53,9 @@ Program Listing for File response.h
    
      const std::string &getTranslatedText() const { return target.text; }
    };
+   
+   std::vector<Alignment> remapAlignments(const Response &first, const Response &second);
+   
    }  // namespace bergamot
    }  // namespace marian
    

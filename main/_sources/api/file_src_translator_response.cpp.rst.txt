@@ -1,0 +1,59 @@
+
+.. _file_src_translator_response.cpp:
+
+File response.cpp
+=================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/response.cpp``)
+--------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_response.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``annotation.h`` (:ref:`file_src_translator_annotation.h`)
+
+- ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
+
+- ``response.h`` (:ref:`file_src_translator_response.h`)
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f`
+
+- :ref:`exhale_function_response_8cpp_1a75e40f0b6e39725d9d8d96cfd962bcf9`
+

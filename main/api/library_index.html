@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Library API &mdash; Bergamot Translator main 2022-01-16 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Library API &mdash; Bergamot Translator main 2022-01-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -56,10 +56,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#full-api">Full API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#namespaces">Namespaces</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="namespace_&#64;13.html">Namespace &#64;13</a></li>
-<li class="toctree-l4"><a class="reference internal" href="namespace_&#64;36.html">Namespace &#64;36</a></li>
+<li class="toctree-l4"><a class="reference internal" href="namespace_&#64;37.html">Namespace &#64;37</a></li>
 <li class="toctree-l4"><a class="reference internal" href="namespace_marian.html">Namespace marian</a></li>
 <li class="toctree-l4"><a class="reference internal" href="namespace_marian__bergamot.html">Namespace marian::bergamot</a></li>
-<li class="toctree-l4"><a class="reference internal" href="namespace_marian__bergamot__&#64;28.html">Namespace marian::bergamot::&#64;28</a></li>
+<li class="toctree-l4"><a class="reference internal" href="namespace_marian__bergamot__&#64;27.html">Namespace marian::bergamot::&#64;27</a></li>
+<li class="toctree-l4"><a class="reference internal" href="namespace_marian__bergamot__&#64;29.html">Namespace marian::bergamot::&#64;29</a></li>
 <li class="toctree-l4"><a class="reference internal" href="namespace_marian__bergamot__&#64;9.html">Namespace marian::bergamot::&#64;9</a></li>
 <li class="toctree-l4"><a class="reference internal" href="namespace_markup.html">Namespace markup</a></li>
 </ul>
@@ -132,7 +133,9 @@
 <li class="toctree-l4"><a class="reference internal" href="function_parser_8cpp_1a738c33453a147aebfc5308faad463651.html">Function marian::bergamot::parseOptionsFromFilePath</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_parser_8cpp_1a5d169766c7451792220a52433b66d1f1.html">Function marian::bergamot::parseOptionsFromString</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80.html">Function marian::bergamot::readFromStdin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f.html">Function marian::bergamot::remapAlignments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.html">Function marian::bergamot::subwordToWords</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_response_8cpp_1a75e40f0b6e39725d9d8d96cfd962bcf9.html">Function marian::bergamot::transferThroughCharacters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632.html">Function marian::bergamot::validateBinaryModel</a></li>
 </ul>
 </li>
@@ -150,7 +153,8 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="typedef_definitions_8h_1af7b499234642d2926f2e87d894f53f38.html">Typedef marian::bergamot::AlignedMemory</a></li>
-<li class="toctree-l4"><a class="reference internal" href="typedef_definitions_8h_1a8bf4b6b0af6b724959d0d724bdc38c52.html">Typedef marian::bergamot::CallbackType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="typedef_response_8h_1a4a80418bd6a17c47f979280fd15b6746.html">Typedef marian::bergamot::Alignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="typedef_definitions_8h_1a20c7296c90578f5fc7284c337f6604cb.html">Typedef marian::bergamot::CallbackType</a></li>
 <li class="toctree-l4"><a class="reference internal" href="typedef_request_8h_1afc43a9f148490a4a5be3c8a3348d0a6b.html">Typedef marian::bergamot::RequestSentences</a></li>
 <li class="toctree-l4"><a class="reference internal" href="typedef_definitions_8h_1ad0a7527b1fbf64cfc20eaa76134785ef.html">Typedef marian::bergamot::Segment</a></li>
 <li class="toctree-l4"><a class="reference internal" href="typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb.html">Typedef marian::bergamot::Segments</a></li>
@@ -213,7 +217,7 @@
 <ul class="treeView" id="file-treeView">
   <li>
     <ul class="collapsibleList">
-      <li>Directory <a href="dir_app.html#dir-app">app</a><ul><li class="lastChild">File <a href="file_app_bergamot.cpp.html#file-app-bergamot.cpp">bergamot.cpp</a></li></ul></li><li class="lastChild">Directory <a href="dir_src.html#dir-src">src</a><ul><li class="lastChild">Directory <a href="dir_src_translator.html#dir-src-translator">translator</a><ul><li>File <a href="file_src_translator_aggregate_batching_pool.cpp.html#file-src-translator-aggregate-batching-pool.cpp">aggregate_batching_pool.cpp</a></li><li>File <a href="file_src_translator_aggregate_batching_pool.h.html#file-src-translator-aggregate-batching-pool.h">aggregate_batching_pool.h</a></li><li>File <a href="file_src_translator_aligned.h.html#file-src-translator-aligned.h">aligned.h</a></li><li>File <a href="file_src_translator_annotation.cpp.html#file-src-translator-annotation.cpp">annotation.cpp</a></li><li>File <a href="file_src_translator_annotation.h.html#file-src-translator-annotation.h">annotation.h</a></li><li>File <a href="file_src_translator_batch.cpp.html#file-src-translator-batch.cpp">batch.cpp</a></li><li>File <a href="file_src_translator_batch.h.html#file-src-translator-batch.h">batch.h</a></li><li>File <a href="file_src_translator_batching_pool.cpp.html#file-src-translator-batching-pool.cpp">batching_pool.cpp</a></li><li>File <a href="file_src_translator_batching_pool.h.html#file-src-translator-batching-pool.h">batching_pool.h</a></li><li>File <a href="file_src_translator_byte_array_util.cpp.html#file-src-translator-byte-array-util.cpp">byte_array_util.cpp</a></li><li>File <a href="file_src_translator_byte_array_util.h.html#file-src-translator-byte-array-util.h">byte_array_util.h</a></li><li>File <a href="file_src_translator_cache.h.html#file-src-translator-cache.h">cache.h</a></li><li>File <a href="file_src_translator_definitions.h.html#file-src-translator-definitions.h">definitions.h</a></li><li>File <a href="file_src_translator_html.cpp.html#file-src-translator-html.cpp">html.cpp</a></li><li>File <a href="file_src_translator_html.h.html#file-src-translator-html.h">html.h</a></li><li>File <a href="file_src_translator_logging.h.html#file-src-translator-logging.h">logging.h</a></li><li>File <a href="file_src_translator_parser.cpp.html#file-src-translator-parser.cpp">parser.cpp</a></li><li>File <a href="file_src_translator_parser.h.html#file-src-translator-parser.h">parser.h</a></li><li>File <a href="file_src_translator_quality_estimator.cpp.html#file-src-translator-quality-estimator.cpp">quality_estimator.cpp</a></li><li>File <a href="file_src_translator_quality_estimator.h.html#file-src-translator-quality-estimator.h">quality_estimator.h</a></li><li>File <a href="file_src_translator_request.cpp.html#file-src-translator-request.cpp">request.cpp</a></li><li>File <a href="file_src_translator_request.h.html#file-src-translator-request.h">request.h</a></li><li>File <a href="file_src_translator_response.h.html#file-src-translator-response.h">response.h</a></li><li>File <a href="file_src_translator_response_builder.cpp.html#file-src-translator-response-builder.cpp">response_builder.cpp</a></li><li>File <a href="file_src_translator_response_builder.h.html#file-src-translator-response-builder.h">response_builder.h</a></li><li>File <a href="file_src_translator_response_options.h.html#file-src-translator-response-options.h">response_options.h</a></li><li>File <a href="file_src_translator_service.cpp.html#file-src-translator-service.cpp">service.cpp</a></li><li>File <a href="file_src_translator_service.h.html#file-src-translator-service.h">service.h</a></li><li>File <a href="file_src_translator_text_processor.cpp.html#file-src-translator-text-processor.cpp">text_processor.cpp</a></li><li>File <a href="file_src_translator_text_processor.h.html#file-src-translator-text-processor.h">text_processor.h</a></li><li>File <a href="file_src_translator_threadsafe_batching_pool.cpp.html#file-src-translator-threadsafe-batching-pool.cpp">threadsafe_batching_pool.cpp</a></li><li>File <a href="file_src_translator_threadsafe_batching_pool.h.html#file-src-translator-threadsafe-batching-pool.h">threadsafe_batching_pool.h</a></li><li>File <a href="file_src_translator_translation_model.cpp.html#file-src-translator-translation-model.cpp">translation_model.cpp</a></li><li>File <a href="file_src_translator_translation_model.h.html#file-src-translator-translation-model.h">translation_model.h</a></li><li>File <a href="file_src_translator_utils.h.html#file-src-translator-utils.h">utils.h</a></li><li>File <a href="file_src_translator_vocabs.h.html#file-src-translator-vocabs.h">vocabs.h</a></li><li>File <a href="file_src_translator_xh_scanner.cpp.html#file-src-translator-xh-scanner.cpp">xh_scanner.cpp</a></li><li class="lastChild">File <a href="file_src_translator_xh_scanner.h.html#file-src-translator-xh-scanner.h">xh_scanner.h</a></li></ul></li></ul></li>
+      <li>Directory <a href="dir_app.html#dir-app">app</a><ul><li class="lastChild">File <a href="file_app_bergamot.cpp.html#file-app-bergamot.cpp">bergamot.cpp</a></li></ul></li><li class="lastChild">Directory <a href="dir_src.html#dir-src">src</a><ul><li class="lastChild">Directory <a href="dir_src_translator.html#dir-src-translator">translator</a><ul><li>File <a href="file_src_translator_aggregate_batching_pool.cpp.html#file-src-translator-aggregate-batching-pool.cpp">aggregate_batching_pool.cpp</a></li><li>File <a href="file_src_translator_aggregate_batching_pool.h.html#file-src-translator-aggregate-batching-pool.h">aggregate_batching_pool.h</a></li><li>File <a href="file_src_translator_aligned.h.html#file-src-translator-aligned.h">aligned.h</a></li><li>File <a href="file_src_translator_annotation.cpp.html#file-src-translator-annotation.cpp">annotation.cpp</a></li><li>File <a href="file_src_translator_annotation.h.html#file-src-translator-annotation.h">annotation.h</a></li><li>File <a href="file_src_translator_batch.cpp.html#file-src-translator-batch.cpp">batch.cpp</a></li><li>File <a href="file_src_translator_batch.h.html#file-src-translator-batch.h">batch.h</a></li><li>File <a href="file_src_translator_batching_pool.cpp.html#file-src-translator-batching-pool.cpp">batching_pool.cpp</a></li><li>File <a href="file_src_translator_batching_pool.h.html#file-src-translator-batching-pool.h">batching_pool.h</a></li><li>File <a href="file_src_translator_byte_array_util.cpp.html#file-src-translator-byte-array-util.cpp">byte_array_util.cpp</a></li><li>File <a href="file_src_translator_byte_array_util.h.html#file-src-translator-byte-array-util.h">byte_array_util.h</a></li><li>File <a href="file_src_translator_cache.h.html#file-src-translator-cache.h">cache.h</a></li><li>File <a href="file_src_translator_definitions.h.html#file-src-translator-definitions.h">definitions.h</a></li><li>File <a href="file_src_translator_html.cpp.html#file-src-translator-html.cpp">html.cpp</a></li><li>File <a href="file_src_translator_html.h.html#file-src-translator-html.h">html.h</a></li><li>File <a href="file_src_translator_logging.h.html#file-src-translator-logging.h">logging.h</a></li><li>File <a href="file_src_translator_parser.cpp.html#file-src-translator-parser.cpp">parser.cpp</a></li><li>File <a href="file_src_translator_parser.h.html#file-src-translator-parser.h">parser.h</a></li><li>File <a href="file_src_translator_quality_estimator.cpp.html#file-src-translator-quality-estimator.cpp">quality_estimator.cpp</a></li><li>File <a href="file_src_translator_quality_estimator.h.html#file-src-translator-quality-estimator.h">quality_estimator.h</a></li><li>File <a href="file_src_translator_request.cpp.html#file-src-translator-request.cpp">request.cpp</a></li><li>File <a href="file_src_translator_request.h.html#file-src-translator-request.h">request.h</a></li><li>File <a href="file_src_translator_response.cpp.html#file-src-translator-response.cpp">response.cpp</a></li><li>File <a href="file_src_translator_response.h.html#file-src-translator-response.h">response.h</a></li><li>File <a href="file_src_translator_response_builder.cpp.html#file-src-translator-response-builder.cpp">response_builder.cpp</a></li><li>File <a href="file_src_translator_response_builder.h.html#file-src-translator-response-builder.h">response_builder.h</a></li><li>File <a href="file_src_translator_response_options.h.html#file-src-translator-response-options.h">response_options.h</a></li><li>File <a href="file_src_translator_service.cpp.html#file-src-translator-service.cpp">service.cpp</a></li><li>File <a href="file_src_translator_service.h.html#file-src-translator-service.h">service.h</a></li><li>File <a href="file_src_translator_text_processor.cpp.html#file-src-translator-text-processor.cpp">text_processor.cpp</a></li><li>File <a href="file_src_translator_text_processor.h.html#file-src-translator-text-processor.h">text_processor.h</a></li><li>File <a href="file_src_translator_threadsafe_batching_pool.cpp.html#file-src-translator-threadsafe-batching-pool.cpp">threadsafe_batching_pool.cpp</a></li><li>File <a href="file_src_translator_threadsafe_batching_pool.h.html#file-src-translator-threadsafe-batching-pool.h">threadsafe_batching_pool.h</a></li><li>File <a href="file_src_translator_translation_model.cpp.html#file-src-translator-translation-model.cpp">translation_model.cpp</a></li><li>File <a href="file_src_translator_translation_model.h.html#file-src-translator-translation-model.h">translation_model.h</a></li><li>File <a href="file_src_translator_utils.h.html#file-src-translator-utils.h">utils.h</a></li><li>File <a href="file_src_translator_vocabs.h.html#file-src-translator-vocabs.h">vocabs.h</a></li><li>File <a href="file_src_translator_xh_scanner.cpp.html#file-src-translator-xh-scanner.cpp">xh_scanner.cpp</a></li><li class="lastChild">File <a href="file_src_translator_xh_scanner.h.html#file-src-translator-xh-scanner.h">xh_scanner.h</a></li></ul></li></ul></li>
     </ul>
   </li><!-- only tree view element -->
 </ul><!-- /treeView file-treeView --></section>
@@ -228,7 +232,7 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="namespace_&#64;36.html">Namespace &#64;36</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace_&#64;37.html">Namespace &#64;37</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -254,7 +258,12 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="namespace_marian__bergamot__&#64;28.html">Namespace marian::bergamot::&#64;28</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace_marian__bergamot__&#64;27.html">Namespace marian::bergamot::&#64;27</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="namespace_marian__bergamot__&#64;29.html">Namespace marian::bergamot::&#64;29</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -829,8 +838,24 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f.html">Function marian::bergamot::remapAlignments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.html">Function marian::bergamot::subwordToWords</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_response_8cpp_1a75e40f0b6e39725d9d8d96cfd962bcf9.html">Function marian::bergamot::transferThroughCharacters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_response_8cpp_1a75e40f0b6e39725d9d8d96cfd962bcf9.html#function-documentation">Function Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -910,8 +935,16 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="typedef_definitions_8h_1a8bf4b6b0af6b724959d0d724bdc38c52.html">Typedef marian::bergamot::CallbackType</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="typedef_definitions_8h_1a8bf4b6b0af6b724959d0d724bdc38c52.html#typedef-documentation">Typedef Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typedef_response_8h_1a4a80418bd6a17c47f979280fd15b6746.html">Typedef marian::bergamot::Alignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="typedef_response_8h_1a4a80418bd6a17c47f979280fd15b6746.html#typedef-documentation">Typedef Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_definitions_8h_1a20c7296c90578f5fc7284c337f6604cb.html">Typedef marian::bergamot::CallbackType</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="typedef_definitions_8h_1a20c7296c90578f5fc7284c337f6604cb.html#typedef-documentation">Typedef Documentation</a></li>
 </ul>
 </li>
 </ul>

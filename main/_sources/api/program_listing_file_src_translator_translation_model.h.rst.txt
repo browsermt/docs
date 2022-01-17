@@ -47,6 +47,9 @@ Program Listing for File translation_model.h
      Ptr<Request> makeRequest(size_t requestId, std::string&& source, CallbackType callback,
                               const ResponseOptions& responseOptions, TranslationCache* cache);
    
+     Ptr<Request> makePivotRequest(size_t requestId, AnnotatedText&& previousTarget, CallbackType callback,
+                                   const ResponseOptions& responseOptions, TranslationCache* cache);
+   
      size_t enqueueRequest(Ptr<Request> request) { return batchingPool_.enqueueRequest(request); };
    
      size_t generateBatch(Batch& batch) { return batchingPool_.generateBatch(batch); }

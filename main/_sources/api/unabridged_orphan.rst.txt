@@ -145,6 +145,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_src_translator_response.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_src_translator_response.h.rst
 
 .. toctree::

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File response_builder.cpp &mdash; Bergamot Translator main 2022-01-16 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File response_builder.cpp &mdash; Bergamot Translator main 2022-01-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -95,10 +95,6 @@
 
 <span class="w">    </span><span class="n">Result</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">onebest</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w">  </span><span class="c1">// Expecting only one result;</span>
 <span class="w">    </span><span class="n">Words</span><span class="w"> </span><span class="n">words</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">result</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Alignments</span>
-<span class="w">    </span><span class="c1">// TODO(jerinphilip): The following double conversion might not be</span>
-<span class="w">    </span><span class="c1">// necessary. Hard alignment can directly be exported, but this would</span>
-<span class="w">    </span><span class="c1">// mean WASM bindings for a structure deep within marian source.</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">hyp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">result</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">softAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hyp</span><span class="o">-&gt;</span><span class="n">tracebackAlignment</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="n">response</span><span class="p">.</span><span class="n">alignments</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">softAlignment</span><span class="p">));</span><span class="w"></span>

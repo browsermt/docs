@@ -14,7 +14,7 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
-   namespace_@36.rst
+   namespace_@37.rst
 
 .. toctree::
    :maxdepth: 5
@@ -29,7 +29,12 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
-   namespace_marian__bergamot__@28.rst
+   namespace_marian__bergamot__@27.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   namespace_marian__bergamot__@29.rst
 
 .. toctree::
    :maxdepth: 5
@@ -361,7 +366,17 @@ Functions
 .. toctree::
    :maxdepth: 5
 
+   function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f.rst
+
+.. toctree::
+   :maxdepth: 5
+
    function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_response_8cpp_1a75e40f0b6e39725d9d8d96cfd962bcf9.rst
 
 .. toctree::
    :maxdepth: 5
@@ -418,7 +433,12 @@ Typedefs
 .. toctree::
    :maxdepth: 5
 
-   typedef_definitions_8h_1a8bf4b6b0af6b724959d0d724bdc38c52.rst
+   typedef_response_8h_1a4a80418bd6a17c47f979280fd15b6746.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_definitions_8h_1a20c7296c90578f5fc7284c337f6604cb.rst
 
 .. toctree::
    :maxdepth: 5

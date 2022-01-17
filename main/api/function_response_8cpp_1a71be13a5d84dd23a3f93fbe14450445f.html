@@ -4,11 +4,11 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Typedef marian::bergamot::CallbackType &mdash; Bergamot Translator main 2022-01-16 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Function marian::bergamot::remapAlignments &mdash; Bergamot Translator main 2022-01-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
-    <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/api/typedef_definitions_8h_1a8bf4b6b0af6b724959d0d724bdc38c52.html" />
+    <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/api/function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f.html" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Typedef marian::bergamot::RequestSentences" href="typedef_request_8h_1afc43a9f148490a4a5be3c8a3348d0a6b.html" />
-    <link rel="prev" title="Typedef marian::bergamot::AlignedMemory" href="typedef_definitions_8h_1af7b499234642d2926f2e87d894f53f38.html" /> 
+    <link rel="next" title="Function marian::bergamot::subwordToWords" href="function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.html" />
+    <link rel="prev" title="Function marian::bergamot::readFromStdin" href="function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -67,9 +67,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="library_index.html">Library API</a> &raquo;</li>
-      <li>Typedef marian::bergamot::CallbackType</li>
+      <li>Function marian::bergamot::remapAlignments</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/api/typedef_definitions_8h_1a8bf4b6b0af6b724959d0d724bdc38c52.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,16 +77,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="typedef-marian-bergamot-callbacktype">
-<span id="exhale-typedef-definitions-8h-1a8bf4b6b0af6b724959d0d724bdc38c52"></span><h1>Typedef marian::bergamot::CallbackType<a class="headerlink" href="#typedef-marian-bergamot-callbacktype" title="Permalink to this headline">¶</a></h1>
+  <section id="function-marian-bergamot-remapalignments">
+<span id="exhale-function-response-8cpp-1a71be13a5d84dd23a3f93fbe14450445f"></span><h1>Function marian::bergamot::remapAlignments<a class="headerlink" href="#function-marian-bergamot-remapalignments" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p>Defined in <a class="reference internal" href="file_src_translator_definitions.h.html#file-src-translator-definitions-h"><span class="std std-ref">File definitions.h</span></a></p></li>
+<li><p>Defined in <a class="reference internal" href="file_src_translator_response.cpp.html#file-src-translator-response-cpp"><span class="std std-ref">File response.cpp</span></a></p></li>
 </ul>
-<section id="typedef-documentation">
-<h2>Typedef Documentation<a class="headerlink" href="#typedef-documentation" title="Permalink to this headline">¶</a></h2>
-<dl class="type">
-<dt id="_CPPv4N6marian8bergamot12CallbackTypeE">
-<span id="_CPPv3N6marian8bergamot12CallbackTypeE"></span><span id="_CPPv2N6marian8bergamot12CallbackTypeE"></span><span class="target" id="definitions_8h_1a8bf4b6b0af6b724959d0d724bdc38c52"></span><em class="property">using </em><code class="sig-prename descclassname">marian::bergamot<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">CallbackType</code> = std::function&lt;void<span class="sig-paren">(</span><a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#_CPPv4N6marian8bergamot8ResponseE" title="marian::bergamot::Response">Response</a>&amp;&amp;<span class="sig-paren">)</span>&gt;<a class="headerlink" href="#_CPPv4N6marian8bergamot12CallbackTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<section id="function-documentation">
+<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="_CPPv4N6marian8bergamot15remapAlignmentsERK8ResponseRK8Response">
+<span id="_CPPv3N6marian8bergamot15remapAlignmentsERK8ResponseRK8Response"></span><span id="_CPPv2N6marian8bergamot15remapAlignmentsERK8ResponseRK8Response"></span><span id="marian::bergamot::remapAlignments__ResponseCR.ResponseCR"></span><span class="target" id="response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f"></span>std::vector&lt;<a class="reference internal" href="typedef_response_8h_1a4a80418bd6a17c47f979280fd15b6746.html#_CPPv4N6marian8bergamot9AlignmentE" title="marian::bergamot::Alignment">Alignment</a>&gt; <code class="sig-prename descclassname">marian::bergamot<code class="sig-prename descclassname">::</code></code><code class="sig-name descname">remapAlignments</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#_CPPv4N6marian8bergamot8ResponseE" title="marian::bergamot::Response">Response</a> &amp;<em>first</em>, <em class="property">const</em> <a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#_CPPv4N6marian8bergamot8ResponseE" title="marian::bergamot::Response">Response</a> &amp;<em>second</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot15remapAlignmentsERK8ResponseRK8Response" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </section>
@@ -96,8 +96,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="typedef_definitions_8h_1af7b499234642d2926f2e87d894f53f38.html" class="btn btn-neutral float-left" title="Typedef marian::bergamot::AlignedMemory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="typedef_request_8h_1afc43a9f148490a4a5be3c8a3348d0a6b.html" class="btn btn-neutral float-right" title="Typedef marian::bergamot::RequestSentences" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80.html" class="btn btn-neutral float-left" title="Function marian::bergamot::readFromStdin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.html" class="btn btn-neutral float-right" title="Function marian::bergamot::subwordToWords" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
