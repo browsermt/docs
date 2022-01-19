@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File html.cpp &mdash; Bergamot Translator main 2022-01-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File html.cpp &mdash; Bergamot Translator main 2022-01-19 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -429,8 +429,10 @@
 <span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">markup</span><span class="o">::</span><span class="n">Scanner</span><span class="o">::</span><span class="n">TT_TAG_END</span><span class="o">:</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// Note: self-closing tags emit TT_TAG_END immediately after TT_TAG_START</span>
-<span class="w">        </span><span class="c1">// but since we&#39;re parsing HTML5, a sole &lt;img&gt; will never emit a TT_TAG_END</span>
+<span class="w">        </span><span class="c1">// If this is the closing bit of a void tag, i.e. triggered by the &quot;/&gt;&quot;</span>
+<span class="w">        </span><span class="c1">// bit of &quot;&lt;img/&gt;&quot;, then completely ignore it.</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">contains</span><span class="p">(</span><span class="n">options_</span><span class="p">.</span><span class="n">voidTags</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">scanner</span><span class="p">.</span><span class="n">tag</span><span class="p">())))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="n">BadHTML</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;Encountered more closing tags ({}) than opening tags&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="n">tag</span><span class="p">()));</span><span class="w"></span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="n">back</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="n">tag</span><span class="p">())</span><span class="w"></span>
