@@ -96,10 +96,9 @@ Program Listing for File service.h
      };
      AsyncService(const AsyncService::Config &config);
    
-     template <class ConfigType>
-     Ptr<TranslationModel> createCompatibleModel(const ConfigType &config, MemoryBundle &&memory = MemoryBundle{}) {
+     Ptr<TranslationModel> createCompatibleModel(const TranslationModel::Config &config) {
        // @TODO: Remove this remove this dependency/coupling.
-       return New<TranslationModel>(config, std::move(memory), /*replicas=*/config_.numWorkers);
+       return New<TranslationModel>(config, /*replicas=*/config_.numWorkers);
      }
    
      void translate(std::shared_ptr<TranslationModel> translationModel, std::string &&source, CallbackType callback,

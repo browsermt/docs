@@ -33,6 +33,8 @@ Includes
 
 - ``batching_pool.h`` (:ref:`file_src_translator_aggregate_batching_pool.h`)
 
+- ``byte_array_util.h`` (:ref:`file_src_translator_byte_array_util.h`)
+
 - ``cache.h`` (:ref:`file_src_translator_cache.h`)
 
 - ``common/utils.h``

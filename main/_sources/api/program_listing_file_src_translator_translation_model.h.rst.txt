@@ -18,6 +18,7 @@ Program Listing for File translation_model.h
    
    #include "batch.h"
    #include "batching_pool.h"
+   #include "byte_array_util.h"
    #include "cache.h"
    #include "common/utils.h"
    #include "data/shortlist.h"
@@ -41,7 +42,10 @@ Program Listing for File translation_model.h
      TranslationModel(const std::string& config, MemoryBundle&& memory, size_t replicas = 1)
          : TranslationModel(parseOptionsFromString(config, /*validate=*/false), std::move(memory), replicas){};
    
-     TranslationModel(const Config& options, MemoryBundle&& memory = MemoryBundle{}, size_t replicas = 1);
+     TranslationModel(const Config& options, MemoryBundle&& memory, size_t replicas = 1);
+   
+     TranslationModel(const Config& options, size_t replicas = 1)
+         : TranslationModel(options, getMemoryBundleFromConfig(options), replicas) {}
    
      //  @returns Request created from the query parameters wrapped within a shared-pointer.
      Ptr<Request> makeRequest(size_t requestId, std::string&& source, CallbackType callback,
