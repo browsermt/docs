@@ -39,6 +39,8 @@ Program Listing for File aggregate_batching_pool.h
    
      size_t generateBatch(Ptr<TranslationModel>& model, Batch& batch);
    
+     void clear();
+   
     private:
      std::unordered_set<std::shared_ptr<TranslationModel>, HashPtr<TranslationModel>> aggregateQueue_;
    };

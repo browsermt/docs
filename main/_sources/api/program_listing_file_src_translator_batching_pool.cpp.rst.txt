@@ -91,5 +91,11 @@ Program Listing for File batching_pool.cpp
      return toBeFreshlyTranslated;
    }
    
+   void BatchingPool::clear() {
+     for (size_t length = 0; length < bucket_.size(); length++) {
+       bucket_[length].clear();
+     }
+   }
+   
    }  // namespace bergamot
    }  // namespace marian

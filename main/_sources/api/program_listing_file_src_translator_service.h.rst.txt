@@ -107,6 +107,8 @@ Program Listing for File service.h
      void pivot(std::shared_ptr<TranslationModel> first, std::shared_ptr<TranslationModel> second, std::string &&source,
                 CallbackType clientCallback, const ResponseOptions &options = ResponseOptions());
    
+     void clear();
+   
      ~AsyncService();
    
      TranslationCache::Stats cacheStats() { return cache_.stats(); }

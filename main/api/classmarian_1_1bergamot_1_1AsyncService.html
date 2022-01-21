@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class AsyncService &mdash; Bergamot Translator main 2022-01-19 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Class AsyncService &mdash; Bergamot Translator main 2022-01-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -150,9 +150,16 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="_CPPv4N6marian8bergamot12AsyncService5clearEv">
+<span id="_CPPv3N6marian8bergamot12AsyncService5clearEv"></span><span id="_CPPv2N6marian8bergamot12AsyncService5clearEv"></span><span id="marian::bergamot::AsyncService::clear"></span><span class="target" id="classmarian_1_1bergamot_1_1AsyncService_1a384552c182e24787ab94f43a04f2fa28"></span>void <code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot12AsyncService5clearEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clears all pending requests. </p>
+</dd></dl>
+
+<dl class="function">
 <dt id="_CPPv4N6marian8bergamot12AsyncServiceD0Ev">
 <span id="_CPPv3N6marian8bergamot12AsyncServiceD0Ev"></span><span id="_CPPv2N6marian8bergamot12AsyncServiceD0Ev"></span><span id="marian::bergamot::AsyncService::~AsyncService"></span><span class="target" id="classmarian_1_1bergamot_1_1AsyncService_1adb1150f84a9a8f4063fe4b2a9d3169d5"></span><code class="sig-name descname">~AsyncService</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot12AsyncServiceD0Ev" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Thread joins and proper shutdown are required to be handled explicitly. </p>
+<p>If you do not want to wait, call <code class="docutils literal notranslate"><a class="reference internal" href="#classmarian_1_1bergamot_1_1AsyncService_1a384552c182e24787ab94f43a04f2fa28"><span class="std std-ref"><span class="pre">clear()</span></span></a></code> before destructor. </p>
 </dd></dl>
 
 <dl class="function">

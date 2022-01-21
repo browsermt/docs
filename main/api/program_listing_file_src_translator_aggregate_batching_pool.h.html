@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File aggregate_batching_pool.h &mdash; Bergamot Translator main 2022-01-19 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File aggregate_batching_pool.h &mdash; Bergamot Translator main 2022-01-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -105,6 +105,8 @@
 <span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">enqueueRequest</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">generateBatch</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">Batch</span><span class="o">&amp;</span><span class="w"> </span><span class="n">batch</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">clear</span><span class="p">();</span><span class="w"></span>
 
 <span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">HashPtr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">aggregateQueue_</span><span class="p">;</span><span class="w"></span>

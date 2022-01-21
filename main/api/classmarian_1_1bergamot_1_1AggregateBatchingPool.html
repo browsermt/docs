@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class AggregateBatchingPool &mdash; Bergamot Translator main 2022-01-19 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Class AggregateBatchingPool &mdash; Bergamot Translator main 2022-01-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -129,6 +129,13 @@
 </dd>
 </dl>
 </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6marian8bergamot21AggregateBatchingPool5clearEv">
+<span id="_CPPv3N6marian8bergamot21AggregateBatchingPool5clearEv"></span><span id="_CPPv2N6marian8bergamot21AggregateBatchingPool5clearEv"></span><span id="marian::bergamot::AggregateBatchingPool::clear"></span><span class="target" id="classmarian_1_1bergamot_1_1AggregateBatchingPool_1a31c7a2f323e57f679daddaf150d902f7"></span>void <code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot21AggregateBatchingPool5clearEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Clear the aggregate queue. </p>
+<p>Does not clear the underlying model/request pairs but the next call to <code class="docutils literal notranslate"><a class="reference internal" href="#classmarian_1_1bergamot_1_1AggregateBatchingPool_1aa1e371c44acd63b894a6076726ed19d8"><span class="std std-ref"><span class="pre">generateBatch()</span></span></a></code> will return 0. (Unless <code class="docutils literal notranslate"><a class="reference internal" href="#classmarian_1_1bergamot_1_1AggregateBatchingPool_1ae58aeaf15e63a89eece77b2e9a16c6f8"><span class="std std-ref"><span class="pre">enqueueRequest()</span></span></a></code> was called in the mean time.) </p>
 </dd></dl>
 
 </div>
