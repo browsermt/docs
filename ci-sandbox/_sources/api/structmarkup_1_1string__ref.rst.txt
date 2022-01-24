@@ -1,0 +1,16 @@
+.. _exhale_struct_structmarkup_1_1string__ref:
+
+Struct string_ref
+=================
+
+- Defined in :ref:`file_src_translator_xh_scanner.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: markup::string_ref
+   :members:
+   :protected-members:
+   :undoc-members:

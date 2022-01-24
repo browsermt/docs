@@ -13,69 +13,121 @@ Program Listing for File service.h
    #ifndef SRC_BERGAMOT_SERVICE_H_
    #define SRC_BERGAMOT_SERVICE_H_
    
-   #include "batch_translator.h"
+   #include <queue>
+   #include <thread>
+   #include <vector>
+   
+   #include "cache.h"
    #include "data/types.h"
+   #include "logging.h"
+   #include "quality_estimator.h"
    #include "response.h"
    #include "response_builder.h"
    #include "text_processor.h"
-   #include "threadsafe_batcher.h"
+   #include "threadsafe_batching_pool.h"
+   #include "translation_model.h"
    #include "translator/parser.h"
    #include "vocabs.h"
-   
-   #ifndef WASM_COMPATIBLE_SOURCE
-   #include <thread>
-   #endif
-   
-   #include <queue>
-   #include <vector>
    
    namespace marian {
    namespace bergamot {
    
-   class Service {
+   class BlockingService;
+   class AsyncService;
+   
+   class BlockingService {
     public:
-     explicit Service(Ptr<Options> options, MemoryBundle memoryBundle = {});
+     struct Config {
+       bool cacheEnabled{false};  
+       size_t cacheSize{2000};    
+       Logger::Config logger;     // Configurations for logging
    
-     explicit Service(const std::string &config, MemoryBundle memoryBundle = {})
-         : Service(parseOptions(config, /*validate=*/false), std::move(memoryBundle)) {}
+       template <class App>
+       static void addOptions(App &app, Config &config) {
+         // Options will come here.
+         app.add_option("--cache-translations", config.cacheEnabled, "Whether to cache translations or not.");
+         app.add_option("--cache-size", config.cacheSize, "Number of entries to store in cache.");
+         Logger::Config::addOptions(app, config.logger);
+       }
+     };
+     BlockingService(const BlockingService::Config &config);
    
-     ~Service();
    
-     std::future<Response> translate(std::string &&source, ResponseOptions options = ResponseOptions());
    
-     std::vector<Response> translateMultiple(std::vector<std::string> &&source, ResponseOptions responseOptions);
+     std::vector<Response> translateMultiple(std::shared_ptr<TranslationModel> translationModel,
+                                             std::vector<std::string> &&source, const ResponseOptions &responseOptions);
    
-     bool isAlignmentSupported() const { return options_->hasAndNotEmpty("alignment"); }
+     std::vector<Response> translateMultipleRaw(std::shared_ptr<TranslationModel> translationModel,
+                                                std::vector<std::string> &&source, const ResponseOptions &responseOptions);
+     std::vector<Response> pivotMultiple(std::shared_ptr<TranslationModel> first, std::shared_ptr<TranslationModel> second,
+                                         std::vector<std::string> &&sources, const ResponseOptions &responseOptions);
+     TranslationCache::Stats cacheStats() { return cache_.stats(); }
    
     private:
-     std::future<Response> queueRequest(std::string &&input, ResponseOptions responseOptions);
+     size_t requestId_;
    
-     void dispatchTranslate();
+     AggregateBatchingPool batchingPool_;
    
-     void blockIfWASM();
+     Config config_;
    
-     size_t numWorkers_;
+     // Logger which shuts down cleanly with service.
+     Logger logger_;
+     TranslationCache cache_;
+   };
    
-     Ptr<Options> options_;
+   class AsyncService {
+    public:
+     struct Config {
+       size_t numWorkers{1};      
+       bool cacheEnabled{false};  
+       size_t cacheSize{2000};    
+       size_t cacheMutexBuckets{1};  
+       Logger::Config logger;        // Configurations for logging
    
-     AlignedMemory modelMemory_;  // ORDER DEPENDENCY (translators_)
-     AlignedMemory shortlistMemory_;  // ORDER DEPENDENCY (translators_)
+       template <class App>
+       static void addOptions(App &app, Config &config) {
+         app.add_option("--cpu-threads", config.numWorkers, "Workers to form translation backend");
+         app.add_option("--cache-translations", config.cacheEnabled, "Whether to cache translations or not.");
+         app.add_option("--cache-size", config.cacheSize, "Number of entries to store in cache.");
+         app.add_option("--cache-mutex-buckets", config.cacheMutexBuckets,
+                        "Number of mutex buckets to control locking granularity");
+         Logger::Config::addOptions(app, config.logger);
+       }
+     };
+     AsyncService(const AsyncService::Config &config);
+   
+     Ptr<TranslationModel> createCompatibleModel(const TranslationModel::Config &config) {
+       // @TODO: Remove this remove this dependency/coupling.
+       return New<TranslationModel>(config, /*replicas=*/config_.numWorkers);
+     }
+   
+     void translate(std::shared_ptr<TranslationModel> translationModel, std::string &&source, CallbackType callback,
+                    const ResponseOptions &options = ResponseOptions());
+   
+     void pivot(std::shared_ptr<TranslationModel> first, std::shared_ptr<TranslationModel> second, std::string &&source,
+                CallbackType clientCallback, const ResponseOptions &options = ResponseOptions());
+   
+     void clear();
+   
+     ~AsyncService();
+   
+     TranslationCache::Stats cacheStats() { return cache_.stats(); }
+   
+    private:
+     void translateRaw(std::shared_ptr<TranslationModel> translationModel, std::string &&source, CallbackType callback,
+                       const ResponseOptions &options = ResponseOptions());
+     AsyncService::Config config_;
+   
+     std::vector<std::thread> workers_;
    
    
      size_t requestId_;
-     Vocabs vocabs_;  // ORDER DEPENDENCY (text_processor_)
    
-     TextProcessor text_processor_;  // ORDER DEPENDENCY (vocabs_)
+     ThreadsafeBatchingPool<AggregateBatchingPool> safeBatchingPool_;
    
-     ThreadsafeBatcher batcher_;
-   
-     // The following constructs are available providing full capabilities on a non
-     // WASM platform, where one does not have to hide threads.
-   #ifdef WASM_COMPATIBLE_SOURCE
-     BatchTranslator blocking_translator_;  // ORDER DEPENDENCY (modelMemory_, shortlistMemory_)
-   #else
-     std::vector<std::thread> workers_;
-   #endif  // WASM_COMPATIBLE_SOURCE
+     // Logger which shuts down cleanly with service.
+     Logger logger_;
+     TranslationCache cache_;
    };
    
    }  // namespace bergamot

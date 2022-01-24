@@ -34,7 +34,19 @@ Program Listing for File definitions.h
      std::vector<std::shared_ptr<AlignedMemory>> vocabs{};
    
      AlignedMemory ssplitPrefixFile{};
+   
+     AlignedMemory qualityEstimatorMemory;  
    };
+   
+   struct ByteRange {
+     size_t begin;
+     size_t end;
+     const size_t size() const { return end - begin; }
+     bool operator==(ByteRange other) const { return begin == other.begin && end == other.end; }
+   };
+   
+   class Response;
+   using CallbackType = std::function<void(Response &&)>;
    
    }  // namespace bergamot
    }  // namespace marian

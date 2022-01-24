@@ -31,6 +31,8 @@ Includes
 
 - ``annotation.h`` (:ref:`file_src_translator_annotation.h`)
 
+- ``cache.h`` (:ref:`file_src_translator_cache.h`)
+
 - ``common/logging.h``
 
 - ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
@@ -40,6 +42,8 @@ Includes
 - ``response.h`` (:ref:`file_src_translator_response.h`)
 
 - ``string``
+
+- ``translation_model.h`` (:ref:`file_src_translator_translation_model.h`)
 
 
 
@@ -58,6 +62,8 @@ Namespaces
 Functions
 ---------
 
+
+- :ref:`exhale_function_request_8cpp_1aa21fdc42d329c96f15044743e44ef578`
 
 - :ref:`exhale_function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9`
 

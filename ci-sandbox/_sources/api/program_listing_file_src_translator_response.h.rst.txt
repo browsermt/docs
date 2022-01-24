@@ -26,34 +26,36 @@ Program Listing for File response.h
    namespace marian {
    namespace bergamot {
    
-   struct Point {
-     size_t src;  
-     size_t tgt;  
-     float prob;  
-   };
-   
-   typedef std::vector<Point> Alignment;
-   
-   struct Quality {
-     float sequence;
-     std::vector<float> word;
-   };
+   typedef std::vector<std::vector<float>> Alignment;
    
    struct Response {
+     struct SentenceQualityScore {
+       std::vector<float> wordScores;
+       std::vector<ByteRange> wordByteRanges;
+       float sentenceScore = 0.0;
+     };
+   
      const size_t size() const { return source.numSentences(); }
    
      AnnotatedText source;
    
      AnnotatedText target;
    
-     std::vector<Quality> qualityScores;
+     std::vector<SentenceQualityScore> qualityScores;
    
-     std::vector<Alignment> alignments;
+     std::vector<std::vector<std::vector<float>>> alignments;
+   
+     ByteRange getSourceSentenceAsByteRange(size_t sentenceIdx) const { return source.sentenceAsByteRange(sentenceIdx); }
+   
+     ByteRange getTargetSentenceAsByteRange(size_t sentenceIdx) const { return target.sentenceAsByteRange(sentenceIdx); }
    
      const std::string &getOriginalText() const { return source.text; }
    
      const std::string &getTranslatedText() const { return target.text; }
    };
+   
+   std::vector<Alignment> remapAlignments(const Response &first, const Response &second);
+   
    }  // namespace bergamot
    }  // namespace marian
    

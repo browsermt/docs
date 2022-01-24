@@ -45,23 +45,29 @@ Included By
 -----------
 
 
+- :ref:`file_src_translator_annotation.h`
+
+- :ref:`file_src_translator_cache.h`
+
 - :ref:`file_src_translator_request.h`
 
 - :ref:`file_src_translator_response.h`
 
-- :ref:`file_src_translator_batch_translator.h`
+- :ref:`file_src_translator_html.h`
+
+- :ref:`file_src_translator_batching_pool.h`
 
 - :ref:`file_src_translator_byte_array_util.h`
 
-- :ref:`file_src_translator_batcher.h`
-
-- :ref:`file_src_translator_request.cpp`
-
-- :ref:`file_src_translator_sentence_splitter.h`
+- :ref:`file_src_translator_translation_model.h`
 
 - :ref:`file_src_translator_text_processor.h`
 
-- :ref:`file_src_translator_threadsafe_batcher.h`
+- :ref:`file_src_translator_request.cpp`
+
+- :ref:`file_src_translator_response.cpp`
+
+- :ref:`file_src_translator_threadsafe_batching_pool.h`
 
 - :ref:`file_src_translator_service.cpp`
 
@@ -83,6 +89,8 @@ Classes
 -------
 
 
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1ByteRange`
+
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1MemoryBundle`
 
 
@@ -91,6 +99,8 @@ Typedefs
 
 
 - :ref:`exhale_typedef_definitions_8h_1af7b499234642d2926f2e87d894f53f38`
+
+- :ref:`exhale_typedef_definitions_8h_1a20c7296c90578f5fc7284c337f6604cb`
 
 - :ref:`exhale_typedef_definitions_8h_1ad0a7527b1fbf64cfc20eaa76134785ef`
 

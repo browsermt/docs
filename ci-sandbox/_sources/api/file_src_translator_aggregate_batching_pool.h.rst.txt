@@ -1,0 +1,69 @@
+
+.. _file_src_translator_aggregate_batching_pool.h:
+
+File aggregate_batching_pool.h
+==============================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/aggregate_batching_pool.h``)
+---------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_aggregate_batching_pool.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``data/types.h``
+
+- ``memory``
+
+- ``queue``
+
+- ``translation_model.h`` (:ref:`file_src_translator_translation_model.h`)
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_translator_aggregate_batching_pool.cpp`
+
+- :ref:`file_src_translator_threadsafe_batching_pool.h`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1HashPtr`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1AggregateBatchingPool`
+

@@ -1,78 +1,40 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Program Listing for File byte_array_util.cpp &mdash; Bergamot Translator ci-sandbox 2021-05-25 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
+  <title>Program Listing for File byte_array_util.cpp &mdash; Bergamot Translator ci-sandbox 2022-01-24 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
     <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/api/program_listing_file_src_translator_byte_array_util.cpp.html" />
-
-  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
         <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
         <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> Bergamot Translator
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 ci-sandbox
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -80,275 +42,239 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Building marian code for bergamot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Bergamot Translator</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Program Listing for File byte_array_util.cpp</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/api/program_listing_file_src_translator_byte_array_util.cpp.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="program-listing-for-file-byte-array-util-cpp">
+             
+  <section id="program-listing-for-file-byte-array-util-cpp">
 <span id="program-listing-file-src-translator-byte-array-util-cpp"></span><h1>Program Listing for File byte_array_util.cpp<a class="headerlink" href="#program-listing-for-file-byte-array-util-cpp" title="Permalink to this headline">¶</a></h1>
 <p>↰ <a class="reference internal" href="file_src_translator_byte_array_util.cpp.html#file-src-translator-byte-array-util-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/translator/byte_array_util.cpp</span></code>)</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;byte_array_util.h&quot;</span><span class="cp"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;byte_array_util.h&quot;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
 
-<span class="cp">#include</span> <span class="cpf">&quot;data/shortlist.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/shortlist.h&quot;</span><span class="cp"></span>
 
-<span class="k">namespace</span> <span class="nn">marian</span> <span class="p">{</span>
-<span class="k">namespace</span> <span class="nn">bergamot</span> <span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-<span class="k">namespace</span> <span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="c1">// This is a basic validator that checks if the file has not been truncated</span>
 <span class="c1">// it basically loads up the header and checks</span>
 
 <span class="c1">// This struct and the getter are copied from the marian source, because it&#39;s located</span>
 <span class="c1">// inside src/common/binary.cpp:15 and we can&#39;t include it.</span>
-<span class="k">struct</span> <span class="nc">Header</span> <span class="p">{</span>
-  <span class="kt">uint64_t</span> <span class="n">nameLength</span><span class="p">;</span>
-  <span class="kt">uint64_t</span> <span class="n">type</span><span class="p">;</span>
-  <span class="kt">uint64_t</span> <span class="n">shapeLength</span><span class="p">;</span>
-  <span class="kt">uint64_t</span> <span class="n">dataLength</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Header</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">nameLength</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">shapeLength</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">dataLength</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
 <span class="c1">// cast current void pointer to T pointer and move forward by num elements</span>
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="o">&gt;</span>
-<span class="k">const</span> <span class="n">T</span><span class="o">*</span> <span class="n">get</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*&amp;</span> <span class="n">current</span><span class="p">,</span> <span class="kt">uint64_t</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">const</span> <span class="n">T</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">*</span><span class="p">)</span><span class="n">current</span><span class="p">;</span>
-  <span class="n">current</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">*</span><span class="p">)</span><span class="n">current</span> <span class="o">+</span> <span class="n">num</span><span class="p">;</span>
-  <span class="k">return</span> <span class="n">ptr</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">}</span>  <span class="c1">// Anonymous namespace</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">current</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">*</span><span class="p">)</span><span class="n">current</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">*</span><span class="p">)</span><span class="n">current</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// Anonymous namespace</span>
 
-<span class="kt">bool</span> <span class="n">validateBinaryModel</span><span class="p">(</span><span class="k">const</span> <span class="n">AlignedMemory</span><span class="o">&amp;</span> <span class="n">model</span><span class="p">,</span> <span class="kt">uint64_t</span> <span class="n">fileSize</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">current</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-  <span class="kt">uint64_t</span> <span class="n">memoryNeeded</span> <span class="o">=</span>
-      <span class="k">sizeof</span><span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">// We keep track of how much memory we would need if we have a complete file</span>
-  <span class="kt">uint64_t</span> <span class="n">numHeaders</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">fileSize</span> <span class="o">&gt;=</span> <span class="n">memoryNeeded</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// We have enough filesize to fetch the headers.</span>
-    <span class="kt">uint64_t</span> <span class="n">binaryFileVersion</span> <span class="o">=</span> <span class="o">*</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">);</span>
-    <span class="n">numHeaders</span> <span class="o">=</span> <span class="o">*</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">);</span>  <span class="c1">// number of item headers that follow</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="n">memoryNeeded</span> <span class="o">+=</span> <span class="n">numHeaders</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Header</span><span class="p">);</span>
-  <span class="k">const</span> <span class="n">Header</span><span class="o">*</span> <span class="n">headers</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">fileSize</span> <span class="o">&gt;=</span> <span class="n">memoryNeeded</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="n">get</span><span class="o">&lt;</span><span class="n">Header</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">numHeaders</span><span class="p">);</span>  <span class="c1">// read that many headers</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">validateBinaryModel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">AlignedMemory</span><span class="o">&amp;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">fileSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">memoryNeeded</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">      </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// We keep track of how much memory we would need if we have a complete file</span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">numHeaders</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fileSize</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">memoryNeeded</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// We have enough filesize to fetch the headers.</span>
+<span class="w">    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">binaryFileVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">numHeaders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w">  </span><span class="c1">// number of item headers that follow</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">memoryNeeded</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">numHeaders</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Header</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">Header</span><span class="o">*</span><span class="w"> </span><span class="n">headers</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fileSize</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">memoryNeeded</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get</span><span class="o">&lt;</span><span class="n">Header</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">,</span><span class="w"> </span><span class="n">numHeaders</span><span class="p">);</span><span class="w">  </span><span class="c1">// read that many headers</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="c1">// Calculate how many bytes we are going to for reading just the names and the shape</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kt">uint64_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numHeaders</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">memoryNeeded</span> <span class="o">+=</span> <span class="n">headers</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">nameLength</span> <span class="o">+</span> <span class="n">headers</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">shapeLength</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
-    <span class="c1">// Advance the pointers.</span>
-    <span class="n">get</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">headers</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">nameLength</span><span class="p">);</span>
-    <span class="n">get</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">headers</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">shapeLength</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="c1">// Calculate how many bytes we are going to for reading just the names and the shape</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numHeaders</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">memoryNeeded</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">headers</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">nameLength</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">headers</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">shapeLength</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Advance the pointers.</span>
+<span class="w">    </span><span class="n">get</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">,</span><span class="w"> </span><span class="n">headers</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">nameLength</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">get</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">,</span><span class="w"> </span><span class="n">headers</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">shapeLength</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="c1">// Before we start reading the data, there is a small padding to ensure alignment</span>
-  <span class="c1">// Read that in, before calculating the actual tensor memory requirements.</span>
-  <span class="kt">uint64_t</span> <span class="n">aligned_offset</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">fileSize</span> <span class="o">&gt;=</span> <span class="n">memoryNeeded</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">aligned_offset</span> <span class="o">=</span> <span class="o">*</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">);</span>  <span class="c1">// Offset to align memory to 256 size</span>
-    <span class="n">memoryNeeded</span> <span class="o">+=</span> <span class="n">aligned_offset</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uint64_t</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="c1">// Before we start reading the data, there is a small padding to ensure alignment</span>
+<span class="w">  </span><span class="c1">// Read that in, before calculating the actual tensor memory requirements.</span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">aligned_offset</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fileSize</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">memoryNeeded</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">aligned_offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">current</span><span class="p">);</span><span class="w">  </span><span class="c1">// Offset to align memory to 256 size</span>
+<span class="w">    </span><span class="n">memoryNeeded</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">aligned_offset</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">uint64_t</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="c1">// Finally the tensor size:</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kt">uint64_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numHeaders</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">memoryNeeded</span> <span class="o">+=</span> <span class="n">headers</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">dataLength</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="c1">// Finally the tensor size:</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numHeaders</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">memoryNeeded</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">headers</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">dataLength</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="c1">// If this final check passes, the file is at least big enough to contain the model</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">fileSize</span> <span class="o">&gt;=</span> <span class="n">memoryNeeded</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="c1">// If this final check passes, the file is at least big enough to contain the model</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fileSize</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">memoryNeeded</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">AlignedMemory</span> <span class="n">loadFileToMemory</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">path</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">alignment</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kt">uint64_t</span> <span class="n">fileSize</span> <span class="o">=</span> <span class="n">filesystem</span><span class="o">::</span><span class="n">fileSize</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
-  <span class="n">io</span><span class="o">::</span><span class="n">InputFileStream</span> <span class="nf">in</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
-  <span class="n">ABORT_IF</span><span class="p">(</span><span class="n">in</span><span class="p">.</span><span class="n">bad</span><span class="p">(),</span> <span class="s">&quot;Failed opening file stream: {}&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">);</span>
-  <span class="n">AlignedMemory</span> <span class="nf">alignedMemory</span><span class="p">(</span><span class="n">fileSize</span><span class="p">,</span> <span class="n">alignment</span><span class="p">);</span>
-  <span class="n">in</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">alignedMemory</span><span class="p">.</span><span class="n">begin</span><span class="p">()),</span> <span class="n">fileSize</span><span class="p">);</span>
-  <span class="n">ABORT_IF</span><span class="p">(</span><span class="n">alignedMemory</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">!=</span> <span class="n">fileSize</span><span class="p">,</span> <span class="s">&quot;Error reading file {}&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">alignedMemory</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="n">AlignedMemory</span><span class="w"> </span><span class="n">loadFileToMemory</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">alignment</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">fileSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filesystem</span><span class="o">::</span><span class="n">fileSize</span><span class="p">(</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">io</span><span class="o">::</span><span class="n">InputFileStream</span><span class="w"> </span><span class="nf">in</span><span class="p">(</span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ABORT_IF</span><span class="p">(</span><span class="n">in</span><span class="p">.</span><span class="n">bad</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Failed opening file stream: {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlignedMemory</span><span class="w"> </span><span class="nf">alignedMemory</span><span class="p">(</span><span class="n">fileSize</span><span class="p">,</span><span class="w"> </span><span class="n">alignment</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">in</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">alignedMemory</span><span class="p">.</span><span class="n">begin</span><span class="p">()),</span><span class="w"> </span><span class="n">fileSize</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ABORT_IF</span><span class="p">(</span><span class="n">alignedMemory</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">fileSize</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error reading file {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">alignedMemory</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">AlignedMemory</span> <span class="n">getModelMemoryFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">auto</span> <span class="n">models</span> <span class="o">=</span> <span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="s">&quot;models&quot;</span><span class="p">);</span>
-  <span class="n">ABORT_IF</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Loading multiple binary models is not supported for now as it is not necessary.&quot;</span><span class="p">);</span>
-  <span class="n">marian</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">Path</span> <span class="nf">modelPath</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-  <span class="n">ABORT_IF</span><span class="p">(</span><span class="n">modelPath</span><span class="p">.</span><span class="n">extension</span><span class="p">()</span> <span class="o">!=</span> <span class="n">marian</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">Path</span><span class="p">(</span><span class="s">&quot;.bin&quot;</span><span class="p">),</span> <span class="s">&quot;The file of binary model should end with .bin&quot;</span><span class="p">);</span>
-  <span class="n">AlignedMemory</span> <span class="n">alignedMemory</span> <span class="o">=</span> <span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">256</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">alignedMemory</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="n">AlignedMemory</span><span class="w"> </span><span class="n">getModelMemoryFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="s">&quot;models&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ABORT_IF</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Loading multiple binary models is not supported for now as it is not necessary.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">marian</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">Path</span><span class="w"> </span><span class="nf">modelPath</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ABORT_IF</span><span class="p">(</span><span class="n">modelPath</span><span class="p">.</span><span class="n">extension</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">Path</span><span class="p">(</span><span class="s">&quot;.bin&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;The file of binary model should end with .bin&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">AlignedMemory</span><span class="w"> </span><span class="n">alignedMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">256</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">alignedMemory</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">AlignedMemory</span> <span class="n">getShortlistMemoryFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">auto</span> <span class="n">shortlist</span> <span class="o">=</span> <span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="s">&quot;shortlist&quot;</span><span class="p">);</span>
-  <span class="n">ABORT_IF</span><span class="p">(</span><span class="n">shortlist</span><span class="p">.</span><span class="n">empty</span><span class="p">(),</span> <span class="s">&quot;No path to shortlist file is given.&quot;</span><span class="p">);</span>
-  <span class="n">ABORT_IF</span><span class="p">(</span><span class="o">!</span><span class="n">marian</span><span class="o">::</span><span class="n">data</span><span class="o">::</span><span class="n">isBinaryShortlist</span><span class="p">(</span><span class="n">shortlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-           <span class="s">&quot;Loading non-binary shortlist file into memory is not supported&quot;</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">shortlist</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">64</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">AlignedMemory</span><span class="w"> </span><span class="n">getShortlistMemoryFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">shortlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="s">&quot;shortlist&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">shortlist</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ABORT_IF</span><span class="p">(</span><span class="o">!</span><span class="n">marian</span><span class="o">::</span><span class="n">data</span><span class="o">::</span><span class="n">isBinaryShortlist</span><span class="p">(</span><span class="n">shortlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="w"></span>
+<span class="w">             </span><span class="s">&quot;Loading non-binary shortlist file into memory is not supported&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">shortlist</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">AlignedMemory</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="n">getVocabsMemoryFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span> <span class="n">options</span><span class="p">,</span>
-                               <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;&gt;&amp;</span> <span class="n">vocabMemories</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">auto</span> <span class="n">vfiles</span> <span class="o">=</span> <span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="s">&quot;vocabs&quot;</span><span class="p">);</span>
-  <span class="n">ABORT_IF</span><span class="p">(</span><span class="n">vfiles</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;Insufficient number of vocabularies.&quot;</span><span class="p">);</span>
-  <span class="n">vocabMemories</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">vfiles</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;&gt;</span> <span class="n">vocabMap</span><span class="p">;</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vfiles</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">ABORT_IF</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">Path</span><span class="p">(</span><span class="n">vfiles</span><span class="p">[</span><span class="n">i</span><span class="p">]).</span><span class="n">extension</span><span class="p">()</span> <span class="o">!=</span> <span class="n">marian</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">Path</span><span class="p">(</span><span class="s">&quot;.spm&quot;</span><span class="p">),</span>
-             <span class="s">&quot;Loading non-SentencePiece vocab files into memory is not supported&quot;</span><span class="p">);</span>
-    <span class="k">auto</span> <span class="n">m</span> <span class="o">=</span> <span class="n">vocabMap</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="n">vfiles</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;</span><span class="p">()));</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">second</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">m</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">second</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;</span><span class="p">(</span><span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">vfiles</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">64</span><span class="p">));</span>
-    <span class="p">}</span>
-    <span class="n">vocabMemories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">getVocabsMemoryFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="p">,</span><span class="w"></span>
+<span class="w">                               </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">vocabMemories</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">vfiles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="s">&quot;vocabs&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ABORT_IF</span><span class="p">(</span><span class="n">vfiles</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Insufficient number of vocabularies.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">vocabMemories</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">vfiles</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">vocabMap</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">vfiles</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ABORT_IF</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">Path</span><span class="p">(</span><span class="n">vfiles</span><span class="p">[</span><span class="n">i</span><span class="p">]).</span><span class="n">extension</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">Path</span><span class="p">(</span><span class="s">&quot;.spm&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">             </span><span class="s">&quot;Loading non-SentencePiece vocab files into memory is not supported&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vocabMap</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_pair</span><span class="p">(</span><span class="n">vfiles</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;</span><span class="p">()));</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">m</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">AlignedMemory</span><span class="o">&gt;</span><span class="p">(</span><span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">vfiles</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="mi">64</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">vocabMemories</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="n">MemoryBundle</span> <span class="n">getMemoryBundleFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">MemoryBundle</span> <span class="n">memoryBundle</span><span class="p">;</span>
-  <span class="n">memoryBundle</span><span class="p">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">getModelMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
-  <span class="n">memoryBundle</span><span class="p">.</span><span class="n">shortlist</span> <span class="o">=</span> <span class="n">getShortlistMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
-  <span class="n">getVocabsMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">memoryBundle</span><span class="p">.</span><span class="n">vocabs</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">memoryBundle</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="n">AlignedMemory</span><span class="w"> </span><span class="n">getQualityEstimatorModel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">qualityEstimatorPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;quality&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">qualityEstimatorPath</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">qualityEstimatorPath</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="p">}</span>  <span class="c1">// namespace bergamot</span>
-<span class="p">}</span>  <span class="c1">// namespace marian</span>
+<span class="n">AlignedMemory</span><span class="w"> </span><span class="n">getQualityEstimatorModel</span><span class="p">(</span><span class="n">MemoryBundle</span><span class="o">&amp;</span><span class="w"> </span><span class="n">memoryBundle</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">memoryBundle</span><span class="p">.</span><span class="n">qualityEstimatorMemory</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">getQualityEstimatorModel</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">memoryBundle</span><span class="p">.</span><span class="n">qualityEstimatorMemory</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">MemoryBundle</span><span class="w"> </span><span class="n">getMemoryBundleFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">MemoryBundle</span><span class="w"> </span><span class="n">memoryBundle</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">memoryBundle</span><span class="p">.</span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getModelMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">memoryBundle</span><span class="p">.</span><span class="n">shortlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getShortlistMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">getVocabsMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">memoryBundle</span><span class="p">.</span><span class="n">vocabs</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">memoryBundle</span><span class="p">.</span><span class="n">ssplitPrefixFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getSsplitPrefixFileMemoryFromConfig</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">memoryBundle</span><span class="p">.</span><span class="n">qualityEstimatorMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getQualityEstimatorModel</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">memoryBundle</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">AlignedMemory</span><span class="w"> </span><span class="n">getSsplitPrefixFileMemoryFromConfig</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">fpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ssplit-prefix-file&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">fpath</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">loadFileToMemory</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Return empty AlignedMemory</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">AlignedMemory</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>
 </pre></div>
 </div>
-</div>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Bergamot Translator Team.
-
-    </p>
+    <p>&#169; Copyright 2021, Bergamot Translator Team.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

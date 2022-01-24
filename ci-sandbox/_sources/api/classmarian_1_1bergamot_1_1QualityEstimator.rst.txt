@@ -1,0 +1,26 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1QualityEstimator:
+
+Class QualityEstimator
+======================
+
+- Defined in :ref:`file_src_translator_quality_estimator.h`
+
+
+Inheritance Relationships
+-------------------------
+
+Derived Types
+*************
+
+- ``public marian::bergamot::LogisticRegressorQualityEstimator`` (:ref:`exhale_class_classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator`)
+- ``public marian::bergamot::UnsupervisedQualityEstimator`` (:ref:`exhale_class_classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::QualityEstimator
+   :members:
+   :protected-members:
+   :undoc-members:

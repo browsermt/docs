@@ -31,6 +31,8 @@ Includes
 
 - ``annotation.h`` (:ref:`file_src_translator_annotation.h`)
 
+- ``common/cli_helper.h``
+
 - ``common/options.h``
 
 - ``data/types.h``

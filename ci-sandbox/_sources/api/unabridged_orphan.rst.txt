@@ -11,6 +11,11 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_app.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_src.rst
 
 .. toctree::
@@ -21,6 +26,16 @@ Directories
 Files
 *****
 
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_aggregate_batching_pool.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_aggregate_batching_pool.h.rst
 
 .. toctree::
    :maxdepth: 5
@@ -50,22 +65,17 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_src_translator_batch_translator.cpp.rst
+   file_src_translator_batching_pool.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_src_translator_batch_translator.h.rst
+   file_src_translator_batching_pool.h.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_src_translator_batcher.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_src_translator_batcher.h.rst
+   file_app_bergamot.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -80,12 +90,47 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_src_translator_cache.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_src_translator_definitions.h.rst
 
 .. toctree::
    :maxdepth: 5
 
+   file_src_translator_html.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_html.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_logging.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_parser.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_src_translator_parser.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_quality_estimator.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_quality_estimator.h.rst
 
 .. toctree::
    :maxdepth: 5
@@ -96,6 +141,11 @@ Files
    :maxdepth: 5
 
    file_src_translator_request.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_response.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -120,16 +170,6 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_src_translator_sentence_splitter.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_src_translator_sentence_splitter.h.rst
-
-.. toctree::
-   :maxdepth: 5
-
    file_src_translator_service.cpp.rst
 
 .. toctree::
@@ -150,14 +190,48 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_src_translator_threadsafe_batcher.cpp.rst
+   file_src_translator_threadsafe_batching_pool.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_src_translator_threadsafe_batcher.h.rst
+   file_src_translator_threadsafe_batching_pool.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_translation_model.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_translation_model.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_utils.h.rst
 
 .. toctree::
    :maxdepth: 5
 
    file_src_translator_vocabs.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_xh_scanner.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_src_translator_xh_scanner.h.rst
+
+Pages
+*****
+
+
+.. toctree::
+   :maxdepth: 5
+
+   page_todo.rst

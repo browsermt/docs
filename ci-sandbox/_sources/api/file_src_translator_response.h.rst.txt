@@ -53,11 +53,19 @@ Included By
 
 - :ref:`file_src_translator_request.h`
 
+- :ref:`file_src_translator_quality_estimator.h`
+
 - :ref:`file_src_translator_response_builder.h`
+
+- :ref:`file_src_translator_html.cpp`
 
 - :ref:`file_src_translator_request.cpp`
 
+- :ref:`file_src_translator_response.cpp`
+
 - :ref:`file_src_translator_service.h`
+
+- :ref:`file_app_bergamot.cpp`
 
 
 
@@ -75,16 +83,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Point`
-
-- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Quality`
-
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1Response`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_response_8h_1a814145c7406e05875734e37f5c0c6dcc`
+- :ref:`exhale_typedef_response_8h_1a4a80418bd6a17c47f979280fd15b6746`
 

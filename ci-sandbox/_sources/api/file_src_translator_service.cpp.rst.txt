@@ -31,6 +31,8 @@ Includes
 
 - ``batch.h`` (:ref:`file_src_translator_batch.h`)
 
+- ``byte_array_util.h`` (:ref:`file_src_translator_byte_array_util.h`)
+
 - ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
 
 - ``service.h`` (:ref:`file_src_translator_service.h`)

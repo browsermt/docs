@@ -33,6 +33,8 @@ Includes
 
 - ``data/types.h``
 
+- ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
+
 - ``utility``
 
 - ``vector``
@@ -43,15 +45,21 @@ Included By
 -----------
 
 
-- :ref:`file_src_translator_annotation.cpp`
-
 - :ref:`file_src_translator_request.h`
 
 - :ref:`file_src_translator_response.h`
 
-- :ref:`file_src_translator_request.cpp`
+- :ref:`file_src_translator_html.h`
+
+- :ref:`file_src_translator_quality_estimator.h`
 
 - :ref:`file_src_translator_text_processor.h`
+
+- :ref:`file_src_translator_annotation.cpp`
+
+- :ref:`file_src_translator_request.cpp`
+
+- :ref:`file_src_translator_response.cpp`
 
 - :ref:`file_src_translator_text_processor.cpp`
 
@@ -72,8 +80,6 @@ Classes
 
 
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1AnnotatedText`
-
-- :ref:`exhale_struct_structmarian_1_1bergamot_1_1ByteRange`
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1Annotation`
 

@@ -23,21 +23,14 @@ Program Listing for File response_options.h
      SPACE
    };
    
-   enum QualityScoreType {
-     FREE,
-   
-     EXPENSIVE
-   };
-   
    struct ResponseOptions {
      bool qualityScores{false};  
      bool alignment{false};      
    
+     bool HTML{false};  
+   
      bool sentenceMappings{false};
    
-     float alignmentThreshold{0.2f};
-   
-     QualityScoreType qualityScoreType{QualityScoreType::FREE};
      ConcatStrategy concatStrategy{ConcatStrategy::FAITHFUL};
    };
    

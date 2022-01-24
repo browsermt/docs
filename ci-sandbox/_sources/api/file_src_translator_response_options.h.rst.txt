@@ -41,6 +41,8 @@ Included By
 
 - :ref:`file_src_translator_response_builder.cpp`
 
+- :ref:`file_app_bergamot.cpp`
+
 
 
 
@@ -65,6 +67,4 @@ Enums
 
 
 - :ref:`exhale_enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1`
-
-- :ref:`exhale_enum_response__options_8h_1a435be63c72825cbd4bfb8bd0d07b9099`
 

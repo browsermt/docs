@@ -18,15 +18,10 @@ Program Listing for File annotation.h
    #include <vector>
    
    #include "data/types.h"
+   #include "definitions.h"
    
    namespace marian {
    namespace bergamot {
-   
-   struct ByteRange {
-     size_t begin;
-     size_t end;
-     const size_t size() const { return end - begin; }
-   };
    
    class Annotation {
     public:

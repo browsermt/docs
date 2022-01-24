@@ -9,6 +9,16 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
+   namespace_@13.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   namespace_@37.rst
+
+.. toctree::
+   :maxdepth: 5
+
    namespace_marian.rst
 
 .. toctree::
@@ -19,7 +29,22 @@ Namespaces
 .. toctree::
    :maxdepth: 5
 
+   namespace_marian__bergamot__@27.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   namespace_marian__bergamot__@29.rst
+
+.. toctree::
+   :maxdepth: 5
+
    namespace_marian__bergamot__@9.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   namespace_markup.rst
 
 Classes and Structs
 *******************
@@ -33,7 +58,62 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   structmarian_1_1bergamot_1_1AsyncService_1_1Config.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1AtomicCache_1_1Stats.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1BlockingService_1_1Config.rst
+
+.. toctree::
+   :maxdepth: 5
+
    structmarian_1_1bergamot_1_1ByteRange.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1CLIConfig.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1HashPtr.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1HTML_1_1Options.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1HTML_1_1Span.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1HTML_1_1Tag.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1Logger_1_1Config.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Scale.rst
 
 .. toctree::
    :maxdepth: 5
@@ -43,22 +123,37 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
-   structmarian_1_1bergamot_1_1Point.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   structmarian_1_1bergamot_1_1Quality.rst
-
-.. toctree::
-   :maxdepth: 5
-
    structmarian_1_1bergamot_1_1Response.rst
 
 .. toctree::
    :maxdepth: 5
 
+   structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore.rst
+
+.. toctree::
+   :maxdepth: 5
+
    structmarian_1_1bergamot_1_1ResponseOptions.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarian_1_1bergamot_1_1TranslationModel_1_1MarianBackend.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarkup_1_1instream.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   structmarkup_1_1string__ref.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1AggregateBatchingPool.rst
 
 .. toctree::
    :maxdepth: 5
@@ -73,17 +168,62 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   classmarian_1_1bergamot_1_1AsyncService.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1AtomicCache.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1BadHTML.rst
+
+.. toctree::
+   :maxdepth: 5
+
    classmarian_1_1bergamot_1_1Batch.rst
 
 .. toctree::
    :maxdepth: 5
 
-   classmarian_1_1bergamot_1_1Batcher.rst
+   classmarian_1_1bergamot_1_1BatchingPool.rst
 
 .. toctree::
    :maxdepth: 5
 
-   classmarian_1_1bergamot_1_1BatchTranslator.rst
+   classmarian_1_1bergamot_1_1BlockingService.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1ConfigParser.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1HTML.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1Logger.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Matrix.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1QualityEstimator.rst
 
 .. toctree::
    :maxdepth: 5
@@ -103,27 +243,32 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
-   classmarian_1_1bergamot_1_1SentenceSplitter.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   classmarian_1_1bergamot_1_1Service.rst
-
-.. toctree::
-   :maxdepth: 5
-
    classmarian_1_1bergamot_1_1TextProcessor.rst
 
 .. toctree::
    :maxdepth: 5
 
-   classmarian_1_1bergamot_1_1ThreadsafeBatcher.rst
+   classmarian_1_1bergamot_1_1ThreadsafeBatchingPool.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1TranslationModel.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator.rst
 
 .. toctree::
    :maxdepth: 5
 
    classmarian_1_1bergamot_1_1Vocabs.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   classmarkup_1_1Scanner.rst
 
 Enums
 *****
@@ -134,11 +279,6 @@ Enums
 
    enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1.rst
 
-.. toctree::
-   :maxdepth: 5
-
-   enum_response__options_8h_1a435be63c72825cbd4bfb8bd0d07b9099.rst
-
 Functions
 *********
 
@@ -146,7 +286,12 @@ Functions
 .. toctree::
    :maxdepth: 5
 
-   function_parser_8h_1a9d7a795b4232908367ad7d9348c62455.rst
+   function_bergamot_8cpp_1a0ddf1224851353fc92bfbff6f499fa97.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_quality__estimator_8h_1a2e349a94dba9714699b93a9e59f0569b.rst
 
 .. toctree::
    :maxdepth: 5
@@ -161,7 +306,22 @@ Functions
 .. toctree::
    :maxdepth: 5
 
+   function_byte__array__util_8cpp_1a42b492f8a1927d17d3a72774b53eebc2.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1a276da62846e557d498b92ee9abc90aa0.rst
+
+.. toctree::
+   :maxdepth: 5
+
    function_byte__array__util_8cpp_1a03d0ea07c0548c3c9d9fa3b45e8eccc6.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_byte__array__util_8cpp_1a68022e0bdf301426d59e4dc3d89e0412.rst
 
 .. toctree::
    :maxdepth: 5
@@ -171,7 +331,17 @@ Functions
 .. toctree::
    :maxdepth: 5
 
+   function_request_8cpp_1aa21fdc42d329c96f15044743e44ef578.rst
+
+.. toctree::
+   :maxdepth: 5
+
    function_byte__array__util_8cpp_1a765d72b8a59a480e11ebf649af13e9a9.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_quality__estimator_8cpp_1ae0fe7141602ec9ff239dbc66b3cb6157.rst
 
 .. toctree::
    :maxdepth: 5
@@ -181,7 +351,32 @@ Functions
 .. toctree::
    :maxdepth: 5
 
-   function_parser_8h_1a6c3beb1c6f8449716f2b2f9bc50a0ab2.rst
+   function_parser_8cpp_1a738c33453a147aebfc5308faad463651.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_parser_8cpp_1a5d169766c7451792220a52433b66d1f1.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_response_8cpp_1a75e40f0b6e39725d9d8d96cfd962bcf9.rst
 
 .. toctree::
    :maxdepth: 5
@@ -200,6 +395,11 @@ Variables
 .. toctree::
    :maxdepth: 5
 
+   variable_quality__estimator_8h_1af49a9a6babd182877c52e034c69a2d27.rst
+
+.. toctree::
+   :maxdepth: 5
+
    variable_byte__array__util_8cpp_1adf2b9f832a958cd7db80d0ba11ff8e2e.rst
 
 .. toctree::
@@ -211,6 +411,15 @@ Variables
    :maxdepth: 5
 
    variable_byte__array__util_8cpp_1a10954dd978803ff23ff998bf943bac2d.rst
+
+Defines
+*******
+
+
+.. toctree::
+   :maxdepth: 5
+
+   define_threadsafe__batching__pool_8h_1acb6a3eeecda6f3287cca8037fbdf9c3d.rst
 
 Typedefs
 ********
@@ -224,7 +433,12 @@ Typedefs
 .. toctree::
    :maxdepth: 5
 
-   typedef_response_8h_1a814145c7406e05875734e37f5c0c6dcc.rst
+   typedef_response_8h_1a4a80418bd6a17c47f979280fd15b6746.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_definitions_8h_1a20c7296c90578f5fc7284c337f6604cb.rst
 
 .. toctree::
    :maxdepth: 5
@@ -240,3 +454,13 @@ Typedefs
    :maxdepth: 5
 
    typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_quality__estimator_8h_1a7d45e4000e2777f44cdf160b0e2c642b.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   typedef_cache_8h_1af0d71292fc13be4ee7e56a040ef51c6d.rst

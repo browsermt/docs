@@ -1,0 +1,13 @@
+.. _exhale_function_byte__array__util_8cpp_1a42b492f8a1927d17d3a72774b53eebc2:
+
+Function marian::bergamot::getQualityEstimatorModel(const marian::Ptr<marian::Options>&)
+========================================================================================
+
+- Defined in :ref:`file_src_translator_byte_array_util.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::getQualityEstimatorModel(const marian::Ptr<marian::Options>&)

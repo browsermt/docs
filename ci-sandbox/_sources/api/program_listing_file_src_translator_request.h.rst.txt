@@ -18,6 +18,7 @@ Program Listing for File request.h
    #include <vector>
    
    #include "annotation.h"
+   #include "cache.h"
    #include "common/logging.h"
    #include "data/types.h"
    #include "definitions.h"
@@ -28,9 +29,12 @@ Program Listing for File request.h
    namespace marian {
    namespace bergamot {
    
+   class TranslationModel;
+   
    class Request {
     public:
-     Request(size_t Id, Segments &&segments, ResponseBuilder &&responseBuilder);
+     Request(size_t Id, const TranslationModel &model, Segments &&segments, ResponseBuilder &&responseBuilder,
+             TranslationCache *cache);
    
      size_t segmentTokens(size_t index) const;
    
@@ -42,8 +46,12 @@ Program Listing for File request.h
    
      void processHistory(size_t index, Ptr<History> history);
    
+     bool cacheHitPrefilled(size_t index) const { return histories_[index] != nullptr; }
+   
     private:
      size_t Id_;
+   
+     const TranslationModel &model_;
    
      std::atomic<int> counter_;
    
@@ -52,6 +60,8 @@ Program Listing for File request.h
      std::vector<Ptr<History>> histories_;
    
      ResponseBuilder responseBuilder_;
+   
+     TranslationCache *cache_;
    };
    
    class RequestSentence {

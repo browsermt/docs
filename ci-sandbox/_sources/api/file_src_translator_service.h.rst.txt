@@ -29,9 +29,13 @@ Includes
 --------
 
 
-- ``batch_translator.h`` (:ref:`file_src_translator_batch_translator.h`)
+- ``cache.h`` (:ref:`file_src_translator_cache.h`)
 
 - ``data/types.h``
+
+- ``logging.h`` (:ref:`file_src_translator_logging.h`)
+
+- ``quality_estimator.h`` (:ref:`file_src_translator_quality_estimator.h`)
 
 - ``queue``
 
@@ -41,9 +45,11 @@ Includes
 
 - ``text_processor.h`` (:ref:`file_src_translator_text_processor.h`)
 
-- ``thread`` (:ref:`file_src_translator_threadsafe_batcher.cpp`)
+- ``thread`` (:ref:`file_src_translator_threadsafe_batching_pool.cpp`)
 
-- ``threadsafe_batcher.h`` (:ref:`file_src_translator_threadsafe_batcher.h`)
+- ``threadsafe_batching_pool.h`` (:ref:`file_src_translator_threadsafe_batching_pool.h`)
+
+- ``translation_model.h`` (:ref:`file_src_translator_translation_model.h`)
 
 - ``translator/parser.h`` (:ref:`file_src_translator_parser.h`)
 
@@ -58,6 +64,8 @@ Included By
 
 
 - :ref:`file_src_translator_service.cpp`
+
+- :ref:`file_app_bergamot.cpp`
 
 
 
@@ -75,5 +83,11 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classmarian_1_1bergamot_1_1Service`
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1AsyncService_1_1Config`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1BlockingService_1_1Config`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1AsyncService`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1BlockingService`
 
