@@ -64,8 +64,6 @@ Namespaces
 ----------
 
 
-- :ref:`namespace_marian`
-
 - :ref:`namespace_marian__bergamot`
 
 

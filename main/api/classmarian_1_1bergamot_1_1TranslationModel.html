@@ -4,11 +4,11 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class TranslationModel &mdash; Bergamot Translator main 2022-01-24 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Class TranslationModel &mdash; Bergamot Translator main 2022-01-26 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
-    <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/api/classmarian_1_1bergamot_1_1TranslationModel.html" />
+    <link rel="canonical" href="https://browser.mt/docs/api/classmarian_1_1bergamot_1_1TranslationModel.html" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -50,6 +50,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
 </ul>
 
         </div>
@@ -121,7 +123,7 @@
 <p>Configuration can be JSON or YAML. Keys expected correspond to those of <code class="docutils literal notranslate"><span class="pre">marian-decoder</span></code>, available at <a class="reference external" href="https://marian-nmt.github.io/docs/cmd/marian-decoder/">https://marian-nmt.github.io/docs/cmd/marian-decoder/</a></p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">replicas</span></code> is not stable. This is a temporary workaround while a more daunting task of separating workspace from <a class="reference internal" href="#classmarian_1_1bergamot_1_1TranslationModel"><span class="std std-ref">TranslationModel</span></a> and binding it to threads is to be undertaken separately. Until the separation is achieved, both <a class="reference internal" href="#classmarian_1_1bergamot_1_1TranslationModel"><span class="std std-ref">TranslationModel</span></a> and Service will need to be aware of workers. This is expected to be resolved eventually, with only Service having the knowledge of how many workers are active.</p>
 <p>WebAssembly uses only single-thread, and we can hardcode replicas = 1 and use it anywhere and (client) needn’t be aware of this ugliness at the moment, thus providing a stable API solely for WebAssembly single-threaded modus operandi.</p>
-<p>TODO(&#64;jerinphilip): Clean this up. </p>
+<p>TODO(): Clean this up. </p>
 </dd></dl>
 
 <dl class="function">
@@ -231,7 +233,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Bergamot Translator Team.</p>
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -4,11 +4,11 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class AsyncService &mdash; Bergamot Translator main 2022-01-24 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Class AsyncService &mdash; Bergamot Translator main 2022-01-26 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
-    <link rel="canonical" href="http://jerinphilip.github.io/bergamot-translator/api/classmarian_1_1bergamot_1_1AsyncService.html" />
+    <link rel="canonical" href="https://browser.mt/docs/api/classmarian_1_1bergamot_1_1AsyncService.html" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -50,6 +50,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
 <li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
 </ul>
 
         </div>
@@ -136,13 +138,11 @@
 <span id="_CPPv3N6marian8bergamot12AsyncService5pivotENSt10shared_ptrI16TranslationModelEENSt10shared_ptrI16TranslationModelEERRNSt6stringE12CallbackTypeRK15ResponseOptions"></span><span id="_CPPv2N6marian8bergamot12AsyncService5pivotENSt10shared_ptrI16TranslationModelEENSt10shared_ptrI16TranslationModelEERRNSt6stringE12CallbackTypeRK15ResponseOptions"></span><span id="marian::bergamot::AsyncService::pivot__std::shared_ptr:TranslationModel:.std::shared_ptr:TranslationModel:.ssRR.CallbackType.ResponseOptionsCR"></span><span class="target" id="classmarian_1_1bergamot_1_1AsyncService_1a0ad484d4b0fea185f1cac8dad4129de0"></span>void <code class="sig-name descname">pivot</code><span class="sig-paren">(</span>std::shared_ptr&lt;<a class="reference internal" href="classmarian_1_1bergamot_1_1TranslationModel.html#_CPPv4N6marian8bergamot16TranslationModelE" title="marian::bergamot::TranslationModel">TranslationModel</a>&gt; <em>first</em>, std::shared_ptr&lt;<a class="reference internal" href="classmarian_1_1bergamot_1_1TranslationModel.html#_CPPv4N6marian8bergamot16TranslationModelE" title="marian::bergamot::TranslationModel">TranslationModel</a>&gt; <em>second</em>, std::string &amp;&amp;<em>source</em>, <a class="reference internal" href="typedef_definitions_8h_1a20c7296c90578f5fc7284c337f6604cb.html#_CPPv4N6marian8bergamot12CallbackTypeE" title="marian::bergamot::CallbackType">CallbackType</a> <em>clientCallback</em>, <em class="property">const</em> <a class="reference internal" href="structmarian_1_1bergamot_1_1ResponseOptions.html#_CPPv4N6marian8bergamot15ResponseOptionsE" title="marian::bergamot::ResponseOptions">ResponseOptions</a> &amp;<em>options</em> = <a class="reference internal" href="structmarian_1_1bergamot_1_1ResponseOptions.html#_CPPv4N6marian8bergamot15ResponseOptionsE" title="marian::bergamot::ResponseOptions">ResponseOptions</a>()<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot12AsyncService5pivotENSt10shared_ptrI16TranslationModelEENSt10shared_ptrI16TranslationModelEERRNSt6stringE12CallbackTypeRK15ResponseOptions" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>With the supplied two translation models, translate using first and then the second generating a response as if it were translated from first’s source language to second’s target langauge. </p>
 <p>Requires first’s target to be second’s source to work correctly - effectively implementing pivoting translation via an intermediate language.</p>
-<p><dl class="simple">
-<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<p><dl>
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist">
 <li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">first</span></code>: <a class="reference internal" href="classmarian_1_1bergamot_1_1TranslationModel.html#classmarian_1_1bergamot_1_1TranslationModel"><span class="std std-ref">TranslationModel</span></a> capable of translating from source language to pivot language. </p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">second</span></code>: <a class="reference internal" href="classmarian_1_1bergamot_1_1TranslationModel.html#classmarian_1_1bergamot_1_1TranslationModel"><span class="std std-ref">TranslationModel</span></a> capable of translating between pivot and target language. </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[move]</span></code>: source: The source text to be translated </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">clientCallback</span></code>: The callback to be called with the constructed <a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#structmarian_1_1bergamot_1_1Response"><span class="std std-ref">Response</span></a>. Expects the callback to consume the <a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#structmarian_1_1bergamot_1_1Response"><span class="std std-ref">Response</span></a>. </p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">options</span></code>: Options indicating whether or not to include optional members in response and pass additional configurations. See <a class="reference internal" href="structmarian_1_1bergamot_1_1ResponseOptions.html#structmarian_1_1bergamot_1_1ResponseOptions"><span class="std std-ref">ResponseOptions</span></a>. </p></li>
+<li><code class="docutils literal notranslate"></code></li>
 </ul>
 </dd>
 </dl>
@@ -231,7 +231,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Bergamot Translator Team.</p>
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

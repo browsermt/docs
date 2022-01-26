@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python &mdash; Bergamot Translator main 2022-01-26 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/python.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Typedef marian::bergamot::TranslationCache" href="api/typedef_cache_8h_1af0d71292fc13be4ee7e56a040ef51c6d.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                main
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/library_index.html">Library API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-interface">Command Line Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#actions">actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Sub-commands:">Sub-commands:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#translate">translate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download">download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ls">ls</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-bergamot">Module Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bergamot-translator">bergamot-translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-inventory">Model Inventory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities">Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Python</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/python.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="python">
+<h1>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>This document describes python bindings from bergamot-translator and a
+batteries included python package supplied for easy use. The library also
+provides entry point via a command-line making it easier for the average user
+to get started.</p>
+<p>As bergamot-translator is built on top of marian, the python API should also
+work as python bindings for marian trained models, if they need to be
+integrated into python code-bases.</p>
+<p><em>Disclaimer</em>: The package is still in early stages and unstable. Functions and
+classes might move around quite fast. Use at your own risk.</p>
+<section id="command-line-interface">
+<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">usage</span><span class="p">:</span><span class="w"> </span><span class="n">bergamot</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="n">translate</span><span class="p">,</span><span class="n">download</span><span class="p">,</span><span class="n">ls</span><span class="p">}</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="actions">
+<h3>actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h3>
+<p>The following actions are available through the bergamot package</p>
+<dl class="option-list">
+<dt><kbd>action</kbd></dt>
+<dd><p>Possible choices: translate, download, ls</p>
+<p>To obtain help on how to run these actions supply &lt;cmd&gt; -h.</p>
+</dd>
+</dl>
+</section>
+<section id="Sub-commands:">
+<h3>Sub-commands:<a class="headerlink" href="#Sub-commands:" title="Permalink to this headline">¶</a></h3>
+<section id="translate">
+<h4>translate<a class="headerlink" href="#translate" title="Permalink to this headline">¶</a></h4>
+<p>translate using a given model. Multiple models mean pivoting</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">bergamot</span><span class="w"> </span><span class="n">translate</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">MODEL</span><span class="w"> </span><span class="p">[</span><span class="n">MODEL</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="p">{</span><span class="n">browsermt</span><span class="p">,</span><span class="n">opus</span><span class="p">}]</span><span class="w"></span>
+<span class="w">                   </span><span class="p">[</span><span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">workers</span><span class="w"> </span><span class="n">NUM_WORKERS</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="o">--</span><span class="n">log</span><span class="o">-</span><span class="n">level</span><span class="w"> </span><span class="n">LOG_LEVEL</span><span class="p">]</span><span class="w"></span>
+<span class="w">                   </span><span class="p">[</span><span class="o">--</span><span class="n">html</span><span class="w"> </span><span class="n">HTML</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="o">--</span><span class="n">alignment</span><span class="w"> </span><span class="n">ALIGNMENT</span><span class="p">]</span><span class="w"></span>
+<span class="w">                   </span><span class="p">[</span><span class="o">--</span><span class="n">quality</span><span class="o">-</span><span class="n">scores</span><span class="w"> </span><span class="n">QUALITY_SCORES</span><span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="Named Arguments">
+<h5>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h5>
+<dl class="option-list">
+<dt><kbd>-m, --model</kbd></dt>
+<dd><p>Path to model file(s) to use in forward or pivot translation</p>
+</dd>
+<dt><kbd>-r, --repository</kbd></dt>
+<dd><p>Possible choices: browsermt, opus</p>
+<p>Repository to download model from</p>
+<p>Default: “browsermt”</p>
+</dd>
+<dt><kbd>--num-workers</kbd></dt>
+<dd><p>Number of worker threads to use to translate</p>
+<p>Default: 4</p>
+</dd>
+<dt><kbd>--log-level</kbd></dt>
+<dd><p>Set verbosity level of logging: trace, debug, info, warn, err(or), critical, off</p>
+<p>Default: “off”</p>
+</dd>
+</dl>
+</section>
+<section id="response-options">
+<h5>response-options<a class="headerlink" href="#response-options" title="Permalink to this headline">¶</a></h5>
+<dl class="option-list">
+<dt><kbd>--html</kbd></dt>
+<dd><p>Default: False</p>
+</dd>
+<dt><kbd>--alignment</kbd></dt>
+<dd><p>Default: False</p>
+</dd>
+<dt><kbd>--quality-scores</kbd></dt>
+<dd><p>Default: False</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="download">
+<h4>download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h4>
+<p>Download models from the web.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">bergamot</span><span class="w"> </span><span class="n">download</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">MODEL</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="p">{</span><span class="n">browsermt</span><span class="p">,</span><span class="n">opus</span><span class="p">}]</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="Named Arguments_repeat1">
+<h5>Named Arguments<a class="headerlink" href="#Named Arguments_repeat1" title="Permalink to this headline">¶</a></h5>
+<dl class="option-list">
+<dt><kbd>-m, --model</kbd></dt>
+<dd><p>Fetch model with given code. Use ls to list available models. Optional, if none supplied all models are downloaded.</p>
+</dd>
+<dt><kbd>-r, --repository</kbd></dt>
+<dd><p>Possible choices: browsermt, opus</p>
+<p>Repository to download model from</p>
+<p>Default: “browsermt”</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="ls">
+<h4>ls<a class="headerlink" href="#ls" title="Permalink to this headline">¶</a></h4>
+<p>List available models.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">bergamot</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="p">{</span><span class="n">browsermt</span><span class="p">,</span><span class="n">opus</span><span class="p">}]</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="Named Arguments_repeat2">
+<h5>Named Arguments<a class="headerlink" href="#Named Arguments_repeat2" title="Permalink to this headline">¶</a></h5>
+<dl class="option-list">
+<dt><kbd>-r, --repository</kbd></dt>
+<dd><p>Possible choices: browsermt, opus</p>
+<p>Repository to list models from</p>
+<p>Default: “browsermt”</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+</section>
+<section id="module-bergamot">
+<span id="module-documentation"></span><h2>Module Documentation<a class="headerlink" href="#module-bergamot" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="bergamot.REPOSITORY">
+<code class="sig-prename descclassname">bergamot.</code><code class="sig-name descname">REPOSITORY</code><em class="property"> = &lt;bergamot.repository.Aggregator object&gt;</em><a class="headerlink" href="#bergamot.REPOSITORY" title="Permalink to this definition">¶</a></dt>
+<dd><p>REPOSITORY is a global object that aggregates multiple model-providers to
+provide a (model-provider: str, model-code: str) based query mechanism to
+get models.</p>
+</dd></dl>
+
+<section id="bergamot-translator">
+<h3>bergamot-translator<a class="headerlink" href="#bergamot-translator" title="Permalink to this headline">¶</a></h3>
+<p>The following components are exported from C++ via python-bindings and form
+library primitives that can be used to build translation workflows.</p>
+<dl class="class">
+<dt id="bergamot.ServiceConfig">
+<em class="property">class </em><code class="sig-prename descclassname">bergamot.</code><code class="sig-name descname">ServiceConfig</code><a class="headerlink" href="#bergamot.ServiceConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="bergamot.ServiceConfig.cacheEnabled">
+<em class="property">property </em><code class="sig-name descname">cacheEnabled</code><a class="headerlink" href="#bergamot.ServiceConfig.cacheEnabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.ServiceConfig.cacheMutexBuckets">
+<em class="property">property </em><code class="sig-name descname">cacheMutexBuckets</code><a class="headerlink" href="#bergamot.ServiceConfig.cacheMutexBuckets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.ServiceConfig.cacheSize">
+<em class="property">property </em><code class="sig-name descname">cacheSize</code><a class="headerlink" href="#bergamot.ServiceConfig.cacheSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.ServiceConfig.numWorkers">
+<em class="property">property </em><code class="sig-name descname">numWorkers</code><a class="headerlink" href="#bergamot.ServiceConfig.numWorkers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bergamot.Service">
+<em class="property">class </em><code class="sig-prename descclassname">bergamot.</code><code class="sig-name descname">Service</code><a class="headerlink" href="#bergamot.Service" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="bergamot.Service.modelFromConfig">
+<code class="sig-name descname">modelFromConfig</code><span class="sig-paren">(</span><em class="sig-param">self: bergamot._bergamot.Service</em>, <em class="sig-param">arg0: str</em><span class="sig-paren">)</span> &#x2192; marian::bergamot::TranslationModel<a class="headerlink" href="#bergamot.Service.modelFromConfig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.Service.modelFromConfigPath">
+<code class="sig-name descname">modelFromConfigPath</code><span class="sig-paren">(</span><em class="sig-param">self: bergamot._bergamot.Service</em>, <em class="sig-param">arg0: str</em><span class="sig-paren">)</span> &#x2192; marian::bergamot::TranslationModel<a class="headerlink" href="#bergamot.Service.modelFromConfigPath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.Service.pivot">
+<code class="sig-name descname">pivot</code><span class="sig-paren">(</span><em class="sig-param">self: bergamot._bergamot.Service</em>, <em class="sig-param">arg0: marian::bergamot::TranslationModel</em>, <em class="sig-param">arg1: marian::bergamot::TranslationModel</em>, <em class="sig-param">arg2: bergamot._bergamot.VectorString</em>, <em class="sig-param">arg3: bergamot._bergamot.ResponseOptions</em><span class="sig-paren">)</span> &#x2192; bergamot._bergamot.VectorResponse<a class="headerlink" href="#bergamot.Service.pivot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.Service.translate">
+<code class="sig-name descname">translate</code><span class="sig-paren">(</span><em class="sig-param">self: bergamot._bergamot.Service</em>, <em class="sig-param">arg0: marian::bergamot::TranslationModel</em>, <em class="sig-param">arg1: bergamot._bergamot.VectorString</em>, <em class="sig-param">arg2: bergamot._bergamot.ResponseOptions</em><span class="sig-paren">)</span> &#x2192; bergamot._bergamot.VectorResponse<a class="headerlink" href="#bergamot.Service.translate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bergamot.TranslationModel">
+<em class="property">class </em><code class="sig-prename descclassname">bergamot.</code><code class="sig-name descname">TranslationModel</code><a class="headerlink" href="#bergamot.TranslationModel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="bergamot.ResponseOptions">
+<em class="property">class </em><code class="sig-prename descclassname">bergamot.</code><code class="sig-name descname">ResponseOptions</code><a class="headerlink" href="#bergamot.ResponseOptions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="bergamot.ResponseOptions.HTML">
+<em class="property">property </em><code class="sig-name descname">HTML</code><a class="headerlink" href="#bergamot.ResponseOptions.HTML" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.ResponseOptions.alignment">
+<em class="property">property </em><code class="sig-name descname">alignment</code><a class="headerlink" href="#bergamot.ResponseOptions.alignment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.ResponseOptions.concatStrategy">
+<em class="property">property </em><code class="sig-name descname">concatStrategy</code><a class="headerlink" href="#bergamot.ResponseOptions.concatStrategy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.ResponseOptions.qualityScores">
+<em class="property">property </em><code class="sig-name descname">qualityScores</code><a class="headerlink" href="#bergamot.ResponseOptions.qualityScores" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.ResponseOptions.sentenceMappings">
+<em class="property">property </em><code class="sig-name descname">sentenceMappings</code><a class="headerlink" href="#bergamot.ResponseOptions.sentenceMappings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="model-inventory">
+<h3>Model Inventory<a class="headerlink" href="#model-inventory" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="bergamot.repository.Repository">
+<em class="property">class </em><code class="sig-prename descclassname">bergamot.repository.</code><code class="sig-name descname">Repository</code><a class="headerlink" href="#bergamot.repository.Repository" title="Permalink to this definition">¶</a></dt>
+<dd><p>An interface for several repositories. Intended to enable interchangable
+use of translateLocally and Mozilla repositories for usage through python.</p>
+<dl class="method">
+<dt id="bergamot.repository.Repository.download">
+<em class="property">abstract </em><code class="sig-name descname">download</code><span class="sig-paren">(</span><em class="sig-param">model_identifier: str</em><span class="sig-paren">)</span><a class="headerlink" href="#bergamot.repository.Repository.download" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.repository.Repository.model">
+<em class="property">abstract </em><code class="sig-name descname">model</code><span class="sig-paren">(</span><em class="sig-param">model_identifier: str</em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#bergamot.repository.Repository.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns entry for the  for available models</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bergamot.repository.Repository.modelConfigPath">
+<em class="property">abstract </em><code class="sig-name descname">modelConfigPath</code><span class="sig-paren">(</span><em class="sig-param">model_identifier: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#bergamot.repository.Repository.modelConfigPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns modelConfigPath for for a given model-identifier</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bergamot.repository.Repository.models">
+<em class="property">abstract </em><code class="sig-name descname">models</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#bergamot.repository.Repository.models" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns identifiers for available models</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bergamot.repository.Repository.name">
+<em class="property">abstract property </em><code class="sig-name descname">name</code><a class="headerlink" href="#bergamot.repository.Repository.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.repository.Repository.update">
+<em class="property">abstract </em><code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bergamot.repository.Repository.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the model list</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bergamot.repository.TranslateLocallyLike">
+<em class="property">class </em><code class="sig-prename descclassname">bergamot.repository.</code><code class="sig-name descname">TranslateLocallyLike</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">url</em><span class="sig-paren">)</span><a class="headerlink" href="#bergamot.repository.TranslateLocallyLike" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class implements Repository to fetch models from translateLocally.
+AppDirs is used to standardize directories and further specialization
+happens with translateLocally identifier.</p>
+<dl class="method">
+<dt id="bergamot.repository.TranslateLocallyLike.download">
+<code class="sig-name descname">download</code><span class="sig-paren">(</span><em class="sig-param">model_identifier: str</em><span class="sig-paren">)</span><a class="headerlink" href="#bergamot.repository.TranslateLocallyLike.download" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.repository.TranslateLocallyLike.model">
+<code class="sig-name descname">model</code><span class="sig-paren">(</span><em class="sig-param">model_identifier: str</em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#bergamot.repository.TranslateLocallyLike.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns entry for the  for available models</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bergamot.repository.TranslateLocallyLike.modelConfigPath">
+<code class="sig-name descname">modelConfigPath</code><span class="sig-paren">(</span><em class="sig-param">model_identifier: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#bergamot.repository.TranslateLocallyLike.modelConfigPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns modelConfigPath for for a given model-identifier</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bergamot.repository.TranslateLocallyLike.models">
+<code class="sig-name descname">models</code><span class="sig-paren">(</span><em class="sig-param">filter_downloaded: bool = True</em><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#bergamot.repository.TranslateLocallyLike.models" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns identifiers for available models</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bergamot.repository.TranslateLocallyLike.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#bergamot.repository.TranslateLocallyLike.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bergamot.repository.TranslateLocallyLike.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#bergamot.repository.TranslateLocallyLike.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the model list</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="utilities">
+<h3>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="bergamot.utils.patch_marian_for_bergamot">
+<code class="sig-prename descclassname">bergamot.utils.</code><code class="sig-name descname">patch_marian_for_bergamot</code><span class="sig-paren">(</span><em class="sig-param">marian_config_path: PathLike</em>, <em class="sig-param">bergamot_config_path: PathLike</em>, <em class="sig-param">quality: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#bergamot.utils.patch_marian_for_bergamot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accepts path to a config-file from marian-training and followign
+quantization and adjusts parameters for use in bergamot.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api/typedef_cache_8h_1af0d71292fc13be4ee7e56a040ef51c6d.html" class="btn btn-neutral float-left" title="Typedef marian::bergamot::TranslationCache" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
