@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1ConfigParser:
+
+Template Class ConfigParser
+===========================
+
+- Defined in :ref:`file_src_translator_parser.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::ConfigParser
+   :members:
+   :protected-members:
+   :undoc-members:

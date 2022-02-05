@@ -1,0 +1,136 @@
+
+.. _program_listing_file_src_translator_service.h:
+
+Program Listing for File service.h
+==================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_translator_service.h>` (``src/translator/service.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #ifndef SRC_BERGAMOT_SERVICE_H_
+   #define SRC_BERGAMOT_SERVICE_H_
+   
+   #include <queue>
+   #include <thread>
+   #include <vector>
+   
+   #include "cache.h"
+   #include "data/types.h"
+   #include "logging.h"
+   #include "quality_estimator.h"
+   #include "response.h"
+   #include "response_builder.h"
+   #include "text_processor.h"
+   #include "threadsafe_batching_pool.h"
+   #include "translation_model.h"
+   #include "translator/parser.h"
+   #include "vocabs.h"
+   
+   namespace marian {
+   namespace bergamot {
+   
+   class BlockingService;
+   class AsyncService;
+   
+   class BlockingService {
+    public:
+     struct Config {
+       bool cacheEnabled{false};  
+       size_t cacheSize{2000};    
+       Logger::Config logger;     // Configurations for logging
+   
+       template <class App>
+       static void addOptions(App &app, Config &config) {
+         // Options will come here.
+         app.add_option("--cache-translations", config.cacheEnabled, "Whether to cache translations or not.");
+         app.add_option("--cache-size", config.cacheSize, "Number of entries to store in cache.");
+         Logger::Config::addOptions(app, config.logger);
+       }
+     };
+     BlockingService(const BlockingService::Config &config);
+   
+   
+   
+     std::vector<Response> translateMultiple(std::shared_ptr<TranslationModel> translationModel,
+                                             std::vector<std::string> &&source, const ResponseOptions &responseOptions);
+   
+     std::vector<Response> translateMultipleRaw(std::shared_ptr<TranslationModel> translationModel,
+                                                std::vector<std::string> &&source, const ResponseOptions &responseOptions);
+     std::vector<Response> pivotMultiple(std::shared_ptr<TranslationModel> first, std::shared_ptr<TranslationModel> second,
+                                         std::vector<std::string> &&sources, const ResponseOptions &responseOptions);
+     TranslationCache::Stats cacheStats() { return cache_.stats(); }
+   
+    private:
+     size_t requestId_;
+   
+     AggregateBatchingPool batchingPool_;
+   
+     Config config_;
+   
+     // Logger which shuts down cleanly with service.
+     Logger logger_;
+     TranslationCache cache_;
+   };
+   
+   class AsyncService {
+    public:
+     struct Config {
+       size_t numWorkers{1};      
+       bool cacheEnabled{false};  
+       size_t cacheSize{2000};    
+       size_t cacheMutexBuckets{1};  
+       Logger::Config logger;        // Configurations for logging
+   
+       template <class App>
+       static void addOptions(App &app, Config &config) {
+         app.add_option("--cpu-threads", config.numWorkers, "Workers to form translation backend");
+         app.add_option("--cache-translations", config.cacheEnabled, "Whether to cache translations or not.");
+         app.add_option("--cache-size", config.cacheSize, "Number of entries to store in cache.");
+         app.add_option("--cache-mutex-buckets", config.cacheMutexBuckets,
+                        "Number of mutex buckets to control locking granularity");
+         Logger::Config::addOptions(app, config.logger);
+       }
+     };
+     AsyncService(const AsyncService::Config &config);
+   
+     Ptr<TranslationModel> createCompatibleModel(const TranslationModel::Config &config) {
+       // @TODO: Remove this remove this dependency/coupling.
+       return New<TranslationModel>(config, /*replicas=*/config_.numWorkers);
+     }
+   
+     void translate(std::shared_ptr<TranslationModel> translationModel, std::string &&source, CallbackType callback,
+                    const ResponseOptions &options = ResponseOptions());
+   
+     void pivot(std::shared_ptr<TranslationModel> first, std::shared_ptr<TranslationModel> second, std::string &&source,
+                CallbackType clientCallback, const ResponseOptions &options = ResponseOptions());
+   
+     void clear();
+   
+     ~AsyncService();
+   
+     TranslationCache::Stats cacheStats() { return cache_.stats(); }
+   
+    private:
+     void translateRaw(std::shared_ptr<TranslationModel> translationModel, std::string &&source, CallbackType callback,
+                       const ResponseOptions &options = ResponseOptions());
+     AsyncService::Config config_;
+   
+     std::vector<std::thread> workers_;
+   
+   
+     size_t requestId_;
+   
+     ThreadsafeBatchingPool<AggregateBatchingPool> safeBatchingPool_;
+   
+     // Logger which shuts down cleanly with service.
+     Logger logger_;
+     TranslationCache cache_;
+   };
+   
+   }  // namespace bergamot
+   }  // namespace marian
+   
+   #endif  // SRC_BERGAMOT_SERVICE_H_

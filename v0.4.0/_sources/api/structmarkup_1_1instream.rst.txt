@@ -1,0 +1,16 @@
+.. _exhale_struct_structmarkup_1_1instream:
+
+Struct instream
+===============
+
+- Defined in :ref:`file_src_translator_xh_scanner.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: markup::instream
+   :members:
+   :protected-members:
+   :undoc-members:

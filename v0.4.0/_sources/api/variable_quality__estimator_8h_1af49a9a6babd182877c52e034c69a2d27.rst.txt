@@ -1,0 +1,13 @@
+.. _exhale_variable_quality__estimator_8h_1af49a9a6babd182877c52e034c69a2d27:
+
+Variable marian::bergamot::BINARY_QE_MODEL_MAGIC
+================================================
+
+- Defined in :ref:`file_src_translator_quality_estimator.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: marian::bergamot::BINARY_QE_MODEL_MAGIC

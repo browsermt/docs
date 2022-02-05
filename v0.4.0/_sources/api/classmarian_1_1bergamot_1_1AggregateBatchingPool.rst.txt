@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1AggregateBatchingPool:
+
+Class AggregateBatchingPool
+===========================
+
+- Defined in :ref:`file_src_translator_aggregate_batching_pool.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::AggregateBatchingPool
+   :members:
+   :protected-members:
+   :undoc-members:

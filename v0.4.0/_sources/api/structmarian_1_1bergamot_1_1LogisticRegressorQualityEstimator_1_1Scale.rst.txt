@@ -1,0 +1,22 @@
+.. _exhale_struct_structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Scale:
+
+Struct LogisticRegressorQualityEstimator::Scale
+===============================================
+
+- Defined in :ref:`file_src_translator_quality_estimator.h`
+
+
+Nested Relationships
+--------------------
+
+This struct is a nested type of :ref:`exhale_class_classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator`.
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: marian::bergamot::LogisticRegressorQualityEstimator::Scale
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,27 @@
+
+.. _program_listing_file_src_translator_utils.h:
+
+Program Listing for File utils.h
+================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_translator_utils.h>` (``src/translator/utils.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include <iostream>
+   
+   namespace marian::bergamot {
+   
+   inline std::string readFromStdin() {
+     // Read a large input text blob from stdin
+     std::ostringstream inputStream;
+     inputStream << std::cin.rdbuf();
+     std::string input = inputStream.str();
+     return input;
+   }
+   
+   }  // namespace marian::bergamot

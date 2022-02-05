@@ -1,0 +1,67 @@
+
+.. _file_src_translator_xh_scanner.h:
+
+File xh_scanner.h
+=================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/xh_scanner.h``)
+--------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_xh_scanner.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``cassert``
+
+- ``cstring``
+
+- ``string_view``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_translator_html.cpp`
+
+- :ref:`file_src_translator_xh_scanner.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_markup`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structmarkup_1_1instream`
+
+- :ref:`exhale_struct_structmarkup_1_1string__ref`
+
+- :ref:`exhale_class_classmarkup_1_1Scanner`
+

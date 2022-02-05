@@ -1,0 +1,89 @@
+
+.. _program_listing_file_src_translator_request.h:
+
+Program Listing for File request.h
+==================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_translator_request.h>` (``src/translator/request.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #ifndef SRC_BERGAMOT_REQUEST_H_
+   #define SRC_BERGAMOT_REQUEST_H_
+   
+   #include <cassert>
+   #include <future>
+   #include <vector>
+   
+   #include "annotation.h"
+   #include "cache.h"
+   #include "common/logging.h"
+   #include "data/types.h"
+   #include "definitions.h"
+   #include "response.h"
+   #include "response_builder.h"
+   #include "translator/beam_search.h"
+   
+   namespace marian {
+   namespace bergamot {
+   
+   class TranslationModel;
+   
+   class Request {
+    public:
+     Request(size_t Id, const TranslationModel &model, Segments &&segments, ResponseBuilder &&responseBuilder,
+             TranslationCache *cache);
+   
+     size_t segmentTokens(size_t index) const;
+   
+     size_t numSegments() const;
+   
+     Segment getSegment(size_t index) const;
+   
+     bool operator<(const Request &request) const;
+   
+     void processHistory(size_t index, Ptr<History> history);
+   
+     bool cacheHitPrefilled(size_t index) const { return histories_[index] != nullptr; }
+   
+    private:
+     size_t Id_;
+   
+     const TranslationModel &model_;
+   
+     std::atomic<int> counter_;
+   
+     Segments segments_;
+   
+     std::vector<Ptr<History>> histories_;
+   
+     ResponseBuilder responseBuilder_;
+   
+     TranslationCache *cache_;
+   };
+   
+   class RequestSentence {
+    public:
+     RequestSentence(size_t, Ptr<Request>);
+   
+     size_t numTokens() const;
+   
+     Segment getUnderlyingSegment() const;
+   
+     void completeSentence(Ptr<History> history);
+   
+     friend bool operator<(const RequestSentence &a, const RequestSentence &b);
+   
+    private:
+     size_t index_;
+     Ptr<Request> request_;
+   };
+   
+   typedef std::vector<RequestSentence> RequestSentences;
+   
+   }  // namespace bergamot
+   }  // namespace marian
+   
+   #endif  // SRC_BERGAMOT_REQUEST_H_

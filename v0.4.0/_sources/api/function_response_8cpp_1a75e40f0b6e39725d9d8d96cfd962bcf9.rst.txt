@@ -1,0 +1,13 @@
+.. _exhale_function_response_8cpp_1a75e40f0b6e39725d9d8d96cfd962bcf9:
+
+Function marian::bergamot::transferThroughCharacters
+====================================================
+
+- Defined in :ref:`file_src_translator_response.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::transferThroughCharacters(const std::vector<ByteRange>&, const std::vector<ByteRange>&, const Alignment&)

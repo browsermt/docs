@@ -1,0 +1,53 @@
+
+.. _file_src_translator_quality_estimator.cpp:
+
+File quality_estimator.cpp
+==========================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/quality_estimator.cpp``)
+-----------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_quality_estimator.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``quality_estimator.h`` (:ref:`file_src_translator_quality_estimator.h`)
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian__bergamot`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_quality__estimator_8cpp_1ae0fe7141602ec9ff239dbc66b3cb6157`
+
+- :ref:`exhale_function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee`
+
