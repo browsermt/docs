@@ -75,7 +75,5 @@ Classes
 
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1HTML_1_1Tag`
 
-- :ref:`exhale_class_classmarian_1_1bergamot_1_1BadHTML`
-
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1HTML`
 

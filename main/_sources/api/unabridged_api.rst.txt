@@ -178,11 +178,6 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
-   classmarian_1_1bergamot_1_1BadHTML.rst
-
-.. toctree::
-   :maxdepth: 5
-
    classmarian_1_1bergamot_1_1Batch.rst
 
 .. toctree::
@@ -347,6 +342,16 @@ Functions
    :maxdepth: 5
 
    function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_html_8cpp_1a90be5fddaf86ee1c2f02eb695bb2cb46.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   function_html_8cpp_1afaadbd5c331c8186b4f1d75550eb911d.rst
 
 .. toctree::
    :maxdepth: 5

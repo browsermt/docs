@@ -74,8 +74,6 @@ Classes
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1AtomicCache`
 
-- :ref:`exhale_class_classmarian_1_1bergamot_1_1BadHTML`
-
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1Batch`
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1BatchingPool`
@@ -145,6 +143,10 @@ Functions
 - :ref:`exhale_function_quality__estimator_8cpp_1ae0fe7141602ec9ff239dbc66b3cb6157`
 
 - :ref:`exhale_function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9`
+
+- :ref:`exhale_function_html_8cpp_1a90be5fddaf86ee1c2f02eb695bb2cb46`
+
+- :ref:`exhale_function_html_8cpp_1afaadbd5c331c8186b4f1d75550eb911d`
 
 - :ref:`exhale_function_parser_8cpp_1a738c33453a147aebfc5308faad463651`
 
