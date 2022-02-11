@@ -55,15 +55,19 @@ Program Listing for File service.h
    
    
      std::vector<Response> translateMultiple(std::shared_ptr<TranslationModel> translationModel,
-                                             std::vector<std::string> &&source, const ResponseOptions &responseOptions);
+                                             std::vector<std::string> &&source,
+                                             const std::vector<ResponseOptions> &responseOptions);
    
-     std::vector<Response> translateMultipleRaw(std::shared_ptr<TranslationModel> translationModel,
-                                                std::vector<std::string> &&source, const ResponseOptions &responseOptions);
      std::vector<Response> pivotMultiple(std::shared_ptr<TranslationModel> first, std::shared_ptr<TranslationModel> second,
-                                         std::vector<std::string> &&sources, const ResponseOptions &responseOptions);
+                                         std::vector<std::string> &&sources,
+                                         const std::vector<ResponseOptions> &responseOptions);
      TranslationCache::Stats cacheStats() { return cache_.stats(); }
    
     private:
+     std::vector<Response> translateMultipleRaw(std::shared_ptr<TranslationModel> translationModel,
+                                                std::vector<std::string> &&source,
+                                                const std::vector<ResponseOptions> &responseOptions);
+   
      size_t requestId_;
    
      AggregateBatchingPool batchingPool_;
