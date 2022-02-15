@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File request.h &mdash; Bergamot Translator main 2022-02-14 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File request.h &mdash; Bergamot Translator main 2022-02-15 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -103,7 +103,7 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">Request</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">  </span><span class="n">Request</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">Id</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TranslationModel</span><span class="w"> </span><span class="o">&amp;</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">Segments</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">segments</span><span class="p">,</span><span class="w"> </span><span class="n">ResponseBuilder</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">responseBuilder</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="n">TranslationCache</span><span class="w"> </span><span class="o">*</span><span class="n">cache</span><span class="p">);</span><span class="w"></span>
+<span class="w">          </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">TranslationCache</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cache</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">segmentTokens</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
 
@@ -130,7 +130,7 @@
 
 <span class="w">  </span><span class="n">ResponseBuilder</span><span class="w"> </span><span class="n">responseBuilder_</span><span class="p">;</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">TranslationCache</span><span class="w"> </span><span class="o">*</span><span class="n">cache_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">TranslationCache</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cache_</span><span class="p">;</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">RequestSentence</span><span class="w"> </span><span class="p">{</span><span class="w"></span>

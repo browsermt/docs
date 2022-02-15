@@ -34,7 +34,7 @@ Program Listing for File request.h
    class Request {
     public:
      Request(size_t Id, const TranslationModel &model, Segments &&segments, ResponseBuilder &&responseBuilder,
-             TranslationCache *cache);
+             std::optional<TranslationCache> &cache);
    
      size_t segmentTokens(size_t index) const;
    
@@ -61,7 +61,7 @@ Program Listing for File request.h
    
      ResponseBuilder responseBuilder_;
    
-     TranslationCache *cache_;
+     std::optional<TranslationCache> &cache_;
    };
    
    class RequestSentence {

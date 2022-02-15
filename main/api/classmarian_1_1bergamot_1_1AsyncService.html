@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class AsyncService &mdash; Bergamot Translator main 2022-02-14 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Class AsyncService &mdash; Bergamot Translator main 2022-02-15 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -190,13 +190,6 @@
 <span id="_CPPv3N6marian8bergamot12AsyncService6Config9cacheSizeE"></span><span id="_CPPv2N6marian8bergamot12AsyncService6Config9cacheSizeE"></span><span id="marian::bergamot::AsyncService::Config::cacheSize__s"></span><span class="target" id="structmarian_1_1bergamot_1_1AsyncService_1_1Config_1af1eca3887052ec5bedb68d0be550cd97"></span>size_t <code class="sig-name descname">cacheSize</code> = {2000}<a class="headerlink" href="#_CPPv4N6marian8bergamot12AsyncService6Config9cacheSizeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Size in History items to be stored in the cache. </p>
 <p>Loosely corresponds to sentences to cache in the real world. </p>
-</dd></dl>
-
-<dl class="member">
-<dt id="_CPPv4N6marian8bergamot12AsyncService6Config17cacheMutexBucketsE">
-<span id="_CPPv3N6marian8bergamot12AsyncService6Config17cacheMutexBucketsE"></span><span id="_CPPv2N6marian8bergamot12AsyncService6Config17cacheMutexBucketsE"></span><span id="marian::bergamot::AsyncService::Config::cacheMutexBuckets__s"></span><span class="target" id="structmarian_1_1bergamot_1_1AsyncService_1_1Config_1ac282bef308800ef175797ee850f8da9a"></span>size_t <code class="sig-name descname">cacheMutexBuckets</code> = {1}<a class="headerlink" href="#_CPPv4N6marian8bergamot12AsyncService6Config17cacheMutexBucketsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Controls the granularity of locking to reduce contention by bucketing mutexes guarding cache entry read write. </p>
-<p>Optimal at min(core, numWorkers) assuming a reasonably large cache-size. </p>
 </dd></dl>
 
 <dl class="member">

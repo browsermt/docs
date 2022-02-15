@@ -39,8 +39,10 @@ Program Listing for File service.h
     public:
      struct Config {
        bool cacheEnabled{false};  
-       size_t cacheSize{2000};    
-       Logger::Config logger;     // Configurations for logging
+   
+       size_t cacheSize{2000};
+   
+       Logger::Config logger;  
    
        template <class App>
        static void addOptions(App &app, Config &config) {
@@ -61,7 +63,7 @@ Program Listing for File service.h
      std::vector<Response> pivotMultiple(std::shared_ptr<TranslationModel> first, std::shared_ptr<TranslationModel> second,
                                          std::vector<std::string> &&sources,
                                          const std::vector<ResponseOptions> &responseOptions);
-     TranslationCache::Stats cacheStats() { return cache_.stats(); }
+     TranslationCache::Stats cacheStats() { return cache_ ? cache_->stats() : TranslationCache::Stats(); }
    
     private:
      std::vector<Response> translateMultipleRaw(std::shared_ptr<TranslationModel> translationModel,
@@ -76,7 +78,7 @@ Program Listing for File service.h
    
      // Logger which shuts down cleanly with service.
      Logger logger_;
-     TranslationCache cache_;
+     std::optional<TranslationCache> cache_;
    };
    
    class AsyncService {
@@ -85,16 +87,13 @@ Program Listing for File service.h
        size_t numWorkers{1};      
        bool cacheEnabled{false};  
        size_t cacheSize{2000};    
-       size_t cacheMutexBuckets{1};  
-       Logger::Config logger;        // Configurations for logging
+       Logger::Config logger;     // Configurations for logging
    
        template <class App>
        static void addOptions(App &app, Config &config) {
          app.add_option("--cpu-threads", config.numWorkers, "Workers to form translation backend");
          app.add_option("--cache-translations", config.cacheEnabled, "Whether to cache translations or not.");
          app.add_option("--cache-size", config.cacheSize, "Number of entries to store in cache.");
-         app.add_option("--cache-mutex-buckets", config.cacheMutexBuckets,
-                        "Number of mutex buckets to control locking granularity");
          Logger::Config::addOptions(app, config.logger);
        }
      };
@@ -115,11 +114,12 @@ Program Listing for File service.h
    
      ~AsyncService();
    
-     TranslationCache::Stats cacheStats() { return cache_.stats(); }
+     TranslationCache::Stats cacheStats() { return cache_ ? cache_->stats() : TranslationCache::Stats(); }
    
     private:
      void translateRaw(std::shared_ptr<TranslationModel> translationModel, std::string &&source, CallbackType callback,
                        const ResponseOptions &options = ResponseOptions());
+   
      AsyncService::Config config_;
    
      std::vector<std::thread> workers_;
@@ -131,7 +131,7 @@ Program Listing for File service.h
    
      // Logger which shuts down cleanly with service.
      Logger logger_;
-     TranslationCache cache_;
+     std::optional<TranslationCache> cache_;
    };
    
    }  // namespace bergamot
