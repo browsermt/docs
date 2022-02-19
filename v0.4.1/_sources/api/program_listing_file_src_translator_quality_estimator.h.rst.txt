@@ -1,0 +1,117 @@
+
+.. _program_listing_file_src_translator_quality_estimator.h:
+
+Program Listing for File quality_estimator.h
+============================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_translator_quality_estimator.h>` (``src/translator/quality_estimator.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include <array>
+   #include <vector>
+   
+   #include "annotation.h"
+   #include "response.h"
+   #include "translator/history.h"
+   
+   namespace marian::bergamot {
+   
+   class QualityEstimator {
+    public:
+     virtual void computeQualityScores(const Histories &histories, Response &response) const = 0;
+   };
+   
+   using SubwordRange = ByteRange;
+   
+   class UnsupervisedQualityEstimator : public QualityEstimator {
+    public:
+     void computeQualityScores(const Histories &histories, Response &response) const override;
+   
+    private:
+     Response::SentenceQualityScore computeSentenceScores(const std::vector<float> &logProbs, const AnnotatedText &target,
+                                                          const size_t sentenceIdx) const;
+   };
+   
+   // ASCII and Unicode text files never start with the following 64 bits
+   // It serves as a signature for quality estimator binary files
+   constexpr std::uint64_t BINARY_QE_MODEL_MAGIC = 0x78cc336f1d54b180;
+   
+   class LogisticRegressorQualityEstimator : public QualityEstimator {
+    public:
+     using Array = std::array<float, /*LRParamsDims = */ 4>;
+   
+     struct Header {
+       uint64_t magic;
+       uint64_t lrParametersDims;
+     };
+     struct Scale {
+       Array stds;
+       Array means;
+     };
+     class Matrix {
+      public:
+       const size_t rows;
+       const size_t cols;
+   
+       Matrix(const size_t rowsParam, const size_t colsParam);
+       Matrix(Matrix &&other);
+   
+       const float &at(const size_t row, const size_t col) const;
+       float &at(const size_t row, const size_t col);
+   
+      private:
+       std::vector<float> data_;
+     };
+     LogisticRegressorQualityEstimator(Scale &&scale, Array &&coefficients, const float intercept);
+   
+     LogisticRegressorQualityEstimator(LogisticRegressorQualityEstimator &&other);
+   
+     static LogisticRegressorQualityEstimator fromAlignedMemory(const AlignedMemory &alignedMemory);
+     AlignedMemory toAlignedMemory() const;
+   
+     void computeQualityScores(const Histories &histories, Response &response) const override;
+     std::vector<float> predict(const Matrix &features) const;
+   
+    private:
+     Scale scale_;
+     Array coefficients_;
+     float intercept_;
+     Array coefficientsByStds_;
+     float constantFactor_ = 0.0;
+   
+     // Number of parameters with dimension - Scale(stds, means) and coefficients
+     static constexpr const size_t numLrParamsWithDimension_ = 3;
+     // Number of intercept values
+     static constexpr const size_t numIntercept_ = 1;
+   
+     Response::SentenceQualityScore computeSentenceScores(const std::vector<float> &logProbs, const AnnotatedText &target,
+                                                          const size_t sentenceIdx) const;
+   
+     Matrix extractFeatures(const std::vector<SubwordRange> &wordIndices, const std::vector<float> &logProbs) const;
+   };
+   
+   
+   inline std::shared_ptr<QualityEstimator> createQualityEstimator(const AlignedMemory &qualityFileMemory) {
+     // If no quality file return simple model
+     if (qualityFileMemory.size() == 0) {
+       return std::make_shared<UnsupervisedQualityEstimator>();
+     }
+   
+     return std::make_shared<LogisticRegressorQualityEstimator>(
+         LogisticRegressorQualityEstimator::fromAlignedMemory(qualityFileMemory));
+   }
+   
+   
+   std::vector<SubwordRange> mapWords(const std::vector<float> &logProbs, const AnnotatedText &target,
+                                      const size_t sentenceIdx);
+   
+   
+   std::vector<ByteRange> subwordToWords(const std::vector<SubwordRange> &wordIndices, const AnnotatedText &target,
+                                         const size_t sentenceIdx);
+   
+   }  // namespace marian::bergamot

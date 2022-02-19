@@ -1,0 +1,13 @@
+.. _exhale_function_bergamot_8cpp_1a0ddf1224851353fc92bfbff6f499fa97:
+
+Function main
+=============
+
+- Defined in :ref:`file_app_bergamot.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: main(int, char *)

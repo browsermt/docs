@@ -1,0 +1,16 @@
+.. _exhale_class_classmarkup_1_1Scanner:
+
+Class Scanner
+=============
+
+- Defined in :ref:`file_src_translator_xh_scanner.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: markup::Scanner
+   :members:
+   :protected-members:
+   :undoc-members:

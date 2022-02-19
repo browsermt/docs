@@ -1,0 +1,52 @@
+
+.. _file_src_translator_threadsafe_batching_pool.cpp:
+
+File threadsafe_batching_pool.cpp
+=================================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/threadsafe_batching_pool.cpp``)
+------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_threadsafe_batching_pool.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``cassert``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_translator_threadsafe_batching_pool.h`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+

@@ -1,0 +1,62 @@
+
+.. _program_listing_file_src_translator_response.h:
+
+Program Listing for File response.h
+===================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_translator_response.h>` (``src/translator/response.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #ifndef SRC_BERGAMOT_RESPONSE_H_
+   #define SRC_BERGAMOT_RESPONSE_H_
+   
+   #include <cassert>
+   #include <string>
+   #include <vector>
+   
+   #include "annotation.h"
+   #include "data/alignment.h"
+   #include "data/types.h"
+   #include "definitions.h"
+   #include "translator/beam_search.h"
+   
+   namespace marian {
+   namespace bergamot {
+   
+   typedef std::vector<std::vector<float>> Alignment;
+   
+   struct Response {
+     struct SentenceQualityScore {
+       std::vector<float> wordScores;
+       std::vector<ByteRange> wordByteRanges;
+       float sentenceScore = 0.0;
+     };
+   
+     const size_t size() const { return source.numSentences(); }
+   
+     AnnotatedText source;
+   
+     AnnotatedText target;
+   
+     std::vector<SentenceQualityScore> qualityScores;
+   
+     std::vector<std::vector<std::vector<float>>> alignments;
+   
+     ByteRange getSourceSentenceAsByteRange(size_t sentenceIdx) const { return source.sentenceAsByteRange(sentenceIdx); }
+   
+     ByteRange getTargetSentenceAsByteRange(size_t sentenceIdx) const { return target.sentenceAsByteRange(sentenceIdx); }
+   
+     const std::string &getOriginalText() const { return source.text; }
+   
+     const std::string &getTranslatedText() const { return target.text; }
+   };
+   
+   std::vector<Alignment> remapAlignments(const Response &first, const Response &second);
+   
+   }  // namespace bergamot
+   }  // namespace marian
+   
+   #endif  // SRC_BERGAMOT_RESPONSE_H_

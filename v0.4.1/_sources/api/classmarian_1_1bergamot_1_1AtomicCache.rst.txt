@@ -1,0 +1,26 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1AtomicCache:
+
+Template Class AtomicCache
+==========================
+
+- Defined in :ref:`file_src_translator_cache.h`
+
+
+Nested Relationships
+--------------------
+
+
+Nested Types
+************
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1AtomicCache_1_1Stats`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::AtomicCache
+   :members:
+   :protected-members:
+   :undoc-members:

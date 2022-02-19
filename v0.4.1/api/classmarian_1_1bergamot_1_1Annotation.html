@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Annotation &mdash; Bergamot Translator v0.4.1 2022-02-19 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/api/classmarian_1_1bergamot_1_1Annotation.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Class AsyncService" href="classmarian_1_1bergamot_1_1AsyncService.html" />
+    <link rel="prev" title="Template Class AlignedVector" href="classmarian_1_1bergamot_1_1AlignedVector.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="library_index.html">Library API</a> &raquo;</li>
+      <li>Class Annotation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/classmarian_1_1bergamot_1_1Annotation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="class-annotation">
+<span id="exhale-class-classmarian-1-1bergamot-1-1annotation"></span><h1>Class Annotation<a class="headerlink" href="#class-annotation" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_src_translator_annotation.h.html#file-src-translator-annotation-h"><span class="std std-ref">File annotation.h</span></a></p></li>
+</ul>
+<section id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv4N6marian8bergamot10AnnotationE">
+<span id="_CPPv3N6marian8bergamot10AnnotationE"></span><span id="_CPPv2N6marian8bergamot10AnnotationE"></span><span id="marian::bergamot::Annotation"></span><span class="target" id="classmarian_1_1bergamot_1_1Annotation"></span><em class="property">class </em><code class="sig-name descname">Annotation</code><a class="headerlink" href="#_CPPv4N6marian8bergamot10AnnotationE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classmarian_1_1bergamot_1_1Annotation"><span class="std std-ref">Annotation</span></a> expresses sentence and token boundary information as ranges of bytes in a string, but does not itself own the string. </p>
+<p>See also <a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref">AnnotatedText</span></a>, which owns <a class="reference internal" href="#classmarian_1_1bergamot_1_1Annotation"><span class="std std-ref">Annotation</span></a> and the string. <a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref">AnnotatedText</span></a> wraps these <a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#structmarian_1_1bergamot_1_1ByteRange"><span class="std std-ref">ByteRange</span></a> functions to provide a string_view interface.</p>
+<p>Text is divided into gaps (whitespace between sentences) and sentences like so: gap sentence gap sentence gap Because gaps appear at the beginning and end of the text, there’s always one more gap than there are sentences.</p>
+<p>The entire text is a unbroken sequence of tokens (i.e. the end of a token is the beginning of the next token). A gap is exactly one token containing whatever whitespace is between the sentences. A sentence is a sequence of tokens.</p>
+<p>Since we are using SentencePiece, a token can include whitespace. The term “word” is used, somewhat incorrectly, as a synonym of token.</p>
+<p>A gap can be empty (for example there may not have been whitespace at the beginning). A sentence can also be empty (typically the translation system produced empty output). That’s fine, these are just empty ranges as you would expect. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N6marian8bergamot10Annotation10AnnotationEv">
+<span id="_CPPv3N6marian8bergamot10Annotation10AnnotationEv"></span><span id="_CPPv2N6marian8bergamot10Annotation10AnnotationEv"></span><span id="marian::bergamot::Annotation::Annotation"></span><span class="target" id="classmarian_1_1bergamot_1_1Annotation_1afd47aa62ec85433251acaa466c5a27c5"></span><code class="sig-name descname">Annotation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot10Annotation10AnnotationEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initially an empty string. Populated by <a class="reference internal" href="structmarian_1_1bergamot_1_1AnnotatedText.html#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref">AnnotatedText</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot10Annotation12numSentencesEv">
+<span id="_CPPv3NK6marian8bergamot10Annotation12numSentencesEv"></span><span id="_CPPv2NK6marian8bergamot10Annotation12numSentencesEv"></span><span id="marian::bergamot::Annotation::numSentencesC"></span><span class="target" id="classmarian_1_1bergamot_1_1Annotation_1ac360d996cffec0685db23dd7bf27135e"></span>size_t <code class="sig-name descname">numSentences</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot10Annotation12numSentencesEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot10Annotation8numWordsE6size_t">
+<span id="_CPPv3NK6marian8bergamot10Annotation8numWordsE6size_t"></span><span id="_CPPv2NK6marian8bergamot10Annotation8numWordsE6size_t"></span><span id="marian::bergamot::Annotation::numWords__sC"></span><span class="target" id="classmarian_1_1bergamot_1_1Annotation_1ae74963e9e56009f19e19fb0f17aea4de"></span>size_t <code class="sig-name descname">numWords</code><span class="sig-paren">(</span>size_t <em>sentenceIdx</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot10Annotation8numWordsE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns number of words in the sentence identified by <code class="docutils literal notranslate"><span class="pre">sentenceIdx</span></code>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot10Annotation4wordE6size_t6size_t">
+<span id="_CPPv3NK6marian8bergamot10Annotation4wordE6size_t6size_t"></span><span id="_CPPv2NK6marian8bergamot10Annotation4wordE6size_t6size_t"></span><span id="marian::bergamot::Annotation::word__s.sC"></span><span class="target" id="classmarian_1_1bergamot_1_1Annotation_1ab9c5714c68796f1f301fa60e47474de3"></span><a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#_CPPv4N6marian8bergamot9ByteRangeE" title="marian::bergamot::ByteRange">ByteRange</a> <code class="sig-name descname">word</code><span class="sig-paren">(</span>size_t <em>sentenceIdx</em>, size_t <em>wordIdx</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot10Annotation4wordE6size_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a <a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#structmarian_1_1bergamot_1_1ByteRange"><span class="std std-ref">ByteRange</span></a> representing <code class="docutils literal notranslate"><span class="pre">wordIdx</span></code> in sentence indexed by <code class="docutils literal notranslate"><span class="pre">sentenceIdx</span></code>. </p>
+<p><code class="docutils literal notranslate"><span class="pre">wordIdx</span></code> follows 0-based indexing, and should be less than <code class="docutils literal notranslate"><span class="pre">.</span><a class="reference internal" href="#classmarian_1_1bergamot_1_1Annotation_1ae74963e9e56009f19e19fb0f17aea4de"><span class="std std-ref"><span class="pre">numWords()</span></span></a></code> for <code class="docutils literal notranslate"><span class="pre">sentenceIdx</span></code> for defined behaviour. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot10Annotation8sentenceE6size_t">
+<span id="_CPPv3NK6marian8bergamot10Annotation8sentenceE6size_t"></span><span id="_CPPv2NK6marian8bergamot10Annotation8sentenceE6size_t"></span><span id="marian::bergamot::Annotation::sentence__sC"></span><span class="target" id="classmarian_1_1bergamot_1_1Annotation_1a325d8ccd177cf3e4aa169f09db861849"></span><a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#_CPPv4N6marian8bergamot9ByteRangeE" title="marian::bergamot::ByteRange">ByteRange</a> <code class="sig-name descname">sentence</code><span class="sig-paren">(</span>size_t <em>sentenceIdx</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot10Annotation8sentenceE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns a <a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#structmarian_1_1bergamot_1_1ByteRange"><span class="std std-ref">ByteRange</span></a> representing sentence corresponding to <code class="docutils literal notranslate"><span class="pre">sentenceIdx</span></code>. </p>
+<p><code class="docutils literal notranslate"><span class="pre">sentenceIdx</span></code> follows 0-based indexing, and behaviour is defined only when less than <code class="docutils literal notranslate"><span class="pre">.numSentences()</span></code>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot10Annotation3gapE6size_t">
+<span id="_CPPv3NK6marian8bergamot10Annotation3gapE6size_t"></span><span id="_CPPv2NK6marian8bergamot10Annotation3gapE6size_t"></span><span id="marian::bergamot::Annotation::gap__sC"></span><span class="target" id="classmarian_1_1bergamot_1_1Annotation_1a84034b92130ec83a036decf691e158e5"></span><a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#_CPPv4N6marian8bergamot9ByteRangeE" title="marian::bergamot::ByteRange">ByteRange</a> <code class="sig-name descname">gap</code><span class="sig-paren">(</span>size_t <em>gapIdx</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot10Annotation3gapE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classmarian_1_1bergamot_1_1AlignedVector.html" class="btn btn-neutral float-left" title="Template Class AlignedVector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="classmarian_1_1bergamot_1_1AsyncService.html" class="btn btn-neutral float-right" title="Class AsyncService" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

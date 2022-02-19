@@ -1,0 +1,58 @@
+.. _dir_src_translator:
+
+
+Directory translator
+====================
+
+
+|exhale_lsh| :ref:`Parent directory <dir_src>` (``src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+*Directory path:* ``src/translator``
+
+
+Files
+-----
+
+- :ref:`file_src_translator_aggregate_batching_pool.cpp`
+- :ref:`file_src_translator_aggregate_batching_pool.h`
+- :ref:`file_src_translator_aligned.h`
+- :ref:`file_src_translator_annotation.cpp`
+- :ref:`file_src_translator_annotation.h`
+- :ref:`file_src_translator_batch.cpp`
+- :ref:`file_src_translator_batch.h`
+- :ref:`file_src_translator_batching_pool.cpp`
+- :ref:`file_src_translator_batching_pool.h`
+- :ref:`file_src_translator_byte_array_util.cpp`
+- :ref:`file_src_translator_byte_array_util.h`
+- :ref:`file_src_translator_cache.h`
+- :ref:`file_src_translator_definitions.h`
+- :ref:`file_src_translator_html.cpp`
+- :ref:`file_src_translator_html.h`
+- :ref:`file_src_translator_logging.h`
+- :ref:`file_src_translator_parser.cpp`
+- :ref:`file_src_translator_parser.h`
+- :ref:`file_src_translator_quality_estimator.cpp`
+- :ref:`file_src_translator_quality_estimator.h`
+- :ref:`file_src_translator_request.cpp`
+- :ref:`file_src_translator_request.h`
+- :ref:`file_src_translator_response.cpp`
+- :ref:`file_src_translator_response.h`
+- :ref:`file_src_translator_response_builder.cpp`
+- :ref:`file_src_translator_response_builder.h`
+- :ref:`file_src_translator_response_options.h`
+- :ref:`file_src_translator_service.cpp`
+- :ref:`file_src_translator_service.h`
+- :ref:`file_src_translator_text_processor.cpp`
+- :ref:`file_src_translator_text_processor.h`
+- :ref:`file_src_translator_threadsafe_batching_pool.cpp`
+- :ref:`file_src_translator_threadsafe_batching_pool.h`
+- :ref:`file_src_translator_translation_model.cpp`
+- :ref:`file_src_translator_translation_model.h`
+- :ref:`file_src_translator_utils.h`
+- :ref:`file_src_translator_vocabs.h`
+- :ref:`file_src_translator_xh_scanner.cpp`
+- :ref:`file_src_translator_xh_scanner.h`
+
+

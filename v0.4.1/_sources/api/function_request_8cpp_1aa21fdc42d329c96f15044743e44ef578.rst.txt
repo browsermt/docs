@@ -1,0 +1,13 @@
+.. _exhale_function_request_8cpp_1aa21fdc42d329c96f15044743e44ef578:
+
+Function marian::bergamot::hashForCache
+=======================================
+
+- Defined in :ref:`file_src_translator_request.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::hashForCache(const TranslationModel&, const marian::Words&)

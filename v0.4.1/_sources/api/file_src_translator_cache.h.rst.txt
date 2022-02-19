@@ -1,0 +1,84 @@
+
+.. _file_src_translator_cache.h:
+
+File cache.h
+============
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/cache.h``)
+---------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_cache.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``atomic``
+
+- ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
+
+- ``memory``
+
+- ``mutex``
+
+- ``translator/history.h``
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_src_translator_request.h`
+
+- :ref:`file_src_translator_translation_model.h`
+
+- :ref:`file_src_translator_request.cpp`
+
+- :ref:`file_src_translator_service.h`
+
+- :ref:`file_src_translator_translation_model.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian__bergamot`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1AtomicCache_1_1Stats`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1AtomicCache`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_cache_8h_1af0d71292fc13be4ee7e56a040ef51c6d`
+

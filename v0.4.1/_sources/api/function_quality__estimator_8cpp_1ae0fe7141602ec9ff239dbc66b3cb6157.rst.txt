@@ -1,0 +1,13 @@
+.. _exhale_function_quality__estimator_8cpp_1ae0fe7141602ec9ff239dbc66b3cb6157:
+
+Function marian::bergamot::mapWords
+===================================
+
+- Defined in :ref:`file_src_translator_quality_estimator.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::mapWords(const std::vector<float>&, const AnnotatedText&, const size_t)
