@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File xh_scanner.h &mdash; Bergamot Translator main 2022-02-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File xh_scanner.h &mdash; Bergamot Translator main 2022-02-22 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -164,6 +164,7 @@
 <span class="w">        </span><span class="n">tagName_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span><span class="w"></span>
 <span class="w">        </span><span class="n">attributeName_</span><span class="p">{</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span><span class="w"></span>
 <span class="w">        </span><span class="n">input_</span><span class="p">(</span><span class="n">is</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="n">start_</span><span class="p">(</span><span class="k">nullptr</span><span class="p">),</span><span class="w"></span>
 <span class="w">        </span><span class="n">scanFun_</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanBody</span><span class="p">),</span><span class="w"></span>
 <span class="w">        </span><span class="n">gotTail_</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 
@@ -178,6 +179,8 @@
 
 <span class="w">  </span><span class="c1">// get tag name</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="nf">tag</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">start</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">start_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
 <span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"> </span><span class="cm">/* methods */</span><span class="w"></span>
 <span class="w">  </span><span class="k">typedef</span><span class="w"> </span><span class="n">TokenType</span><span class="w"> </span><span class="p">(</span><span class="n">Scanner</span><span class="o">::*</span><span class="n">ScanPtr</span><span class="p">)();</span><span class="w"></span>
@@ -217,6 +220,9 @@
 <span class="w">  </span><span class="n">ScanPtr</span><span class="w"> </span><span class="n">scanFun_</span><span class="p">;</span><span class="w">  </span><span class="c1">// current &#39;reader&#39;</span>
 
 <span class="w">  </span><span class="n">instream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">input_</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Start position of a token.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">start_</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">gotTail_</span><span class="p">;</span><span class="w">  </span><span class="c1">// aux flag used in scanComment, scanSpecial, scanProcessingInstruction</span>
 <span class="p">};</span><span class="w"></span>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Struct AnnotatedText &mdash; Bergamot Translator main 2022-02-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Struct AnnotatedText &mdash; Bergamot Translator main 2022-02-22 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -185,6 +185,13 @@
 <dt id="_CPPv4NK6marian8bergamot13AnnotatedText19sentenceAsByteRangeE6size_t">
 <span id="_CPPv3NK6marian8bergamot13AnnotatedText19sentenceAsByteRangeE6size_t"></span><span id="_CPPv2NK6marian8bergamot13AnnotatedText19sentenceAsByteRangeE6size_t"></span><span id="marian::bergamot::AnnotatedText::sentenceAsByteRange__sC"></span><span class="target" id="structmarian_1_1bergamot_1_1AnnotatedText_1ab535c5564bc542f8f84076d639374c67"></span><a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#_CPPv4N6marian8bergamot9ByteRangeE" title="marian::bergamot::ByteRange">ByteRange</a> <code class="sig-name descname">sentenceAsByteRange</code><span class="sig-paren">(</span>size_t <em>sentenceIdx</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot13AnnotatedText19sentenceAsByteRangeE6size_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns a <a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#structmarian_1_1bergamot_1_1ByteRange"><span class="std std-ref">ByteRange</span></a> representing sentence corresponding to sentenceIdx. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4I0ENK6marian8bergamot13AnnotatedText5applyE13AnnotatedText3Fun">
+<span id="_CPPv3I0ENK6marian8bergamot13AnnotatedText5applyE3Fun"></span><span id="_CPPv2I0ENK6marian8bergamot13AnnotatedText5applyE3Fun"></span><span class="target" id="structmarian_1_1bergamot_1_1AnnotatedText_1ad30a00f2cfa6c10b611b1e672abf28b6"></span>template&lt;typename <code class="sig-name descname">Fun</code>&gt;<br /><a class="reference internal" href="#_CPPv4N6marian8bergamot13AnnotatedTextE" title="marian::bergamot::AnnotatedText">AnnotatedText</a> <code class="sig-name descname">apply</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0ENK6marian8bergamot13AnnotatedText5applyE13AnnotatedText3Fun" title="marian::bergamot::AnnotatedText::apply::Fun">Fun</a> <em>fun</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4I0ENK6marian8bergamot13AnnotatedText5applyE13AnnotatedText3Fun" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Utility function to call <code class="docutils literal notranslate"><span class="pre">fun</span></code> on each word (subword token effectively) in an <code class="docutils literal notranslate"><a class="reference internal" href="#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref"><span class="pre">AnnotatedText</span></span></a></code>. </p>
+<p><code class="docutils literal notranslate"><span class="pre">fun</span></code> is called with the <code class="docutils literal notranslate"><a class="reference internal" href="structmarian_1_1bergamot_1_1ByteRange.html#structmarian_1_1bergamot_1_1ByteRange"><span class="std std-ref"><span class="pre">ByteRange</span></span></a></code>, the <code class="docutils literal notranslate"><span class="pre">string_view</span></code> with the word, and a <code class="docutils literal notranslate"><span class="pre">bool</span></code> to indicate whether it is the last word in the <code class="docutils literal notranslate"><a class="reference internal" href="#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref"><span class="pre">AnnotatedText</span></span></a></code>, which is also the ending whitespace slot of <a class="reference internal" href="#structmarian_1_1bergamot_1_1AnnotatedText"><span class="std std-ref">AnnotatedText</span></a>. </p>
 </dd></dl>
 
 </div>

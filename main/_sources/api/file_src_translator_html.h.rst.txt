@@ -31,15 +31,19 @@ Includes
 
 - ``annotation.h`` (:ref:`file_src_translator_annotation.h`)
 
+- ``data/types.h``
+
 - ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
 
 - ``forward_list``
+
+- ``set``
 
 - ``stdexcept``
 
 - ``string``
 
-- ``unordered_set``
+- ``string_view``
 
 
 
@@ -59,8 +63,6 @@ Included By
 Namespaces
 ----------
 
-
-- :ref:`namespace_marian`
 
 - :ref:`namespace_marian__bergamot`
 
