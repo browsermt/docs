@@ -38,16 +38,13 @@ Program Listing for File service.h
    class BlockingService {
     public:
      struct Config {
-       bool cacheEnabled{false};  
-   
-       size_t cacheSize{2000};
+       size_t cacheSize{0};
    
        Logger::Config logger;  
    
        template <class App>
        static void addOptions(App &app, Config &config) {
          // Options will come here.
-         app.add_option("--cache-translations", config.cacheEnabled, "Whether to cache translations or not.");
          app.add_option("--cache-size", config.cacheSize, "Number of entries to store in cache.");
          Logger::Config::addOptions(app, config.logger);
        }
@@ -84,15 +81,13 @@ Program Listing for File service.h
    class AsyncService {
     public:
      struct Config {
-       size_t numWorkers{1};      
-       bool cacheEnabled{false};  
-       size_t cacheSize{2000};    
-       Logger::Config logger;     // Configurations for logging
+       size_t numWorkers{1};   
+       size_t cacheSize{0};    
+       Logger::Config logger;  // Configurations for logging
    
        template <class App>
        static void addOptions(App &app, Config &config) {
          app.add_option("--cpu-threads", config.numWorkers, "Workers to form translation backend");
-         app.add_option("--cache-translations", config.cacheEnabled, "Whether to cache translations or not.");
          app.add_option("--cache-size", config.cacheSize, "Number of entries to store in cache.");
          Logger::Config::addOptions(app, config.logger);
        }

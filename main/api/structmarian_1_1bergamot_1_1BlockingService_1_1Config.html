@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Struct BlockingService::Config &mdash; Bergamot Translator main 2022-02-22 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Struct BlockingService::Config &mdash; Bergamot Translator main 2022-02-23 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -96,16 +96,10 @@
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Members</p>
 <dl class="member">
-<dt id="_CPPv4N6marian8bergamot15BlockingService6Config12cacheEnabledE">
-<span id="_CPPv3N6marian8bergamot15BlockingService6Config12cacheEnabledE"></span><span id="_CPPv2N6marian8bergamot15BlockingService6Config12cacheEnabledE"></span><span id="marian::bergamot::BlockingService::Config::cacheEnabled__b"></span><span class="target" id="structmarian_1_1bergamot_1_1BlockingService_1_1Config_1af717366b58434b5094691f36adea2dce"></span>bool <code class="sig-name descname">cacheEnabled</code> = {false}<br /></dt>
-<dd><p>Whether to enable cache or not. </p>
-</dd></dl>
-
-<dl class="member">
 <dt id="_CPPv4N6marian8bergamot15BlockingService6Config9cacheSizeE">
-<span id="_CPPv3N6marian8bergamot15BlockingService6Config9cacheSizeE"></span><span id="_CPPv2N6marian8bergamot15BlockingService6Config9cacheSizeE"></span><span id="marian::bergamot::BlockingService::Config::cacheSize__s"></span><span class="target" id="structmarian_1_1bergamot_1_1BlockingService_1_1Config_1ad4cd95fd8a2df39256094ea546ea99f7"></span>size_t <code class="sig-name descname">cacheSize</code> = {2000}<br /></dt>
+<span id="_CPPv3N6marian8bergamot15BlockingService6Config9cacheSizeE"></span><span id="_CPPv2N6marian8bergamot15BlockingService6Config9cacheSizeE"></span><span id="marian::bergamot::BlockingService::Config::cacheSize__s"></span><span class="target" id="structmarian_1_1bergamot_1_1BlockingService_1_1Config_1ad4cd95fd8a2df39256094ea546ea99f7"></span>size_t <code class="sig-name descname">cacheSize</code> = {0}<br /></dt>
 <dd><p>Size in History items to be stored in the cache. </p>
-<p>Loosely corresponds to sentences to cache in the real world. Note that cache has a random-eviction policy. The peak storage at full occupancy is controlled by this parameter. However, whether we attain full occupancy or not is controlled by random factors - specifically how uniformly the hash distributes. </p>
+<p>A value of 0 means no caching. Loosely corresponds to sentences to cache in the real world. Note that cache has a random-eviction policy. The peak storage at full occupancy is controlled by this parameter. However, whether we attain full occupancy or not is controlled by random factors - specifically how uniformly the hash distributes. </p>
 </dd></dl>
 
 <dl class="member">
