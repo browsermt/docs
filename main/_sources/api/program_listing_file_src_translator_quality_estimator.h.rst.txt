@@ -26,8 +26,6 @@ Program Listing for File quality_estimator.h
      virtual void computeQualityScores(const Histories &histories, Response &response) const = 0;
    };
    
-   using SubwordRange = ByteRange;
-   
    class UnsupervisedQualityEstimator : public QualityEstimator {
     public:
      void computeQualityScores(const Histories &histories, Response &response) const override;
@@ -109,9 +107,5 @@ Program Listing for File quality_estimator.h
    
    std::vector<SubwordRange> mapWords(const std::vector<float> &logProbs, const AnnotatedText &target,
                                       const size_t sentenceIdx);
-   
-   
-   std::vector<ByteRange> subwordToWords(const std::vector<SubwordRange> &wordIndices, const AnnotatedText &target,
-                                         const size_t sentenceIdx);
    
    }  // namespace marian::bergamot

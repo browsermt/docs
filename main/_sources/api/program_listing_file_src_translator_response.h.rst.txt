@@ -31,7 +31,7 @@ Program Listing for File response.h
    struct Response {
      struct SentenceQualityScore {
        std::vector<float> wordScores;
-       std::vector<ByteRange> wordByteRanges;
+       std::vector<SubwordRange> wordRanges;
        float sentenceScore = 0.0;
      };
    
@@ -55,6 +55,8 @@ Program Listing for File response.h
    };
    
    std::vector<Alignment> remapAlignments(const Response &first, const Response &second);
+   
+   std::vector<ByteRange> getWordByteRanges(Response const &response, size_t sentenceIdx);
    
    }  // namespace bergamot
    }  // namespace marian

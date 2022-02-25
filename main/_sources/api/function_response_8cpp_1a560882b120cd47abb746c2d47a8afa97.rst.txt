@@ -1,0 +1,13 @@
+.. _exhale_function_response_8cpp_1a560882b120cd47abb746c2d47a8afa97:
+
+Function marian::bergamot::getWordByteRanges
+============================================
+
+- Defined in :ref:`file_src_translator_response.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::getWordByteRanges(const Response&, size_t)

@@ -138,6 +138,11 @@ Classes and Structs
 .. toctree::
    :maxdepth: 5
 
+   structmarian_1_1bergamot_1_1SubwordRange.rst
+
+.. toctree::
+   :maxdepth: 5
+
    structmarian_1_1bergamot_1_1TranslationModel_1_1MarianBackend.rst
 
 .. toctree::
@@ -326,6 +331,11 @@ Functions
 .. toctree::
    :maxdepth: 5
 
+   function_response_8cpp_1a560882b120cd47abb746c2d47a8afa97.rst
+
+.. toctree::
+   :maxdepth: 5
+
    function_request_8cpp_1aa21fdc42d329c96f15044743e44ef578.rst
 
 .. toctree::
@@ -372,11 +382,6 @@ Functions
    :maxdepth: 5
 
    function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee.rst
 
 .. toctree::
    :maxdepth: 5
@@ -459,11 +464,6 @@ Typedefs
    :maxdepth: 5
 
    typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   typedef_quality__estimator_8h_1a7d45e4000e2777f44cdf160b0e2c642b.rst
 
 .. toctree::
    :maxdepth: 5

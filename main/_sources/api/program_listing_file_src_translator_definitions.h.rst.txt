@@ -45,6 +45,13 @@ Program Listing for File definitions.h
      bool operator==(ByteRange other) const { return begin == other.begin && end == other.end; }
    };
    
+   struct SubwordRange {
+     size_t begin;
+     size_t end;
+     const size_t size() const { return end - begin; }
+     bool operator==(SubwordRange other) const { return begin == other.begin && end == other.end; }
+   };
+   
    class Response;
    using CallbackType = std::function<void(Response &&)>;
    

@@ -84,12 +84,13 @@ Program Listing for File html.h
      void restore(Response &response);
    
     private:
-     using SpanIterator = std::vector<HTML::Span>::const_iterator;
+     using SpanIterator = std::vector<HTML::Span>::iterator;
      using AnnotatedText = marian::bergamot::AnnotatedText;
    
      AnnotatedText restoreSource(AnnotatedText const &in, std::vector<SpanIterator> &sourceTokenSpans);
    
-     AnnotatedText restoreTarget(AnnotatedText const &in, std::vector<SpanIterator> const &targetTokenSpans);
+     AnnotatedText restoreTarget(AnnotatedText const &in, std::vector<SpanIterator> const &targetTokenSpans,
+                                 std::vector<HTML::TagStack> const &targetTokenTags);
    
      bool isContinuation(marian::string_view prev, marian::string_view str) const;
      bool isContinuation(std::string_view prev, std::string_view str) const;
@@ -97,6 +98,9 @@ Program Listing for File html.h
      void copyTagStack(Response const &response, std::vector<std::vector<size_t>> const &alignments,
                        std::vector<HTML::SpanIterator> const &sourceTokenSpans,
                        std::vector<HTML::SpanIterator> &targetTokenSpans);
+   
+     void annotateTagStack(Response const &response, std::vector<SpanIterator> const &targetTokenSpans,
+                           std::vector<HTML::TagStack> &targetTokenTags);
    
      void hardAlignments(Response const &response, std::vector<std::vector<size_t>> &alignments,
                          std::vector<HTML::SpanIterator> const &sourceTokenSpans);

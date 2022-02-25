@@ -63,6 +63,8 @@ Included By
 
 - :ref:`file_src_translator_text_processor.h`
 
+- :ref:`file_src_translator_html.cpp`
+
 - :ref:`file_src_translator_request.cpp`
 
 - :ref:`file_src_translator_response.cpp`
@@ -92,6 +94,8 @@ Classes
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1ByteRange`
 
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1MemoryBundle`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1SubwordRange`
 
 
 Typedefs

@@ -35,6 +35,8 @@ Includes
 
 - ``response.h`` (:ref:`file_src_translator_response.h`)
 
+- ``translator/definitions.h`` (:ref:`file_src_translator_definitions.h`)
+
 - ``xh_scanner.h`` (:ref:`file_src_translator_xh_scanner.h`)
 
 
@@ -53,7 +55,7 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_html_8cpp_1ae52ad7db185889701520ffea1ce74d37`
-
 - :ref:`exhale_function_html_8cpp_1a90be5fddaf86ee1c2f02eb695bb2cb46`
+
+- :ref:`exhale_function_html_8cpp_1ae52ad7db185889701520ffea1ce74d37`
 

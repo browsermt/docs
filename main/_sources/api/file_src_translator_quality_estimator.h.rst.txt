@@ -85,13 +85,6 @@ Functions
 - :ref:`exhale_function_quality__estimator_8h_1a2e349a94dba9714699b93a9e59f0569b`
 
 
-Typedefs
---------
-
-
-- :ref:`exhale_typedef_quality__estimator_8h_1a7d45e4000e2777f44cdf160b0e2c642b`
-
-
 Variables
 ---------
 

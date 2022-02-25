@@ -51,6 +51,8 @@ Functions
 ---------
 
 
+- :ref:`exhale_function_response_8cpp_1a560882b120cd47abb746c2d47a8afa97`
+
 - :ref:`exhale_function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f`
 
 - :ref:`exhale_function_response_8cpp_1a75e40f0b6e39725d9d8d96cfd962bcf9`

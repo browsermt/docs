@@ -62,6 +62,8 @@ Classes
 
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1ResponseOptions`
 
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1SubwordRange`
+
 - :ref:`exhale_struct_structmarian_1_1bergamot_1_1TranslationModel_1_1MarianBackend`
 
 - :ref:`exhale_class_classmarian_1_1bergamot_1_1AggregateBatchingPool`
@@ -136,6 +138,8 @@ Functions
 
 - :ref:`exhale_function_byte__array__util_8cpp_1aabe4ff9d24b6052f29cf6e70a2a49da2`
 
+- :ref:`exhale_function_response_8cpp_1a560882b120cd47abb746c2d47a8afa97`
+
 - :ref:`exhale_function_request_8cpp_1aa21fdc42d329c96f15044743e44ef578`
 
 - :ref:`exhale_function_byte__array__util_8cpp_1a765d72b8a59a480e11ebf649af13e9a9`
@@ -155,8 +159,6 @@ Functions
 - :ref:`exhale_function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80`
 
 - :ref:`exhale_function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f`
-
-- :ref:`exhale_function_quality__estimator_8cpp_1aa87a061f90707bebf5fe4b238d6d86ee`
 
 - :ref:`exhale_function_response_8cpp_1a75e40f0b6e39725d9d8d96cfd962bcf9`
 
@@ -178,8 +180,6 @@ Typedefs
 - :ref:`exhale_typedef_definitions_8h_1ad0a7527b1fbf64cfc20eaa76134785ef`
 
 - :ref:`exhale_typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb`
-
-- :ref:`exhale_typedef_quality__estimator_8h_1a7d45e4000e2777f44cdf160b0e2c642b`
 
 - :ref:`exhale_typedef_cache_8h_1af0d71292fc13be4ee7e56a040ef51c6d`
 
