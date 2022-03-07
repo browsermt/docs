@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File translation_model.cpp &mdash; Bergamot Translator v0.4.2 2022-03-07 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/api/program_listing_file_src_translator_translation_model.cpp.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Program Listing for File translation_model.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_src_translator_translation_model.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-translation-model-cpp">
+<span id="program-listing-file-src-translator-translation-model-cpp"></span><h1>Program Listing for File translation_model.cpp<a class="headerlink" href="#program-listing-for-file-translation-model-cpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_translator_translation_model.cpp.html#file-src-translator-translation-model-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/translator/translation_model.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translation_model.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;batch.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;byte_array_util.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cache.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/logging.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/corpus.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/text_input.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;html.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;parser.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/beam_search.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TranslationModel</span><span class="o">::</span><span class="n">modelCounter_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">TranslationModel</span><span class="o">::</span><span class="n">TranslationModel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Config</span><span class="w"> </span><span class="o">&amp;</span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">MemoryBundle</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">memory</span><span class="w"> </span><span class="cm">/*=MemoryBundle{}*/</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                   </span><span class="kt">size_t</span><span class="w"> </span><span class="n">replicas</span><span class="w"> </span><span class="cm">/*=1*/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">modelId_</span><span class="p">(</span><span class="n">modelCounter_</span><span class="o">++</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">options_</span><span class="p">(</span><span class="n">options</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">memory_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">memory</span><span class="p">)),</span><span class="w"></span>
+<span class="w">      </span><span class="n">vocabs_</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">memory_</span><span class="p">.</span><span class="n">vocabs</span><span class="p">)),</span><span class="w"></span>
+<span class="w">      </span><span class="n">textProcessor_</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">memory_</span><span class="p">.</span><span class="n">ssplitPrefixFile</span><span class="p">)),</span><span class="w"></span>
+<span class="w">      </span><span class="n">batchingPool_</span><span class="p">(</span><span class="n">options</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="n">qualityEstimator_</span><span class="p">(</span><span class="n">createQualityEstimator</span><span class="p">(</span><span class="n">getQualityEstimatorModel</span><span class="p">(</span><span class="n">memory</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">ABORT_IF</span><span class="p">(</span><span class="n">replicas</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;At least one replica needs to be created.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">backend_</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">replicas</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Try to load shortlist from memory-bundle. If not available, try to load from options_;</span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">srcIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">trgIdx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// vocabs_-&gt;sources().front() is invoked as we currently only support one source vocab</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">shared_vcb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">vocabs_</span><span class="p">.</span><span class="n">sources</span><span class="p">().</span><span class="n">front</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">target</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">memory_</span><span class="p">.</span><span class="n">shortlist</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">memory_</span><span class="p">.</span><span class="n">shortlist</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options_</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;check-bytearray&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">shortlistGenerator_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New</span><span class="o">&lt;</span><span class="n">data</span><span class="o">::</span><span class="n">BinaryShortlistGenerator</span><span class="o">&gt;</span><span class="p">(</span><span class="n">memory_</span><span class="p">.</span><span class="n">shortlist</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">memory_</span><span class="p">.</span><span class="n">shortlist</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"></span>
+<span class="w">                                                              </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">sources</span><span class="p">().</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">target</span><span class="p">(),</span><span class="w"> </span><span class="n">srcIdx</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                                              </span><span class="n">trgIdx</span><span class="p">,</span><span class="w"> </span><span class="n">shared_vcb</span><span class="p">,</span><span class="w"> </span><span class="n">check</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">options_</span><span class="o">-&gt;</span><span class="n">hasAndNotEmpty</span><span class="p">(</span><span class="s">&quot;shortlist&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Changed to BinaryShortlistGenerator to enable loading binary shortlist file</span>
+<span class="w">    </span><span class="c1">// This class also supports text shortlist file</span>
+<span class="w">    </span><span class="n">shortlistGenerator_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New</span><span class="o">&lt;</span><span class="n">data</span><span class="o">::</span><span class="n">BinaryShortlistGenerator</span><span class="o">&gt;</span><span class="p">(</span><span class="n">options_</span><span class="p">,</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">sources</span><span class="p">().</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">target</span><span class="p">(),</span><span class="w"></span>
+<span class="w">                                                              </span><span class="n">srcIdx</span><span class="p">,</span><span class="w"> </span><span class="n">trgIdx</span><span class="p">,</span><span class="w"> </span><span class="n">shared_vcb</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// In this case, the loadpath does not load shortlist.</span>
+<span class="w">    </span><span class="n">shortlistGenerator_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">TranslationModel</span><span class="o">::</span><span class="n">loadBackend</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">backend_</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">graph</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">scorerEnsemble</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">backend_</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">scorerEnsemble</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">marian</span><span class="o">::</span><span class="n">DeviceId</span><span class="w"> </span><span class="nf">device_</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">DeviceType</span><span class="o">::</span><span class="n">cpu</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New</span><span class="o">&lt;</span><span class="n">ExpressionGraph</span><span class="o">&gt;</span><span class="p">(</span><span class="cm">/*inference=*/</span><span class="nb">true</span><span class="p">);</span><span class="w">  </span><span class="c1">// set the graph to be inference only</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">prec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options_</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="s">&quot;precision&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;float32&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="w">  </span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">setDefaultElementType</span><span class="p">(</span><span class="n">typeFromString</span><span class="p">(</span><span class="n">prec</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span><span class="w"></span>
+<span class="w">  </span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">setDevice</span><span class="p">(</span><span class="n">device_</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">getBackend</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">configureDevice</span><span class="p">(</span><span class="n">options_</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">reserveWorkspaceMB</span><span class="p">(</span><span class="n">options_</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;workspace&quot;</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Marian Model: Load from memoryBundle or shortList</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">memory_</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">      </span><span class="n">memory_</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"></span>
+<span class="w">          </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// If we have provided a byte array that contains the model memory, we can initialise the</span>
+<span class="w">                      </span><span class="c1">// model from there, as opposed to from reading in the config file</span>
+<span class="w">    </span><span class="n">ABORT_IF</span><span class="p">((</span><span class="kt">uintptr_t</span><span class="p">)</span><span class="n">memory_</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="s">&quot;The provided memory is not aligned to 256 bytes and will crash when vector instructions are used on it.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">options_</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;check-bytearray&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">ABORT_IF</span><span class="p">(</span><span class="o">!</span><span class="n">validateBinaryModel</span><span class="p">(</span><span class="n">memory_</span><span class="p">.</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">memory_</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">size</span><span class="p">()),</span><span class="w"></span>
+<span class="w">               </span><span class="s">&quot;The binary file is invalid. Incomplete or corrupted download?&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">memory_</span><span class="p">.</span><span class="n">model</span><span class="p">.</span><span class="n">begin</span><span class="p">()};</span><span class="w">  </span><span class="c1">// Marian supports multiple models initialised in this manner hence std::vector.</span>
+<span class="w">                                 </span><span class="c1">// However we will only ever use 1 during decoding.</span>
+<span class="w">    </span><span class="n">scorerEnsemble</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createScorers</span><span class="p">(</span><span class="n">options_</span><span class="p">,</span><span class="w"> </span><span class="n">container</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">scorerEnsemble</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createScorers</span><span class="p">(</span><span class="n">options_</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">scorer</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">scorerEnsemble</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">scorer</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">(</span><span class="n">graph</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shortlistGenerator_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">scorer</span><span class="o">-&gt;</span><span class="n">setShortlistGenerator</span><span class="p">(</span><span class="n">shortlistGenerator_</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">forward</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// Make request process is shared between Async and Blocking workflow of translating.</span>
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TranslationModel</span><span class="o">::</span><span class="n">makeRequest</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">requestId</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">CallbackType</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                           </span><span class="k">const</span><span class="w"> </span><span class="n">ResponseOptions</span><span class="w"> </span><span class="o">&amp;</span><span class="n">responseOptions</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                           </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">TranslationCache</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cache</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Segments</span><span class="w"> </span><span class="n">segments</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="n">annotatedSource</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">textProcessor_</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source</span><span class="p">),</span><span class="w"> </span><span class="n">annotatedSource</span><span class="p">,</span><span class="w"> </span><span class="n">segments</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ResponseBuilder</span><span class="w"> </span><span class="nf">responseBuilder</span><span class="p">(</span><span class="n">responseOptions</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">annotatedSource</span><span class="p">),</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">,</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">qualityEstimator_</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">      </span><span class="n">New</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="p">(</span><span class="n">requestId</span><span class="p">,</span><span class="w"> </span><span class="cm">/*model=*/</span><span class="o">*</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">segments</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">responseBuilder</span><span class="p">),</span><span class="w"> </span><span class="n">cache</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">request</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TranslationModel</span><span class="o">::</span><span class="n">makePivotRequest</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">requestId</span><span class="p">,</span><span class="w"> </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">previousTarget</span><span class="p">,</span><span class="w"> </span><span class="n">CallbackType</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                                </span><span class="k">const</span><span class="w"> </span><span class="n">ResponseOptions</span><span class="w"> </span><span class="o">&amp;</span><span class="n">responseOptions</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                                </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">TranslationCache</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cache</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Segments</span><span class="w"> </span><span class="n">segments</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">textProcessor_</span><span class="p">.</span><span class="n">processFromAnnotation</span><span class="p">(</span><span class="n">previousTarget</span><span class="p">,</span><span class="w"> </span><span class="n">segments</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ResponseBuilder</span><span class="w"> </span><span class="nf">responseBuilder</span><span class="p">(</span><span class="n">responseOptions</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">previousTarget</span><span class="p">),</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">,</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">qualityEstimator_</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="p">(</span><span class="n">requestId</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">segments</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">responseBuilder</span><span class="p">),</span><span class="w"> </span><span class="n">cache</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">request</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">data</span><span class="o">::</span><span class="n">CorpusBatch</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TranslationModel</span><span class="o">::</span><span class="n">convertToMarianBatch</span><span class="p">(</span><span class="n">Batch</span><span class="w"> </span><span class="o">&amp;</span><span class="n">batch</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">data</span><span class="o">::</span><span class="n">SentenceTuple</span><span class="o">&gt;</span><span class="w"> </span><span class="n">batchVector</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sentences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">batch</span><span class="p">.</span><span class="n">sentences</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">batchSequenceNumber</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sentence</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">sentences</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">data</span><span class="o">::</span><span class="n">SentenceTuple</span><span class="w"> </span><span class="nf">sentence_tuple</span><span class="p">(</span><span class="n">batchSequenceNumber</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Segment</span><span class="w"> </span><span class="n">segment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sentence</span><span class="p">.</span><span class="n">getUnderlyingSegment</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">sentence_tuple</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">segment</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">batchVector</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">sentence_tuple</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="o">++</span><span class="n">batchSequenceNumber</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Usually one would expect inputs to be [B x T], where B = batch-size and T = max seq-len among the sentences in the</span>
+<span class="w">  </span><span class="c1">// batch. However, marian&#39;s library supports multi-source and ensembling through different source-vocabulary but same</span>
+<span class="w">  </span><span class="c1">// target vocabulary. This means the inputs are 3 dimensional when converted into marian&#39;s library formatted batches.</span>
+<span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="c1">// Consequently B x T projects to N x B x T, where N = ensemble size. This adaptation does not fully force the idea of</span>
+<span class="w">  </span><span class="c1">// N = 1 (the code remains general, but N iterates only from 0-1 in the nested loop).</span>
+
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">batchSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">batchVector</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sentenceIds</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">maxDims</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">example</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">batchVector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">maxDims</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">example</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">maxDims</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">example</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">example</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">example</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">maxDims</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">maxDims</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">example</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">sentenceIds</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">example</span><span class="p">.</span><span class="n">getId</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">SubBatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">data</span><span class="o">::</span><span class="n">SubBatch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">SubBatch</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">subBatches</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxDims</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">subBatches</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">New</span><span class="o">&lt;</span><span class="n">SubBatch</span><span class="o">&gt;</span><span class="p">(</span><span class="n">batchSize</span><span class="p">,</span><span class="w"> </span><span class="n">maxDims</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">sources</span><span class="p">().</span><span class="n">at</span><span class="p">(</span><span class="n">j</span><span class="p">)));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">words</span><span class="p">(</span><span class="n">maxDims</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">batchSize</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxDims</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">batchVector</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">].</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">subBatches</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">()[</span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">batchSize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">batchVector</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">subBatches</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">mask</span><span class="p">()[</span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">batchSize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.f</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">words</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxDims</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">subBatches</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">setWords</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">CorpusBatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">data</span><span class="o">::</span><span class="n">CorpusBatch</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">CorpusBatch</span><span class="o">&gt;</span><span class="w"> </span><span class="n">corpusBatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New</span><span class="o">&lt;</span><span class="n">CorpusBatch</span><span class="o">&gt;</span><span class="p">(</span><span class="n">subBatches</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">corpusBatch</span><span class="o">-&gt;</span><span class="n">setSentenceIds</span><span class="p">(</span><span class="n">sentenceIds</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">corpusBatch</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">TranslationModel</span><span class="o">::</span><span class="n">translateBatch</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">deviceId</span><span class="p">,</span><span class="w"> </span><span class="n">Batch</span><span class="w"> </span><span class="o">&amp;</span><span class="n">batch</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">backend_</span><span class="p">[</span><span class="n">deviceId</span><span class="p">];</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">backend</span><span class="p">.</span><span class="n">initialized</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">loadBackend</span><span class="p">(</span><span class="n">deviceId</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">backend</span><span class="p">.</span><span class="n">initialized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">BeamSearch</span><span class="w"> </span><span class="n">search</span><span class="p">(</span><span class="n">options_</span><span class="p">,</span><span class="w"> </span><span class="n">backend</span><span class="p">.</span><span class="n">scorerEnsemble</span><span class="p">,</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">target</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="n">Histories</span><span class="w"> </span><span class="n">histories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">search</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">backend</span><span class="p">.</span><span class="n">graph</span><span class="p">,</span><span class="w"> </span><span class="n">convertToMarianBatch</span><span class="p">(</span><span class="n">batch</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">batch</span><span class="p">.</span><span class="n">completeBatch</span><span class="p">(</span><span class="n">histories</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

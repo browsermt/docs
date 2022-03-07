@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1Vocabs:
+
+Class Vocabs
+============
+
+- Defined in :ref:`file_src_translator_vocabs.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::Vocabs
+   :members:
+   :protected-members:
+   :undoc-members:

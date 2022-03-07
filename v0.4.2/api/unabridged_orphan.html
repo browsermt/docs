@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full API &mdash; Bergamot Translator v0.4.2 2022-03-07 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/api/unabridged_orphan.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Full API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/unabridged_orphan.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="full-api">
+<h1>Full API<a class="headerlink" href="#full-api" title="Permalink to this headline">¶</a></h1>
+<section id="directories">
+<h2>Directories<a class="headerlink" href="#directories" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dir_app.html">Directory app</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dir_app.html#files">Files</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dir_src.html">Directory src</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dir_src.html#subdirectories">Subdirectories</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dir_src_translator.html">Directory translator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dir_src_translator.html#files">Files</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="files">
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_aggregate_batching_pool.cpp.html">File aggregate_batching_pool.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aggregate_batching_pool.cpp.html#definition-src-translator-aggregate-batching-pool-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/aggregate_batching_pool.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_aggregate_batching_pool.cpp.html">Program Listing for File aggregate_batching_pool.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aggregate_batching_pool.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aggregate_batching_pool.cpp.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_aggregate_batching_pool.h.html">File aggregate_batching_pool.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aggregate_batching_pool.h.html#definition-src-translator-aggregate-batching-pool-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/aggregate_batching_pool.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_aggregate_batching_pool.h.html">Program Listing for File aggregate_batching_pool.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aggregate_batching_pool.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aggregate_batching_pool.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aggregate_batching_pool.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aggregate_batching_pool.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_aligned.h.html">File aligned.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aligned.h.html#definition-src-translator-aligned-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/aligned.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_aligned.h.html">Program Listing for File aligned.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aligned.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aligned.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aligned.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_aligned.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_annotation.cpp.html">File annotation.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_annotation.cpp.html#definition-src-translator-annotation-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/annotation.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_annotation.cpp.html">Program Listing for File annotation.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_annotation.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_annotation.cpp.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_annotation.h.html">File annotation.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_annotation.h.html#definition-src-translator-annotation-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/annotation.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_annotation.h.html">Program Listing for File annotation.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_annotation.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_annotation.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_annotation.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_annotation.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_batch.cpp.html">File batch.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batch.cpp.html#definition-src-translator-batch-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/batch.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_batch.cpp.html">Program Listing for File batch.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batch.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batch.cpp.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_batch.h.html">File batch.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batch.h.html#definition-src-translator-batch-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/batch.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_batch.h.html">Program Listing for File batch.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batch.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batch.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batch.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batch.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_batching_pool.cpp.html">File batching_pool.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batching_pool.cpp.html#definition-src-translator-batching-pool-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/batching_pool.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_batching_pool.cpp.html">Program Listing for File batching_pool.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batching_pool.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batching_pool.cpp.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_batching_pool.h.html">File batching_pool.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batching_pool.h.html#definition-src-translator-batching-pool-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/batching_pool.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_batching_pool.h.html">Program Listing for File batching_pool.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batching_pool.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batching_pool.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batching_pool.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_batching_pool.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_app_bergamot.cpp.html">File bergamot.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_app_bergamot.cpp.html#definition-app-bergamot-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">app/bergamot.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_app_bergamot.cpp.html">Program Listing for File bergamot.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_app_bergamot.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_app_bergamot.cpp.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_byte_array_util.cpp.html">File byte_array_util.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_byte_array_util.cpp.html#definition-src-translator-byte-array-util-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/byte_array_util.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_byte_array_util.cpp.html">Program Listing for File byte_array_util.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_byte_array_util.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_byte_array_util.cpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_byte_array_util.cpp.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_byte_array_util.cpp.html#variables">Variables</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_byte_array_util.h.html">File byte_array_util.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_byte_array_util.h.html#definition-src-translator-byte-array-util-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/byte_array_util.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_byte_array_util.h.html">Program Listing for File byte_array_util.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_byte_array_util.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_byte_array_util.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_byte_array_util.h.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_cache.h.html">File cache.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_cache.h.html#definition-src-translator-cache-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/cache.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_cache.h.html">Program Listing for File cache.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_cache.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_cache.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_cache.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_cache.h.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_cache.h.html#typedefs">Typedefs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_definitions.h.html">File definitions.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_definitions.h.html#definition-src-translator-definitions-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/definitions.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_definitions.h.html">Program Listing for File definitions.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_definitions.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_definitions.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_definitions.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_definitions.h.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_definitions.h.html#typedefs">Typedefs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_html.cpp.html">File html.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_html.cpp.html#definition-src-translator-html-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/html.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_html.cpp.html">Program Listing for File html.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_html.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_html.cpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_html.cpp.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_html.h.html">File html.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_html.h.html#definition-src-translator-html-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/html.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_html.h.html">Program Listing for File html.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_html.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_html.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_html.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_html.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_logging.h.html">File logging.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_logging.h.html#definition-src-translator-logging-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/logging.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_logging.h.html">Program Listing for File logging.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_logging.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_logging.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_logging.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_logging.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_parser.cpp.html">File parser.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_parser.cpp.html#definition-src-translator-parser-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/parser.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_parser.cpp.html">Program Listing for File parser.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_parser.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_parser.cpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_parser.cpp.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_parser.h.html">File parser.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_parser.h.html#definition-src-translator-parser-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/parser.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_parser.h.html">Program Listing for File parser.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_parser.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_parser.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_parser.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_parser.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_quality_estimator.cpp.html">File quality_estimator.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.cpp.html#definition-src-translator-quality-estimator-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/quality_estimator.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_quality_estimator.cpp.html">Program Listing for File quality_estimator.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.cpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.cpp.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_quality_estimator.h.html">File quality_estimator.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.h.html#definition-src-translator-quality-estimator-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/quality_estimator.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_quality_estimator.h.html">Program Listing for File quality_estimator.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.h.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.h.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_quality_estimator.h.html#variables">Variables</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_request.cpp.html">File request.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_request.cpp.html#definition-src-translator-request-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/request.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_request.cpp.html">Program Listing for File request.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_request.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_request.cpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_request.cpp.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_request.h.html">File request.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_request.h.html#definition-src-translator-request-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/request.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_request.h.html">Program Listing for File request.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_request.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_request.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_request.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_request.h.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_request.h.html#typedefs">Typedefs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_response.cpp.html">File response.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response.cpp.html#definition-src-translator-response-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/response.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_response.cpp.html">Program Listing for File response.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response.cpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response.cpp.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_response.h.html">File response.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response.h.html#definition-src-translator-response-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/response.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_response.h.html">Program Listing for File response.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response.h.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response.h.html#typedefs">Typedefs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_response_builder.cpp.html">File response_builder.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_builder.cpp.html#definition-src-translator-response-builder-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/response_builder.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_response_builder.cpp.html">Program Listing for File response_builder.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_builder.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_builder.cpp.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_response_builder.h.html">File response_builder.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_builder.h.html#definition-src-translator-response-builder-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/response_builder.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_response_builder.h.html">Program Listing for File response_builder.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_builder.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_builder.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_builder.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_builder.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_response_options.h.html">File response_options.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_options.h.html#definition-src-translator-response-options-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/response_options.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_response_options.h.html">Program Listing for File response_options.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_options.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_options.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_options.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_options.h.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_response_options.h.html#enums">Enums</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_service.cpp.html">File service.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_service.cpp.html#definition-src-translator-service-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/service.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_service.cpp.html">Program Listing for File service.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_service.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_service.cpp.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_service.h.html">File service.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_service.h.html#definition-src-translator-service-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/service.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_service.h.html">Program Listing for File service.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_service.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_service.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_service.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_service.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_text_processor.cpp.html">File text_processor.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_text_processor.cpp.html#definition-src-translator-text-processor-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/text_processor.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_text_processor.cpp.html">Program Listing for File text_processor.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_text_processor.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_text_processor.cpp.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_text_processor.h.html">File text_processor.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_text_processor.h.html#definition-src-translator-text-processor-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/text_processor.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_text_processor.h.html">Program Listing for File text_processor.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_text_processor.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_text_processor.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_text_processor.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_text_processor.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.cpp.html">File threadsafe_batching_pool.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.cpp.html#definition-src-translator-threadsafe-batching-pool-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/threadsafe_batching_pool.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_threadsafe_batching_pool.cpp.html">Program Listing for File threadsafe_batching_pool.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.cpp.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.cpp.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.h.html">File threadsafe_batching_pool.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.h.html#definition-src-translator-threadsafe-batching-pool-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/threadsafe_batching_pool.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_threadsafe_batching_pool.h.html">Program Listing for File threadsafe_batching_pool.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.h.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_threadsafe_batching_pool.h.html#defines">Defines</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_translation_model.cpp.html">File translation_model.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_translation_model.cpp.html#definition-src-translator-translation-model-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/translation_model.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_translation_model.cpp.html">Program Listing for File translation_model.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_translation_model.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_translation_model.cpp.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_translation_model.h.html">File translation_model.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_translation_model.h.html#definition-src-translator-translation-model-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/translation_model.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_translation_model.h.html">Program Listing for File translation_model.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_translation_model.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_translation_model.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_translation_model.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_translation_model.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_utils.h.html">File utils.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_utils.h.html#definition-src-translator-utils-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/utils.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_utils.h.html">Program Listing for File utils.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_utils.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_utils.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_utils.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_utils.h.html#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_vocabs.h.html">File vocabs.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_vocabs.h.html#definition-src-translator-vocabs-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/vocabs.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_vocabs.h.html">Program Listing for File vocabs.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_vocabs.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_vocabs.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_vocabs.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_xh_scanner.cpp.html">File xh_scanner.cpp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_xh_scanner.cpp.html#definition-src-translator-xh-scanner-cpp">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/xh_scanner.cpp</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_xh_scanner.cpp.html">Program Listing for File xh_scanner.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_xh_scanner.cpp.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_xh_scanner.cpp.html#namespaces">Namespaces</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="file_src_translator_xh_scanner.h.html">File xh_scanner.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_xh_scanner.h.html#definition-src-translator-xh-scanner-h">Definition (<code class="docutils literal notranslate"><span class="pre">src/translator/xh_scanner.h</span></code>)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_listing_file_src_translator_xh_scanner.h.html">Program Listing for File xh_scanner.h</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_xh_scanner.h.html#includes">Includes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_xh_scanner.h.html#included-by">Included By</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_xh_scanner.h.html#namespaces">Namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_src_translator_xh_scanner.h.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="pages">
+<h2>Pages<a class="headerlink" href="#pages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="page_todo.html">Todo List</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

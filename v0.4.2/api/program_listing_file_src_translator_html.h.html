@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File html.h &mdash; Bergamot Translator v0.4.2 2022-03-07 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/api/program_listing_file_src_translator_html.h.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Program Listing for File html.h</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_src_translator_html.h.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-html-h">
+<span id="program-listing-file-src-translator-html-h"></span><h1>Program Listing for File html.h<a class="headerlink" href="#program-listing-for-file-html-h" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_translator_html.h.html#file-src-translator-html-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/translator/html.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SRC_BERGAMOT_HTML_H_</span>
+<span class="cp">#define SRC_BERGAMOT_HTML_H_</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;forward_list&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;set&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string_view&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;annotation.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;definitions.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="o">::</span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Response</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">HTML</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">TagNameSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">less</span><span class="o">&lt;&gt;&gt;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Options</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">TagNameSet</span><span class="w"> </span><span class="n">voidTags</span><span class="p">{</span><span class="s">&quot;area&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;base&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;basefont&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bgsound&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;br&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;col&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;embed&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;frame&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hr&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="s">&quot;img&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;input&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;keygen&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;link&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;meta&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;param&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;source&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;track&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;wbr&quot;</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">TagNameSet</span><span class="w"> </span><span class="n">inlineTags</span><span class="p">{</span><span class="s">&quot;abbr&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;em&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;i&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;kbd&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;mark&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;math&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                          </span><span class="s">&quot;output&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;q&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ruby&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;small&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;span&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;strong&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sub&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;sup&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                          </span><span class="s">&quot;time&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;u&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;var&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;wbr&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;ins&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;del&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;img&quot;</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">TagNameSet</span><span class="w"> </span><span class="n">inWordTags</span><span class="p">{</span><span class="s">&quot;wbr&quot;</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">TagNameSet</span><span class="w"> </span><span class="n">ignoredTags</span><span class="p">{</span><span class="s">&quot;code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;kbd&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;samp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;var&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dir&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;acronym&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;math&quot;</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">continuationDelimiters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s"> ,.(){}[]&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">substituteInlineTagsWithSpaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Tag</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="nc">NodeType</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">ELEMENT</span><span class="p">,</span><span class="w">                 </span><span class="c1">// &lt;b&gt;...&lt;/b&gt;</span>
+<span class="w">      </span><span class="n">VOID_ELEMENT</span><span class="p">,</span><span class="w">            </span><span class="c1">// &lt;img&gt;</span>
+<span class="w">      </span><span class="n">COMMENT</span><span class="p">,</span><span class="w">                 </span><span class="c1">// &lt;!-- ... --&gt;</span>
+<span class="w">      </span><span class="n">PROCESSING_INSTRUCTION</span><span class="p">,</span><span class="w">  </span><span class="c1">// &lt;?...?&gt;</span>
+<span class="w">      </span><span class="n">WHITESPACE</span><span class="p">,</span><span class="w">              </span><span class="c1">// A \n\n we inserted to break a sentence.</span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">NodeType</span><span class="w"> </span><span class="n">type</span><span class="p">;</span><span class="w">           </span><span class="c1">// Type of the node</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">        </span><span class="c1">// Tag name (if type is ELEMENT or VOID_ELEMENT)</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">attributes</span><span class="p">;</span><span class="w">  </span><span class="c1">// Tag attributes (as raw HTML string, including</span>
+<span class="w">                             </span><span class="c1">// entities and prefix whitespace)</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w">        </span><span class="c1">// Raw data of an element that just needs to be</span>
+<span class="w">                             </span><span class="c1">// copied as is, e.g. &lt;script&gt; or &lt;style&gt;</span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">TagStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Tag</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Span</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w">   </span><span class="c1">// Start offset in (plain text) source</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">end</span><span class="p">;</span><span class="w">     </span><span class="c1">// end offset in source</span>
+<span class="w">    </span><span class="n">TagStack</span><span class="w"> </span><span class="n">tags</span><span class="p">;</span><span class="w">  </span><span class="c1">// Note: free pointers to memory owned by `pool_`.</span>
+<span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">HTML</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">processMarkup</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">HTML</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">source</span><span class="p">),</span><span class="w"> </span><span class="n">processMarkup</span><span class="p">,</span><span class="w"> </span><span class="n">HTML</span><span class="o">::</span><span class="n">Options</span><span class="p">{}){};</span><span class="w"></span>
+<span class="w">  </span><span class="k">explicit</span><span class="w"> </span><span class="n">HTML</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">processMarkup</span><span class="p">,</span><span class="w"> </span><span class="n">Options</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">HTML</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HTML</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">HTML</span><span class="p">(</span><span class="n">HTML</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">restore</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">response</span><span class="p">);</span><span class="w"></span>
+
+<span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">SpanIterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HTML</span><span class="o">::</span><span class="n">Span</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">bergamot</span><span class="o">::</span><span class="n">AnnotatedText</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="nf">restoreSource</span><span class="p">(</span><span class="n">AnnotatedText</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SpanIterator</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sourceTokenSpans</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="nf">restoreTarget</span><span class="p">(</span><span class="n">AnnotatedText</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SpanIterator</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">targetTokenSpans</span><span class="p">,</span><span class="w"></span>
+<span class="w">                              </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HTML</span><span class="o">::</span><span class="n">TagStack</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">targetTokenTags</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isContinuation</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">prev</span><span class="p">,</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isContinuation</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">prev</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">copyTagStack</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">alignments</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HTML</span><span class="o">::</span><span class="n">SpanIterator</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sourceTokenSpans</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HTML</span><span class="o">::</span><span class="n">SpanIterator</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">targetTokenSpans</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">annotateTagStack</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SpanIterator</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">targetTokenSpans</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HTML</span><span class="o">::</span><span class="n">TagStack</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">targetTokenTags</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">hardAlignments</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">alignments</span><span class="p">,</span><span class="w"></span>
+<span class="w">                      </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">HTML</span><span class="o">::</span><span class="n">SpanIterator</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sourceTokenSpans</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">Tag</span><span class="w"> </span><span class="o">*</span><span class="nf">makeTag</span><span class="p">(</span><span class="n">Tag</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">tag</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">Options</span><span class="w"> </span><span class="n">options_</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Span</span><span class="o">&gt;</span><span class="w"> </span><span class="n">spans_</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">forward_list</span><span class="o">&lt;</span><span class="n">Tag</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pool_</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian::bergamot</span>
+
+<span class="cp">#endif  </span><span class="c1">// SRC_BERGAMOT_HTML_H_</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

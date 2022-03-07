@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bergamot C++ Library &mdash; Bergamot Translator v0.4.2 2022-03-07 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/marian-integration.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using Bergamot Translator in JavaScript" href="wasm-example.html" />
+    <link rel="prev" title="Welcome to Bergamot Translator’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bergamot C++ Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build-instructions">Build Instructions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-bergamot-translator">Building bergamot-translator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-apps">Command line apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-command-line-run">Example command line run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coding-style">Coding Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Bergamot C++ Library</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/marian-integration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bergamot-c-library">
+<h1>Bergamot C++ Library<a class="headerlink" href="#bergamot-c-library" title="Permalink to this headline">¶</a></h1>
+<p>This document contains instructions to develop for modifications on top
+of the marian machine translation toolkit powering bergamot-translator.
+The library is optimized towards fast and efficient translation of a
+given input.</p>
+<section id="build-instructions">
+<h2>Build Instructions<a class="headerlink" href="#build-instructions" title="Permalink to this headline">¶</a></h2>
+<p>Note: You are strongly advised to refer to the continuous integration on
+this repository, which builds bergamot-translator and associated
+applications from scratch. Examples to run these command
+line-applications are available in the
+<a class="reference external" href="https://github.com/browsermt/bergamot-translator-tests">bergamot-translator-tests</a>
+repository. Builds take about 30 mins on a consumer grade machine, so
+using a tool like ccache is highly recommended.</p>
+<section id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Marian CPU version requires Intel MKL or OpenBLAS. Both are free, but
+MKL is not open-sourced. Intel MKL is strongly recommended as it is
+faster. On Ubuntu 16.04 and newer it can be installed from the APT
+repositories.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget -qO- <span class="s1">&#39;https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB&#39;</span> <span class="p">|</span> sudo apt-key add -
+sudo sh -c <span class="s1">&#39;echo deb https://apt.repos.intel.com/mkl all main &gt; /etc/apt/sources.list.d/intel-mkl.list&#39;</span>
+sudo apt-get update
+sudo apt-get install intel-mkl-64bit-2020.0-088
+</pre></div>
+</div>
+<p>On MacOS, apple accelerate framework will be used instead of
+MKL/OpenBLAS.</p>
+</section>
+<section id="building-bergamot-translator">
+<h3>Building bergamot-translator<a class="headerlink" href="#building-bergamot-translator" title="Permalink to this headline">¶</a></h3>
+<p>Web Assembly (WASM) reduces building to only using a subset of
+functionalities of marian, the translation library powering
+bergamot-translator. When developing bergamot-translator it is important
+that the sources added be compatible with marian. Therefore, it is
+required to set <code class="docutils literal notranslate"><span class="pre">-DUSE_WASM_COMPATIBLE_SOURCE=on</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/browsermt/bergamot-translator</span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">bergamot</span><span class="o">-</span><span class="n">translator</span><span class="w"></span>
+<span class="n">$</span><span class="w"> </span><span class="n">mkdir</span><span class="w"> </span><span class="n">build</span><span class="w"></span>
+<span class="n">$</span><span class="w"> </span><span class="n">cd</span><span class="w"> </span><span class="n">build</span><span class="w"></span>
+<span class="n">$</span><span class="w"> </span><span class="n">cmake</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="o">-</span><span class="n">DUSE_WASM_COMPATIBLE_SOURCE</span><span class="o">=</span><span class="n">off</span><span class="w"> </span><span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Release</span><span class="w"></span>
+<span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="o">-</span><span class="n">j2</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The build will generate the library that can be linked to any project.
+All the public header files are specified in <code class="docutils literal notranslate"><span class="pre">src</span></code> folder.</p>
+</section>
+</section>
+<section id="command-line-apps">
+<h2>Command line apps<a class="headerlink" href="#command-line-apps" title="Permalink to this headline">¶</a></h2>
+<p>bergamot-translator is intended to be used as a library. However, we
+provide a command-line application which is capable of translating text
+provided on standard-input. During development this application is used
+to perform regression-tests.</p>
+</section>
+<section id="example-command-line-run">
+<h2>Example command line run<a class="headerlink" href="#example-command-line-run" title="Permalink to this headline">¶</a></h2>
+<p>The models required to run the command-line are available at
+<a class="reference external" href="http://data.statmt.org/bergamot/models/">data.statmt.org/bergamot/models/</a>.</p>
+<p>The following example uses an English to German tiny11 student model,
+available at:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://data.statmt.org/bergamot/models/deen/ende.student.tiny11.tar.gz">data.statmt.org/bergamot/models/deen/ende.student.tiny11.tar.gz</a></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In source-root folder</span>
+
+<span class="c1"># Obtain an example model from the web.</span>
+mkdir -p models
+wget --quiet --continue --directory models/ <span class="se">\</span>
+    http://data.statmt.org/bergamot/models/deen/ende.student.tiny11.tar.gz 
+<span class="o">(</span><span class="nb">cd</span> models <span class="o">&amp;&amp;</span> tar -xzf ende.student.tiny11.tar.gz<span class="o">)</span>
+
+<span class="c1"># Patch the config-files generated from marian for use in bergamot.</span>
+python3 bergamot-translator-tests/tools/patch-marian-for-bergamot.py <span class="se">\</span>
+    --config-path models/ende.student.tiny11/config.intgemm8bitalpha.yml <span class="se">\</span>
+    --ssplit-prefix-file <span class="k">$(</span>realpath 3rd_party/ssplit-cpp/nonbreaking_prefixes/nonbreaking_prefix.en<span class="k">)</span>
+
+<span class="c1"># Patched config file will be available with .bergamot.yml suffix.</span>
+<span class="nv">CONFIG</span><span class="o">=</span>models/ende.student.tiny11/config.intgemm8bitalpha.yml.bergamot.yml
+
+build/app/bergamot --model-config-paths <span class="nv">$CONFIG</span> --cpu-threads <span class="m">4</span> <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;Hello World!&quot;</span>
+<span class="c1"># Hallo Welt!</span>
+</pre></div>
+</div>
+</section>
+<section id="coding-style">
+<h2>Coding Style<a class="headerlink" href="#coding-style" title="Permalink to this headline">¶</a></h2>
+<p>This repository contains C++ and JS source-files, of which C++ should
+adhere to the clang-format based style guidelines. You may configure
+your development environment to use the <code class="docutils literal notranslate"><span class="pre">.clang-format</span></code> and
+<code class="docutils literal notranslate"><span class="pre">.clang-format-ignore</span></code> files provided in the root folder of this
+repository with your preferred choice of editor/tooling.</p>
+<p>One simple and recommended method to get your code to adhere to this
+style is to issue the following command in the source-root of this
+repository, which is used to also check for the coding style in the CI.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 run-clang-format.py -i --style file -r src wasm
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Bergamot Translator’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wasm-example.html" class="btn btn-neutral float-right" title="Using Bergamot Translator in JavaScript" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

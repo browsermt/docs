@@ -1,0 +1,13 @@
+.. _exhale_typedef_response_8h_1a4a80418bd6a17c47f979280fd15b6746:
+
+Typedef marian::bergamot::Alignment
+===================================
+
+- Defined in :ref:`file_src_translator_response.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: marian::bergamot::Alignment

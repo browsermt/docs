@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1AlignedVector:
+
+Template Class AlignedVector
+============================
+
+- Defined in :ref:`file_src_translator_aligned.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::AlignedVector
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,13 @@
+.. _exhale_function_byte__array__util_8cpp_1a68022e0bdf301426d59e4dc3d89e0412:
+
+Function marian::bergamot::getSsplitPrefixFileMemoryFromConfig
+==============================================================
+
+- Defined in :ref:`file_src_translator_byte_array_util.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::getSsplitPrefixFileMemoryFromConfig(marian::Ptr<marian::Options>)

@@ -1,0 +1,22 @@
+.. _exhale_struct_structmarian_1_1bergamot_1_1TranslationModel_1_1MarianBackend:
+
+Struct TranslationModel::MarianBackend
+======================================
+
+- Defined in :ref:`file_src_translator_translation_model.h`
+
+
+Nested Relationships
+--------------------
+
+This struct is a nested type of :ref:`exhale_class_classmarian_1_1bergamot_1_1TranslationModel`.
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: marian::bergamot::TranslationModel::MarianBackend
+   :members:
+   :protected-members:
+   :undoc-members:

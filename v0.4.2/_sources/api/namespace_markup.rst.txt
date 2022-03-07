@@ -1,0 +1,24 @@
+
+.. _namespace_markup:
+
+Namespace markup
+================
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structmarkup_1_1instream`
+
+- :ref:`exhale_struct_structmarkup_1_1string__ref`
+
+- :ref:`exhale_class_classmarkup_1_1Scanner`

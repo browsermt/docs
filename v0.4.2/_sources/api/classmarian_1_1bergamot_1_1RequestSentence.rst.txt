@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1RequestSentence:
+
+Class RequestSentence
+=====================
+
+- Defined in :ref:`file_src_translator_request.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::RequestSentence
+   :members:
+   :protected-members:
+   :undoc-members:
