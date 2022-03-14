@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2022-03-09 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2022-03-14 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -97,6 +97,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test_page
 git clone --depth <span class="m">1</span> --branch main --single-branch https://github.com/mozilla/firefox-translations-models/
 mkdir models
+cp -rf firefox-translations-models/registry.json models
 cp -rf firefox-translations-models/models/prod/* models
 cp -rf firefox-translations-models/models/dev/* models
 gunzip models/*/*
