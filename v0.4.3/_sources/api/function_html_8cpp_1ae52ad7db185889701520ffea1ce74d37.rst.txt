@@ -1,0 +1,13 @@
+.. _exhale_function_html_8cpp_1ae52ad7db185889701520ffea1ce74d37:
+
+Function marian::bergamot::operator<<(std::ostream&, HTML::TagStack const&)
+===========================================================================
+
+- Defined in :ref:`file_src_translator_html.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::operator<<(std::ostream&, HTML::TagStack const&)

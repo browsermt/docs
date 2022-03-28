@@ -1,0 +1,13 @@
+.. _exhale_function_byte__array__util_8cpp_1a765d72b8a59a480e11ebf649af13e9a9:
+
+Function marian::bergamot::loadFileToMemory
+===========================================
+
+- Defined in :ref:`file_src_translator_byte_array_util.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::loadFileToMemory(const std::string&, size_t)

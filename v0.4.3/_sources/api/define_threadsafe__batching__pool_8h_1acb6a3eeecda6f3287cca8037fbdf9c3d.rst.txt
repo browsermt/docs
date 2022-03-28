@@ -1,0 +1,13 @@
+.. _exhale_define_threadsafe__batching__pool_8h_1acb6a3eeecda6f3287cca8037fbdf9c3d:
+
+Define SRC_BERGAMOT_THREADSAFE_BATCHING_POOL_IMPL
+=================================================
+
+- Defined in :ref:`file_src_translator_threadsafe_batching_pool.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: SRC_BERGAMOT_THREADSAFE_BATCHING_POOL_IMPL

@@ -1,0 +1,13 @@
+.. _exhale_function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632:
+
+Function marian::bergamot::validateBinaryModel
+==============================================
+
+- Defined in :ref:`file_src_translator_byte_array_util.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::validateBinaryModel(const AlignedMemory&, uint64_t)

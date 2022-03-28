@@ -1,0 +1,13 @@
+.. _exhale_function_byte__array__util_8cpp_1aabe4ff9d24b6052f29cf6e70a2a49da2:
+
+Function marian::bergamot::getVocabsMemoryFromConfig
+====================================================
+
+- Defined in :ref:`file_src_translator_byte_array_util.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::getVocabsMemoryFromConfig(marian::Ptr<marian::Options>, std::vector<std::shared_ptr<AlignedMemory>>&)

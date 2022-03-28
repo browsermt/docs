@@ -1,0 +1,61 @@
+
+.. _file_src_translator_html.cpp:
+
+File html.cpp
+=============
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/html.cpp``)
+----------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_html.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``algorithm``
+
+- ``html.h`` (:ref:`file_src_translator_html.h`)
+
+- ``response.h`` (:ref:`file_src_translator_response.h`)
+
+- ``translator/definitions.h`` (:ref:`file_src_translator_definitions.h`)
+
+- ``xh_scanner.h`` (:ref:`file_src_translator_xh_scanner.h`)
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian__bergamot`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_html_8cpp_1a90be5fddaf86ee1c2f02eb695bb2cb46`
+
+- :ref:`exhale_function_html_8cpp_1ae52ad7db185889701520ffea1ce74d37`
+

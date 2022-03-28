@@ -1,0 +1,13 @@
+.. _exhale_function_parser_8cpp_1a738c33453a147aebfc5308faad463651:
+
+Function marian::bergamot::parseOptionsFromFilePath
+===================================================
+
+- Defined in :ref:`file_src_translator_parser.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::parseOptionsFromFilePath(const std::string&, bool)

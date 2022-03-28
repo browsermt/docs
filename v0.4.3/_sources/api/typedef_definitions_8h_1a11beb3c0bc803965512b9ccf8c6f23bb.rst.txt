@@ -1,0 +1,13 @@
+.. _exhale_typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb:
+
+Typedef marian::bergamot::Segments
+==================================
+
+- Defined in :ref:`file_src_translator_definitions.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: marian::bergamot::Segments

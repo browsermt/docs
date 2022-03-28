@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File parser.cpp &mdash; Bergamot Translator v0.4.3 2022-03-28 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/api/program_listing_file_src_translator_parser.cpp.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.3
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Program Listing for File parser.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_src_translator_parser.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-parser-cpp">
+<span id="program-listing-file-src-translator-parser-cpp"></span><h1>Program Listing for File parser.cpp<a class="headerlink" href="#program-listing-for-file-parser-cpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_translator_parser.cpp.html#file-src-translator-parser-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/translator/parser.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;parser.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/build_info.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/config.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/regex.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/version.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseOptionsFromFilePath</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">configPath</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">validate</span><span class="w"> </span><span class="cm">/*= true*/</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Read entire string and redirect to parseOptionsFromString</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="nf">readStream</span><span class="p">(</span><span class="n">configPath</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">buffer</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">readStream</span><span class="p">.</span><span class="n">rdbuf</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">parseOptionsFromString</span><span class="p">(</span><span class="n">buffer</span><span class="p">.</span><span class="n">str</span><span class="p">(),</span><span class="w"> </span><span class="n">validate</span><span class="p">,</span><span class="w"> </span><span class="cm">/*pathsInSameDirAs=*/</span><span class="n">configPath</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseOptionsFromString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">configAsString</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">validate</span><span class="w"> </span><span class="cm">/*= true*/</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                                        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">pathsInSameDirAs</span><span class="w"> </span><span class="cm">/*=&quot;&quot;*/</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="w"> </span><span class="n">options</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">marian</span><span class="o">::</span><span class="n">ConfigParser</span><span class="w"> </span><span class="nf">configParser</span><span class="p">(</span><span class="n">cli</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">translation</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// These are additional options we use to hijack for our own marian-replacement layer (for batching,</span>
+<span class="w">  </span><span class="c1">// multi-request-compile etc) and hence goes into Ptr&lt;Options&gt;.</span>
+<span class="w">  </span><span class="n">configParser</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--max-length-break&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                 </span><span class="s">&quot;Maximum input tokens to be processed in a single sentence.&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// The following is a complete hijack of an existing option, so no need to add explicitly.</span>
+<span class="w">  </span><span class="c1">// configParser.addOption&lt;size_t&gt;(&quot;--mini-batch-words&quot;, &quot;Bergamot Options&quot;,</span>
+<span class="w">  </span><span class="c1">//                                &quot;Maximum input tokens to be processed in a single sentence.&quot;, 1024);</span>
+
+<span class="w">  </span><span class="n">configParser</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--ssplit-prefix-file&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                      </span><span class="s">&quot;File with nonbreaking prefixes for sentence splitting.&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">configParser</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--ssplit-mode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[paragraph, sentence, wrapped_text]&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                      </span><span class="s">&quot;paragraph&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">configParser</span><span class="p">.</span><span class="n">addOption</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;--quality&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bergamot Options&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;File considering Quality Estimation model&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Parse configs onto defaultConfig. The preliminary merge sets the YAML internal representation with legal values.</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">YAML</span><span class="o">::</span><span class="n">Node</span><span class="w"> </span><span class="o">&amp;</span><span class="n">defaultConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configParser</span><span class="p">.</span><span class="n">getConfig</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">options</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">defaultConfig</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">options</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">configAsString</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// This is in a marian `.cpp` as of now, and requires explicit copy-here.</span>
+<span class="w">  </span><span class="c1">// https://github.com/marian-nmt/marian-dev/blob/9fa166be885b025711f27b35453e0f2c00c9933e/src/common/config_parser.cpp#L28</span>
+
+<span class="w">  </span><span class="c1">// clang-format off</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">PATHS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;model&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;models&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;train-sets&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;vocabs&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;embedding-vectors&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;valid-sets&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;valid-script-path&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;valid-script-args&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;valid-log&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;valid-translation-output&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;input&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1">// except: &#39;stdin&#39;, handled in makeAbsolutePaths and interpolateEnvVars</span>
+<span class="w">      </span><span class="s">&quot;output&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// except: &#39;stdout&#39;, handled in makeAbsolutePaths and interpolateEnvVars</span>
+<span class="w">      </span><span class="s">&quot;pretrained-model&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;data-weighting&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;log&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;sqlite&quot;</span><span class="p">,</span><span class="w">     </span><span class="c1">// except: &#39;temporary&#39;, handled in the processPaths function</span>
+<span class="w">      </span><span class="s">&quot;shortlist&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// except: only the first element in the sequence is a path, handled in the</span>
+<span class="w">                    </span><span class="c1">//  processPaths function</span>
+<span class="w">      </span><span class="s">&quot;ssplit-prefix-file&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// added for bergamot</span>
+<span class="w">      </span><span class="s">&quot;quality&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// added for bergamot</span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// clang-format on</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pathsInSameDirAs</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">YAML</span><span class="o">::</span><span class="n">Node</span><span class="w"> </span><span class="n">configYAML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options</span><span class="p">.</span><span class="n">cloneToYamlNode</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">marian</span><span class="o">::</span><span class="n">cli</span><span class="o">::</span><span class="n">makeAbsolutePaths</span><span class="p">(</span><span class="n">configYAML</span><span class="p">,</span><span class="w"> </span><span class="n">pathsInSameDirAs</span><span class="p">,</span><span class="w"> </span><span class="n">PATHS</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">options</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">configYAML</span><span class="p">,</span><span class="w"> </span><span class="cm">/*overwrite=*/</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Perform validation on parsed options only when requested</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">validate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">YAML</span><span class="o">::</span><span class="n">Node</span><span class="w"> </span><span class="n">configYAML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options</span><span class="p">.</span><span class="n">cloneToYamlNode</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">marian</span><span class="o">::</span><span class="n">ConfigValidator</span><span class="w"> </span><span class="nf">validator</span><span class="p">(</span><span class="n">configYAML</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">validator</span><span class="p">.</span><span class="n">validateOptions</span><span class="p">(</span><span class="n">marian</span><span class="o">::</span><span class="n">cli</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">translation</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File text_processor.cpp &mdash; Bergamot Translator v0.4.3 2022-03-28 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/api/program_listing_file_src_translator_text_processor.cpp.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.3
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Program Listing for File text_processor.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_src_translator_text_processor.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-text-processor-cpp">
+<span id="program-listing-file-src-translator-text-processor-cpp"></span><h1>Program Listing for File text_processor.cpp<a class="headerlink" href="#program-listing-for-file-text-processor-cpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_translator_text_processor.cpp.html#file-src-translator-text-processor-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/translator/text_processor.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;text_processor.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;annotation.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/cli_helper.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/options.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;definitions.h&quot;</span><span class="cp"></span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="n">ug</span><span class="o">::</span><span class="n">ssplit</span><span class="o">::</span><span class="n">SentenceStream</span><span class="o">::</span><span class="n">splitmode</span><span class="w"> </span><span class="nf">string2splitmode</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">typedef</span><span class="w"> </span><span class="n">ug</span><span class="o">::</span><span class="n">ssplit</span><span class="o">::</span><span class="n">SentenceStream</span><span class="o">::</span><span class="n">splitmode</span><span class="w"> </span><span class="n">splitmode</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;sentence&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">splitmode</span><span class="o">::</span><span class="n">one_sentence_per_line</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;paragraph&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">splitmode</span><span class="o">::</span><span class="n">one_paragraph_per_line</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;wrapped_text&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">splitmode</span><span class="o">::</span><span class="n">wrapped_text</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ABORT</span><span class="p">(</span><span class="s">&quot;Unknown ssplitmode {}, Please choose one of {sentence,paragraph,wrapped_text}&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">ug</span><span class="o">::</span><span class="n">ssplit</span><span class="o">::</span><span class="n">SentenceSplitter</span><span class="w"> </span><span class="nf">loadSplitter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ssplitPrefixFile</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Temporarily supports empty, will be removed when mozilla passes ssplitPrefixFile</span>
+<span class="w">  </span><span class="n">ug</span><span class="o">::</span><span class="n">ssplit</span><span class="o">::</span><span class="n">SentenceSplitter</span><span class="w"> </span><span class="n">splitter</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ssplitPrefixFile</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">interpSsplitPrefixFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">marian</span><span class="o">::</span><span class="n">cli</span><span class="o">::</span><span class="n">interpolateEnvVars</span><span class="p">(</span><span class="n">ssplitPrefixFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Loading protected prefixes for sentence splitting from {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">interpSsplitPrefixFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">splitter</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">interpSsplitPrefixFile</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">LOG</span><span class="p">(</span><span class="n">warn</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;Missing list of protected prefixes for sentence splitting. &quot;</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;Set with --ssplit-prefix-file.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">splitter</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">ug</span><span class="o">::</span><span class="n">ssplit</span><span class="o">::</span><span class="n">SentenceSplitter</span><span class="w"> </span><span class="nf">loadSplitter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">AlignedMemory</span><span class="w"> </span><span class="o">&amp;</span><span class="n">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Temporarily supports empty, will be removed when mozilla passes memory</span>
+<span class="w">  </span><span class="n">ug</span><span class="o">::</span><span class="n">ssplit</span><span class="o">::</span><span class="n">SentenceSplitter</span><span class="w"> </span><span class="n">splitter</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">memory</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">serialized</span><span class="p">(</span><span class="n">memory</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">memory</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">splitter</span><span class="p">.</span><span class="n">loadFromSerialized</span><span class="p">(</span><span class="n">serialized</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">splitter</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace</span>
+
+<span class="n">Segment</span><span class="w"> </span><span class="n">TextProcessor</span><span class="o">::</span><span class="n">tokenize</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">string_view</span><span class="w"> </span><span class="o">&amp;</span><span class="n">segment</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string_view</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">wordRanges</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// vocabs_-&gt;sources().front() is invoked as we currently only support one source vocab</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">sources</span><span class="p">().</span><span class="n">front</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">encodeWithByteRanges</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">,</span><span class="w"> </span><span class="cm">/*addEOS=*/</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="cm">/*inference=*/</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">TextProcessor</span><span class="o">::</span><span class="n">TextProcessor</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vocabs</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vocabs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ssplit_prefix_file</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">(</span><span class="n">vocabs</span><span class="p">),</span><span class="w"> </span><span class="n">ssplit_</span><span class="p">(</span><span class="n">loadSplitter</span><span class="p">(</span><span class="n">ssplit_prefix_file</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">parseCommonOptions</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">TextProcessor</span><span class="o">::</span><span class="n">TextProcessor</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vocabs</span><span class="w"> </span><span class="o">&amp;</span><span class="n">vocabs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">AlignedMemory</span><span class="w"> </span><span class="o">&amp;</span><span class="n">memory</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">(</span><span class="n">vocabs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// This is not the best of the solutions at the moment, but is consistent with what happens among other structures</span>
+<span class="w">  </span><span class="c1">// like model, vocabulary or shortlist. First, we check if the bytearray is empty. If not, we load from ByteArray. In</span>
+<span class="w">  </span><span class="c1">// case empty, the string based loader which reads from file is called. However, ssplit allows for not supplying</span>
+<span class="w">  </span><span class="c1">// ssplit-prefix-file where-in the purely regular expression based splitter is activated.</span>
+<span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="c1">// For now, we allow not supplying an ssplit-prefix-file.</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">memory</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">memory</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ssplit_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadSplitter</span><span class="p">(</span><span class="n">memory</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ssplit_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadSplitter</span><span class="p">(</span><span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ssplit-prefix-file&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">parseCommonOptions</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">TextProcessor</span><span class="o">::</span><span class="n">parseCommonOptions</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">maxLengthBreak_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;max-length-break&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ssplitMode_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string2splitmode</span><span class="p">(</span><span class="n">options</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ssplit-mode&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">TextProcessor</span><span class="o">::</span><span class="n">process</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">Segments</span><span class="w"> </span><span class="o">&amp;</span><span class="n">segments</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">AnnotatedText</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">)));</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="nf">input_converted</span><span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">sentenceStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ug</span><span class="o">::</span><span class="n">ssplit</span><span class="o">::</span><span class="n">SentenceStream</span><span class="p">(</span><span class="n">input_converted</span><span class="p">,</span><span class="w"> </span><span class="n">ssplit_</span><span class="p">,</span><span class="w"> </span><span class="n">ssplitMode_</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">sentenceStringPiece</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">sentenceStream</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">sentenceStringPiece</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">marian</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="nf">sentence</span><span class="p">(</span><span class="n">sentenceStringPiece</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">sentenceStringPiece</span><span class="p">.</span><span class="n">size</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string_view</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Segment</span><span class="w"> </span><span class="n">segment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// There are some cases where SentencePiece or vocab returns no words</span>
+<span class="w">    </span><span class="c1">// after normalization. 0 prevents any empty entries from being added.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">segment</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Wrap segment into sentences of at most maxLengthBreak_ tokens and</span>
+<span class="w">      </span><span class="c1">// tell source about them.</span>
+<span class="w">      </span><span class="n">wrap</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">,</span><span class="w"> </span><span class="n">segments</span><span class="p">,</span><span class="w"> </span><span class="n">source</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">TextProcessor</span><span class="o">::</span><span class="n">wrap</span><span class="p">(</span><span class="n">Segment</span><span class="w"> </span><span class="o">&amp;</span><span class="n">segment</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string_view</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">wordRanges</span><span class="p">,</span><span class="w"> </span><span class="n">Segments</span><span class="w"> </span><span class="o">&amp;</span><span class="n">segments</span><span class="p">,</span><span class="w"></span>
+<span class="w">                         </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">source</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// There&#39;s an EOS token added to the words, manually. SentencePiece/marian-vocab is set to not append EOS. Marian</span>
+<span class="w">  </span><span class="c1">// requires EOS to be at the end as a marker to start translating. So while we&#39;re supplied maxLengthBreak_ from</span>
+<span class="w">  </span><span class="c1">// outside, we need to ensure there&#39;s space for EOS in each wrapped segment.</span>
+<span class="w">  </span><span class="n">Word</span><span class="w"> </span><span class="n">sourceEosId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">sources</span><span class="p">().</span><span class="n">front</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">getEosId</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">wrapStep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maxLengthBreak_</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">segment</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">wrapStep</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">segment</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Restrict the range within bounds.</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">segment</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">wrapStep</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">segments</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">diff</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">segments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">push_back</span><span class="p">(</span><span class="n">sourceEosId</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">astart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Construct a part vector of string_view representing wrapped segment, use the last string_view to create an EOS</span>
+<span class="w">    </span><span class="c1">// string_view manually.</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string_view</span><span class="o">&gt;</span><span class="w"> </span><span class="n">partWordRanges</span><span class="p">(</span><span class="n">astart</span><span class="p">,</span><span class="w"> </span><span class="n">astart</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">diff</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">string_view</span><span class="w"> </span><span class="o">&amp;</span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">partWordRanges</span><span class="p">.</span><span class="n">back</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last</span><span class="p">.</span><span class="n">data</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">last</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">partWordRanges</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// diff &gt; 0</span>
+<span class="w">    </span><span class="n">source</span><span class="p">.</span><span class="n">recordExistingSentence</span><span class="p">(</span><span class="n">partWordRanges</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">partWordRanges</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">astart</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">TextProcessor</span><span class="o">::</span><span class="n">processFromAnnotation</span><span class="p">(</span><span class="n">AnnotatedText</span><span class="w"> </span><span class="o">&amp;</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">Segments</span><span class="w"> </span><span class="o">&amp;</span><span class="n">segments</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">copySource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">text</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="nf">replacement</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">copySource</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">numSentences</span><span class="p">();</span><span class="w"> </span><span class="n">s</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// This is our sentenceStream</span>
+<span class="w">    </span><span class="n">ByteRange</span><span class="w"> </span><span class="n">sentenceByteRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">sentenceAsByteRange</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Fool tokenization using ByteRanges into looking at replacement. They&#39;re same, so okay.</span>
+<span class="w">    </span><span class="n">marian</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">sentence</span><span class="p">{</span><span class="o">&amp;</span><span class="n">replacement</span><span class="p">.</span><span class="n">text</span><span class="p">[</span><span class="n">sentenceByteRange</span><span class="p">.</span><span class="n">begin</span><span class="p">],</span><span class="w"> </span><span class="n">sentenceByteRange</span><span class="p">.</span><span class="n">size</span><span class="p">()};</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string_view</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Segment</span><span class="w"> </span><span class="n">segment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Manually add EoS</span>
+<span class="w">    </span><span class="n">Word</span><span class="w"> </span><span class="n">sourceEosId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">sources</span><span class="p">().</span><span class="n">front</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">getEosId</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">segment</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">sourceEosId</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">wordRanges</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">string_view</span><span class="w"> </span><span class="o">&amp;</span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">.</span><span class="n">back</span><span class="p">();</span><span class="w">  </span><span class="c1">// this is a possible segfault if wordRanges is empty. So guard.</span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last</span><span class="p">.</span><span class="n">data</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">last</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">wordRanges</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sentence</span><span class="p">.</span><span class="n">data</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sentence</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">wordRanges</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">segments</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">segment</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">replacement</span><span class="p">.</span><span class="n">recordExistingSentence</span><span class="p">(</span><span class="n">wordRanges</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">replacement</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

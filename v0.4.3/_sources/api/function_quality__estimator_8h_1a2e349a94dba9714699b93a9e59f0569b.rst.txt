@@ -1,0 +1,13 @@
+.. _exhale_function_quality__estimator_8h_1a2e349a94dba9714699b93a9e59f0569b:
+
+Function marian::bergamot::createQualityEstimator
+=================================================
+
+- Defined in :ref:`file_src_translator_quality_estimator.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::createQualityEstimator(const AlignedMemory&)

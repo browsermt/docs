@@ -1,0 +1,13 @@
+.. _exhale_variable_byte__array__util_8cpp_1a7b287ccec8d40672f6dcb9eda4a3e7ed:
+
+Variable shapeLength
+====================
+
+- Defined in :ref:`file_src_translator_byte_array_util.cpp`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: shapeLength
