@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File response_builder.cpp &mdash; Bergamot Translator main 2022-04-20 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File response_builder.cpp &mdash; Bergamot Translator main 2022-04-28 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -122,7 +122,7 @@
 <span class="w">    </span><span class="n">vocabs_</span><span class="p">.</span><span class="n">target</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">decodeWithByteRanges</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="w"> </span><span class="n">decoded</span><span class="p">,</span><span class="w"> </span><span class="n">targetSentenceMappings</span><span class="p">,</span><span class="w"> </span><span class="cm">/*ignoreEOS=*/</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">responseOptions_</span><span class="p">.</span><span class="n">concatStrategy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">ConcatStrategy</span><span class="o">::</span><span class="n">FAITHFUL</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">ConcatStrategy</span><span class="o">::</span><span class="no">FAITHFUL</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="c1">// For each sentence, prepend the filler text between the corresponding</span>
 <span class="w">        </span><span class="c1">// source-sentence and the source-sentence before.</span>
 <span class="w">        </span><span class="n">string_view</span><span class="w"> </span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">source</span><span class="p">.</span><span class="n">gap</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">);</span><span class="w"></span>
@@ -136,7 +136,7 @@
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="n">ConcatStrategy</span><span class="o">::</span><span class="n">SPACE</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="no">ConcatStrategy</span><span class="o">::</span><span class="no">SPACE</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">string_view</span><span class="w"> </span><span class="n">delimiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">sentenceIdx</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="n">response</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">appendSentence</span><span class="p">(</span><span class="n">delimiter</span><span class="p">,</span><span class="w"> </span><span class="n">targetSentenceMappings</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">targetSentenceMappings</span><span class="p">.</span><span class="n">end</span><span class="p">());</span><span class="w"></span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File xh_scanner.cpp &mdash; Bergamot Translator main 2022-04-20 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File xh_scanner.cpp &mdash; Bergamot Translator main 2022-04-28 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -141,19 +141,19 @@
 <span class="w">  </span><span class="n">start_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">TT_EOF</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">scanTag</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&amp;&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&amp;&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">scanEntity</span><span class="p">(</span><span class="n">TT_TEXT</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="o">:</span><span class="w"></span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="o">:</span><span class="w"></span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&amp;&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&amp;&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TT_TEXT</span><span class="p">;</span><span class="w"></span>
 <span class="w">      </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
 <span class="w">        </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
@@ -183,7 +183,7 @@
 
 <span class="w">  </span><span class="c1">// Find end of tag name</span>
 <span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">      </span><span class="c1">// Treat some elements as opaque, e.g. &lt;script&gt;, &lt;style&gt;</span>
@@ -199,7 +199,7 @@
 <span class="w">        </span><span class="n">scanFun_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanBody</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">scanBody</span><span class="p">();</span><span class="w"></span>
 <span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="c1">// self closing tag</span>
@@ -217,11 +217,11 @@
 <span class="w">  </span><span class="c1">// attribute name...</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;=&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TT_EOF</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ATTRIBUTE</span><span class="p">;</span><span class="w">  </span><span class="c1">// attribute without value (HTML style) at end of tag</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ERROR</span><span class="p">;</span><span class="w"></span>
 <span class="w">      </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">skipWhitespace</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -244,8 +244,8 @@
 
 <span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">quote</span><span class="p">;</span><span class="w">  </span><span class="c1">// Either &#39;&quot;&#39; or &#39;\&#39;&#39; depending on which quote we&#39;re searching for</span>
 <span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&quot;&#39;</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\&#39;&#39;</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&quot;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\&#39;&#39;</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="n">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
 <span class="w">      </span><span class="n">value_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
 <span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
