@@ -1,0 +1,58 @@
+
+.. _file_src_translator_text_processor.cpp:
+
+File text_processor.cpp
+=======================
+
+|exhale_lsh| :ref:`Parent directory <dir_src_translator>` (``src/translator``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``src/translator/text_processor.cpp``)
+--------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_src_translator_text_processor.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``annotation.h`` (:ref:`file_src_translator_annotation.h`)
+
+- ``common/cli_helper.h``
+
+- ``common/options.h``
+
+- ``data/types.h``
+
+- ``definitions.h`` (:ref:`file_src_translator_definitions.h`)
+
+- ``text_processor.h`` (:ref:`file_src_translator_text_processor.h`)
+
+- ``vector``
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian`
+
+- :ref:`namespace_marian__bergamot`
+

@@ -1,0 +1,13 @@
+.. _exhale_typedef_cache_8h_1af0d71292fc13be4ee7e56a040ef51c6d:
+
+Typedef marian::bergamot::TranslationCache
+==========================================
+
+- Defined in :ref:`file_src_translator_cache.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: marian::bergamot::TranslationCache

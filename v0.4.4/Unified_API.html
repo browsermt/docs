@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unified (C++) API of Bergamot Translator &mdash; Bergamot Translator v0.4.4 2022-04-28 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/Unified_API.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.4
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Unified (C++) API of Bergamot Translator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Unified_API.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="unified-c-api-of-bergamot-translator">
+<h1>Unified (C++) API of Bergamot Translator<a class="headerlink" href="#unified-c-api-of-bergamot-translator" title="Permalink to this headline">¶</a></h1>
+<p>/* A Translation model interface for translating a plain utf-8 encoded text (without any markups and emojis). The model supports translation from 1 source language to 1 target language. There can be different implementations of this interface. */</p>
+<p>class <strong>AbstractTranslationModel</strong> {</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+
+<span class="n">AbstractTranslationModel</span><span class="p">();</span><span class="w"></span>
+
+<span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">AbstractTranslationModel</span><span class="p">()</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+
+<span class="cm">/* This method performs translation on a list of (utf-8) texts and returns a list of results in the same order. Each text entry can either be a word, a phrase, a sentence or a list of sentences and should contain plain text (without any markups or emojis). Additional information related to the translated text can be requested via TranslationRequest which is applied equally to each text entry. The translated text corresponding to each text entry and the additional information (as specified in the TranslationRequest) is encapsulated and returned in TranslationResult.</span>
+<span class="cm">The API splits each text entry into sentences internally, which are then translated independent of each other. The translated sentences are then joined together and returned in TranslationResult.</span>
+<span class="cm">Please refer to the TranslationRequest class to find out what additional information can be requested. The alignment information can only be requested if the model supports it (check isAlignmentSupported() API).</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">TranslationResult</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">translate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">texts</span><span class="p">,</span><span class="w"> </span><span class="n">TranslationRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* Check if the model can provide alignment information b/w original and translated text. */</span><span class="w"></span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isAlignmentSupported</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>}</p>
+<p>/* This class specifies the additional information related to the translated text (e.g. quality of the translation etc.) that can be requested to be included in the TranslationResult. These optional requests are set/unset independent of each other i.e. setting any one of them doesn’t have the side effect of setting any of the others. */</p>
+<p>class <strong>TranslationRequest</strong> {</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+
+<span class="c1">// Optional request. The granularity for which Quality scores of the translated text will be included in TranslationResult. By default (QualityScoreGranularity::NONE), scores are not included.</span>
+<span class="n">QualityScoreGranularity</span><span class="w"> </span><span class="n">qualityScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QualityScoreGranularity</span><span class="o">::</span><span class="n">NONE</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Optional request. The type of the alignment b/w original and translated text that will be included in TranslationResult. By default (AlignmentType::NONE), alignment is not included.</span>
+<span class="n">AlignmentType</span><span class="w"> </span><span class="n">alignmentType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AlignmentType</span><span class="o">::</span><span class="n">NONE</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Optional request. A true/false value will include/exclude the original text in the TranslationResult. By default (false), the original text is not included.</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">includeOriginalText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Optional request. A true/false value will include/exclude the information regarding how individual sentences of original text map to corresponding translated sentences in joined translated text in the TranslationResult. By default (false), this information is not included.</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">includeSentenceMapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+
+<span class="k">explicit</span><span class="w"> </span><span class="n">TranslationRequest</span><span class="p">();</span><span class="w"></span>
+
+<span class="o">~</span><span class="n">TranslationRequest</span><span class="p">();</span><span class="w"></span>
+
+<span class="cm">/* Set the granularity for which the Quality scores of translated text should be included in the TranslationResult. By default (QualityScoreGranularity::NONE), scores are not included. */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setQualityScoreGranularity</span><span class="p">(</span><span class="n">QualityScoreGranularity</span><span class="w"> </span><span class="n">granularity</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* Set the type of Alignment b/w original and translated text to be included in the TranslationResult. By default (AlignmentType::NONE), alignment is not included. */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setAlignmentType</span><span class="p">(</span><span class="n">AlignmentType</span><span class="w"> </span><span class="n">alignmentType</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* Set to true/false to include/exclude the original text in the TranslationResult. By default (false), the original text is not included. */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">includeOriginalText</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">originalText</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* Set to true/false to include/exclude the information regarding how individual sentences of original text map to corresponding translated sentences in joined translated text in the TranslationResult. By default (false), this information is not included. */</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">includeSentenceMapping</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">sentenceMapping</span><span class="p">);</span><span class="w"></span>
+
+<span class="cm">/* Return the granularity for which the Quality scores of the translated text will be included in TranslationResult. QualityScoreGranularity::NONE means the scores will not be included. */</span><span class="w"></span>
+<span class="n">QualityScoreGranularity</span><span class="w"> </span><span class="nf">getQualityScoreGranularity</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* Return the type of Alignment b/w original and translated text that should be included in the TranslationResult. AlignmentType::NONE means the alignment will not be included. */</span><span class="w"></span>
+<span class="n">AlignmentType</span><span class="w"> </span><span class="nf">getAlignmentType</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* Return whether the original text should be included in the TranslationResult. False means the original text will not be included. */</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">includeOriginalText</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* Return whether the information regarding how individual sentences of original text map to corresponding translated sentences in joined translated text should be included in the TranslationResult. False means this information will not be included. */</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">includeSentenceMapping</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>}</p>
+<p>/* This class represents the result of translation on a TranslationRequest. */</p>
+<p>class <strong>TranslationResult</strong> {</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+
+<span class="c1">// Original text (utf-8) that was supposed to be translated; An optional result (it will be an empty string if not requested in TranslationRequest).</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">originalText</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Translation (in utf-8 format) of the originalText</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">translatedText</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Quality score of the translated text at the granularity specified in TranslationRequest; An optional result (it will have no information if not requested in TranslationRequest)</span>
+<span class="n">QualityScore</span><span class="w"> </span><span class="n">qualityScore</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Alignment information b/w original and translated text for AlignmentType specified in TranslationRequest; An optional result (it will have no information if not requested in TranslationRequest)</span>
+<span class="n">Alignment</span><span class="w"> </span><span class="n">alignment</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Information regarding how individual sentences of originalText map to corresponding translated sentences</span>
+<span class="w">    </span><span class="c1">// in joined translated text (translatedText); An optional result (it will be empty if not requested in TranslationRequest);</span>
+<span class="w">    </span><span class="c1">//       An example:</span>
+<span class="w">    </span><span class="c1">//       originalText (contains 2 sentences)              = &quot;What is your name? My name is Abc.&quot;</span>
+<span class="w">    </span><span class="c1">//       translatedText (contains 2 translated sentences) = &quot;Was ist dein Name? Mein Name ist Abc.&quot;</span>
+<span class="w">    </span><span class="c1">//       sentenceMappings = [</span>
+<span class="w">    </span><span class="c1">//                   {&quot;What is your name?&quot;, &quot;Was ist dein Name?&quot;},  // A pair of Sentence 1 of originalText (originalText[0]) and corresponding translated sentence in translatedText (translatedText[0])</span>
+<span class="w">    </span><span class="c1">//                   {&quot;My name is Abc&quot;, &quot;Mein Name ist Abc.&quot;}       // A pair of Sentence 2 of originalText (originalText[1]) and corresponding translated sentence in translatedText (translatedText[1])</span>
+<span class="w">    </span><span class="c1">//                 ]</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">sentenceMappings</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="c1">// ToDo: Public Methods</span>
+</pre></div>
+</div>
+<p>}</p>
+<p>/* This class encapsulates the configuration that is required by a translation model to perform translation. This configuration includes a path to the model file, source language vocabulary file, target language vocabulary file along with other options. */</p>
+<p>class <strong>TranslationModelConfiguration</strong> {</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+
+<span class="c1">// Path to the translation model file</span>
+<span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">modelPath</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Path to the source vocabulary file to be used by the model</span>
+<span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sourceLanguageVocabPath</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Path to the target vocabulary file to be used by the model	</span>
+<span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">targetLanguageVocabPath</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// ToDo: Add all possible user configurable options (e.g. min batch size, max batch size) that are relevant for translation</span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+
+<span class="c1">// Provide the path to the model file along with the source and target vocabulary files</span>
+<span class="n">TranslationModelConfiguration</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">modelFilePath</span><span class="p">,</span><span class="w"></span>
+<span class="w">				</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">sourceVocabPath</span><span class="p">,</span><span class="w"></span>
+<span class="w">				</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">targetVocabPath</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Return the path of the model file</span>
+<span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">getModelFilePath</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Return the path of the source language vocabulary file</span>
+<span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">getSourceVocabularyPath</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Return the path of the target language vocabulary file</span>
+<span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">getSourceVocabularyPath</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>}</p>
+<p>// All possible granularities for which Quality Scores can be returned for translated (utf-8) text</p>
+<p>enum class QualityScoreGranularity {</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">WORD</span><span class="p">,</span><span class="w"></span>
+<span class="n">SENTENCE</span><span class="p">,</span><span class="w"></span>
+<span class="n">NONE</span><span class="p">,</span><span class="w"></span>
+</pre></div>
+</div>
+<p>}</p>
+<p>// All possible supported alignment types between a text and its translation</p>
+<p>enum class AlignmentType {</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SOFT</span><span class="p">,</span><span class="w"></span>
+<span class="n">NONE</span><span class="p">,</span><span class="w"></span>
+</pre></div>
+</div>
+<p>}</p>
+<p>// This class represents the Quality Scores for various spans of the translated text at a specific granularity</p>
+<p>class QualityScore {</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+
+<span class="c1">// Sections of a text for the Quality Scores</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;</span><span class="w"> </span><span class="n">textViews</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Quality Scores corresponding to each section of the text in textViews in the same order</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">textScores</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Granularity of the text for the Quality scores above</span>
+<span class="n">QualityScoreGranularity</span><span class="w"> </span><span class="n">textGranularity</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="c1">// ToDo: Public Methods</span>
+</pre></div>
+</div>
+<p>}</p>
+<p>// This class encapsulates a translated text, all the sections of the original text that align to this translated text and the corresponding alignments for each of these sections of original text.</p>
+<p>class Alignment {</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// A list of sections of a translated text</span>
+<span class="w">    </span><span class="c1">// An example: originalText   = &quot;What do you need&quot;</span>
+<span class="w">    </span><span class="c1">//             translatedText = &quot;Was brauchst du&quot;</span>
+<span class="w">    </span><span class="c1">//             translatedTextViews = [&quot;Was &quot;, &quot;brauchst&quot;, &quot;du&quot;]</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;</span><span class="w"> </span><span class="n">translatedTextViews</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Each ith entry of this container corresponds to a list of all the sections of the original text that align to the ith entry of translatedTextView</span>
+<span class="w">    </span><span class="c1">// For the example above:</span>
+<span class="w">    </span><span class="c1">//             translatedTextViews = [&quot;Was &quot;, &quot;brauchst&quot;, &quot;du&quot;]</span>
+<span class="w">    </span><span class="c1">//             originalTextViews   = [</span>
+<span class="w">    </span><span class="c1">//                                      [&quot;What&quot;],         // originalTextViews[0] = All sections of original text that align with translatedTextViews[0] i.e. &quot;Was&quot;</span>
+<span class="w">    </span><span class="c1">//                                      [&quot;you&quot;, &quot;need&quot;],  // originalTextViews[1] = All sections of original text that align with translatedTextViews[1] i.e. &quot;brauchst&quot;</span>
+<span class="w">    </span><span class="c1">//                                      [&quot;you&quot;]           // originalTextViews[2] = All sections of original text that align with translatedTextViews[2] i.e. &quot;du&quot;</span>
+<span class="w">    </span><span class="c1">//                                   ]</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">originalTextViews</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Each ith entry of this container corresponds to the alignments of all the sections of the original text (ith entry of originalTextViews) that align to the ith entry of translatedTextViews</span>
+<span class="w">    </span><span class="c1">// For the example above:</span>
+<span class="w">    </span><span class="c1">//             alignments          = [</span>
+<span class="w">    </span><span class="c1">//                                      [0.90],         // alignments[0] = Alignments of all sections of original text (i.e. originalTextViews[0]) to translatedTextViews[0] i.e. &quot;Was&quot;</span>
+<span class="w">    </span><span class="c1">//                                      [0.3, 0.7],     // alignments[1] = Alignments of all sections of original text (i.e. originalTextViews[1]) to translatedTextViews[1] i.e. &quot;brauchst&quot;</span>
+<span class="w">    </span><span class="c1">//                                      [0.9]           // alignments[2] = Alignments of all sections of original text (i.e. originalTextViews[2]) to translatedTextViews[2] i.e. &quot;du&quot;</span>
+<span class="w">    </span><span class="c1">//                                   ]</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">alignments</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Type of the alignment b/w original and translated text above</span>
+<span class="n">AlignmentType</span><span class="w"> </span><span class="n">alignmentType</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="c1">// ToDo: Public Methods</span>
+</pre></div>
+</div>
+<p>}</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

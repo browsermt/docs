@@ -1,0 +1,13 @@
+.. _exhale_function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80:
+
+Function marian::bergamot::readFromStdin
+========================================
+
+- Defined in :ref:`file_src_translator_utils.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::readFromStdin()

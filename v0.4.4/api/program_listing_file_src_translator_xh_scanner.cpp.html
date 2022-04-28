@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File xh_scanner.cpp &mdash; Bergamot Translator v0.4.4 2022-04-28 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/api/program_listing_file_src_translator_xh_scanner.cpp.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.4
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Program Listing for File xh_scanner.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_src_translator_xh_scanner.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-xh-scanner-cpp">
+<span id="program-listing-file-src-translator-xh-scanner-cpp"></span><h1>Program Listing for File xh_scanner.cpp<a class="headerlink" href="#program-listing-for-file-xh-scanner-cpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_src_translator_xh_scanner.cpp.html#file-src-translator-xh-scanner-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">src/translator/xh_scanner.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// https://www.codeproject.com/Articles/14076/Fast-and-Compact-HTML-XML-Scanner-Tokenizer</span>
+<span class="c1">// BSD license</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;xh_scanner.h&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cassert&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cctype&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstring&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="c1">// Simple replacement for string_view.ends_with(compile-time C string)</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Char_t</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">Len</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endsWith</span><span class="p">(</span><span class="n">markup</span><span class="o">::</span><span class="n">string_ref</span><span class="w"> </span><span class="o">&amp;</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Char_t</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">suffix</span><span class="p">)[</span><span class="n">Len</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">Len</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">memcmp</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="n">suffix</span><span class="p">,</span><span class="w"> </span><span class="n">Len</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">lhs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">rhs</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// cast to unsigned char otherwise std::tolower has undefined behaviour</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">tolower</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">tolower</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">rhs</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// Alias for the above, but with compile-time known C string</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">size_t</span><span class="w"> </span><span class="n">Len</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="n">markup</span><span class="o">::</span><span class="n">string_ref</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lhs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">rhs</span><span class="p">)[</span><span class="n">Len</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">lhs</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Len</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span><span class="p">,</span><span class="w"> </span><span class="n">Len</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Char_t</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">Len</span><span class="o">&gt;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="n">markup</span><span class="o">::</span><span class="n">string_ref</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Char_t</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="n">str2</span><span class="p">)[</span><span class="n">Len</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Len</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">memcmp</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">str2</span><span class="p">,</span><span class="w"> </span><span class="n">Len</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">size_t</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span><span class="w"></span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="cm">/*unused*/</span><span class="p">)[</span><span class="n">N</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// end namespace</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">markup</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="c1">// case sensitive string equality test</span>
+<span class="c1">// s_lowcase shall be lowercase string</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="nf">Scanner::value</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="p">(</span><span class="n">value_</span><span class="p">.</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="nf">Scanner::attribute</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="p">(</span><span class="n">attributeName_</span><span class="p">.</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">attributeName_</span><span class="p">.</span><span class="n">size</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="nf">Scanner::tag</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="p">(</span><span class="n">tagName_</span><span class="p">.</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">tagName_</span><span class="p">.</span><span class="n">size</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="n">Scanner</span><span class="o">::</span><span class="n">TokenType</span><span class="w"> </span><span class="nf">Scanner::scanBody</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">value_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">start_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">TT_EOF</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">scanTag</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&amp;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">scanEntity</span><span class="p">(</span><span class="n">TT_TEXT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&amp;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TT_TEXT</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="o">++</span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// Consumes one or closing bit of a tag:</span>
+<span class="c1">//   &lt;tag attr=&quot;value&quot;&gt;...&lt;/tag&gt;</span>
+<span class="c1">//       |------------|</span>
+<span class="c1">// Followed by:</span>
+<span class="c1">// - scanSpecial if &lt;script&gt; or &lt;style&gt;</span>
+<span class="c1">// - scanBody</span>
+<span class="c1">// - another scan_head for the next attribute or end of open tag</span>
+<span class="c1">// Returns:</span>
+<span class="c1">// - TT_ATTRIBUTE if attribute is read</span>
+<span class="c1">// - TT_TAG_END if self-closing tag</span>
+<span class="c1">// - TT_ERROR if wrong character encountered</span>
+<span class="c1">// - TT_EOF if unexpected end of input (will not return TT_ATTRIBUTE if attribute value wasn&#39;t finished yet)</span>
+<span class="c1">// - TT_TAG_END through scanSpecial</span>
+<span class="c1">// - TT_TEXT through scanBody</span>
+<span class="n">Scanner</span><span class="o">::</span><span class="n">TokenType</span><span class="w"> </span><span class="nf">Scanner::scanAttribute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Skip all whitespace between tag name or last attribute and next attribute or &#39;&gt;&#39;</span>
+<span class="w">  </span><span class="n">skipWhitespace</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Find end of tag name</span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1">// Treat some elements as opaque, e.g. &lt;script&gt;, &lt;style&gt;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="cm">/*equalsCaseInsensitive(tagName_, &quot;title&quot;) ||*/</span><span class="w"> </span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="n">tagName_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;script&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
+<span class="w">          </span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="n">tagName_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;style&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="n">tagName_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;textarea&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
+<span class="w">          </span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="n">tagName_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;iframe&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="n">tagName_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;noembed&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
+<span class="w">          </span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="n">tagName_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;noscript&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="n">tagName_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;noframes&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// script is special because we want to parse the attributes,</span>
+<span class="w">        </span><span class="c1">// but not the content</span>
+<span class="w">        </span><span class="n">scanFun_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanSpecial</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">scanSpecial</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">scanFun_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanBody</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">scanBody</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// self closing tag</span>
+<span class="w">        </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">scanFun_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanBody</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TT_TAG_END</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ERROR</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">attributeName_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="n">value_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// attribute name...</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;=&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TT_EOF</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ATTRIBUTE</span><span class="p">;</span><span class="w">  </span><span class="c1">// attribute without value (HTML style) at end of tag</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ERROR</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">skipWhitespace</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;=&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ATTRIBUTE</span><span class="p">;</span><span class="w">  </span><span class="c1">// attribute without value (HTML style) but not yet at end of tag</span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="o">++</span><span class="n">attributeName_</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// consume &#39;=&#39; and any following whitespace</span>
+<span class="w">  </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">skipWhitespace</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// attribute value...</span>
+
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">quote</span><span class="p">;</span><span class="w">  </span><span class="c1">// Either &#39;&quot;&#39; or &#39;\&#39;&#39; depending on which quote we&#39;re searching for</span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;&quot;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\&#39;&#39;</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ERROR</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">quote</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ATTRIBUTE</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">          </span><span class="o">++</span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isWhitespace</span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ATTRIBUTE</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ATTRIBUTE</span><span class="p">;</span><span class="w">  </span><span class="c1">// &#39;&gt;&#39; will be consumed next round</span>
+<span class="w">        </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="o">++</span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// How did we end up here?!</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ERROR</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// scans tag name of open or closing tag</span>
+<span class="c1">//   &lt;tag attr=&quot;value&quot;&gt;...&lt;/tag&gt;</span>
+<span class="c1">//   |--|                 |----|</span>
+<span class="c1">// Emits:</span>
+<span class="c1">// - TT_TAG_START if tag head is read</span>
+<span class="c1">// - TT_COMMENT_START</span>
+<span class="c1">// - TT_PROCESSING_INSTRUCTION_START</span>
+<span class="c1">// - TT_CDATA_START</span>
+<span class="c1">// - TT_ENTITY_START</span>
+<span class="c1">// - TT_ERROR if unexpected character or end</span>
+<span class="n">Scanner</span><span class="o">::</span><span class="n">TokenType</span><span class="w"> </span><span class="nf">Scanner::scanTag</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">start_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ERROR</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">isTail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isTail</span><span class="p">)</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">tagName_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">skipWhitespace</span><span class="p">())</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="o">++</span><span class="n">tagName_</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Note: these tests are executed at every char, thus eager.</span>
+<span class="w">    </span><span class="c1">// &quot;&lt;?xml&quot; will match on `tagName_ == &quot;?&quot;`.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tagName_</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;!--&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">scanFun_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanComment</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">TT_COMMENT_START</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tagName_</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">scanFun_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanProcessingInstruction</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">TT_PROCESSING_INSTRUCTION_START</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">TT_EOF</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isTail</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">TT_TAG_END</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">TT_ERROR</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">scanFun_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanAttribute</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">TT_TAG_START</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">Scanner</span><span class="o">::</span><span class="n">TokenType</span><span class="w"> </span><span class="nf">Scanner::scanEntity</span><span class="p">(</span><span class="n">TokenType</span><span class="w"> </span><span class="n">parentTokenType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// `entity` includes starting &#39;&amp;&#39; and ending &#39;;&#39;</span>
+<span class="w">  </span><span class="n">start_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">string_ref</span><span class="w"> </span><span class="n">entity</span><span class="p">{</span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;&amp;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">TT_ERROR</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">++</span><span class="n">entity</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w">  </span><span class="c1">// Account for the consumed &#39;&amp;&#39;</span>
+
+<span class="w">  </span><span class="c1">// Consume the entity</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;;&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="o">++</span><span class="n">entity</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">hasEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isalpha</span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">hasEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="o">++</span><span class="n">entity</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// If we can decode the entity, do so</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hasEnd</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">resolveEntity</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span><span class="w"> </span><span class="n">value_</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">parentTokenType</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Otherwise, just yield the whole thing undecoded, interpret it as text</span>
+<span class="w">  </span><span class="n">value_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">entity</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">parentTokenType</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">Scanner::resolveEntity</span><span class="p">(</span><span class="n">string_ref</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">string_ref</span><span class="w"> </span><span class="o">&amp;</span><span class="n">decoded</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">lt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;&lt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">gt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">amp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;&amp;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">quot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;&quot;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">apos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;\&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">nbsp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&amp;lt;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&amp;gt;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&amp;amp;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&amp;quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="o">&amp;</span><span class="n">quot</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&amp;apos;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="o">&amp;</span><span class="n">apos</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&amp;nbsp;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="o">&amp;</span><span class="n">nbsp</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w">  </span><span class="c1">// TODO: handle non-breaking spaces better than just converting them to spaces</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// skip whitespaces.</span>
+<span class="c1">// returns how many whitespaces were skipped</span>
+<span class="kt">size_t</span><span class="w"> </span><span class="nf">Scanner::skipWhitespace</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">skipped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">isWhitespace</span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">peek</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="o">++</span><span class="n">skipped</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">skipped</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">Scanner::isWhitespace</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;\t&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;\r&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;\f&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">Scanner</span><span class="o">::</span><span class="n">TokenType</span><span class="w"> </span><span class="nf">Scanner::scanComment</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gotTail_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">start_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="s">&quot;--&gt;&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// minus &quot;--&gt;&quot;</span>
+<span class="w">    </span><span class="n">scanFun_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanBody</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">gotTail_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">TT_COMMENT_END</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">start_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">value_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">TT_EOF</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">++</span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">endsWith</span><span class="p">(</span><span class="n">value_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--&gt;&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">gotTail_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="s">&quot;--&gt;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">TT_DATA</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">Scanner</span><span class="o">::</span><span class="n">TokenType</span><span class="w"> </span><span class="nf">Scanner::scanProcessingInstruction</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gotTail_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">start_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="s">&quot;?&gt;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanFun_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanBody</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">gotTail_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">TT_PROCESSING_INSTRUCTION_END</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">start_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">value_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">TT_EOF</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">++</span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">endsWith</span><span class="p">(</span><span class="n">value_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;?&gt;&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">gotTail_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="s">&quot;?&gt;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">TT_DATA</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="n">Scanner</span><span class="o">::</span><span class="n">TokenType</span><span class="w"> </span><span class="nf">Scanner::scanSpecial</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gotTail_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">start_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">tagName_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="s">&quot;&lt;/&gt;&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">scanFun_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Scanner</span><span class="o">::</span><span class="n">scanBody</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">gotTail_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">TT_TAG_END</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">start_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">value_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">string_ref</span><span class="p">{</span><span class="n">input_</span><span class="p">.</span><span class="n">pos</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_</span><span class="p">.</span><span class="n">consume</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">TT_EOF</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="o">++</span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Test for &lt;/tag&gt;</span>
+<span class="w">    </span><span class="c1">// TODO: no whitespaces allowed? Is that okay?</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value_</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;&gt;&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">tagName_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="s">&quot;&lt;/&gt;&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Test for the &quot;&lt;/&quot;&quot; bit of &quot;&lt;/tag&gt;&quot;</span>
+<span class="w">      </span><span class="kt">size_t</span><span class="w"> </span><span class="n">posTagStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tagName_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="s">&quot;&lt;/&gt;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memcmp</span><span class="p">(</span><span class="n">value_</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">posTagStart</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="s">&quot;&lt;/&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1">// Test for the &quot;tag&quot; bit of &quot;&lt;/tag&gt;&quot;. Doing case insensitive compare because &lt;I&gt;...&lt;/i&gt; is okay.</span>
+<span class="w">      </span><span class="kt">size_t</span><span class="w"> </span><span class="n">posTagName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tagName_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="s">&quot;&gt;&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// end - tag&gt;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">equalsCaseInsensitive</span><span class="p">(</span><span class="n">value_</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">posTagName</span><span class="p">,</span><span class="w"> </span><span class="n">tagName_</span><span class="p">.</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">tagName_</span><span class="p">.</span><span class="n">size</span><span class="p">))</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">gotTail_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">tagName_</span><span class="p">.</span><span class="n">size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="s">&quot;&lt;/&gt;&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">TT_DATA</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w">  </span><span class="c1">// namespace markup</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

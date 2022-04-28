@@ -1,0 +1,16 @@
+.. _exhale_class_classmarian_1_1bergamot_1_1ResponseBuilder:
+
+Class ResponseBuilder
+=====================
+
+- Defined in :ref:`file_src_translator_response_builder.h`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: marian::bergamot::ResponseBuilder
+   :members:
+   :protected-members:
+   :undoc-members:

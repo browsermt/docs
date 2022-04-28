@@ -1,0 +1,13 @@
+.. _exhale_function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f:
+
+Function marian::bergamot::remapAlignments
+==========================================
+
+- Defined in :ref:`file_src_translator_response.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::remapAlignments(const Response&, const Response&)

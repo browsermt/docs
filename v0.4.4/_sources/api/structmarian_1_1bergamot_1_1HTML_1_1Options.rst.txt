@@ -1,0 +1,22 @@
+.. _exhale_struct_structmarian_1_1bergamot_1_1HTML_1_1Options:
+
+Struct HTML::Options
+====================
+
+- Defined in :ref:`file_src_translator_html.h`
+
+
+Nested Relationships
+--------------------
+
+This struct is a nested type of :ref:`exhale_class_classmarian_1_1bergamot_1_1HTML`.
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: marian::bergamot::HTML::Options
+   :members:
+   :protected-members:
+   :undoc-members:

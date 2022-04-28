@@ -1,0 +1,22 @@
+.. _exhale_struct_structmarian_1_1bergamot_1_1AtomicCache_1_1Stats:
+
+Struct AtomicCache::Stats
+=========================
+
+- Defined in :ref:`file_src_translator_cache.h`
+
+
+Nested Relationships
+--------------------
+
+This struct is a nested type of :ref:`exhale_class_classmarian_1_1bergamot_1_1AtomicCache`.
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: marian::bergamot::AtomicCache::Stats
+   :members:
+   :protected-members:
+   :undoc-members:

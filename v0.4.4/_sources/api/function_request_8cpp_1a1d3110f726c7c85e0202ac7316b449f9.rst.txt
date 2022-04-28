@@ -1,0 +1,13 @@
+.. _exhale_function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9:
+
+Function marian::bergamot::operator<
+====================================
+
+- Defined in :ref:`file_src_translator_request.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::operator<(const RequestSentence&, const RequestSentence&)
