@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Request &mdash; Bergamot Translator v0.4.5 2022-06-21 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/api/classmarian_1_1bergamot_1_1Request.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Class RequestSentence" href="classmarian_1_1bergamot_1_1RequestSentence.html" />
+    <link rel="prev" title="Class QualityEstimator" href="classmarian_1_1bergamot_1_1QualityEstimator.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.5
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wasm-example.html">Using Bergamot Translator in JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="library_index.html">Library API</a> &raquo;</li>
+      <li>Class Request</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/classmarian_1_1bergamot_1_1Request.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="class-request">
+<span id="exhale-class-classmarian-1-1bergamot-1-1request"></span><h1>Class Request<a class="headerlink" href="#class-request" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_src_translator_request.h.html#file-src-translator-request-h"><span class="std std-ref">File request.h</span></a></p></li>
+</ul>
+<section id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv4N6marian8bergamot7RequestE">
+<span id="_CPPv3N6marian8bergamot7RequestE"></span><span id="_CPPv2N6marian8bergamot7RequestE"></span><span id="marian::bergamot::Request"></span><span class="target" id="classmarian_1_1bergamot_1_1Request"></span><em class="property">class </em><code class="sig-name descname">Request</code><a class="headerlink" href="#_CPPv4N6marian8bergamot7RequestE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A <a class="reference internal" href="#classmarian_1_1bergamot_1_1Request"><span class="std std-ref">Request</span></a> is an internal representation used to represent a request after processed by <a class="reference internal" href="classmarian_1_1bergamot_1_1TextProcessor.html#classmarian_1_1bergamot_1_1TextProcessor"><span class="std std-ref">TextProcessor</span></a> into sentences constituted by marian::Words. </p>
+<p>The batching mechanism (<a class="reference internal" href="classmarian_1_1bergamot_1_1BatchingPool.html#classmarian_1_1bergamot_1_1BatchingPool"><span class="std std-ref">BatchingPool</span></a>) draws from multiple Requests and compiles sentences into a batch. When a batch completes translation (at BatchTranslator, intended in a different thread), backward propogation happens through:</p>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Batch</span><span class="o">::</span><span class="n">completeBatch</span><span class="p">(...)</span><span class="w"></span>
+<span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">RequestSentence</span><span class="o">::</span><span class="n">completeSentence</span><span class="p">(..)</span><span class="w"></span>
+<span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Request</span><span class="o">::</span><span class="n">processHistory</span><span class="p">(...)</span><span class="w"></span>
+</pre></div>
+</div>
+</p>
+<p>When all sentences in a <a class="reference internal" href="#classmarian_1_1bergamot_1_1Request"><span class="std std-ref">Request</span></a> are completed, responseBuilder is triggered with the compiled Histories, to construct the <a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#structmarian_1_1bergamot_1_1Response"><span class="std std-ref">Response</span></a> corresponding to the <a class="reference internal" href="#classmarian_1_1bergamot_1_1Request"><span class="std std-ref">Request</span></a> and set value of the promise which triggers the future at client. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv4N6marian8bergamot7Request7RequestE6size_tRK16TranslationModelRR8SegmentsRR15ResponseBuilderRNSt8optionalI16TranslationCacheEE">
+<span id="_CPPv3N6marian8bergamot7Request7RequestE6size_tRK16TranslationModelRR8SegmentsRR15ResponseBuilderRNSt8optionalI16TranslationCacheEE"></span><span id="_CPPv2N6marian8bergamot7Request7RequestE6size_tRK16TranslationModelRR8SegmentsRR15ResponseBuilderRNSt8optionalI16TranslationCacheEE"></span><span id="marian::bergamot::Request::Request__s.TranslationModelCR.SegmentsRR.ResponseBuilderRR.std::optional:TranslationCache:R"></span><span class="target" id="classmarian_1_1bergamot_1_1Request_1a9433dc9ce0629af4c2e56bcd383c3ed6"></span><code class="sig-name descname">Request</code><span class="sig-paren">(</span>size_t <em>Id</em>, <em class="property">const</em> <a class="reference internal" href="classmarian_1_1bergamot_1_1TranslationModel.html#_CPPv4N6marian8bergamot16TranslationModelE" title="marian::bergamot::TranslationModel">TranslationModel</a> &amp;<em>model</em>, <a class="reference internal" href="typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb.html#_CPPv4N6marian8bergamot8SegmentsE" title="marian::bergamot::Segments">Segments</a> &amp;&amp;<em>segments</em>, <a class="reference internal" href="classmarian_1_1bergamot_1_1ResponseBuilder.html#_CPPv4N6marian8bergamot15ResponseBuilderE" title="marian::bergamot::ResponseBuilder">ResponseBuilder</a> &amp;&amp;<em>responseBuilder</em>, std::optional&lt;<a class="reference internal" href="typedef_cache_8h_1af0d71292fc13be4ee7e56a040ef51c6d.html#_CPPv4N6marian8bergamot16TranslationCacheE" title="marian::bergamot::TranslationCache">TranslationCache</a>&gt; &amp;<em>cache</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot7Request7RequestE6size_tRK16TranslationModelRR8SegmentsRR15ResponseBuilderRNSt8optionalI16TranslationCacheEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructs an internal representation of the <a class="reference internal" href="#classmarian_1_1bergamot_1_1Request"><span class="std std-ref">Request</span></a> identified by Id, processed Segments and accepts a callback (<a class="reference internal" href="classmarian_1_1bergamot_1_1ResponseBuilder.html#classmarian_1_1bergamot_1_1ResponseBuilder"><span class="std std-ref">ResponseBuilder</span></a>) which builds the <a class="reference internal" href="structmarian_1_1bergamot_1_1Response.html#structmarian_1_1bergamot_1_1Response"><span class="std std-ref">Response</span></a> upon completion of the <a class="reference internal" href="#classmarian_1_1bergamot_1_1Request"><span class="std std-ref">Request</span></a>. </p>
+<p><dl class="simple">
+<dt><strong>Parameters</strong></dt><dd><ul class="breatheparameterlist simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">Id</span></code>: Identifier assigned to <a class="reference internal" href="#classmarian_1_1bergamot_1_1Request"><span class="std std-ref">Request</span></a> by Service. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">model</span></code>: <a class="reference internal" href="classmarian_1_1bergamot_1_1TranslationModel.html#classmarian_1_1bergamot_1_1TranslationModel"><span class="std std-ref">TranslationModel</span></a> for identifying a unique translation unit key (model, words in a sentence) for cache. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">segments</span></code>: Each segment is a unit to be translated. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">responseBuilder</span></code>: Callback function (of <a class="reference internal" href="classmarian_1_1bergamot_1_1ResponseBuilder.html#classmarian_1_1bergamot_1_1ResponseBuilder"><span class="std std-ref">ResponseBuilder</span></a> type) to be triggered upon the completion of translation of all units in a <a class="reference internal" href="#classmarian_1_1bergamot_1_1Request"><span class="std std-ref">Request</span></a>. </p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[in]</span> <span class="pre">cache</span></code>: Cache supplied externally to attempt to fetch translations or store them after completion for reuse later. </p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot7Request13segmentTokensE6size_t">
+<span id="_CPPv3NK6marian8bergamot7Request13segmentTokensE6size_t"></span><span id="_CPPv2NK6marian8bergamot7Request13segmentTokensE6size_t"></span><span id="marian::bergamot::Request::segmentTokens__sC"></span><span class="target" id="classmarian_1_1bergamot_1_1Request_1ad9a264fd8c8e246a1922f4791f18876a"></span>size_t <code class="sig-name descname">segmentTokens</code><span class="sig-paren">(</span>size_t <em>index</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot7Request13segmentTokensE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Obtain the count of tokens in the segment correponding to index. </p>
+<p>Used to insert sentence from multiple requests into the corresponding size bucket. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot7Request11numSegmentsEv">
+<span id="_CPPv3NK6marian8bergamot7Request11numSegmentsEv"></span><span id="_CPPv2NK6marian8bergamot7Request11numSegmentsEv"></span><span id="marian::bergamot::Request::numSegmentsC"></span><span class="target" id="classmarian_1_1bergamot_1_1Request_1a0db04153372287e9bbe506bc62b118be"></span>size_t <code class="sig-name descname">numSegments</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot7Request11numSegmentsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Obtain number of segments in a request. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot7Request10getSegmentE6size_t">
+<span id="_CPPv3NK6marian8bergamot7Request10getSegmentE6size_t"></span><span id="_CPPv2NK6marian8bergamot7Request10getSegmentE6size_t"></span><span id="marian::bergamot::Request::getSegment__sC"></span><span class="target" id="classmarian_1_1bergamot_1_1Request_1a2fba1d45f36f85db86006e68ea501c95"></span><a class="reference internal" href="typedef_definitions_8h_1ad0a7527b1fbf64cfc20eaa76134785ef.html#_CPPv4N6marian8bergamot7SegmentE" title="marian::bergamot::Segment">Segment</a> <code class="sig-name descname">getSegment</code><span class="sig-paren">(</span>size_t <em>index</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot7Request10getSegmentE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Obtains segment corresponding to index to create a batch of segments among several requests. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot7RequestltERK7Request">
+<span id="_CPPv3NK6marian8bergamot7RequestltERK7Request"></span><span id="_CPPv2NK6marian8bergamot7RequestltERK7Request"></span><span id="marian::bergamot::Request::lt-operator__RequestCRC"></span><span class="target" id="classmarian_1_1bergamot_1_1Request_1a25e6d49b0315a9182413df349a5f948a"></span>bool <code class="sig-name descname">operator&lt;</code><span class="sig-paren">(</span><em class="property">const</em> <a class="reference internal" href="#_CPPv4N6marian8bergamot7RequestE" title="marian::bergamot::Request">Request</a> &amp;<em>request</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot7RequestltERK7Request" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For notions of priority among requests, used to enable std::set in <a class="reference internal" href="classmarian_1_1bergamot_1_1BatchingPool.html#classmarian_1_1bergamot_1_1BatchingPool"><span class="std std-ref">BatchingPool</span></a>. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4N6marian8bergamot7Request14processHistoryE6size_t3PtrI7HistoryE">
+<span id="_CPPv3N6marian8bergamot7Request14processHistoryE6size_t3PtrI7HistoryE"></span><span id="_CPPv2N6marian8bergamot7Request14processHistoryE6size_t3PtrI7HistoryE"></span><span id="marian::bergamot::Request::processHistory__s.Ptr:History:"></span><span class="target" id="classmarian_1_1bergamot_1_1Request_1aa4839d615a6c3790bb913e04faa18480"></span>void <code class="sig-name descname">processHistory</code><span class="sig-paren">(</span>size_t <em>index</em>, Ptr&lt;History&gt; <em>history</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6marian8bergamot7Request14processHistoryE6size_t3PtrI7HistoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Processes a history obtained after translating in a heterogenous batch compiled from requests. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv4NK6marian8bergamot7Request17cacheHitPrefilledE6size_t">
+<span id="_CPPv3NK6marian8bergamot7Request17cacheHitPrefilledE6size_t"></span><span id="_CPPv2NK6marian8bergamot7Request17cacheHitPrefilledE6size_t"></span><span id="marian::bergamot::Request::cacheHitPrefilled__sC"></span><span class="target" id="classmarian_1_1bergamot_1_1Request_1a78253f117c87fe0feb020469fce6d281"></span>bool <code class="sig-name descname">cacheHitPrefilled</code><span class="sig-paren">(</span>size_t <em>index</em><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv4NK6marian8bergamot7Request17cacheHitPrefilledE6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="classmarian_1_1bergamot_1_1QualityEstimator.html" class="btn btn-neutral float-left" title="Class QualityEstimator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="classmarian_1_1bergamot_1_1RequestSentence.html" class="btn btn-neutral float-right" title="Class RequestSentence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

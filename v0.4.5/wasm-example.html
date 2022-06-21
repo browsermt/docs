@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator v0.4.5 2022-06-21 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
+    <link rel="canonical" href="https://browser.mt/docs/wasm-example.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Library API" href="api/library_index.html" />
+    <link rel="prev" title="Bergamot C++ Library" href="marian-integration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bergamot Translator
+          </a>
+              <div class="version">
+                v0.4.5
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="marian-integration.html">Bergamot C++ Library</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Bergamot Translator in JavaScript</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-js-apis">Using JS APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demo">Demo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/library_index.html">Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bergamot Translator</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Using Bergamot Translator in JavaScript</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/wasm-example.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-bergamot-translator-in-javascript">
+<h1>Using Bergamot Translator in JavaScript<a class="headerlink" href="#using-bergamot-translator-in-javascript" title="Permalink to this headline">¶</a></h1>
+<p>All the instructions below are meant to run from the current directory.</p>
+<section id="using-js-apis">
+<h2>Using JS APIs<a class="headerlink" href="#using-js-apis" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to the file <code class="docutils literal notranslate"><span class="pre">test_page/js/worker.js</span></code> that demonstrates how to use the bergamot translator in JavaScript via a <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tag.</p>
+</section>
+<section id="demo">
+<h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Download bergamot model files required for translation</p>
+<p>Use following instructions to download <a class="reference external" href="https://github.com/mozilla/firefox-translations-models/">model files</a> (make sure that <code class="docutils literal notranslate"><span class="pre">git-lfs</span></code> is installed and initialized before running these instructions):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test_page
+git clone --depth <span class="m">1</span> --branch main --single-branch https://github.com/mozilla/firefox-translations-models/
+mkdir models
+cp -rf firefox-translations-models/registry.json models
+cp -rf firefox-translations-models/models/prod/* models
+cp -rf firefox-translations-models/models/dev/* models
+gunzip models/*/*
+</pre></div>
+</div>
+</li>
+<li><p>Start the test webserver (ensure you have the latest nodejs installed)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test_page
+bash start_server.sh ../../build-wasm
+</pre></div>
+</div>
+<p>Provide the folder containing the wasm artifacts as the first argument of <code class="docutils literal notranslate"><span class="pre">start_server.sh</span></code> script (<code class="docutils literal notranslate"><span class="pre">../../build-wasm</span></code> in this case).</p>
+</li>
+<li><p>Open any of the browsers below</p>
+<ul>
+<li><p>Firefox Nightly +87: make sure the following prefs are on (about:config)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">dom</span><span class="p">.</span><span class="n">postMessage</span><span class="p">.</span><span class="n">sharedArrayBuffer</span><span class="p">.</span><span class="n">bypassCOOP_COEP</span><span class="p">.</span><span class="n">insecure</span><span class="p">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd_wormhole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>Chrome Canary +90: start with the following argument</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">js</span><span class="o">-</span><span class="n">flags</span><span class="o">=</span><span class="s">&quot;--experimental-wasm-simd&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Browse to the following page:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">http</span><span class="p">:</span><span class="c1">//localhost:80</span>
+</pre></div>
+</div>
+</li>
+<li><p>Perform translations:</p>
+<ul class="simple">
+<li><p>Choose the source and target languages using <code class="docutils literal notranslate"><span class="pre">From</span></code> and <code class="docutils literal notranslate"><span class="pre">To</span></code> dropdowns.</p></li>
+<li><p>Type a sentence to be translated in the <code class="docutils literal notranslate"><span class="pre">From</span></code> textbox.</p></li>
+<li><p>See the result in the <code class="docutils literal notranslate"><span class="pre">To</span></code> textbox.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="marian-integration.html" class="btn btn-neutral float-left" title="Bergamot C++ Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api/library_index.html" class="btn btn-neutral float-right" title="Library API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022 Bergamot Translator Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

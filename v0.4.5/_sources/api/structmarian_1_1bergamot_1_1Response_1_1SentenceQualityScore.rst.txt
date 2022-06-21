@@ -1,0 +1,22 @@
+.. _exhale_struct_structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore:
+
+Struct Response::SentenceQualityScore
+=====================================
+
+- Defined in :ref:`file_src_translator_response.h`
+
+
+Nested Relationships
+--------------------
+
+This struct is a nested type of :ref:`exhale_struct_structmarian_1_1bergamot_1_1Response`.
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: marian::bergamot::Response::SentenceQualityScore
+   :members:
+   :protected-members:
+   :undoc-members:

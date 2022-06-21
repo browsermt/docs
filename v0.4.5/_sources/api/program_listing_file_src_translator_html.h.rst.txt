@@ -1,0 +1,119 @@
+
+.. _program_listing_file_src_translator_html.h:
+
+Program Listing for File html.h
+===============================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_src_translator_html.h>` (``src/translator/html.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #ifndef SRC_BERGAMOT_HTML_H_
+   #define SRC_BERGAMOT_HTML_H_
+   
+   #include <forward_list>
+   #include <set>
+   #include <stdexcept>
+   #include <string>
+   #include <string_view>
+   
+   #include "annotation.h"
+   #include "data/types.h"
+   #include "definitions.h"
+   
+   namespace marian::bergamot {
+   
+   struct Response;
+   
+   class HTML {
+    public:
+     using TagNameSet = std::set<std::string, std::less<>>;
+   
+     struct Options {
+       TagNameSet voidTags{"area", "base",  "basefont", "bgsound", "br",   "col",   "embed",  "frame", "hr",
+                           "img",  "input", "keygen",   "link",    "meta", "param", "source", "track", "wbr"};
+   
+       TagNameSet inlineTags{"abbr",   "a", "b",    "em",    "i",    "kbd",    "mark", "math",
+                             "output", "q", "ruby", "small", "span", "strong", "sub",  "sup",
+                             "time",   "u", "var",  "wbr",   "ins",  "del",    "img"};
+   
+       TagNameSet inWordTags{"wbr"};
+   
+       TagNameSet ignoredTags{"code", "kbd", "samp", "var", "dir", "acronym", "math"};
+   
+       std::string continuationDelimiters = "\n ,.(){}[]";
+   
+       bool substituteInlineTagsWithSpaces = true;
+     };
+   
+     struct Tag {
+       enum NodeType {
+         ELEMENT,                 // <b>...</b>
+         VOID_ELEMENT,            // <img>
+         COMMENT,                 // <!-- ... -->
+         PROCESSING_INSTRUCTION,  // <?...?>
+         WHITESPACE,              // A \n\n we inserted to break a sentence.
+       };
+   
+       NodeType type;           // Type of the node
+       std::string name;        // Tag name (if type is ELEMENT or VOID_ELEMENT)
+       std::string attributes;  // Tag attributes (as raw HTML string, including
+                                // entities and prefix whitespace)
+       std::string data;        // Raw data of an element that just needs to be
+                                // copied as is, e.g. <script> or <style>
+     };
+   
+     using TagStack = std::vector<Tag *>;
+   
+     struct Span {
+       size_t begin;   // Start offset in (plain text) source
+       size_t end;     // end offset in source
+       TagStack tags;  // Note: free pointers to memory owned by `pool_`.
+       inline size_t size() const { return end - begin; }
+     };
+   
+     explicit HTML(std::string &&source, bool processMarkup) : HTML(std::move(source), processMarkup, HTML::Options{}){};
+     explicit HTML(std::string &&source, bool processMarkup, Options &&options);
+   
+     HTML(const HTML &) = delete;
+   
+     HTML(HTML &&) = default;
+   
+     void restore(Response &response);
+   
+    private:
+     using SpanIterator = std::vector<HTML::Span>::iterator;
+     using AnnotatedText = marian::bergamot::AnnotatedText;
+   
+     AnnotatedText restoreSource(AnnotatedText const &in, std::vector<SpanIterator> &sourceTokenSpans);
+   
+     AnnotatedText restoreTarget(AnnotatedText const &in, std::vector<SpanIterator> const &targetTokenSpans,
+                                 std::vector<HTML::TagStack> const &targetTokenTags);
+   
+     bool isContinuation(marian::string_view prev, marian::string_view str) const;
+     bool isContinuation(std::string_view prev, std::string_view str) const;
+   
+     void copyTagStack(Response const &response, std::vector<std::vector<size_t>> const &alignments,
+                       std::vector<HTML::SpanIterator> const &sourceTokenSpans,
+                       std::vector<HTML::SpanIterator> &targetTokenSpans);
+   
+     void annotateTagStack(Response const &response, std::vector<SpanIterator> const &targetTokenSpans,
+                           std::vector<HTML::TagStack> &targetTokenTags);
+   
+     void hardAlignments(Response const &response, std::vector<std::vector<size_t>> &alignments,
+                         std::vector<HTML::SpanIterator> const &sourceTokenSpans);
+   
+     Tag *makeTag(Tag &&tag);
+   
+     Options options_;
+   
+     std::vector<Span> spans_;
+   
+     std::forward_list<Tag> pool_;
+   };
+   
+   }  // namespace marian::bergamot
+   
+   #endif  // SRC_BERGAMOT_HTML_H_

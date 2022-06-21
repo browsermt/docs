@@ -1,0 +1,13 @@
+.. _exhale_enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1:
+
+Enum ConcatStrategy
+===================
+
+- Defined in :ref:`file_src_translator_response_options.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: marian::bergamot::ConcatStrategy

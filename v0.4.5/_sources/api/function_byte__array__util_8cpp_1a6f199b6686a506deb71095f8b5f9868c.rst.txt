@@ -1,0 +1,13 @@
+.. _exhale_function_byte__array__util_8cpp_1a6f199b6686a506deb71095f8b5f9868c:
+
+Function marian::bergamot::getMemoryBundleFromConfig
+====================================================
+
+- Defined in :ref:`file_src_translator_byte_array_util.cpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: marian::bergamot::getMemoryBundleFromConfig(marian::Ptr<marian::Options>)

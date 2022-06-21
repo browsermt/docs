@@ -1,0 +1,191 @@
+
+.. _namespace_marian__bergamot:
+
+Namespace marian::bergamot
+==========================
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_marian__bergamot__@27`
+
+- :ref:`namespace_marian__bergamot__@29`
+
+- :ref:`namespace_marian__bergamot__@9`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1AnnotatedText`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1AsyncService_1_1Config`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1AtomicCache_1_1Stats`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1BlockingService_1_1Config`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1ByteRange`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1CLIConfig`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1HashPtr`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1HTML_1_1Options`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1HTML_1_1Span`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1HTML_1_1Tag`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Logger_1_1Config`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Header`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Scale`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1MemoryBundle`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Response`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1Response_1_1SentenceQualityScore`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1ResponseOptions`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1SubwordRange`
+
+- :ref:`exhale_struct_structmarian_1_1bergamot_1_1TranslationModel_1_1MarianBackend`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1AggregateBatchingPool`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1AlignedVector`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1Annotation`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1AsyncService`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1AtomicCache`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1Batch`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1BatchingPool`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1BlockingService`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1ConfigParser`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1HTML`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1Logger`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1LogisticRegressorQualityEstimator_1_1Matrix`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1QualityEstimator`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1Request`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1RequestSentence`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1ResponseBuilder`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1TextProcessor`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1ThreadsafeBatchingPool`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1TranslationModel`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1UnsupervisedQualityEstimator`
+
+- :ref:`exhale_class_classmarian_1_1bergamot_1_1Vocabs`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_response__options_8h_1abcf43c7e41279b59addc6e93421433d1`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_quality__estimator_8h_1a2e349a94dba9714699b93a9e59f0569b`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a6f199b6686a506deb71095f8b5f9868c`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1ac17b7705d71079521a1e6db2059ada4f`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a276da62846e557d498b92ee9abc90aa0`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a42b492f8a1927d17d3a72774b53eebc2`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a03d0ea07c0548c3c9d9fa3b45e8eccc6`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a68022e0bdf301426d59e4dc3d89e0412`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1aabe4ff9d24b6052f29cf6e70a2a49da2`
+
+- :ref:`exhale_function_response_8cpp_1a560882b120cd47abb746c2d47a8afa97`
+
+- :ref:`exhale_function_request_8cpp_1aa21fdc42d329c96f15044743e44ef578`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1a765d72b8a59a480e11ebf649af13e9a9`
+
+- :ref:`exhale_function_quality__estimator_8cpp_1ae0fe7141602ec9ff239dbc66b3cb6157`
+
+- :ref:`exhale_function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9`
+
+- :ref:`exhale_function_html_8cpp_1a90be5fddaf86ee1c2f02eb695bb2cb46`
+
+- :ref:`exhale_function_html_8cpp_1ae52ad7db185889701520ffea1ce74d37`
+
+- :ref:`exhale_function_parser_8cpp_1a738c33453a147aebfc5308faad463651`
+
+- :ref:`exhale_function_parser_8cpp_1a5d169766c7451792220a52433b66d1f1`
+
+- :ref:`exhale_function_utils_8h_1a1bcc19e66e4958e8a8a87a120385fa80`
+
+- :ref:`exhale_function_response_8cpp_1a71be13a5d84dd23a3f93fbe14450445f`
+
+- :ref:`exhale_function_response_8cpp_1a75e40f0b6e39725d9d8d96cfd962bcf9`
+
+- :ref:`exhale_function_byte__array__util_8cpp_1aaa0f17032d86df7185b5fdf414a3d632`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_definitions_8h_1af7b499234642d2926f2e87d894f53f38`
+
+- :ref:`exhale_typedef_response_8h_1a4a80418bd6a17c47f979280fd15b6746`
+
+- :ref:`exhale_typedef_definitions_8h_1a20c7296c90578f5fc7284c337f6604cb`
+
+- :ref:`exhale_typedef_request_8h_1afc43a9f148490a4a5be3c8a3348d0a6b`
+
+- :ref:`exhale_typedef_definitions_8h_1ad0a7527b1fbf64cfc20eaa76134785ef`
+
+- :ref:`exhale_typedef_definitions_8h_1a11beb3c0bc803965512b9ccf8c6f23bb`
+
+- :ref:`exhale_typedef_cache_8h_1af0d71292fc13be4ee7e56a040ef51c6d`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_quality__estimator_8h_1af49a9a6babd182877c52e034c69a2d27`

@@ -1,0 +1,13 @@
+.. _exhale_typedef_request_8h_1afc43a9f148490a4a5be3c8a3348d0a6b:
+
+Typedef marian::bergamot::RequestSentences
+==========================================
+
+- Defined in :ref:`file_src_translator_request.h`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: marian::bergamot::RequestSentences
