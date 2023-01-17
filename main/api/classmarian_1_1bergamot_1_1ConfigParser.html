@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Template Class ConfigParser &mdash; Bergamot Translator main 2022-06-29 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Template Class ConfigParser &mdash; Bergamot Translator main 2023-01-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -67,9 +67,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library_index.html">Library API</a> &raquo;</li>
-      <li>Template Class ConfigParser</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="library_index.html">Library API</a></li>
+      <li class="breadcrumb-item active">Template Class ConfigParser</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/classmarian_1_1bergamot_1_1ConfigParser.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,9 +91,9 @@
 <span id="_CPPv3I0EN6marian8bergamot12ConfigParserE"></span><span id="_CPPv2I0EN6marian8bergamot12ConfigParserE"></span><span class="target" id="classmarian_1_1bergamot_1_1ConfigParser"></span>template&lt;class <code class="sig-name descname">Service</code>&gt;<br /><em class="property">class </em><code class="sig-name descname">ConfigParser</code><a class="headerlink" href="#_CPPv4I0EN6marian8bergamot12ConfigParserE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><a class="reference internal" href="#classmarian_1_1bergamot_1_1ConfigParser"><span class="std std-ref">ConfigParser</span></a> for bergamot. </p>
 <p>Internally stores config options with <a class="reference internal" href="structmarian_1_1bergamot_1_1CLIConfig.html#structmarian_1_1bergamot_1_1CLIConfig"><span class="std std-ref">CLIConfig</span></a>. CLI11 parsing binds the parsing code to write to the members of the <a class="reference internal" href="structmarian_1_1bergamot_1_1CLIConfig.html#structmarian_1_1bergamot_1_1CLIConfig"><span class="std std-ref">CLIConfig</span></a> instance owned by this class. Usage:</p>
-<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ConfigParser</span><span class="w"> </span><span class="n">configParser</span><span class="p">;</span><span class="w"></span>
-<span class="n">configParser</span><span class="p">.</span><span class="n">parseArgs</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configParser</span><span class="p">.</span><span class="n">getConfig</span><span class="p">();</span><span class="w"></span>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ConfigParser</span><span class="w"> </span><span class="n">configParser</span><span class="p">;</span>
+<span class="n">configParser</span><span class="p">.</span><span class="n">parseArgs</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configParser</span><span class="p">.</span><span class="n">getConfig</span><span class="p">();</span>
 </pre></div>
 </div>
  </p>

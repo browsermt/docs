@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File aggregate_batching_pool.h &mdash; Bergamot Translator main 2022-06-29 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File aggregate_batching_pool.h &mdash; Bergamot Translator main 2023-01-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -65,8 +65,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Program Listing for File aggregate_batching_pool.h</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File aggregate_batching_pool.h</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/program_listing_file_src_translator_aggregate_batching_pool.h.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,37 +82,37 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SRC_BERGAMOT_AGGREGATE_BATCHING_POOL_H_</span>
 <span class="cp">#define SRC_BERGAMOT_AGGREGATE_BATCHING_POOL_H_</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;queue&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;queue&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translation_model.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translation_model.h&quot;</span>
 
-<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span>
 
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">HashPtr</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">get</span><span class="p">());</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">hash</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">()(</span><span class="n">address</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">HashPtr</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">hash</span><span class="o">&lt;</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">()(</span><span class="n">address</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
 
 <span class="c1">//</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">AggregateBatchingPool</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">AggregateBatchingPool</span><span class="p">();</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AggregateBatchingPool</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="n">AggregateBatchingPool</span><span class="p">();</span>
 
-<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">enqueueRequest</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">enqueueRequest</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">Request</span><span class="o">&gt;</span><span class="w"> </span><span class="n">request</span><span class="p">);</span>
 
-<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">generateBatch</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">Batch</span><span class="o">&amp;</span><span class="w"> </span><span class="n">batch</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">generateBatch</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">Batch</span><span class="o">&amp;</span><span class="w"> </span><span class="n">batch</span><span class="p">);</span>
 
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">clear</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">clear</span><span class="p">();</span>
 
-<span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">HashPtr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">aggregateQueue_</span><span class="p">;</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w"> </span><span class="k">private</span><span class="o">:</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">HashPtr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">aggregateQueue_</span><span class="p">;</span>
+<span class="p">};</span>
 
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>

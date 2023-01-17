@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class Request &mdash; Bergamot Translator main 2022-06-29 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Class Request &mdash; Bergamot Translator main 2023-01-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -67,9 +67,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="library_index.html">Library API</a> &raquo;</li>
-      <li>Class Request</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="library_index.html">Library API</a></li>
+      <li class="breadcrumb-item active">Class Request</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/classmarian_1_1bergamot_1_1Request.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,9 +91,9 @@
 <span id="_CPPv3N6marian8bergamot7RequestE"></span><span id="_CPPv2N6marian8bergamot7RequestE"></span><span id="marian::bergamot::Request"></span><span class="target" id="classmarian_1_1bergamot_1_1Request"></span><em class="property">class </em><code class="sig-name descname">Request</code><a class="headerlink" href="#_CPPv4N6marian8bergamot7RequestE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A <a class="reference internal" href="#classmarian_1_1bergamot_1_1Request"><span class="std std-ref">Request</span></a> is an internal representation used to represent a request after processed by <a class="reference internal" href="classmarian_1_1bergamot_1_1TextProcessor.html#classmarian_1_1bergamot_1_1TextProcessor"><span class="std std-ref">TextProcessor</span></a> into sentences constituted by marian::Words. </p>
 <p>The batching mechanism (<a class="reference internal" href="classmarian_1_1bergamot_1_1BatchingPool.html#classmarian_1_1bergamot_1_1BatchingPool"><span class="std std-ref">BatchingPool</span></a>) draws from multiple Requests and compiles sentences into a batch. When a batch completes translation (at BatchTranslator, intended in a different thread), backward propogation happens through:</p>
-<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Batch</span><span class="o">::</span><span class="n">completeBatch</span><span class="p">(...)</span><span class="w"></span>
-<span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">RequestSentence</span><span class="o">::</span><span class="n">completeSentence</span><span class="p">(..)</span><span class="w"></span>
-<span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Request</span><span class="o">::</span><span class="n">processHistory</span><span class="p">(...)</span><span class="w"></span>
+<p><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Batch</span><span class="o">::</span><span class="n">completeBatch</span><span class="p">(...)</span>
+<span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">RequestSentence</span><span class="o">::</span><span class="n">completeSentence</span><span class="p">(..)</span>
+<span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Request</span><span class="o">::</span><span class="n">processHistory</span><span class="p">(...)</span>
 </pre></div>
 </div>
 </p>

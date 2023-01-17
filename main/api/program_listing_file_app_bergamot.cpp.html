@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File bergamot.cpp &mdash; Bergamot Translator main 2022-06-29 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File bergamot.cpp &mdash; Bergamot Translator main 2023-01-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -65,8 +65,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Program Listing for File bergamot.cpp</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File bergamot.cpp</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/program_listing_file_app_bergamot.cpp.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -79,47 +79,47 @@
   <section id="program-listing-for-file-bergamot-cpp">
 <span id="program-listing-file-app-bergamot-cpp"></span><h1>Program Listing for File bergamot.cpp<a class="headerlink" href="#program-listing-for-file-bergamot-cpp" title="Permalink to this headline">¶</a></h1>
 <p>↰ <a class="reference internal" href="file_app_bergamot.cpp.html#file-app-bergamot-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">app/bergamot.cpp</span></code>)</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/byte_array_util.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/parser.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/response.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/response_options.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/service.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/utils.h&quot;</span><span class="cp"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/byte_array_util.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/parser.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/response.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/response_options.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/service.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/utils.h&quot;</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="o">::</span><span class="nn">bergamot</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">ConfigParser</span><span class="o">&lt;</span><span class="n">AsyncService</span><span class="o">&gt;</span><span class="w"> </span><span class="n">configParser</span><span class="p">(</span><span class="s">&quot;Bergamot CLI&quot;</span><span class="p">,</span><span class="w"> </span><span class="cm">/*multiOpMode=*/</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">configParser</span><span class="p">.</span><span class="n">parseArgs</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configParser</span><span class="p">.</span><span class="n">getConfig</span><span class="p">();</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="o">::</span><span class="nn">bergamot</span><span class="p">;</span>
+<span class="w">  </span><span class="n">ConfigParser</span><span class="o">&lt;</span><span class="n">AsyncService</span><span class="o">&gt;</span><span class="w"> </span><span class="n">configParser</span><span class="p">(</span><span class="s">&quot;Bergamot CLI&quot;</span><span class="p">,</span><span class="w"> </span><span class="cm">/*multiOpMode=*/</span><span class="nb">false</span><span class="p">);</span>
+<span class="w">  </span><span class="n">configParser</span><span class="p">.</span><span class="n">parseArgs</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configParser</span><span class="p">.</span><span class="n">getConfig</span><span class="p">();</span>
 
-<span class="w">  </span><span class="n">AsyncService</span><span class="w"> </span><span class="nf">service</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">serviceConfig</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">AsyncService</span><span class="w"> </span><span class="nf">service</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">serviceConfig</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// Construct a model.</span>
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parseOptionsFromFilePath</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">modelConfigPaths</span><span class="p">.</span><span class="n">front</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parseOptionsFromFilePath</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">modelConfigPaths</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
 
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">createCompatibleModel</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">TranslationModel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">createCompatibleModel</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
 
-<span class="w">  </span><span class="n">ResponseOptions</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readFromStdin</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">ResponseOptions</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readFromStdin</span><span class="p">();</span>
 
 <span class="w">  </span><span class="c1">// Create a barrier using future/promise.</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span><span class="w"> </span><span class="n">promise</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">promise</span><span class="p">.</span><span class="n">get_future</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="n">promise</span><span class="p">](</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span><span class="w"> </span><span class="n">promise</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">Response</span><span class="o">&gt;</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">promise</span><span class="p">.</span><span class="n">get_future</span><span class="p">();</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="n">promise</span><span class="p">](</span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Fulfill promise.</span>
-<span class="w">    </span><span class="n">promise</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">response</span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">promise</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">response</span><span class="p">));</span>
+<span class="w">  </span><span class="p">};</span>
 
-<span class="w">  </span><span class="n">service</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">),</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">service</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">input</span><span class="p">),</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="n">responseOptions</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// Wait until promise sets the response.</span>
-<span class="w">  </span><span class="n">Response</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">future</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">Response</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">future</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
 
 <span class="w">  </span><span class="c1">// Print (only) translated text.</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">text</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">target</span><span class="p">.</span><span class="n">text</span><span class="p">;</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>

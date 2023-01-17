@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File parser.h &mdash; Bergamot Translator main 2022-06-29 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File parser.h &mdash; Bergamot Translator main 2023-01-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -65,8 +65,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Program Listing for File parser.h</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File parser.h</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/program_listing_file_src_translator_parser.h.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,97 +82,97 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SRC_BERGAMOT_PARSER_H</span>
 <span class="cp">#define SRC_BERGAMOT_PARSER_H</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;3rd_party/marian-dev/src/3rd_party/CLI/CLI.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;3rd_party/yaml-cpp/yaml.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/build_info.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/config_parser.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/config_validator.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/options.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;marian.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;3rd_party/marian-dev/src/3rd_party/CLI/CLI.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;3rd_party/yaml-cpp/yaml.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/build_info.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/config_parser.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/config_validator.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;common/options.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;marian.h&quot;</span>
 
-<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span>
 
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">Service</span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">CLIConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">ServiceConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Service</span><span class="o">::</span><span class="n">Config</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">ModelConfigPaths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">Service</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">CLIConfig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">ServiceConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Service</span><span class="o">::</span><span class="n">Config</span><span class="p">;</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">ModelConfigPaths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">opMode</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">opMode</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// For marian-models we retain the old marian-yml configs to a large extent. These are supplied as file-paths to the</span>
 <span class="w">  </span><span class="c1">// CLI. For multiple model workflows, we allow more than one model config to be supplied. How to process the models</span>
 <span class="w">  </span><span class="c1">// provided is decided by the application.</span>
-<span class="w">  </span><span class="n">ModelConfigPaths</span><span class="w"> </span><span class="n">modelConfigPaths</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ModelConfigPaths</span><span class="w"> </span><span class="n">modelConfigPaths</span><span class="p">;</span>
 
-<span class="w">  </span><span class="n">ServiceConfig</span><span class="w"> </span><span class="n">serviceConfig</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">ServiceConfig</span><span class="w"> </span><span class="n">serviceConfig</span><span class="p">;</span>
 
-<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">App</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">addOptions</span><span class="p">(</span><span class="n">App</span><span class="w"> </span><span class="o">&amp;</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">CLIConfig</span><span class="o">&lt;</span><span class="n">Service</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">multiOpMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">multiOpMode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">app</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--bergamot-mode&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">opMode</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">app</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--model-config-paths&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">modelConfigPaths</span><span class="p">,</span><span class="w"></span>
-<span class="w">                   </span><span class="s">&quot;Configuration files list, can be used for pivoting multiple models or multiple model workflows&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">App</span><span class="o">&gt;</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">addOptions</span><span class="p">(</span><span class="n">App</span><span class="w"> </span><span class="o">&amp;</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">CLIConfig</span><span class="o">&lt;</span><span class="n">Service</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">multiOpMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">multiOpMode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">app</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--bergamot-mode&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">opMode</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">app</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--model-config-paths&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">modelConfigPaths</span><span class="p">,</span>
+<span class="w">                   </span><span class="s">&quot;Configuration files list, can be used for pivoting multiple models or multiple model workflows&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">ServiceConfig</span><span class="o">::</span><span class="n">addOptions</span><span class="p">(</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">serviceConfig</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">};</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">    </span><span class="n">ServiceConfig</span><span class="o">::</span><span class="n">addOptions</span><span class="p">(</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">serviceConfig</span><span class="p">);</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">};</span>
 
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">Service</span><span class="o">&gt;</span><span class="w"></span>
-<span class="k">class</span><span class="w"> </span><span class="nc">ConfigParser</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">  </span><span class="n">ConfigParser</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">appName</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">multiOpMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">app_</span><span class="p">{</span><span class="n">appName</span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">addSpecialOptions</span><span class="p">(</span><span class="n">app_</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">CLIConfig</span><span class="o">&lt;</span><span class="n">Service</span><span class="o">&gt;::</span><span class="n">addOptions</span><span class="p">(</span><span class="n">app_</span><span class="p">,</span><span class="w"> </span><span class="n">config_</span><span class="p">,</span><span class="w"> </span><span class="n">multiOpMode</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">};</span><span class="w"></span>
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">parseArgs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">app_</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="n">handleSpecialOptions</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CLI</span><span class="o">::</span><span class="n">ParseError</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">exit</span><span class="p">(</span><span class="n">app_</span><span class="p">.</span><span class="n">exit</span><span class="p">(</span><span class="n">e</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">};</span><span class="w"></span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">CLIConfig</span><span class="o">&lt;</span><span class="n">Service</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">getConfig</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">config_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">Service</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConfigParser</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="n">ConfigParser</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">appName</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">multiOpMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">app_</span><span class="p">{</span><span class="n">appName</span><span class="p">}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">addSpecialOptions</span><span class="p">(</span><span class="n">app_</span><span class="p">);</span>
+<span class="w">    </span><span class="n">CLIConfig</span><span class="o">&lt;</span><span class="n">Service</span><span class="o">&gt;::</span><span class="n">addOptions</span><span class="p">(</span><span class="n">app_</span><span class="p">,</span><span class="w"> </span><span class="n">config_</span><span class="p">,</span><span class="w"> </span><span class="n">multiOpMode</span><span class="p">);</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">parseArgs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">app_</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">      </span><span class="n">handleSpecialOptions</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CLI</span><span class="o">::</span><span class="n">ParseError</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">exit</span><span class="p">(</span><span class="n">app_</span><span class="p">.</span><span class="n">exit</span><span class="p">(</span><span class="n">e</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">CLIConfig</span><span class="o">&lt;</span><span class="n">Service</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">getConfig</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">config_</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w"> </span><span class="k">private</span><span class="o">:</span>
 <span class="w">  </span><span class="c1">// Special Options: build-info and version. These are not taken down further, the respective logic executed and</span>
 <span class="w">  </span><span class="c1">// program exits after.</span>
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">addSpecialOptions</span><span class="p">(</span><span class="n">CLI</span><span class="o">::</span><span class="n">App</span><span class="w"> </span><span class="o">&amp;</span><span class="n">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">app</span><span class="p">.</span><span class="n">add_flag</span><span class="p">(</span><span class="s">&quot;--build-info&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">build_info_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Print build-info and exit&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">app</span><span class="p">.</span><span class="n">add_flag</span><span class="p">(</span><span class="s">&quot;--version&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">version_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Print version-info and exit&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">addSpecialOptions</span><span class="p">(</span><span class="n">CLI</span><span class="o">::</span><span class="n">App</span><span class="w"> </span><span class="o">&amp;</span><span class="n">app</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">app</span><span class="p">.</span><span class="n">add_flag</span><span class="p">(</span><span class="s">&quot;--build-info&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">build_info_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Print build-info and exit&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">app</span><span class="p">.</span><span class="n">add_flag</span><span class="p">(</span><span class="s">&quot;--version&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">version_</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Print version-info and exit&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">};</span>
 
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">handleSpecialOptions</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">build_info_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">handleSpecialOptions</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">build_info_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="cp">#ifndef _MSC_VER  </span><span class="c1">// cmake build options are not available on MSVC based build.</span>
-<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cmakeBuildOptionsAdvanced</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cmakeBuildOptionsAdvanced</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">      </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="cp">#else   </span><span class="c1">// _MSC_VER</span>
-<span class="w">      </span><span class="n">ABORT</span><span class="p">(</span><span class="s">&quot;build-info is not available on MSVC based build.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">ABORT</span><span class="p">(</span><span class="s">&quot;build-info is not available on MSVC based build.&quot;</span><span class="p">);</span>
 <span class="cp">#endif  </span><span class="c1">// _MSC_VER</span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">version_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">buildVersion</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">version_</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">buildVersion</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">      </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="n">CLIConfig</span><span class="o">&lt;</span><span class="n">Service</span><span class="o">&gt;</span><span class="w"> </span><span class="n">config_</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">CLI</span><span class="o">::</span><span class="n">App</span><span class="w"> </span><span class="n">app_</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">CLIConfig</span><span class="o">&lt;</span><span class="n">Service</span><span class="o">&gt;</span><span class="w"> </span><span class="n">config_</span><span class="p">;</span>
+<span class="w">  </span><span class="n">CLI</span><span class="o">::</span><span class="n">App</span><span class="w"> </span><span class="n">app_</span><span class="p">;</span>
 
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">build_info_</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span><span class="w"></span>
-<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">version_</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">build_info_</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">version_</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span>
+<span class="p">};</span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseOptionsFromString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">validate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                                        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">pathsInSameDirAs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseOptionsFromFilePath</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">validate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseOptionsFromString</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">validate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span>
+<span class="w">                                                        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">pathsInSameDirAs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">marian</span><span class="o">::</span><span class="n">Options</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parseOptionsFromFilePath</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">validate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
 
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">//  namespace marian</span>

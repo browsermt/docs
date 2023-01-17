@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Program Listing for File response.h &mdash; Bergamot Translator main 2022-06-29 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Program Listing for File response.h &mdash; Bergamot Translator main 2023-01-17 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -65,8 +65,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Program Listing for File response.h</li>
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File response.h</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/program_listing_file_src_translator_response.h.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,50 +82,50 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SRC_BERGAMOT_RESPONSE_H_</span>
 <span class="cp">#define SRC_BERGAMOT_RESPONSE_H_</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cassert&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cassert&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;annotation.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/alignment.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;definitions.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/beam_search.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;annotation.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/alignment.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;data/types.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;definitions.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;translator/beam_search.h&quot;</span>
 
-<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">marian</span><span class="w"> </span><span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">bergamot</span><span class="w"> </span><span class="p">{</span>
 
-<span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Alignment</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Alignment</span><span class="p">;</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">Response</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">SentenceQualityScore</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wordScores</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SubwordRange</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">sentenceScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Response</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">SentenceQualityScore</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wordScores</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SubwordRange</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wordRanges</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">sentenceScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
 
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">numSentences</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">size</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">numSentences</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="n">source</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="n">source</span><span class="p">;</span>
 
-<span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">AnnotatedText</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
 
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SentenceQualityScore</span><span class="o">&gt;</span><span class="w"> </span><span class="n">qualityScores</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SentenceQualityScore</span><span class="o">&gt;</span><span class="w"> </span><span class="n">qualityScores</span><span class="p">;</span>
 
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">alignments</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">alignments</span><span class="p">;</span>
 
-<span class="w">  </span><span class="n">ByteRange</span><span class="w"> </span><span class="nf">getSourceSentenceAsByteRange</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">sentenceIdx</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">sentenceAsByteRange</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">ByteRange</span><span class="w"> </span><span class="nf">getSourceSentenceAsByteRange</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">sentenceIdx</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">sentenceAsByteRange</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">  </span><span class="n">ByteRange</span><span class="w"> </span><span class="nf">getTargetSentenceAsByteRange</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">sentenceIdx</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">sentenceAsByteRange</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">ByteRange</span><span class="w"> </span><span class="nf">getTargetSentenceAsByteRange</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">sentenceIdx</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">sentenceAsByteRange</span><span class="p">(</span><span class="n">sentenceIdx</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">getOriginalText</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">text</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">getOriginalText</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">text</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">getTranslatedText</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">text</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="nf">getTranslatedText</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">text</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Alignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">remapAlignments</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">second</span><span class="p">);</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Alignment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">remapAlignments</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Response</span><span class="w"> </span><span class="o">&amp;</span><span class="n">second</span><span class="p">);</span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ByteRange</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getWordByteRanges</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">sentenceIdx</span><span class="p">);</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ByteRange</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getWordByteRanges</span><span class="p">(</span><span class="n">Response</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">sentenceIdx</span><span class="p">);</span>
 
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace bergamot</span>
 <span class="p">}</span><span class="w">  </span><span class="c1">// namespace marian</span>

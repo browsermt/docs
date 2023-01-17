@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2022-06-29 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2023-01-17 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -71,8 +71,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Using Bergamot Translator in JavaScript</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Using Bergamot Translator in JavaScript</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/wasm-example.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,19 +94,19 @@
 <ul>
 <li><p>Download bergamot model files required for translation</p>
 <p>Use following instructions to download <a class="reference external" href="https://github.com/mozilla/firefox-translations-models/">model files</a> (make sure that <code class="docutils literal notranslate"><span class="pre">git-lfs</span></code> is installed and initialized before running these instructions):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test_page
-git clone --depth <span class="m">1</span> --branch main --single-branch https://github.com/mozilla/firefox-translations-models/
-mkdir models
-cp -rf firefox-translations-models/registry.json models
-cp -rf firefox-translations-models/models/prod/* models
-cp -rf firefox-translations-models/models/dev/* models
-gunzip models/*/*
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>test_page
+git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>--single-branch<span class="w"> </span>https://github.com/mozilla/firefox-translations-models/
+mkdir<span class="w"> </span>models
+cp<span class="w"> </span>-rf<span class="w"> </span>firefox-translations-models/registry.json<span class="w"> </span>models
+cp<span class="w"> </span>-rf<span class="w"> </span>firefox-translations-models/models/prod/*<span class="w"> </span>models
+cp<span class="w"> </span>-rf<span class="w"> </span>firefox-translations-models/models/dev/*<span class="w"> </span>models
+gunzip<span class="w"> </span>models/*/*
 </pre></div>
 </div>
 </li>
 <li><p>Start the test webserver (ensure you have the latest nodejs installed)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test_page
-bash start_server.sh ../../build-wasm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>test_page
+bash<span class="w"> </span>start_server.sh<span class="w"> </span>../../build-wasm
 </pre></div>
 </div>
 <p>Provide the folder containing the wasm artifacts as the first argument of <code class="docutils literal notranslate"><span class="pre">start_server.sh</span></code> script (<code class="docutils literal notranslate"><span class="pre">../../build-wasm</span></code> in this case).</p>
@@ -114,14 +114,14 @@ bash start_server.sh ../../build-wasm
 <li><p>Open any of the browsers below</p>
 <ul>
 <li><p>Firefox Nightly +87: make sure the following prefs are on (about:config)</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">dom</span><span class="p">.</span><span class="n">postMessage</span><span class="p">.</span><span class="n">sharedArrayBuffer</span><span class="p">.</span><span class="n">bypassCOOP_COEP</span><span class="p">.</span><span class="n">insecure</span><span class="p">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
-<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
-<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd_wormhole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">dom</span><span class="p">.</span><span class="n">postMessage</span><span class="p">.</span><span class="n">sharedArrayBuffer</span><span class="p">.</span><span class="n">bypassCOOP_COEP</span><span class="p">.</span><span class="n">insecure</span><span class="p">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd_wormhole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
 </pre></div>
 </div>
 </li>
 <li><p>Chrome Canary +90: start with the following argument</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">js</span><span class="o">-</span><span class="n">flags</span><span class="o">=</span><span class="s">&quot;--experimental-wasm-simd&quot;</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">js</span><span class="o">-</span><span class="n">flags</span><span class="o">=</span><span class="s">&quot;--experimental-wasm-simd&quot;</span>
 </pre></div>
 </div>
 </li>
