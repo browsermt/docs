@@ -148,9 +148,9 @@ Functions
 
 - :ref:`exhale_function_request_8cpp_1a1d3110f726c7c85e0202ac7316b449f9`
 
-- :ref:`exhale_function_html_8cpp_1a90be5fddaf86ee1c2f02eb695bb2cb46`
-
 - :ref:`exhale_function_html_8cpp_1ae52ad7db185889701520ffea1ce74d37`
+
+- :ref:`exhale_function_html_8cpp_1a90be5fddaf86ee1c2f02eb695bb2cb46`
 
 - :ref:`exhale_function_parser_8cpp_1a738c33453a147aebfc5308faad463651`
 
