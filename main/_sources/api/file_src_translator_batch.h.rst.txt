@@ -39,17 +39,17 @@ Included By
 -----------
 
 
-- :ref:`file_src_translator_translation_model.h`
-
-- :ref:`file_src_translator_batching_pool.h`
-
 - :ref:`file_src_translator_batch.cpp`
 
 - :ref:`file_src_translator_batching_pool.cpp`
 
+- :ref:`file_src_translator_batching_pool.h`
+
 - :ref:`file_src_translator_service.cpp`
 
 - :ref:`file_src_translator_translation_model.cpp`
+
+- :ref:`file_src_translator_translation_model.h`
 
 
 

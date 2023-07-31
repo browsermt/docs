@@ -45,9 +45,9 @@ Included By
 -----------
 
 
-- :ref:`file_src_translator_response_builder.h`
-
 - :ref:`file_src_translator_quality_estimator.cpp`
+
+- :ref:`file_src_translator_response_builder.h`
 
 - :ref:`file_src_translator_service.h`
 
@@ -57,6 +57,8 @@ Included By
 Namespaces
 ----------
 
+
+- :ref:`namespace_marian`
 
 - :ref:`namespace_marian__bergamot`
 

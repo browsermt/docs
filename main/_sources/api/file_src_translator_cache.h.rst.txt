@@ -47,15 +47,15 @@ Included By
 -----------
 
 
-- :ref:`file_src_translator_request.h`
-
-- :ref:`file_src_translator_translation_model.h`
-
 - :ref:`file_src_translator_request.cpp`
+
+- :ref:`file_src_translator_request.h`
 
 - :ref:`file_src_translator_service.h`
 
 - :ref:`file_src_translator_translation_model.cpp`
+
+- :ref:`file_src_translator_translation_model.h`
 
 
 
@@ -63,6 +63,8 @@ Included By
 Namespaces
 ----------
 
+
+- :ref:`namespace_marian`
 
 - :ref:`namespace_marian__bergamot`
 

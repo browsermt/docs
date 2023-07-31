@@ -69,9 +69,9 @@ Included By
 
 - :ref:`file_src_translator_request.cpp`
 
-- :ref:`file_src_translator_threadsafe_batching_pool.h`
-
 - :ref:`file_src_translator_service.h`
+
+- :ref:`file_src_translator_threadsafe_batching_pool.h`
 
 - :ref:`file_src_translator_translation_model.cpp`
 

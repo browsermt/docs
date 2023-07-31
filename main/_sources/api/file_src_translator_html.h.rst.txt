@@ -51,9 +51,9 @@ Included By
 -----------
 
 
-- :ref:`file_src_translator_response_builder.h`
-
 - :ref:`file_src_translator_html.cpp`
+
+- :ref:`file_src_translator_response_builder.h`
 
 - :ref:`file_src_translator_translation_model.cpp`
 
@@ -63,6 +63,8 @@ Included By
 Namespaces
 ----------
 
+
+- :ref:`namespace_marian`
 
 - :ref:`namespace_marian__bergamot`
 

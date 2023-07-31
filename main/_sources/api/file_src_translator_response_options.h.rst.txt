@@ -37,9 +37,9 @@ Included By
 -----------
 
 
-- :ref:`file_src_translator_response_builder.h`
-
 - :ref:`file_src_translator_response_builder.cpp`
+
+- :ref:`file_src_translator_response_builder.h`
 
 - :ref:`file_app_bergamot.cpp`
 
