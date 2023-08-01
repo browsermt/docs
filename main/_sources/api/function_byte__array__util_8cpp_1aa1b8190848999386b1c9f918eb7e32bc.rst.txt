@@ -1,4 +1,4 @@
-.. _exhale_function_byte__array__util_8cpp_1ac17b7705d71079521a1e6db2059ada4f:
+.. _exhale_function_byte__array__util_8cpp_1aa1b8190848999386b1c9f918eb7e32bc:
 
 Function marian::bergamot::getModelMemoryFromConfig
 ===================================================

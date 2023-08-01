@@ -28,8 +28,8 @@ Program Listing for File definitions.h
    typedef AlignedVector<char> AlignedMemory;
    
    struct MemoryBundle {
-     AlignedMemory model{};      
-     AlignedMemory shortlist{};  
+     std::vector<AlignedMemory> models{};  
+     AlignedMemory shortlist{};            
    
      std::vector<std::shared_ptr<AlignedMemory>> vocabs{};
    
