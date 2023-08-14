@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2023-08-11 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Using Bergamot Translator in JavaScript &mdash; Bergamot Translator main 2023-08-14 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
       <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
@@ -116,22 +116,7 @@ bash<span class="w"> </span>start_server.sh<span class="w"> </span>../../build-w
 </div>
 <p>Provide the folder containing the wasm artifacts as the first argument of <code class="docutils literal notranslate"><span class="pre">start_server.sh</span></code> script (<code class="docutils literal notranslate"><span class="pre">../../build-wasm</span></code> in this case).</p>
 </li>
-<li><p>Open any of the browsers below</p>
-<ul>
-<li><p>Firefox Nightly +87: make sure the following prefs are on (about:config)</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">dom</span><span class="p">.</span><span class="n">postMessage</span><span class="p">.</span><span class="n">sharedArrayBuffer</span><span class="p">.</span><span class="n">bypassCOOP_COEP</span><span class="p">.</span><span class="n">insecure</span><span class="p">.</span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-<span class="n">javascript</span><span class="p">.</span><span class="n">options</span><span class="p">.</span><span class="n">wasm_simd_wormhole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
-</pre></div>
-</div>
-</li>
-<li><p>Chrome Canary +90: start with the following argument</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">js</span><span class="o">-</span><span class="n">flags</span><span class="o">=</span><span class="s">&quot;--experimental-wasm-simd&quot;</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</li>
+<li><p>Open any browser (tested with latest Chrome/Firefox/Safari)</p></li>
 <li><p>Browse to the following page:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="nl">http</span><span class="p">:</span><span class="c1">//localhost:80</span>
 </pre></div>
